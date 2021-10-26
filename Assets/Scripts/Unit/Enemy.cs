@@ -6,6 +6,9 @@ namespace SbSTanks
 {
     public class Enemy : Unit
     {
-
+        protected override void OnCollisionEnter(Collision collision)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

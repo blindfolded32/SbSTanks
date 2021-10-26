@@ -17,13 +17,7 @@ namespace SbSTanks
             _parameters = new UnitParameters(this, data.hp, data.damage);
         }
 
-        protected void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.layer == 6)
-            {
-                shellHit?.Invoke(collision.gameObject);
-            }
-        }
+        protected abstract void OnCollisionEnter(Collision collision);
 
         public void TakingDamage(int damage)
         {

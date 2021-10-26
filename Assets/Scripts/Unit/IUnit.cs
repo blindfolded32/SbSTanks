@@ -2,6 +2,6 @@
 {
     public interface IUnit
     {
-        public void Init(UnitInitializationData data);
+        public IParameters Parameters { get; }
     }
 }

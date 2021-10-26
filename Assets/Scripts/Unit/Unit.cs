@@ -10,7 +10,7 @@ namespace SbSTanks
 
         [SerializeField] protected UnitParameters _parameters;
 
-        protected IParameters Parameters { get => _parameters; }
+        public IParameters Parameters { get => _parameters; }
 
         public void Init(UnitInitializationData data)
         {

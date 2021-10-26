@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SbSTanks
@@ -8,7 +6,7 @@ namespace SbSTanks
     {
         protected override void OnCollisionEnter(Collision collision)
         {
-            throw new System.NotImplementedException();
+            shellHit?.Invoke(collision.gameObject);
         }
     }
 }

@@ -7,14 +7,22 @@ namespace SbSTanks
     public class ShellController
     {
         private List<Shell> _shells;
+        private readonly LayerMask _shellMask = 6;
 
         private const string PREFAB_PATH = "Prefabs/Shell";
 
         public List<Shell> Shells { get => _shells; }
 
+        public ShellController(IUnit player, IUnit enemy)
+        {
+            player.ShellHit += InflictDamage;
+            enemy.ShellHit += InflictDamage;
+        }
+
         public GameObject InitShell(int damage, Transform startPosition)
         {
             var shellObject = CreateShell(damage, startPosition);
+            shellObject.layer = _shellMask;
             return shellObject;
         }
 
@@ -27,6 +35,17 @@ namespace SbSTanks
             _shells.Add(shell);
 
             return shellObject;
+        }
+
+        private void InflictDamage(GameObject shell, IDamagebleUnit unit)
+        {
+            for (int i = 0; i < _shells.Count; i++)
+            {
+                if (shell.GetInstanceID() == _shells[i].ShellObject.GetInstanceID())
+                {
+                    unit.TakingDamage(_shells[i].Damage);
+                }
+            }
         }
 
         public void Destroy(GameObject shell)

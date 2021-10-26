@@ -16,7 +16,7 @@ namespace SbSTanks
         {
             _hp = hp;
             _damage = damage;
-            unit.takeDamage += GetDamage;
+            unit.TakeDamage += GetDamage;
         }
 
         public void GetDamage(int damage)

@@ -7,7 +7,7 @@ namespace SbSTanks
     {
         protected override void OnCollisionEnter(Collision collision)
         {
-            shellHit?.Invoke(collision.gameObject);
+            ShellHit?.Invoke(collision.gameObject, this);
             _shellController.Destroy(collision.gameObject);
             ReturnShot();
         }

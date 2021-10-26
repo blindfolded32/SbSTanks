@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace SbSTanks
 {
-    public abstract class Unit : MonoBehaviour, IUnit
+    public abstract class Unit : MonoBehaviour, IUnit, IDamagebleUnit
     {
-        public Action<int> takeDamage;
-        public Action<GameObject> shellHit;
+        public Action<int> TakeDamage { get; set; }
+        public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
 
         [SerializeField] protected UnitParameters _parameters;
         [SerializeField] protected Transform _shotStartPoint;
@@ -28,7 +28,7 @@ namespace SbSTanks
         public void TakingDamage(int damage)
         {
             Debug.Log("Auch!");
-            takeDamage?.Invoke(damage);
+            TakeDamage?.Invoke(damage);
         }
     }
 }

@@ -7,11 +7,11 @@ namespace Leo_Part
 {
     public class PCInputSpace : IPCInputSpace
     {
-        public event Action<bool> OnSpaceChange;
+        public event Action<bool> OnSpaceDown;
 
-        public void GetAxis()
+        public void GetButton()
         {
-            OnSpaceChange?.Invoke(Input.GetKeyDown(KeyCode.Space));
+            OnSpaceDown?.Invoke(Input.GetKeyDown(KeyCode.Space));
         }
     }
 }

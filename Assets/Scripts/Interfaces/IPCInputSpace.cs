@@ -7,9 +7,9 @@ namespace Leo_Part
 {
     public interface IPCInputSpace
     {
-        public event Action<bool> OnSpaceChange;
+        public event Action<bool> OnSpaceDown;
 
-        public void GetAxis();
+        public void GetButton();
     }
 }
 

@@ -16,7 +16,7 @@ namespace Leo_Part
 
         public void Execute(float deltaTime)
         {
-            _pCInputSpace.GetAxis();
+            _pCInputSpace.GetButton();
         }
     }
 }

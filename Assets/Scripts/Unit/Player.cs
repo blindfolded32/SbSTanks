@@ -8,7 +8,9 @@ namespace SbSTanks
     {
         protected override void OnCollisionEnter(Collision collision)
         {
-            throw new System.NotImplementedException();
+            ShellHit?.Invoke(collision.gameObject, this);
+            _shellController.ReturnShell(collision.gameObject);
+            //
         }
     }
 }

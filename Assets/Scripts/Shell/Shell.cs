@@ -4,16 +4,19 @@ namespace SbSTanks
 {
     public class Shell
     {
-        private int _damage;
         private GameObject _shellObject;
+        private Transform _shellPositionInPool;
 
-        public int Damage { get => _damage; }
+        public int damage;
+        public bool isOnScene;
+
         public GameObject ShellObject { get => _shellObject; }
+        public Transform ShellPositionInPool { get => _shellPositionInPool; }
 
-        public Shell(int damage, GameObject shellObject)
+        public Shell(GameObject shellObject)
         {
-            _damage = damage;
             _shellObject = shellObject;
+            _shellPositionInPool = shellObject.transform;
         }
     }
 }

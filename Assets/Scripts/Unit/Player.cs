@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace SbSTanks
 {
+   // [RequireComponent(typeof(Animator))]
     public class Player : Unit, IUnit
     {
         private bool _hitStatus = false;

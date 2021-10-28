@@ -7,6 +7,9 @@ namespace SbSTanks
         public MainInitializator(GameInitializationData data, GameController mainController)
         {
             var shellController = new ShellController(data.Player, data.Enemy);
+
+
+
             var pcinputinitialization = new PCInputSpaceInitialization();
 
             mainController.Add(new InputController(pcinputinitialization.GetInputSpace()));

@@ -33,7 +33,7 @@ namespace SbSTanks
             if (_isSpdaceDown && _timer.GetTimerStatus)
             {
                 Debug.Log("Shot!!!!");
-                _player.ReturnShot();
+                _player.Shot();
             }
         }
 

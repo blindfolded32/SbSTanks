@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SbSTanks
 {
-    public class Player : Unit
+    public class Player : Unit, IUnit
     {
         private bool _hitStatus = false;
 
@@ -17,7 +17,7 @@ namespace SbSTanks
             _hitStatus = true;
         }
 
-        public void ReturnShot()
+        public void Shot()
         {
             var shell = _shellController.GetShell(_parameters.Damage, _shotStartPoint);
             var shellRb = shell.GetComponent<Rigidbody>();

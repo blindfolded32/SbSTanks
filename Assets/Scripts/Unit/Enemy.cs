@@ -7,7 +7,9 @@ namespace SbSTanks
     public class Enemy : Unit
     {
         private ParticleSystem _shotEnemy;
-        public void Awake()
+
+        public Transform GetShotPoint { get => _shotStartPoint; }
+        public void Start()
         {
             _shotEnemy = GetComponentInChildren<ParticleSystemShotIdentificator>().GetComponent<ParticleSystem>();
         }

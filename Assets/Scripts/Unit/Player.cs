@@ -9,6 +9,7 @@ namespace SbSTanks
     {
         private bool _hitStatus = false;
 
+        public Transform GetShotPoint { get => _shotStartPoint; }
         public bool GetHitStatus { get => _hitStatus; set => _hitStatus = value; }
 
         protected override void OnCollisionEnter(Collision collision)

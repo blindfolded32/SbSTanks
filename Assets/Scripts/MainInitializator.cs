@@ -6,6 +6,7 @@ namespace SbSTanks
     {
         public MainInitializator(GameInitializationData data, GameController mainController)
         {
+            var particleInitialization = new ParticlesInitialization();
             var timerController = new TimerController();
             mainController.Add(timerController);
             var shellController = new ShellController(data.Player, data.Enemy);

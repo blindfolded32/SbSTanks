@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SbSTanks
 {
-    public class TimeData : MonoBehaviour
+    public class TimeData
     {
         private float _startTime;
         private float _deltaTime;

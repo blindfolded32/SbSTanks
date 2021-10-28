@@ -23,7 +23,7 @@ namespace SbSTanks
         public IEnumerator TimerCoroutine()
         {
             _timerStatus = false;
-            yield return new WaitForSecondsRealtime(5f);
+            yield return new WaitForSecondsRealtime(4f);
             _timerStatus = true;
         }
     }

@@ -14,7 +14,6 @@ namespace SbSTanks
         {
             ShellHit?.Invoke(collision.gameObject, this);
             _shellController.ReturnShell(collision.gameObject);
-            _hitStatus = true;
         }
 
         public void Shot()
@@ -22,7 +21,8 @@ namespace SbSTanks
             var shell = _shellController.GetShell(_parameters.Damage, _shotStartPoint);
             var shellRb = shell.GetComponent<Rigidbody>();
 
-            shellRb.AddForce(shell.transform.forward * SHOT_FORCE, ForceMode.Force);
+            shellRb.AddForce(shell.transform.forward * SHOT_FORCE, ForceMode.Impulse);
+            _hitStatus = true;
         }
     }
 }

@@ -29,6 +29,7 @@ namespace SbSTanks
             if (_player.GetHitStatus)
             {
                 _timer.StartTimer();
+                _player.GetHitStatus = false;
             }
             if (_isSpdaceDown && _timer.GetTimerStatus)
             {

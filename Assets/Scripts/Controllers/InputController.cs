@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SbSTanks;
 
-namespace Leo_Part
+namespace SbSTanks
 {
     public class InputController : IExecute
     {
@@ -16,7 +16,7 @@ namespace Leo_Part
 
         public void Execute(float deltaTime)
         {
-            _pCInputSpace.GetButton();
+            _pCInputSpace.CheckButtons();
         }
     }
 }

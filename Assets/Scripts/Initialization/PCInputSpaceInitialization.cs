@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Leo_Part
+namespace SbSTanks
 {
     public class PCInputSpaceInitialization
     {

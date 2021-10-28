@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace Leo_Part
+namespace SbSTanks
 {
     public interface IPCInputSpace
     {
         public event Action<bool> OnSpaceDown;
 
-        public void GetButton();
+        public void CheckButtons();
     }
 }
 

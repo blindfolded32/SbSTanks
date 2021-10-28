@@ -5,11 +5,6 @@ namespace SbSTanks
 {
     public class Enemy : Unit
     {
-        private void Start()
-        {
-            ReturnShot();
-        }
-
         protected override void OnCollisionEnter(Collision collision)
         {
             ShellHit?.Invoke(collision.gameObject, this);

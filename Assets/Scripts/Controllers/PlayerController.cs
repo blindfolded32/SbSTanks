@@ -13,7 +13,7 @@ namespace SbSTanks
         private ParticleSystem _shotEvent;
         private readonly int _indexOfTimer;
 
-        private const float DELTA_TIME_BETWEEN_SHOT = 5f;
+        private const float DELTA_TIME_BETWEEN_SHOT = 4f;
 
         public PlayerController(IPCInputSpace pCInputSpace, TimerController timerController)
         {

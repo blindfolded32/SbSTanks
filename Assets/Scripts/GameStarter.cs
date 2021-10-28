@@ -7,7 +7,7 @@ namespace SbSTanks
         [SerializeField] private GameInitializationData _dataForInitialization;
         private GameController _mainController;
 
-        void Awake()
+        private void Awake()
         {
             _mainController = new GameController();
             new MainInitializator(_dataForInitialization, _mainController);

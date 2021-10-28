@@ -5,6 +5,11 @@ namespace SbSTanks
 {
     public class Enemy : Unit
     {
+        private void Start()
+        {
+            ReturnShot();
+        }
+
         protected override void OnCollisionEnter(Collision collision)
         {
             ShellHit?.Invoke(collision.gameObject, this);
@@ -17,7 +22,7 @@ namespace SbSTanks
             var shell = _shellController.GetShell(_parameters.Damage, _shotStartPoint);
             var shellRb = shell.GetComponent<Rigidbody>();
 
-            shellRb.AddForce(shell.transform.forward * SHOT_FORCE, ForceMode.Force);
+            shellRb.AddForce(shell.transform.forward * SHOT_FORCE, ForceMode.Impulse);
         }
     }
 }

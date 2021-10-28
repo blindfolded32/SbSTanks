@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SbSTanks
 {
-    public class ShellController: IDisposable, IExecute, IController
+    public class ShellController: IDisposable, IFixedExecute, IController
     {
         private List<Shell> _shells = new List<Shell>(8); //TODO - take out the model
         private readonly LayerMask _shellMask = 6;
@@ -16,7 +16,7 @@ namespace SbSTanks
         private const string PREFAB_PATH = "Prefabs/Shell";
         private const int SHELLS_COUNT = 5;
         private const float NEW_SHELL_OFFSET = 0.5f;
-        private const float X_ROTATE_IN_FLY = 0.2f;
+        private const float X_ROTATE_IN_FLY = 0.7f;
 
         public List<Shell> Shells { get => _shells; }
 
@@ -35,7 +35,7 @@ namespace SbSTanks
             }
         }
 
-        public void Execute(float deltaTime)
+        public void FixedExecute(float deltaTime, float fixedDeltaTime)
         {
             for (int i = 0; i < _shells.Count; i++)
             {

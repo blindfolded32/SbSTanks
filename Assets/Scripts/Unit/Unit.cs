@@ -13,7 +13,7 @@ namespace SbSTanks
 
         protected ShellController _shellController;
 
-        protected const float SHOT_FORCE = 9000f;
+        protected const float SHOT_FORCE = 180f;
 
         public IParameters Parameters { get => _parameters; }
 

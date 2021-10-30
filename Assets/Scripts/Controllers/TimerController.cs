@@ -23,6 +23,11 @@ namespace SbSTanks
             return _timers.Count;
         }
 
+        public void DeleteTimer(int index)
+        {
+            _timers.RemoveAt(index);
+        }
+
         public TimeData this[int i]
         {
             get

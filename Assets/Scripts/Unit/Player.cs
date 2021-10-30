@@ -8,7 +8,6 @@ namespace SbSTanks
     public class Player : Unit, IUnit
     {
         private bool _hitStatus = false;
-
         public Transform GetShotPoint { get => _shotStartPoint; }
         public bool GetHitStatus { get => _hitStatus; set => _hitStatus = value; }
 

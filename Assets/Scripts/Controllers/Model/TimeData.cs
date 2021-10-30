@@ -14,11 +14,11 @@ namespace SbSTanks
         public float GetDeltaTime { get => _deltaTime; }
         public bool GetAndSetStatusTimer { get => _isEndOfTimer; set => _isEndOfTimer = value; }
 
-        public void SetNewTimer(float deltatime, float currentTime)
+        public TimeData(float deltatime, float currentTime)
         {
             _startTime = currentTime;
             _deltaTime = deltatime;
-            _isEndOfTimer = false;
+            _isEndOfTimer = false; //поменять на событие
         }
     }
 }

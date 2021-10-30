@@ -4,11 +4,12 @@ using UnityEngine;
 namespace SbSTanks
 {
    // [RequireComponent(typeof(Animator))]
-    public class Enemy : Unit
+    public class Enemy : Unit, IUnit
     {
         private ParticleSystem _shotEnemy;
 
         public Transform GetShotPoint { get => _shotStartPoint; }
+        public Transform Transform { get => gameObject.transform; }
         public void Start()
         {
             _shotEnemy = GetComponentInChildren<ParticleSystemShotIdentificator>().GetComponent<ParticleSystem>();

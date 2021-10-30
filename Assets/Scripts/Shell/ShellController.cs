@@ -10,7 +10,7 @@ namespace SbSTanks
         private List<Shell> _shells = new List<Shell>(8); //TODO - take out the model
         private readonly LayerMask _shellMask = 6;
         private IUnit _player;
-        private IUnit _enemy;
+        private IUnit[] _enemies;
         private LayerMask _groundMask;
 
         private const string PREFAB_PATH = "Prefabs/Shell";
@@ -20,14 +20,18 @@ namespace SbSTanks
 
         public List<Shell> Shells { get => _shells; }
 
-        public ShellController(IUnit player, IUnit enemy)
+        public ShellController(IUnit player, IUnit[] enemies)
         {
             _player = player;
-            _enemy = enemy;
+            _enemies = enemies;
             _groundMask = 1<<8;
 
+            for (int i = 0; i < _enemies.Length; i++)
+            {
+                _enemies[i].ShellHit += InflictDamage;
+            }
+
             _player.ShellHit += InflictDamage;
-            _enemy.ShellHit += InflictDamage;
 
             for (int i = 0; i < SHELLS_COUNT; i++)
             {
@@ -124,7 +128,11 @@ namespace SbSTanks
         public void Dispose()
         {
             _player.ShellHit -= InflictDamage;
-            _enemy.ShellHit -= InflictDamage;
+
+            for (int i = 0; i < _enemies.Length; i++)
+            {
+                _enemies[i].ShellHit -= InflictDamage;
+            }         
         }
     }
 }

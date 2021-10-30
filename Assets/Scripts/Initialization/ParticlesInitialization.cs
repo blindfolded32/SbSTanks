@@ -9,25 +9,24 @@ namespace SbSTanks
         private GameObject _particleSystemGameObject;
 
         private const string PARTICLE_PATH = "Partcle/CompleteTankExplosion";
-        public ParticlesInitialization()
+        public ParticlesInitialization(Player player, Enemy[] enemies)
         {
             _particleSystemGameObject = Resources.Load<GameObject>(PARTICLE_PATH);
-            List<GameObject> tanks = new List<GameObject>();
-            tanks.Add(GameObject.FindObjectOfType<Player>().gameObject);
-            tanks.Add(GameObject.FindObjectOfType<Enemy>().gameObject);
+            List<IUnit> tanks = new List<IUnit>();
+            tanks.Add(player);
+            
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                tanks.Add(enemies[i]);
+            }
+            
 
             for(int i = 0; i < tanks.Count; i++)
             {
                 var particleSystem = GameObject.Instantiate(_particleSystemGameObject);
-                if(tanks[i].TryGetComponent<Player>(out var player))
-                {
-                    particleSystem.transform.position = player.GetShotPoint.transform.position;
-                }
-                if (tanks[i].TryGetComponent<Enemy>(out var enemy))
-                {
-                    particleSystem.transform.position = enemy.GetShotPoint.transform.position;
-                }
-                particleSystem.transform.SetParent(tanks[i].transform);
+                particleSystem.transform.position = tanks[i].GetShotPoint.transform.position;
+
+                particleSystem.transform.SetParent(tanks[i].Transform);
                 particleSystem.gameObject.AddComponent<ParticleSystemShotIdentificator>();
             }
         }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SbSTanks
 {
-    public abstract class Unit : MonoBehaviour, IUnit, IDamagebleUnit
+    public abstract class Unit : MonoBehaviour, IDamagebleUnit
     {
         public Action<int> TakeDamage { get; set; }
         public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }

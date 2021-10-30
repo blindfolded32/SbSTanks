@@ -7,5 +7,8 @@ namespace SbSTanks
     {
         public IParameters Parameters { get; }
         public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
+
+        public Transform GetShotPoint { get; }
+        public Transform Transform { get; }
     }
 }

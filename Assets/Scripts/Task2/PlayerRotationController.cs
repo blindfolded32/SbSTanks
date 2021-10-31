@@ -5,28 +5,19 @@ using UnityEngine.UI;
 
 namespace SbSTanks
 {
-    public class PlayerRotationInitialization
+    public class PlayerRotationEvent
     {
-        private List<Button> _buttonsChangeTanks;
-        private List<Transform> _enemyTanksPositions;
-
         private Transform _player;
         private Transform _enemyPosition;
 
-        private const int REQUIRED_CANVAS = 0;
 
-        public PlayerRotationInitialization(UIModel model, PlayerModel playerModel)
+
+        public PlayerRotationEvent(PlayerModel playerModel, Transform enemyPosition, Button button)
         {
-            _player = GameObject.FindObjectOfType<Player>().transform;
-            _buttonsChangeTanks = new List<Button>();
-            _enemyTanksPositions = new List<Transform>();
-            _buttonsChangeTanks.AddRange(model.GetCanvases[REQUIRED_CANVAS].GetComponentsInChildren<Button>());
-            //_enemyTanksPositions
-            for(int i = 0; i <  _buttonsChangeTanks.Count; i++)
-            {
-                _enemyPosition = _enemyTanksPositions[i].transform;
-                _buttonsChangeTanks[i].onClick.AddListener(RotatePlayerTank);
-            }
+            _player = playerModel.GetPlayer.transform;
+
+            _enemyPosition = enemyPosition;
+            button.onClick.AddListener(RotatePlayerTank);
    
         }
 

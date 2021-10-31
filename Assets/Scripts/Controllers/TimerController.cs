@@ -6,12 +6,7 @@ namespace SbSTanks
 {
     public class TimerController : IExecute
     {
-        private List<TimeData> _timers;
-
-        public TimerController()
-        {
-            _timers = new List<TimeData>(); 
-        }
+        private List<TimeData> _timers = new List<TimeData>();
 
         public void AddTimer(TimeData timeData)
         {

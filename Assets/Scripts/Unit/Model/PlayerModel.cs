@@ -26,11 +26,11 @@ namespace SbSTanks
         public bool IsSpaceDown { get => _isSpdaceDown; set => _isSpdaceDown = value; }
         public TimeData GetAndSetTimeData { get => _timeData; set => _timeData = value; }
 
-        public PlayerModel(IPCInputSpace pCInputSpace, TimerController timerController)
+        public PlayerModel(IPCInputSpace pCInputSpace, TimerController timerController, Player player)
         {
             _pcInputSpace = pCInputSpace;
             _timerController = timerController;
-            _player = GameObject.FindObjectOfType<Player>();
+            _player = player;
             _shotEvent = _player.gameObject.GetComponentInChildren<ParticleSystemShotIdentificator>().GetComponent<ParticleSystem>();
         }
 

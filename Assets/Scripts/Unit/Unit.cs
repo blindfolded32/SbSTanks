@@ -3,19 +3,21 @@ using UnityEngine;
 
 namespace SbSTanks
 {
-    public abstract class Unit : MonoBehaviour, IUnit
+    public abstract class Unit : MonoBehaviour, IDamagebleUnit, IUnit
     {
-        public Action<int> takeDamage;
-        public Action<GameObject> shellHit;
+        public Action<int> TakeDamage { get; set; }
+        public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
 
         [SerializeField] protected UnitParameters _parameters;
         [SerializeField] protected Transform _shotStartPoint;
 
         protected ShellController _shellController;
 
-        protected const float SHOT_FORCE = 50f;
+        protected const float SHOT_FORCE = 180f;
 
         public IParameters Parameters { get => _parameters; }
+        public Transform GetShotPoint { get => _shotStartPoint; }
+        public Transform Transform { get => gameObject.transform; }
 
         public void Init(UnitInitializationData data, ShellController shellController)
         {
@@ -28,7 +30,7 @@ namespace SbSTanks
         public void TakingDamage(int damage)
         {
             Debug.Log("Auch!");
-            takeDamage?.Invoke(damage);
+            TakeDamage?.Invoke(damage);
         }
     }
 }

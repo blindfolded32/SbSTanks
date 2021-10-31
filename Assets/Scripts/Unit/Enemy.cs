@@ -3,21 +3,31 @@ using UnityEngine;
 
 namespace SbSTanks
 {
+   // [RequireComponent(typeof(Animator))]
     public class Enemy : Unit
     {
+        private ParticleSystem _shotEnemy;
+
+        public void Start()
+        {
+            _shotEnemy = GetComponentInChildren<ParticleSystemShotIdentificator>().GetComponent<ParticleSystem>();
+        }
+
         protected override void OnCollisionEnter(Collision collision)
         {
-            shellHit?.Invoke(collision.gameObject);
-            _shellController.Destroy(collision.gameObject);
+            ShellHit?.Invoke(collision.gameObject, this);
+            _shellController.ReturnShell(collision.gameObject);
             ReturnShot();
         }
 
         private void ReturnShot()
         { 
-            var shell = _shellController.InitShell(_parameters.Damage, _shotStartPoint);
-            var shellRb = shell.GetComponent<Rigidbody>();
 
-            shellRb.AddForce(shell.transform.forward * SHOT_FORCE, ForceMode.Force);
+            var shell = _shellController.GetShell(_parameters.Damage, _shotStartPoint);
+            var shellRb = shell.GetComponent<Rigidbody>();
+            _shotEnemy.Play();
+
+            shellRb.AddForce(shell.transform.forward * SHOT_FORCE, ForceMode.Impulse);
         }
     }
 }

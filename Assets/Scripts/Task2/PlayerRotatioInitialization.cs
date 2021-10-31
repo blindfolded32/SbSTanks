@@ -21,7 +21,7 @@ namespace SbSTanks
 
             for(int i = 0; i< _buttonsChangeTanks.Count; i++)
             {
-                new PlayerRotationEvent( playerModel, _enemyTanksPositions[i].Transform, _buttonsChangeTanks[i]);
+                new PlayerRotationEvent(playerModel, _enemyTanksPositions[i].Transform, _buttonsChangeTanks[i]);
             }
 
         }

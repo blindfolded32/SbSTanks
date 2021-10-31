@@ -7,15 +7,13 @@ namespace SbSTanks
     public class PlayerController : IExecute
     {
         private PlayerModel _playerModel;
-        private TimerActionInvoker _timerActionInvoker;
+        private StepController _stepController;
 
-        public PlayerController(PlayerModel model, TimerActionInvoker timerActionInvoker)
+        public PlayerController(PlayerModel model, StepController stepController)
         {
-            _timerActionInvoker = timerActionInvoker;
+            _stepController = stepController;
             _playerModel = model;
-            _playerModel.GetAndSetIndexOfTimer = -1;
             _playerModel.GetpcInputSpace.OnSpaceDown += GetSpaceKey;
-            Debug.Log(_playerModel.GetShotEvent);
         }
 
         public void GetSpaceKey(bool f)
@@ -25,11 +23,10 @@ namespace SbSTanks
 
         public void Execute(float deltaTime)
         {
-            _timerActionInvoker.SetTimer();
-            if ((_playerModel.GetAndSetTimeData == null || _playerModel.GetAndSetTimeData.IsTimerEnd) && _playerModel.IsSpaceDown)
+            if (_stepController.isPlayerTurn && _playerModel.IsSpaceDown)
             {
+                _stepController.isPlayerTurn = false;
                 Debug.Log("Shot!!!!");
-                _timerActionInvoker.DeleteTimer();
                 _playerModel.GetShotEvent.Play();
                 _playerModel.GetPlayer.Shot();
             }

@@ -28,7 +28,8 @@ namespace SbSTanks
             mainController.Add(shellController);
 
             mainController.Add(new InputController(pcinputinitialization.GetInputSpace()));
-            mainController.Add(new PlayerController(playerModel, timerActionInvoker));
+            mainController.Add(new PlayerController(playerModel, stepController));
+            mainController.Add(new ButtonActivationController(uiModel, stepController));
             
 
             for (int i = 0; i < data.Enemies.Length; i++)

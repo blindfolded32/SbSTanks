@@ -34,7 +34,7 @@ namespace SbSTanks
         {
             if ((_playerModel.GetAndSetIndexOfTimer != -1))
             {
-                _playerModel.GetAndSetTimerController.DeleteTimer(_playerModel.GetAndSetIndexOfTimer);
+                _playerModel.GetAndSetTimerController.DeleteTimer(_playerModel.GetAndSetTimeData);
                 _playerModel.GetAndSetTimeData = null;
                 _playerModel.GetAndSetIndexOfTimer = -1;
             }

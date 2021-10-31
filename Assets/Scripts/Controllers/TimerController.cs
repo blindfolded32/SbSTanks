@@ -18,9 +18,9 @@ namespace SbSTanks
             return _timers.Count;
         }
 
-        public void DeleteTimer(int index)
+        public void DeleteTimer(TimeData item)
         {
-            _timers.RemoveAt(index);
+            _timers.Remove(item);
         }
 
         public TimeData this[int i]
@@ -39,6 +39,10 @@ namespace SbSTanks
                 if((currentTime - _timers[i].GetStartTime) > _timers[i].GetDeltaTime)
                 {
                     _timers[i].IsTimerEnd = true;
+                    //if ((Time.time -(currentTime + _timers[i].GetStartTime)) > 60f)
+                    //{
+                    //    DeleteTimer(_timers[i]);
+                    //}
                 }
             }
         }

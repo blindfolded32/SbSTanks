@@ -10,8 +10,6 @@ namespace SbSTanks
         private Transform _player;
         private Transform _enemyPosition;
 
-
-
         public PlayerRotationEvent(PlayerModel playerModel, Transform enemyPosition, Button button)
         {
             _player = playerModel.GetPlayer.transform;
@@ -23,7 +21,7 @@ namespace SbSTanks
 
         public void RotatePlayerTank()
         {
-            _player.LookAt(_enemyPosition, Vector3.up);
+           _player.LookAt(_enemyPosition, Vector3.up);
         }
 
     }

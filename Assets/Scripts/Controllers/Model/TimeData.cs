@@ -8,17 +8,17 @@ namespace SbSTanks
     {
         private float _startTime;
         private float _deltaTime;
-        private bool _isEndOfTimer;
+        private bool _isTimerEnd;
 
         public float GetStartTime { get => _startTime; }
         public float GetDeltaTime { get => _deltaTime; }
-        public bool GetAndSetStatusTimer { get => _isEndOfTimer; set => _isEndOfTimer = value; }
+        public bool IsTimerEnd { get => _isTimerEnd; set => _isTimerEnd = value; }
 
         public TimeData(float deltatime, float currentTime)
         {
             _startTime = currentTime;
             _deltaTime = deltatime;
-            _isEndOfTimer = false; //поменять на событие
+            _isTimerEnd = false; //поменять на событие
         }
     }
 }

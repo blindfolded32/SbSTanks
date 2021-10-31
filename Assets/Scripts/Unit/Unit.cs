@@ -12,6 +12,7 @@ namespace SbSTanks
         [SerializeField] protected Transform _shotStartPoint;
 
         protected ShellController _shellController;
+        protected StepController _stepController;
 
         protected const float SHOT_FORCE = 180f;
 
@@ -19,10 +20,11 @@ namespace SbSTanks
         public Transform GetShotPoint { get => _shotStartPoint; }
         public Transform Transform { get => gameObject.transform; }
 
-        public void Init(UnitInitializationData data, ShellController shellController)
+        public void Init(UnitInitializationData data, ShellController shellController, StepController stepController)
         {
             _parameters = new UnitParameters(this, data.hp, data.damage);
             _shellController = shellController;
+            _stepController = stepController;
         }
 
         protected abstract void OnCollisionEnter(Collision collision);

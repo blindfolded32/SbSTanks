@@ -8,13 +8,11 @@ namespace SbSTanks
     public class TimerSetsInitialization
     {
         private PlayerModel _playerModel;
-        private TimerActionInvoker _timerActionInvoker;
 
         private const float DELTA_TIME_BETWEEN_SHOT = 4f;
 
         public TimerSetsInitialization(PlayerModel playerModel, TimerActionInvoker timerActionInvoker)
         {
-            _timerActionInvoker = timerActionInvoker;
             _playerModel = playerModel;
             timerActionInvoker.TimerSet += SetTimer;
             timerActionInvoker.TimerDelete += DeleteTimer;

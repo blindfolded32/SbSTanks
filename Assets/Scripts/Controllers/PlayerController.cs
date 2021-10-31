@@ -26,7 +26,7 @@ namespace SbSTanks
         public void Execute(float deltaTime)
         {
             _timerActionInvoker.SetTimer();
-            if ((_playerModel.GetAndSetTimeData == null || _playerModel.GetAndSetTimeData.GetAndSetStatusTimer) && _playerModel.IsSpaceDown)
+            if ((_playerModel.GetAndSetTimeData == null || _playerModel.GetAndSetTimeData.IsTimerEnd) && _playerModel.IsSpaceDown)
             {
                 Debug.Log("Shot!!!!");
                 _timerActionInvoker.DeleteTimer();

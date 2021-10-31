@@ -7,6 +7,7 @@ namespace SbSTanks
     public class Enemy : Unit
     {
         private ParticleSystem _shotEnemy;
+        public bool isShotReturn = false;
 
         public void Start()
         {
@@ -17,10 +18,10 @@ namespace SbSTanks
         {
             ShellHit?.Invoke(collision.gameObject, this);
             _shellController.ReturnShell(collision.gameObject);
-            ReturnShot();
+            _stepController.EnemiesTurn();
         }
 
-        private void ReturnShot()
+        public void ReturnShot()
         { 
 
             var shell = _shellController.GetShell(_parameters.Damage, _shotStartPoint);

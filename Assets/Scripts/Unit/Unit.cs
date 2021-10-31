@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SbSTanks
 {
-    public abstract class Unit : MonoBehaviour, IDamagebleUnit
+    public abstract class Unit : MonoBehaviour, IDamagebleUnit, IUnit
     {
         public Action<int> TakeDamage { get; set; }
         public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
@@ -16,6 +16,8 @@ namespace SbSTanks
         protected const float SHOT_FORCE = 180f;
 
         public IParameters Parameters { get => _parameters; }
+        public Transform GetShotPoint { get => _shotStartPoint; }
+        public Transform Transform { get => gameObject.transform; }
 
         public void Init(UnitInitializationData data, ShellController shellController)
         {

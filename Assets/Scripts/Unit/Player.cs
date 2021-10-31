@@ -5,11 +5,9 @@ using UnityEngine;
 namespace SbSTanks
 {
    // [RequireComponent(typeof(Animator))]
-    public class Player : Unit, IUnit
+    public class Player : Unit
     {
         private bool _hitStatus = false;
-        public Transform GetShotPoint { get => _shotStartPoint; }
-        public Transform Transform { get => gameObject.transform; }
         public bool GetHitStatus { get => _hitStatus; set => _hitStatus = value; }
 
         protected override void OnCollisionEnter(Collision collision)

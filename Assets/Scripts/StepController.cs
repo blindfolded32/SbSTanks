@@ -28,35 +28,15 @@ namespace SbSTanks
 
         public void Execute(float deltaTime)
         {
-            if (!(_startTurnTimer is null) && isPlayerTurn == false)
-            {
-                if (_startTurnTimer.IsTimerEnd)
-                {
-                    for (int i = 0; i < _enemies.Length; i++)
-                    {
-                        if (!_isDelay && !_enemies[i].isShotReturn && i < _enemies.Length - 1)
-                        {                           
-                            _shotDelayTimer = new TimeData(1f, Time.time);
-                            EnemyShot(i, _shotDelayTimer);
-                        }
-                        else if (!_isDelay &&  i == _enemies.Length - 1)
-                        {                           
-                            _endTurnTimer = new TimeData(4f, Time.time);
-                            EnemyShot(i, _endTurnTimer);
-                        }
-                    }
-                }
-            }
+            CheckStartTurn();
 
-            if (!(_shotDelayTimer is null))
-            {
-                if(_shotDelayTimer.IsTimerEnd)
-                {
-                    _isDelay = false;
-                    _shotDelayTimer = null;
-                }
-            }
+            CheckDelay();
 
+            CheckEndTurn();
+        }
+
+        private void CheckEndTurn()
+        {
             if (!(_endTurnTimer is null))
             {
                 if (_endTurnTimer.IsTimerEnd)
@@ -70,6 +50,41 @@ namespace SbSTanks
                     _isDelay = false;
                 }
                 _startTurnTimer = null;
+            }
+        }
+
+        private void CheckDelay()
+        {
+            if (!(_shotDelayTimer is null))
+            {
+                if (_shotDelayTimer.IsTimerEnd)
+                {
+                    _isDelay = false;
+                    _shotDelayTimer = null;
+                }
+            }
+        }
+
+        private void CheckStartTurn()
+        {
+            if (!(_startTurnTimer is null) && isPlayerTurn == false)
+            {
+                if (_startTurnTimer.IsTimerEnd)
+                {
+                    for (int i = 0; i < _enemies.Length; i++)
+                    {
+                        if (!_isDelay && !_enemies[i].isShotReturn && i < _enemies.Length - 1)
+                        {
+                            _shotDelayTimer = new TimeData(1f, Time.time);
+                            EnemyShot(i, _shotDelayTimer);
+                        }
+                        else if (!_isDelay && i == _enemies.Length - 1)
+                        {
+                            _endTurnTimer = new TimeData(4f, Time.time);
+                            EnemyShot(i, _endTurnTimer);
+                        }
+                    }
+                }
             }
         }
 

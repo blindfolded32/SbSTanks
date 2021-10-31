@@ -38,7 +38,7 @@ namespace SbSTanks
                 var currentTime = Time.time;
                 if((currentTime - _timers[i].GetStartTime) > _timers[i].GetDeltaTime)
                 {
-                    _timers[i].GetAndSetStatusTimer = true;
+                    _timers[i].IsTimerEnd = true;
                 }
             }
         }

@@ -92,7 +92,7 @@ namespace SbSTanks
         private void CreateShell(float offset)
         {
             var shellPrefab = Resources.Load(PREFAB_PATH) as GameObject;
-            var shellObject = UnityEngine.Object.Instantiate(shellPrefab, new Vector3(0 + offset,-20,0), new Quaternion());
+            var shellObject = UnityEngine.Object.Instantiate(shellPrefab, new Vector3(0 + offset,-20.5f,0), new Quaternion());
             
             var shell = new Shell(shellObject);
             _shells.Add(shell);

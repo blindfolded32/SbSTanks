@@ -7,7 +7,13 @@ namespace SbSTanks
         public MainInitializator(GameInitializationData data, GameController mainController)
         {
             var uiModel = new UIModel();
+
             var timerController = new TimerController();
+            mainController.Add(timerController);
+
+            var stepController = new StepController(data.Enemies, timerController);
+            mainController.Add(stepController);
+
             new ParticlesInitialization(data.Player, data.Enemies);
             var pcinputinitialization = new PCInputSpaceInitialization();
             var timerActionInvoker = new TimerActionInvoker();
@@ -16,7 +22,8 @@ namespace SbSTanks
             new TimerSetsInitialization(playerModel, timerActionInvoker);
             new PlayerRotatioInitialization(uiModel, playerModel, data);
 
-            mainController.Add(timerController);
+
+
             var shellController = new ShellController(data.Player, data.Enemies);
             mainController.Add(shellController);
 
@@ -26,10 +33,10 @@ namespace SbSTanks
 
             for (int i = 0; i < data.Enemies.Length; i++)
             {
-                data.Enemies[i].Init(data.EnemyInitializationData, shellController);
+                data.Enemies[i].Init(data.EnemyInitializationData, shellController, stepController);
             }
             
-            data.Player.Init(data.PlayerInitializationData, shellController);
+            data.Player.Init(data.PlayerInitializationData, shellController, stepController);
         }
     }
 }

@@ -6,9 +6,9 @@ namespace SbSTanks
 {
     public class TimerController : IExecute
     {
-        private List<TimeData> _timers = new List<TimeData>();
+        private List<TimerData> _timers = new List<TimerData>();
 
-        public void AddTimer(TimeData timeData)
+        public void AddTimer(TimerData timeData)
         {
             _timers.Add(timeData);
         }
@@ -18,12 +18,12 @@ namespace SbSTanks
             return _timers.Count;
         }
 
-        public void DeleteTimer(TimeData item)
+        public void DeleteTimer(TimerData item)
         {
             _timers.Remove(item);
         }
 
-        public TimeData this[int i]
+        public TimerData this[int i]
         {
             get
             {

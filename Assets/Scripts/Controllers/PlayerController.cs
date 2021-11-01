@@ -55,18 +55,21 @@ namespace SbSTanks
                 _playerModel.GetShotEvent.Play();
                 _playerModel.GetPlayer.Shot();
             }
-
             if (_isOnRotation)
             {
-                _lerpProgress += Time.deltaTime / ROTATION_TIME;
-                _playerModel.GetPlayer.transform.rotation = Quaternion.Lerp(_startRotation, _targetRotation, _lerpProgress);
+                RotatePlayer();
+            }
+        }
 
-                if(_lerpProgress >= 1)
-                {
-                    _isOnRotation = false;
-                    _lerpProgress = 0;
-                }
+        private void RotatePlayer()
+        {
+            _lerpProgress += Time.deltaTime / ROTATION_TIME;
+            _playerModel.GetPlayer.transform.rotation = Quaternion.Lerp(_startRotation, _targetRotation, _lerpProgress);
 
+            if (_lerpProgress >= 1)
+            {
+                _isOnRotation = false;
+                _lerpProgress = 0;
             }
         }
 

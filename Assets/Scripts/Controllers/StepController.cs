@@ -7,9 +7,9 @@ namespace SbSTanks
     {
         public bool isPlayerTurn = true;
 
-        private TimeData _startTurnTimer;
-        private TimeData _shotDelayTimer;
-        private TimeData _endTurnTimer;
+        private TimerData _startTurnTimer;
+        private TimerData _shotDelayTimer;
+        private TimerData _endTurnTimer;
         private bool _isDelay = false;
         private Enemy[] _enemies;
         private TimerController _timerController;
@@ -22,7 +22,7 @@ namespace SbSTanks
 
         public void EnemiesTurn()
         {
-            _startTurnTimer = new TimeData(2f, Time.time);
+            _startTurnTimer = new TimerData(2f, Time.time);
             _timerController.AddTimer(_startTurnTimer);
         }
 
@@ -75,12 +75,12 @@ namespace SbSTanks
                     {
                         if (!_isDelay && !_enemies[i].isShotReturn && i < _enemies.Length - 1)
                         {
-                            _shotDelayTimer = new TimeData(1f, Time.time);
+                            _shotDelayTimer = new TimerData(1f, Time.time);
                             EnemyShot(i, _shotDelayTimer);
                         }
                         else if (!_isDelay && i == _enemies.Length - 1)
                         {
-                            _endTurnTimer = new TimeData(4f, Time.time);
+                            _endTurnTimer = new TimerData(4f, Time.time);
                             EnemyShot(i, _endTurnTimer);
                         }
                     }
@@ -88,7 +88,7 @@ namespace SbSTanks
             }
         }
 
-        private void EnemyShot(int index, TimeData timer)
+        private void EnemyShot(int index, TimerData timer)
         {
             _enemies[index].ReturnShot();
             _enemies[index].isShotReturn = true;

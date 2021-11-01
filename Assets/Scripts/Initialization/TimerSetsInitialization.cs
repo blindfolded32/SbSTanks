@@ -22,7 +22,7 @@ namespace SbSTanks
         {
             if (_playerModel.GetPlayer.GetHitStatus)
             {
-                _playerModel.GetAndSetTimeData = new TimeData(DELTA_TIME_BETWEEN_SHOT, Time.time);
+                _playerModel.GetAndSetTimeData = new TimerData(DELTA_TIME_BETWEEN_SHOT, Time.time);
                 _playerModel.GetAndSetTimerController.AddTimer(_playerModel.GetAndSetTimeData);
                 _playerModel.GetAndSetIndexOfTimer = _playerModel.GetAndSetTimerController.Count() - 1;
                 _playerModel.GetPlayer.GetHitStatus = false;

@@ -47,8 +47,7 @@ namespace SbSTanks
                 {
                     _shells[i].ShellObject.transform.Rotate(X_ROTATE_IN_FLY, 0, 0);
 
-                    var shellHeight = _shells[i].ShellObject.GetComponent<CapsuleCollider>().height;
-                    var isGrounded = Physics.CheckSphere(_shells[i].ShellObject.transform.position, shellHeight, _groundMask);
+                    var isGrounded = Physics.CheckSphere(_shells[i].ShellObject.transform.position, _shells[i].ShellHeight, _groundMask);
 
                     if (isGrounded)
                     {

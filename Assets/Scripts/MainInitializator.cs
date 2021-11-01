@@ -6,21 +6,35 @@ namespace SbSTanks
     {
         public MainInitializator(GameInitializationData data, GameController mainController)
         {
-            var particleInitialization = new ParticlesInitialization();
+            var uiModel = new UIModel();
+
             var timerController = new TimerController();
             mainController.Add(timerController);
-            var shellController = new ShellController(data.Player, data.Enemy);
+
+            var stepController = new StepController(data.Enemies, timerController);
+            mainController.Add(stepController);
+
+            new ParticlesInitialization(data.Player, data.Enemies);
+            var pcinputinitialization = new PCInputSpaceInitialization();
+            var timerActionInvoker = new TimerActionInvoker();
+
+            var playerModel = new PlayerModel(pcinputinitialization.GetInputSpace(), timerController, data.Player);
+            new TimerSetsInitialization(playerModel, timerActionInvoker);
+
+            var shellController = new ShellController(data.Player, data.Enemies);
             mainController.Add(shellController);
 
-
-
-            var pcinputinitialization = new PCInputSpaceInitialization();
-
             mainController.Add(new InputController(pcinputinitialization.GetInputSpace()));
-            mainController.Add(new PlayerController(pcinputinitialization.GetInputSpace(), timerController));
+            mainController.Add(new PlayerController(playerModel, stepController, uiModel, data.Enemies, data.EnemiesSwitchButtons));
+            mainController.Add(new ButtonActivationController(uiModel, stepController));
+            
 
-            data.Enemy.Init(data.EnemyInitializationData, shellController);
-            data.Player.Init(data.PlayerInitializationData, shellController);
+            for (int i = 0; i < data.Enemies.Length; i++)
+            {
+                data.Enemies[i].Init(data.EnemyInitializationData, shellController, stepController);
+            }
+            
+            data.Player.Init(data.PlayerInitializationData, shellController, stepController);
         }
     }
 }

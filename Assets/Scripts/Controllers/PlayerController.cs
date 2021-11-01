@@ -1,53 +1,82 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SbSTanks
 {
-    public class PlayerController : IExecute
+    public class PlayerController : IExecute, IDisposable
     {
-        private IPCInputSpace _pcInputSpace;
-        private bool _isSpdaceDown;
-        private Player _player;
-        private TimerController _timerController;
-        private ParticleSystem _shotEvent;
-        private readonly int _indexOfTimer;
+        private PlayerModel _playerModel;
+        private StepController _stepController;
+        private Dictionary<Button, Enemy> _switchEnemyButtonsMatching = new Dictionary<Button, Enemy>();
+        private bool _isOnRotation;
+        private Quaternion _targetRotation;
 
-        private const float DELTA_TIME_BETWEEN_SHOT = 4f;
-
-        public PlayerController(IPCInputSpace pCInputSpace, TimerController timerController)
+        private const float ROTATION_TIME = 0.5f;
+        private float _lerpProgress = 0;
+        private Quaternion _startRotation;
+        public PlayerController(PlayerModel model, StepController stepController, UIModel uIModel, Enemy[] enemies, List<Button> switchEnemyButtons)
         {
-            _timerController = timerController;
-            _timerController.AddTimer(new TimeData());
-            _indexOfTimer = _timerController.Count() - 1;
+            _stepController = stepController;
+            _playerModel = model;
+            _playerModel.GetpcInputSpace.OnSpaceDown += GetSpaceKey;
 
-            _pcInputSpace = pCInputSpace;
-            _pcInputSpace.OnSpaceDown += GetSpaceKey;
-            _player = GameObject.FindObjectOfType<Player>();
-            _shotEvent = _player.gameObject.GetComponentInChildren<ParticleSystemShotIdentificator>().GetComponent<ParticleSystem>();
-            Debug.Log(_shotEvent);
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                _switchEnemyButtonsMatching.Add(switchEnemyButtons[i], enemies[i]);
+            }
+
+            foreach(var element in _switchEnemyButtonsMatching)
+            {
+                element.Key.onClick.AddListener(
+                    delegate
+                    {
+                        _targetRotation = Quaternion.LookRotation(element.Value.transform.position - _playerModel.GetPlayer.transform.position);
+                        _isOnRotation = true; 
+                        _startRotation = _playerModel.GetPlayer.transform.rotation;
+                        _lerpProgress = 0; 
+                    });
+            }
         }
 
         public void GetSpaceKey(bool f)
         {
-            _isSpdaceDown = f;
+            _playerModel.IsSpaceDown = f;
         }
 
         public void Execute(float deltaTime)
         {
-            if (_player.GetHitStatus)
+            if (_stepController.isPlayerTurn && _playerModel.IsSpaceDown)
             {
-                _timerController[_indexOfTimer].SetNewTimer(DELTA_TIME_BETWEEN_SHOT, Time.time);
-                _player.GetHitStatus = false;
-            }
-            if (_isSpdaceDown && _timerController[_indexOfTimer].GetAndSetStatusTimer)
-            {
+                _stepController.isPlayerTurn = false;
                 Debug.Log("Shot!!!!");
-                _shotEvent.Play();
-                _player.Shot();
+                _playerModel.GetShotEvent.Play();
+                _playerModel.GetPlayer.Shot();
+            }
+
+            if (_isOnRotation)
+            {
+                _lerpProgress += Time.deltaTime / ROTATION_TIME;
+                _playerModel.GetPlayer.transform.rotation = Quaternion.Lerp(_startRotation, _targetRotation, _lerpProgress);
+
+                if(_lerpProgress >= 1)
+                {
+                    _isOnRotation = false;
+                    _lerpProgress = 0;
+                }
+
             }
         }
 
+        public void Dispose()
+        {
+            foreach (var element in _switchEnemyButtonsMatching)
+            {
+                element.Key.onClick.RemoveAllListeners();
+            }
+        }
     }
 }
 

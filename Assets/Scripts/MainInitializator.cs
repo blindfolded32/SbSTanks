@@ -20,15 +20,12 @@ namespace SbSTanks
 
             var playerModel = new PlayerModel(pcinputinitialization.GetInputSpace(), timerController, data.Player);
             new TimerSetsInitialization(playerModel, timerActionInvoker);
-            new PlayerRotatioInitialization(uiModel, playerModel, data);
-
-
 
             var shellController = new ShellController(data.Player, data.Enemies);
             mainController.Add(shellController);
 
             mainController.Add(new InputController(pcinputinitialization.GetInputSpace()));
-            mainController.Add(new PlayerController(playerModel, stepController));
+            mainController.Add(new PlayerController(playerModel, stepController, uiModel, data.Enemies, data.EnemiesSwitchButtons));
             mainController.Add(new ButtonActivationController(uiModel, stepController));
             
 

@@ -92,7 +92,6 @@ namespace SbSTanks
         {
             var shellPrefab = Resources.Load(PREFAB_PATH) as GameObject;
             var shellObject = UnityEngine.Object.Instantiate(shellPrefab, new Vector3(0 + offset,-20.5f,0), new Quaternion());
-            
             var shell = new Shell(shellObject);
             _shells.Add(shell);
         }
@@ -103,6 +102,14 @@ namespace SbSTanks
             {
                 if (shell.GetInstanceID() == _shells[i].ShellObject.GetInstanceID())
                 {
+                    Debug.Log($"Player element is {_player.ElementId} and ememies {_enemies[i].ElementId}");
+                    //my code
+                    if (_player.ElementId != _enemies[i].ElementId)
+                    {
+                        Debug.Log($"Player element is {_player.ElementId} and ememies {_enemies[i].ElementId}");
+                        unit.TakingDamage(_shells[i].damage*2);
+                    }
+                    //my code
                     unit.TakingDamage(_shells[i].damage);
                     break;
                 }

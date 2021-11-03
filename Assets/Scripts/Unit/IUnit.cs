@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SbSTanks
@@ -7,6 +8,7 @@ namespace SbSTanks
     {
         public IParameters Parameters { get; }
         public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
+       public int ElementId { get; set; }//added
 
         public Transform GetShotPoint { get; }
         public Transform Transform { get; }

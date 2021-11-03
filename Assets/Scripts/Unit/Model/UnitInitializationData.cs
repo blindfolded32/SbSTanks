@@ -7,5 +7,6 @@ namespace SbSTanks
     {
         public int hp;
         public int damage;
+        public int element;
     }
 }

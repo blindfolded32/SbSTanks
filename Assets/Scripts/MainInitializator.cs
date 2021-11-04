@@ -7,10 +7,10 @@ namespace SbSTanks
         public MainInitializator(GameInitializationData data, GameController mainController)
         {
             var uiModel = new UIModel();
-
+            
             var timerController = new TimerController();
             mainController.Add(timerController);
-
+    
             var stepController = new StepController(data.Enemies, timerController);
             mainController.Add(stepController);
 
@@ -27,7 +27,7 @@ namespace SbSTanks
             mainController.Add(new InputController(pcinputinitialization.GetInputSpace()));
             mainController.Add(new PlayerController(playerModel, stepController, uiModel, data.Enemies, data.EnemiesSwitchButtons));
             mainController.Add(new ButtonActivationController(uiModel, stepController));
-            
+
 
             for (int i = 0; i < data.Enemies.Length; i++)
             {

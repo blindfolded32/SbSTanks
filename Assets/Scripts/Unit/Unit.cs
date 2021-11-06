@@ -14,7 +14,7 @@ namespace SbSTanks
         //end of my code    
             
         public Action<int> TakeDamage { get; set; }
-        public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
+        public Action<GameObject, IDamagebleUnit,int> ShellHit { get; set; }
 
         [SerializeField] protected UnitParameters _parameters;
         [SerializeField] protected Transform _shotStartPoint;
@@ -38,10 +38,13 @@ namespace SbSTanks
         }
         protected abstract void OnCollisionEnter(Collision collision);
 
-        public void TakingDamage(int damage)
+        public void TakingDamage(int damage, int elementId)
         {
+            if (elementId ==_elementId || Math.Abs(elementId - _elementId) != 1) TakeDamage?.Invoke(damage);
+            //element_logic
+            else TakeDamage?.Invoke(damage*2);
           //  Debug.Log("Auch!");
-            TakeDamage?.Invoke(damage);
+            
         }
         //My code
         private int GetElementId()

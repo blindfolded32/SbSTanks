@@ -2,6 +2,6 @@
 {
     public interface IDamagebleUnit
     {
-        public void TakingDamage(int damage);
+        public void TakingDamage(int damage, int element);
     }
 }

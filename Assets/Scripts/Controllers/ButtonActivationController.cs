@@ -36,7 +36,7 @@ namespace SbSTanks
             _isPreviousPlayerTurn = !_isPreviousPlayerTurn;
             bool enabled;
             var enabler = CanvasButtons.ElementAt(0).interactable ? enabled = true : enabled = false;
-            _textNewRound.enabled = enabled;
+//            _textNewRound.enabled = enabled;
 
         }
     }

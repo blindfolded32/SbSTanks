@@ -90,7 +90,7 @@ namespace SbSTanks
 
         private void EnemyShot(int index, TimerData timer)
         {
-            _enemies[index].ReturnShot();
+            _enemies[index].ReturnShot(_enemies[index].ElementId);
             _enemies[index].isShotReturn = true;
             _isDelay = true;
             _timerController.AddTimer(timer);

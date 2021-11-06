@@ -53,7 +53,7 @@ namespace SbSTanks
                 _stepController.isPlayerTurn = false;
                 Debug.Log("Shot!!!!");
                 _playerModel.GetShotEvent.Play();
-                _playerModel.GetPlayer.Shot();
+                _playerModel.GetPlayer.Shot(_playerModel,_playerModel.ElementId);
             }
             if (_isOnRotation)
             {

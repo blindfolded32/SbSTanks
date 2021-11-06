@@ -13,8 +13,10 @@ namespace SbSTanks
         private IUnit[] _enemies;
         private LayerMask _groundMask;
 
+        private int _shellsCount;
+
         private const string PREFAB_PATH = "Prefabs/Shell";
-        private const int SHELLS_COUNT = 5;
+       // private const int SHELLS_COUNT = 5;
         private const float NEW_SHELL_OFFSET = 0.5f;
         private const float X_ROTATE_IN_FLY = 0.7f;
 
@@ -25,6 +27,7 @@ namespace SbSTanks
             _player = player;
             _enemies = enemies;
             _groundMask = 1<<8;
+            _shellsCount = _enemies.Length ;
 
             for (int i = 0; i < _enemies.Length; i++)
             {
@@ -32,10 +35,10 @@ namespace SbSTanks
             }
 
             _player.ShellHit += InflictDamage;
-
-            for (int i = 0; i < SHELLS_COUNT; i++)
+            CreateShell(0,_player.ElementId);
+            for (int i = 1; i < _enemies.Length; i++)
             {
-                CreateShell(i);
+                CreateShell(i,_enemies[i].ElementId);
             }
         }
 
@@ -57,7 +60,7 @@ namespace SbSTanks
             }
         }
 
-        public GameObject GetShell(int damage, Transform startPosition)
+        public GameObject GetShell(int damage, Transform startPosition,int elementId)
         {
             GameObject shellObject = null;
 
@@ -74,7 +77,7 @@ namespace SbSTanks
 
             if (shellObject is null)
             {
-                CreateShell(NEW_SHELL_OFFSET);
+                CreateShell(NEW_SHELL_OFFSET,elementId);
 
                 shellObject = _shells[_shells.Count - 1].ShellObject;
                 _shells[_shells.Count - 1].damage = damage;
@@ -88,29 +91,22 @@ namespace SbSTanks
             return shellObject;
         }
 
-        private void CreateShell(float offset)
+        private void CreateShell(float offset, int elementId)
         {
             var shellPrefab = Resources.Load(PREFAB_PATH) as GameObject;
             var shellObject = UnityEngine.Object.Instantiate(shellPrefab, new Vector3(0 + offset,-20.5f,0), new Quaternion());
-            var shell = new Shell(shellObject);
+            var shell = new Shell(shellObject,elementId);
             _shells.Add(shell);
         }
 
-        private void InflictDamage(GameObject shell, IDamagebleUnit unit)
+        private void InflictDamage(GameObject shell, IDamagebleUnit unit, int elementId)
         {
             for (int i = 0; i < _shells.Count; i++)
             {
                 if (shell.GetInstanceID() == _shells[i].ShellObject.GetInstanceID())
                 {
                     Debug.Log($"Player element is {_player.ElementId} and ememies {_enemies[i].ElementId}");
-                    //my code
-                    if (_player.ElementId != _enemies[i].ElementId)
-                    {
-                        Debug.Log($"Player element is {_player.ElementId} and ememies {_enemies[i].ElementId}");
-                        unit.TakingDamage(_shells[i].damage*2);
-                    }
-                    //my code
-                    unit.TakingDamage(_shells[i].damage);
+                   unit.TakingDamage(_shells[i].damage, elementId);
                     break;
                 }
             }

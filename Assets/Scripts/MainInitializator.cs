@@ -18,7 +18,7 @@ namespace SbSTanks
             var pcinputinitialization = new PCInputSpaceInitialization();
             var timerActionInvoker = new TimerActionInvoker();
 
-            var playerModel = new PlayerModel(pcinputinitialization.GetInputSpace(), timerController, data.Player);
+            var playerModel = new PlayerModel(pcinputinitialization.GetInputSpace(), timerController, data.Player, Random.Range(0,2));
             new TimerSetsInitialization(playerModel, timerActionInvoker);
 
             var shellController = new ShellController(data.Player, data.Enemies);

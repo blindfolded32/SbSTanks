@@ -37,6 +37,9 @@
             <e p="FontLicense.txt" t="Include" />
           </e>
         </e>
+        <e p="Resources" t="Include">
+          <e p="BillingMode.json" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="Controllers" t="Include">
             <e p="ButtonActivationController.cs" t="Include" />
@@ -77,6 +80,9 @@
             <e p="Shell.cs" t="Include" />
             <e p="ShellController.cs" t="Include" />
             <e p="ShellControllerData.cs" t="Include" />
+          </e>
+          <e p="Task2" t="Include">
+            <e p="PlayerRotationEvent.cs" t="Include" />
           </e>
           <e p="Unit" t="Include">
             <e p="Enemy.cs" t="Include" />
@@ -121,6 +127,7 @@
           </e>
           <e p="Sprites" t="Include">
             <e p="EmojiOne Attribution.txt" t="Include" />
+            <e p="EmojiOne.json" t="Include" />
           </e>
         </e>
       </e>

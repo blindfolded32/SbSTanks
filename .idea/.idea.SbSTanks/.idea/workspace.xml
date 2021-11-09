@@ -10,9 +10,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -24,13 +21,15 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shell/Shell.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/PlayerModel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainModels/GameInitializationData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/ParticlesInitialization.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
       </list>
     </option>
   </component>
@@ -54,10 +53,10 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="6784">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="6784" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -83,6 +82,7 @@
       <updated>1635946601177</updated>
       <workItem from="1635946607064" duration="6002000" />
       <workItem from="1636217426999" duration="2142000" />
+      <workItem from="1636444058840" duration="4407000" />
     </task>
     <servers />
   </component>
@@ -165,23 +165,6 @@
     <state x="943" y="227" width="672" height="678" key="search.everywhere.popup/0.0.2560.1050@0.0.2560.1050" timestamp="1635949034810" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs</url>
-          <line>13</line>
-          <properties documentPath="C:\Users\1\Documents\Unity Rep\HW_Terrain\SbSTanks\Assets\Scripts\MainInitializator.cs" initialLine="13">
-            <startOffsets>
-              <option value="362" />
-            </startOffsets>
-            <endOffsets>
-              <option value="433" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#SbSTanks.UnitInitializationData" memberName="element" />

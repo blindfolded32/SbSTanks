@@ -29,7 +29,7 @@ namespace SbSTanks
             mainController.Add(new ButtonActivationController(uiModel, stepController));
 
 
-            for (int i = 0; i < data.Enemies.Length; i++)
+            for (int i = 0; i < data.Enemies.Count; i++)
             {
                 data.Enemies[i].Init(data.EnemyInitializationData, shellController, stepController);
             }

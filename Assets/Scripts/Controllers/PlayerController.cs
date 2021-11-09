@@ -17,13 +17,13 @@ namespace SbSTanks
         private const float ROTATION_TIME = 0.5f;
         private float _lerpProgress = 0;
         private Quaternion _startRotation;
-        public PlayerController(PlayerModel model, StepController stepController, UIModel uIModel, Enemy[] enemies, List<Button> switchEnemyButtons)
+        public PlayerController(PlayerModel model, StepController stepController, UIModel uIModel, List<Enemy> enemies, List<Button> switchEnemyButtons)
         {
             _stepController = stepController;
             _playerModel = model;
             _playerModel.GetpcInputSpace.OnSpaceDown += GetSpaceKey;
 
-            for (int i = 0; i < enemies.Length; i++)
+            for (int i = 0; i < enemies.Count; i++)
             {
                 _switchEnemyButtonsMatching.Add(switchEnemyButtons[i], enemies[i]);
             }

@@ -10,7 +10,7 @@ namespace SbSTanks
         private List<Shell> _shells = new List<Shell>(8); //TODO - take out the model
         private readonly LayerMask _shellMask = 6;
         private IUnit _player;
-        private IUnit[] _enemies;
+        private List<Enemy> _enemies;
         private LayerMask _groundMask;
 
         private int _shellsCount;
@@ -22,21 +22,21 @@ namespace SbSTanks
 
         public List<Shell> Shells { get => _shells; }
 
-        public ShellController(IUnit player, IUnit[] enemies)
+        public ShellController(IUnit player, List<Enemy> enemies)
         {
             _player = player;
             _enemies = enemies;
             _groundMask = 1<<8;
-            _shellsCount = _enemies.Length ;
+            _shellsCount = _enemies.Count ;
 
-            for (int i = 0; i < _enemies.Length; i++)
+            for (int i = 0; i < _enemies.Count; i++)
             {
                 _enemies[i].ShellHit += InflictDamage;
             }
 
             _player.ShellHit += InflictDamage;
             CreateShell(0,_player.ElementId);
-            for (int i = 1; i < _enemies.Length; i++)
+            for (int i = 1; i < _enemies.Count; i++)
             {
                 CreateShell(i,_enemies[i].ElementId);
             }
@@ -62,6 +62,7 @@ namespace SbSTanks
 
         public GameObject GetShell(int damage, Transform startPosition,int elementId)
         {
+            Debug.Log($"Shell id is {elementId}");
             GameObject shellObject = null;
 
             for (int i = 0; i < _shells.Count; i++)
@@ -131,7 +132,7 @@ namespace SbSTanks
         {
             _player.ShellHit -= InflictDamage;
 
-            for (int i = 0; i < _enemies.Length; i++)
+            for (int i = 0; i < _enemies.Count; i++)
             {
                 _enemies[i].ShellHit -= InflictDamage;
             }         

@@ -22,12 +22,10 @@ namespace SbSTanks
         }
 
         public void ReturnShot(int elementId)
-        { 
-
+        {
             var shell = _shellController.GetShell(_parameters.Damage, _shotStartPoint, elementId);
             var shellRb = shell.GetComponent<Rigidbody>();
             _shotEnemy.Play();
-
             shellRb.AddForce(shell.transform.forward * SHOT_FORCE, ForceMode.Impulse);
         }
     }

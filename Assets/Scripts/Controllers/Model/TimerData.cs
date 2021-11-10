@@ -19,7 +19,7 @@ namespace SbSTanks
         {
             _startTime = currentTime;
             _deltaTime = deltatime;
-            _isTimerEnd = false; //поменять на событие
+            _isTimerEnd = false; //РїРѕРјРµРЅСЏС‚СЊ РЅР° СЃРѕР±С‹С‚РёРµ
         }
 
     }

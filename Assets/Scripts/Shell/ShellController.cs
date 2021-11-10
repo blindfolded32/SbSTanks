@@ -28,18 +28,25 @@ namespace SbSTanks
             _enemies = enemies;
             _groundMask = 1<<8;
             _shellsCount = _enemies.Count ;
-
+/*
             for (int i = 0; i < _enemies.Count; i++)
             {
                 _enemies[i].ShellHit += InflictDamage;
             }
-
+*/
             _player.ShellHit += InflictDamage;
             CreateShell(0,_player.ElementId);
-            for (int i = 1; i < _enemies.Count; i++)
+
+            foreach (var enemy in _enemies)
+            {
+                enemy.ShellHit += InflictDamage;
+                CreateShell(enemy.ElementId, enemy.ElementId);
+            }
+  /*          for (int i = 1; i < _enemies.Count; i++)
             {
                 CreateShell(i,_enemies[i].ElementId);
             }
+    */
         }
 
         public void FixedExecute(float deltaTime, float fixedDeltaTime)
@@ -62,7 +69,7 @@ namespace SbSTanks
 
         public GameObject GetShell(int damage, Transform startPosition,int elementId)
         {
-            Debug.Log($"Shell id is {elementId}");
+            //Debug.Log($"Shell id is {elementId}");
             GameObject shellObject = null;
 
             for (int i = 0; i < _shells.Count; i++)
@@ -106,7 +113,7 @@ namespace SbSTanks
             {
                 if (shell.GetInstanceID() == _shells[i].ShellObject.GetInstanceID())
                 {
-                    Debug.Log($"Player element is {_player.ElementId} and ememies {_enemies[i].ElementId}");
+                  //  Debug.Log($"Player element is {_player.ElementId} and ememies {_enemies[i].ElementId}");
                    unit.TakingDamage(_shells[i].damage, elementId);
                     break;
                 }

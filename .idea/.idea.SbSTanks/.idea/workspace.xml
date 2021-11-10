@@ -29,6 +29,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/ParticlesInitialization.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Model/TimerData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TimerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
       </list>
     </option>
@@ -82,7 +84,8 @@
       <updated>1635946601177</updated>
       <workItem from="1635946607064" duration="6002000" />
       <workItem from="1636217426999" duration="2142000" />
-      <workItem from="1636444058840" duration="4407000" />
+      <workItem from="1636444058840" duration="5007000" />
+      <workItem from="1636528212424" duration="2235000" />
     </task>
     <servers />
   </component>

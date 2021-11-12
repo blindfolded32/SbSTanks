@@ -39,55 +39,39 @@ namespace SbSTanks
 
         private void CheckEndTurn()
         {
-            if (!(_endTurnTimer is null))
+            if (_endTurnTimer is null || !_endTurnTimer.IsTimerEnd) return;
+            foreach (var enemy in _enemies)
             {
-                if (_endTurnTimer.IsTimerEnd)
-                {
-                    foreach (var enemy in _enemies)
-                    {
-                        enemy.isShotReturn = false;
-                    }
-                    _endTurnTimer = null;
-                    _isDelay = false;
-                }
+                enemy.isShotReturn = false;
             }
+            _endTurnTimer = null;
+            _isDelay = false;
         }
 
         private void CheckDelay()
         {
-            if (!(_shotDelayTimer is null))
-            {
-                Debug.Log($"Delay {_isDelay} ");
-                if (_shotDelayTimer.IsTimerEnd)
-                {
-                    _isDelay = false;
-                    _shotDelayTimer = null;
-                    isPlayerTurn = true;
-                }
-            }
+            if (_shotDelayTimer is null || !_shotDelayTimer.IsTimerEnd) return;
+         
+            _isDelay = false;
+            _shotDelayTimer = null;
+            isPlayerTurn = true;
         }
 
         private void CheckStartTurn()
         {
-            if (!(_startTurnTimer is null) && isPlayerTurn == false)
-            {
-                if (_startTurnTimer.IsTimerEnd)
-                {
-                    if (!_isDelay && _enemies.Contains(_enemies.Find(enemy =>!enemy.isShotReturn)))
-                    {
-                        _shotDelayTimer = new TimerData(2f, Time.time);
-                        EnemyShot(_enemies.FindIndex(enemy => !enemy.isShotReturn),_shotDelayTimer);
-                    }
-                }
-            }
+            if (_startTurnTimer is null || isPlayerTurn || !_startTurnTimer.IsTimerEnd) return;
+            if (_isDelay || !_enemies.Contains(_enemies.Find(enemy => !enemy.isShotReturn))) return;
+          _shotDelayTimer = new TimerData(2f, Time.time);
+          EnemyShot(_enemies.FindIndex(enemy => !enemy.isShotReturn),_shotDelayTimer);
+            
         }
 
       private void EnemyShot(int index, TimerData timer)
         {
-            _enemies[index].ReturnShot(_enemies[index].ElementId);
+            _enemies[index].ReturnShot();
             _enemies[index].isShotReturn = true;
             _isDelay = true;
-            if (index == (_enemies.Count - 1))
+            if (index == _enemies.Count - 1)
             {
                 _endTurnTimer = new TimerData(4f, Time.time);
                 _timerController.AddTimer(_endTurnTimer);

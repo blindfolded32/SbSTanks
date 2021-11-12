@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:upstream" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="80811fad-5e4c-4411-addb-b24f708cb8d6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,28 +33,32 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6918F29E-7FD3-4DFC-BFD1-AE203995DDD9/81/65369f76/ParticleSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F2625FD8-44AA-4DD5-B6A3-882F24F14D79/cb/4f037ccc/Action`3.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitInitializationData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IParameters.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitParameters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellControllerData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainModels/GameInitializationData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/ParticlesInitialization.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Model/TimerData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TimerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitParameters.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/Shell.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/PlayerModel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IDamagebleUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/Shell.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/PlayerModel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MainModels/GameInitializationData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/ParticlesInitialization.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Model/TimerData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TimerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
       </list>
     </option>
   </component>
@@ -86,6 +113,7 @@
       <workItem from="1636217426999" duration="2142000" />
       <workItem from="1636444058840" duration="5007000" />
       <workItem from="1636528212424" duration="2235000" />
+      <workItem from="1636736298926" duration="6484000" />
     </task>
     <servers />
   </component>
@@ -94,6 +122,17 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

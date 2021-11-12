@@ -12,14 +12,14 @@ namespace SbSTanks
 
         protected override void OnCollisionEnter(Collision collision)
         {
-            ShellHit?.Invoke(collision.gameObject, this,ElementId);
+            ShellHit?.Invoke(collision.gameObject, this, this.GetType());
             _shellController.ReturnShell(collision.gameObject);
         }
 
-        public void Shot(PlayerModel playerModel, int elementId)
+        public void Shot(PlayerModel playerModel)
         {
-            Debug.Log(elementId);
-            var shell = _shellController.GetShell(_parameters.Damage, _shotStartPoint, elementId);
+          //  Debug.Log($"Player has {playerModel.ElementId} in model");
+            var shell = _shellController.GetShell(_parameters.Damage, _shotStartPoint);
             var shellRb = shell.GetComponent<Rigidbody>();
 
             shellRb.AddForce(shell.transform.forward * SHOT_FORCE, ForceMode.Impulse);

@@ -13,17 +13,15 @@ namespace SbSTanks
         {
             _shotEnemy = GetComponentInChildren<ParticleSystemShotIdentificator>().GetComponent<ParticleSystem>();
         }
-
         protected override void OnCollisionEnter(Collision collision)
         {
-            ShellHit?.Invoke(collision.gameObject, this,ElementId);
+            ShellHit?.Invoke(collision.gameObject, this, this.GetType());
             _shellController.ReturnShell(collision.gameObject);
             _stepController.EnemiesTurn();
         }
-
-        public void ReturnShot(int elementId)
+        public void ReturnShot()
         {
-            var shell = _shellController.GetShell(_parameters.Damage, _shotStartPoint, elementId);
+            var shell = _shellController.GetShell(_parameters.Damage, _shotStartPoint);
             var shellRb = shell.GetComponent<Rigidbody>();
             _shotEnemy.Play();
             shellRb.AddForce(shell.transform.forward * SHOT_FORCE, ForceMode.Impulse);

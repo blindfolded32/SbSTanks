@@ -51,9 +51,9 @@ namespace SbSTanks
             if (_stepController.isPlayerTurn && _playerModel.IsSpaceDown)
             {
                 _stepController.isPlayerTurn = false;
-                Debug.Log("Shot!!!!");
+            //    Debug.Log("Shot!!!!");
                 _playerModel.GetShotEvent.Play();
-                _playerModel.GetPlayer.Shot(_playerModel,_playerModel.ElementId);
+                _playerModel.GetPlayer.Shot(_playerModel);
             }
             if (_isOnRotation)
             {

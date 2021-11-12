@@ -18,14 +18,16 @@ namespace SbSTanks
         public Vector3 ShellPositionInPool { get => _shellPositionInPool; }
         public float ShellHeight { get => _shellHeight; }
 
-        public int ElementId { get  => _elementId; }
+        public int ElementId { 
+            get  => _elementId;
+            set => _elementId = value;
+        }
 
-        public Shell(GameObject shellObject, int elementId)
+        public Shell(GameObject shellObject)
         {
             _shellObject = shellObject;
             _shellPositionInPool = shellObject.transform.position;
             _shellHeight = shellObject.GetComponent<CapsuleCollider>().height;
-            _elementId = elementId;
         }
     }
 }

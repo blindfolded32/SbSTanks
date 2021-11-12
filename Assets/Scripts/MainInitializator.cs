@@ -18,7 +18,7 @@ namespace SbSTanks
             var pcinputinitialization = new PCInputSpaceInitialization();
             var timerActionInvoker = new TimerActionInvoker();
 
-            var playerModel = new PlayerModel(pcinputinitialization.GetInputSpace(), timerController, data.Player, Random.Range(0,2));
+            var playerModel = new PlayerModel(pcinputinitialization.GetInputSpace(), timerController, data.Player);
             new TimerSetsInitialization(playerModel, timerActionInvoker);
 
             var shellController = new ShellController(data.Player, data.Enemies);
@@ -31,10 +31,10 @@ namespace SbSTanks
 
             for (int i = 0; i < data.Enemies.Count; i++)
             {
-                data.Enemies[i].Init(data.EnemyInitializationData, shellController, stepController);
+                data.Enemies[i].Init(data.EnemyInitializationData, shellController, stepController); 
             }
             
-            data.Player.Init(data.PlayerInitializationData, shellController, stepController);
+            data.Player.Init(data.PlayerInitializationData, shellController, stepController); 
         }
     }
 }

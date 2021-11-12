@@ -18,7 +18,6 @@ namespace SbSTanks
         private bool _isSpdaceDown;
         private TimerData _timeData;
         private int _elementId;
-
         public IPCInputSpace GetpcInputSpace { get => _pcInputSpace; } 
         public Player GetPlayer { get => _player; }
         public ParticleSystem GetShotEvent { get => _shotEvent; }
@@ -32,13 +31,12 @@ namespace SbSTanks
             set => _elementId = value;
         }
 
-        public PlayerModel(IPCInputSpace pCInputSpace, TimerController timerController, Player player, int elementId)
+        public PlayerModel(IPCInputSpace pCInputSpace, TimerController timerController, Player player)
         {
             _pcInputSpace = pCInputSpace;
             _timerController = timerController;
             _player = player;
             _shotEvent = _player.gameObject.GetComponentInChildren<ParticleSystemShotIdentificator>().GetComponent<ParticleSystem>();
-            _elementId = elementId;
         }
 
     }

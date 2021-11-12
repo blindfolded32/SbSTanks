@@ -16,20 +16,16 @@ namespace SbSTanks
             get => _hp;
             set => _hp = value;
         }
-
         public int Damage
         {
             get => _damage;
             set => _damage = value;
         }
-
         public int ElementId
         {
             get => _elementId;
             set => _elementId = value;
         }
-
-
         public UnitParameters(Unit unit, int hp, int elementId, int damage)
         {
             _hp = hp;
@@ -37,7 +33,6 @@ namespace SbSTanks
             _elementId = elementId;
             unit.TakeDamage += GetDamage;
         }
-
         public void GetDamage(int damage)
         {
             _hp -= damage;

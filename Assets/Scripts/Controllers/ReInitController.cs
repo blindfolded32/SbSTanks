@@ -17,11 +17,11 @@ namespace SbSTanks
         public void ReInit()
         {
             _player.SetUnitElement(Random.Range(0,2));
-            Debug.Log($"Player new element is {_player.GetUnitElement}");
+           // Debug.Log($"Player new element is {_player.GetUnitElement}");
             foreach (var enemy in _enemies)
             {
                 enemy.SetUnitElement(Random.Range(0,2));
-                Debug.Log($"Enemy new element is {enemy.GetUnitElement}");
+               // Debug.Log($"Enemy new element is {enemy.GetUnitElement}");
             }
         }
     }

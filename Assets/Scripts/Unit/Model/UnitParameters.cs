@@ -9,6 +9,7 @@ namespace SbSTanks
     {
         [SerializeField] private int _hp;
         [SerializeField] private int _damage;
+        public bool isDead { get; private set; }
         private int _elementId;
         public int Hp
         {
@@ -25,17 +26,26 @@ namespace SbSTanks
             get => _elementId;
             set => _elementId = value;
         }
-        public UnitParameters(Unit unit, int hp, int elementId, int damage)
+        public Action<bool> ConfirmDeath { get; set; }
+
+        public UnitParameters(Unit unit, int hp, int elementId, int damage) : this()
         {
             _hp = hp;
             _damage = damage;
             _elementId = elementId;
+            isDead = false;
             unit.TakeDamage += GetDamage;
         }
-        public void GetDamage(int damage)
+        private void GetDamage(int damage)
         {
             _hp -= damage;
+           if (_hp <= 0)
+            {
+                Debug.Log("killed");
+               isDead = true;
+               ConfirmDeath?.Invoke(true);
+            }
         }
-
+       
     }
 }

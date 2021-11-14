@@ -16,7 +16,6 @@ namespace SbSTanks
         private const string PREFAB_PATH = "Prefabs/Shell";
         private const float NEW_SHELL_OFFSET = 0.5f;
         private const float X_ROTATE_IN_FLY = 0.7f;
-    //    public List<Shell> Shells { get => _shells; }
         public ShellController(IUnit player, List<Enemy> enemies)
         {
             _player = player;
@@ -27,7 +26,7 @@ namespace SbSTanks
             foreach (var enemy in _enemies)
             {
                 enemy.ShellHit += InflictDamage;
-                CreateShell(enemy.ElementId);  //Забрать из параметров!!!
+                CreateShell(enemy.Parameters.ElementId);  //Забрать из параметров!!!
             }
         }
 
@@ -75,27 +74,26 @@ namespace SbSTanks
         }
         private void InflictDamage(GameObject shell, IDamagebleUnit unit)
         {
-           // Debug.Log($"Shell owner has type {unit.GetType()} and element is {unit.GetUnitElement}");
-         if (unit.GetType() != typeof(Player) && unit.GetUnitElement == 1)
-         {
-             foreach (var enemy in _enemies)
-             {
-                 Debug.Log($"Damage from element {_shells[0].ElementId}");
-                 enemy.TakingDamage(_shells[0].damage, _shells[0].ElementId);
-             }
-         }
-         else
-         {
-             foreach (var shellitem in _shells)
-             {
-                 if (shell.GetInstanceID() == shellitem.ShellObject.GetInstanceID())
-                 {
-                     Debug.Log($"Shell with element {shellitem.ElementId} to unit element {unit.GetUnitElement}");
-                     unit.TakingDamage(shellitem.damage, shellitem.ElementId);
-                     break;
-                 }
-             }
-         }
+            if (unit.GetType() != typeof(Player) && unit.GetUnitElement == 1)
+            {
+                foreach (var enemy in _enemies)
+                {
+                    //Debug.Log($"Damage from element {_shells[0].ElementId}");
+                    enemy.TakingDamage(_shells[0].damage, _shells[0].ElementId);
+                }
+            }
+            else
+            {
+                foreach (var shellitem in _shells)
+                {
+                    if (shell.GetInstanceID() == shellitem.ShellObject.GetInstanceID())
+                    {
+                       // Debug.Log($"Shell with element {shellitem.ElementId} to unit element {unit.GetUnitElement}");
+                        unit.TakingDamage(shellitem.damage, shellitem.ElementId);
+                        break;
+                    }
+                }
+            }
         }
         public void ReturnShell(GameObject shell)
         {

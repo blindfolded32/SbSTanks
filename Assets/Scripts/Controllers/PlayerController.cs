@@ -70,7 +70,6 @@ namespace SbSTanks
                 _lerpProgress = 0;
             }
         }
-
         public void Dispose()
         {
             foreach (var element in _switchEnemyButtonsMatching)

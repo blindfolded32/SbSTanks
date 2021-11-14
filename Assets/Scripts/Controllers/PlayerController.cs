@@ -13,7 +13,6 @@ namespace SbSTanks
         private Dictionary<Button, Enemy> _switchEnemyButtonsMatching = new Dictionary<Button, Enemy>();
         private bool _isOnRotation;
         private Quaternion _targetRotation;
-
         private const float ROTATION_TIME = 0.5f;
         private float _lerpProgress = 0;
         private Quaternion _startRotation;
@@ -51,7 +50,6 @@ namespace SbSTanks
             if (_stepController.isPlayerTurn && _playerModel.IsSpaceDown)
             {
                 _stepController.isPlayerTurn = false;
-            //    Debug.Log("Shot!!!!");
                 _playerModel.GetShotEvent.Play();
                 _playerModel.GetPlayer.Shot(_playerModel);
             }

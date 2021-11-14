@@ -14,7 +14,7 @@ namespace SbSTanks
         //end of my code    
             
         public Action<int> TakeDamage { get; set; }
-        public Action<GameObject, IDamagebleUnit, Type> ShellHit { get; set; }
+        public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
 
         [SerializeField] protected UnitParameters _parameters;
         [SerializeField] protected Transform _shotStartPoint;
@@ -29,10 +29,10 @@ namespace SbSTanks
         public Transform GetShotPoint { get => _shotStartPoint; }
         public Transform Transform { get => gameObject.transform; }
         public int GetUnitElement => _parameters.ElementId;
+
+        public void SetUnitElement(int value) => _parameters.ElementId = value;
         public void Init(UnitInitializationData data, ShellController shellController, StepController stepController)
-        {
-           // _elementId = elementId;
-           // Debug.Log($"unit has {data.element}");
+        {             
             _parameters = new UnitParameters(this, data.hp,data.element,data.damage); //changed
             _shellController = shellController;
             _stepController = stepController;
@@ -41,10 +41,14 @@ namespace SbSTanks
 
         public void TakingDamage(int damage, int elementId)
         {
-           // Debug.Log($"enemy element is {elementId} target is {_parameters.ElementId}");
+            //Debug.Log($"enemy element is {elementId} target is {_parameters.ElementId} diff is {Math.Abs(elementId - _parameters.ElementId)}");
             if (elementId == _parameters.ElementId || Math.Abs(elementId - _parameters.ElementId) != 1) TakeDamage?.Invoke(damage);
-            else TakeDamage?.Invoke(damage*2);
-            Debug.Log("Auch!");
+            else
+            {
+                Debug.Log("Double Damage");
+                TakeDamage?.Invoke(damage*2);
+            }
+         //   Debug.Log("Auch!");
         }
     }
 }

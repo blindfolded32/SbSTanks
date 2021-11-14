@@ -27,7 +27,7 @@ namespace SbSTanks
             foreach (var enemy in _enemies)
             {
                 enemy.ShellHit += InflictDamage;
-                CreateShell(enemy.ElementId);
+                CreateShell(enemy.ElementId);  //Забрать из параметров!!!
             }
         }
 
@@ -43,7 +43,7 @@ namespace SbSTanks
                 }
             }
         }
-        public GameObject GetShell(int damage, Transform startPosition)
+        public GameObject GetShell(int damage, Transform startPosition, int elementId)
         {
             GameObject shellObject = null;
             foreach (var shell in _shells.Where(shell => !shell.isOnScene))
@@ -51,12 +51,12 @@ namespace SbSTanks
                 shellObject = shell.ShellObject;
                 shell.damage = damage;
                 shell.isOnScene = true;
+                shell.ElementId = elementId;
                 break;
             }
             if (shellObject is null)
             {
                 CreateShell(NEW_SHELL_OFFSET);
-
                 shellObject = _shells[_shells.Count - 1].ShellObject;
                 _shells[_shells.Count - 1].damage = damage;
                 _shells[_shells.Count - 1].isOnScene = true;
@@ -73,14 +73,15 @@ namespace SbSTanks
             var shell = new Shell(shellObject);
             _shells.Add(shell);
         }
-        private void InflictDamage(GameObject shell, IDamagebleUnit unit, Type owner)
+        private void InflictDamage(GameObject shell, IDamagebleUnit unit)
         {
-      //   Debug.Log($"Shell owner has type {owner} and unit element is {unit.GetUnitElement}");
-         if (owner != typeof(Player) && unit.GetUnitElement == 1)
+           // Debug.Log($"Shell owner has type {unit.GetType()} and element is {unit.GetUnitElement}");
+         if (unit.GetType() != typeof(Player) && unit.GetUnitElement == 1)
          {
              foreach (var enemy in _enemies)
              {
-                 enemy.TakingDamage(_shells[0].damage, unit.GetUnitElement);
+                 Debug.Log($"Damage from element {_shells[0].ElementId}");
+                 enemy.TakingDamage(_shells[0].damage, _shells[0].ElementId);
              }
          }
          else
@@ -89,13 +90,12 @@ namespace SbSTanks
              {
                  if (shell.GetInstanceID() == shellitem.ShellObject.GetInstanceID())
                  {
-                     // Debug.Log($"Shell with element {shellitem.ElementId} from inf damage");
-                     unit.TakingDamage(shellitem.damage, unit.GetUnitElement);
+                     Debug.Log($"Shell with element {shellitem.ElementId} to unit element {unit.GetUnitElement}");
+                     unit.TakingDamage(shellitem.damage, shellitem.ElementId);
                      break;
                  }
              }
          }
-         
         }
         public void ReturnShell(GameObject shell)
         {

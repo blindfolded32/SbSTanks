@@ -17,7 +17,6 @@ namespace SbSTanks
         private TimerController _timerController;//
         private bool _isSpdaceDown;
         private TimerData _timeData;
-        private int _elementId;
         public IPCInputSpace GetpcInputSpace { get => _pcInputSpace; } 
         public Player GetPlayer { get => _player; }
         public ParticleSystem GetShotEvent { get => _shotEvent; }
@@ -25,12 +24,6 @@ namespace SbSTanks
         public TimerController GetAndSetTimerController { get => _timerController; set => _timerController = value; }
         public bool IsSpaceDown { get => _isSpdaceDown; set => _isSpdaceDown = value; }
         public TimerData GetAndSetTimeData { get => _timeData; set => _timeData = value; }
-        public int ElementId
-        {
-            get => _elementId;
-            set => _elementId = value;
-        }
-
         public PlayerModel(IPCInputSpace pCInputSpace, TimerController timerController, Player player)
         {
             _pcInputSpace = pCInputSpace;

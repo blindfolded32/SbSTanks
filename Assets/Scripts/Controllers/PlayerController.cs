@@ -10,24 +10,25 @@ namespace SbSTanks
     {
         private PlayerModel _playerModel;
         private StepController _stepController;
-        private Dictionary<Button, Enemy> _switchEnemyButtonsMatching = new Dictionary<Button, Enemy>();
+        public Dictionary<Button, Enemy> SwitchEnemyButtonsMatching = new Dictionary<Button, Enemy>();
         private bool _isOnRotation;
         private Quaternion _targetRotation;
         private const float ROTATION_TIME = 0.5f;
         private float _lerpProgress = 0;
         private Quaternion _startRotation;
+
+        public bool isPlayerTurn;
         public PlayerController(PlayerModel model, StepController stepController, UIModel uIModel, List<Enemy> enemies, List<Button> switchEnemyButtons)
         {
             _stepController = stepController;
             _playerModel = model;
-            _playerModel.GetpcInputSpace.OnSpaceDown += GetSpaceKey;
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                _switchEnemyButtonsMatching.Add(switchEnemyButtons[i], enemies[i]);
+                SwitchEnemyButtonsMatching.Add(switchEnemyButtons[i], enemies[i]);
             }
 
-            foreach(var element in _switchEnemyButtonsMatching)
+            foreach(var element in SwitchEnemyButtonsMatching)
             {
                 element.Key.onClick.AddListener(
                     delegate
@@ -40,6 +41,10 @@ namespace SbSTanks
             }
         }
 
+        public Vector3 GetPosition() => _playerModel.GetPlayer.transform.position;
+
+        public int GetPlayerElement() => _playerModel.GetPlayer.GetUnitElement;
+
         public void GetSpaceKey(bool f)
         {
             _playerModel.IsSpaceDown = f;
@@ -47,7 +52,7 @@ namespace SbSTanks
 
         public void Execute(float deltaTime)
         {
-            if (_stepController.isPlayerTurn && _playerModel.IsSpaceDown)
+            if (_stepController.isPlayerTurn && isPlayerTurn)
             {
                 _stepController.isPlayerTurn = false;
                 _playerModel.GetShotEvent.Play();
@@ -55,14 +60,16 @@ namespace SbSTanks
             }
             if (_isOnRotation)
             {
-                RotatePlayer();
+                RotatePlayer(_targetRotation);
             }
+
+            isPlayerTurn = false;
         }
 
-        private void RotatePlayer()
+        public void RotatePlayer(Quaternion targetrotation)
         {
             _lerpProgress += Time.deltaTime / ROTATION_TIME;
-            _playerModel.GetPlayer.transform.rotation = Quaternion.Lerp(_startRotation, _targetRotation, _lerpProgress);
+            _playerModel.GetPlayer.transform.rotation = Quaternion.Lerp(_startRotation, targetrotation, _lerpProgress);
 
             if (_lerpProgress >= 1)
             {
@@ -72,7 +79,7 @@ namespace SbSTanks
         }
         public void Dispose()
         {
-            foreach (var element in _switchEnemyButtonsMatching)
+            foreach (var element in SwitchEnemyButtonsMatching)
             {
                 element.Key.onClick.RemoveAllListeners();
             }

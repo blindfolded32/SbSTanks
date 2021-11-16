@@ -9,7 +9,7 @@ namespace SbSTanks
     {
         private IPCInputSpace _pCInputSpace;
 
-        public InputController(IPCInputSpace pCInputSpace)
+        public InputController(PCInputSpace pCInputSpace)
         {
             _pCInputSpace = pCInputSpace;
         }

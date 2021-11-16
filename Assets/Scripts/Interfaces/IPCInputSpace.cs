@@ -7,7 +7,7 @@ namespace SbSTanks
 {
     public interface IPCInputSpace
     {
-        public event Action<bool> OnSpaceDown;
+        public event Action<KeyCode> ButtonDown;
 
         public void CheckButtons();
     }

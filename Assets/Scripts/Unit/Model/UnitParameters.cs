@@ -39,6 +39,7 @@ namespace SbSTanks
         private void GetDamage(int damage)
         {
             _hp -= damage;
+            Debug.Log($"My hp is {_hp}");
            if (_hp <= 0)
             {
                 Debug.Log("killed");

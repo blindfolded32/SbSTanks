@@ -15,19 +15,22 @@ namespace SbSTanks
             mainController.Add(stepController);
 
             new ParticlesInitialization(data.Player, data.Enemies);
-            var pcinputinitialization = new PCInputSpaceInitialization();
+            //var pcinputinitialization = new PCInputSpaceInitialization();
+            var pcinput = new PCInputSpace();
             var timerActionInvoker = new TimerActionInvoker();
 
-            var playerModel = new PlayerModel(pcinputinitialization.GetInputSpace(), timerController, data.Player);
+            var playerModel = new PlayerModel(pcinput, timerController, data.Player);
             new TimerSetsInitialization(playerModel, timerActionInvoker);
 
             var shellController = new ShellController(data.Player, data.Enemies);
             mainController.Add(shellController);
+            var playerController = new PlayerController(playerModel, stepController, uiModel, data.Enemies,
+                data.EnemiesSwitchButtons);
 
-            mainController.Add(new InputController(pcinputinitialization.GetInputSpace()));
-            mainController.Add(new PlayerController(playerModel, stepController, uiModel, data.Enemies, data.EnemiesSwitchButtons));
+            mainController.Add(new InputController(pcinput));
+            mainController.Add(playerController);
             mainController.Add(new ButtonActivationController(uiModel, stepController));
-
+            var SkillController = new SkillControler(playerController,pcinput);
 
             for (int i = 0; i < data.Enemies.Count; i++)
             {

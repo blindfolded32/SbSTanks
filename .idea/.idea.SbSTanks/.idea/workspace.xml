@@ -50,16 +50,21 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IDamagebleUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/PlayerModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IParameters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IPCInputSpace.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/PCInputSpaceInitialization.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/InputController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/PCInputSpace.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitParameters.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillControler.cs" />
       </list>
     </option>
   </component>
@@ -118,6 +123,7 @@
       <workItem from="1636880757453" duration="4225000" />
       <workItem from="1636895251964" duration="3560000" />
       <workItem from="1636914975435" duration="1900000" />
+      <workItem from="1637079385661" duration="6167000" />
     </task>
     <servers />
   </component>
@@ -206,6 +212,14 @@
       <screen x="0" y="0" width="2560" height="1050" />
     </state>
     <state width="2517" height="315" key="GridCell.Tab.3.right/0.0.2560.1050@0.0.2560.1050" timestamp="1636219475348" />
+    <state x="1114" y="226" key="RiderGenerateDialog" timestamp="1637079924343">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state x="1114" y="226" key="RiderGenerateDialog/0.0.2560.1050@0.0.2560.1050" timestamp="1637079924343" />
+    <state x="936" y="243" key="run.anything.popup" timestamp="1637084316768">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state x="936" y="243" key="run.anything.popup/0.0.2560.1050@0.0.2560.1050" timestamp="1637084316768" />
     <state x="943" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1636897109381">
       <screen x="0" y="0" width="2560" height="1050" />
     </state>

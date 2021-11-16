@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SbSTanks
 {
     [Serializable]
-    public struct UnitParameters : IParameters
+    public class UnitParameters : IParameters
     {
         [SerializeField] private int _hp;
         [SerializeField] private int _damage;
@@ -28,7 +28,7 @@ namespace SbSTanks
         }
         public Action<bool> ConfirmDeath { get; set; }
 
-        public UnitParameters(Unit unit, int hp, int elementId, int damage) : this()
+        public UnitParameters(Unit unit, int hp, int elementId, int damage)
         {
             _hp = hp;
             _damage = damage;

@@ -10,7 +10,6 @@ namespace SbSTanks
         {
             ShellHit?.Invoke(collision.gameObject, this);
             _shellController.ReturnShell(collision.gameObject);
-            _stepController.EnemiesTurn();
         }
         public void ReturnShot()
         {

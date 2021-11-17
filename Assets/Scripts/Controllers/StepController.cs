@@ -10,11 +10,12 @@ namespace SbSTanks
         private TimerData _startTurnTimer;
         private TimerData _shotDelayTimer;
         private TimerData _endTurnTimer;
-        private bool _isDelay = false;
+        private bool _isDelay;
         private List<Enemy> _enemies;
         private Player _player;
         private TimerController _timerController;
         private ReInitController _reInitController;
+        public int GetTurnNumber { get; private set; }
 
         public StepController(List<Enemy> enemies, Player player, TimerController timerController)
         {
@@ -22,14 +23,9 @@ namespace SbSTanks
             _player = player;
             _timerController = timerController;
             _reInitController = new ReInitController(enemies, player);
+            _isDelay = false;
+            GetTurnNumber = 1;
         }
-
-        public void EnemiesTurn()
-        {
-            _startTurnTimer = new TimerData(1f, Time.time);
-            _timerController.AddTimer(_startTurnTimer);
-        }
-
         public void Execute(float deltaTime)
         {
             CheckStartTurn();
@@ -37,46 +33,44 @@ namespace SbSTanks
             CheckEndTurn();
         }
 
-        public void CheckEndTurn()
+        private void CheckEndTurn()
         {
             if (_endTurnTimer is null || !_endTurnTimer.IsTimerEnd) return;
             foreach (var enemy in _enemies)
             {
                 enemy.isShotReturn = false;
             }
+
+            _reInitController.ReInit();
+            isPlayerTurn = true;
             _endTurnTimer = null;
             _isDelay = false;
-            _reInitController.ReInit();
+            GetTurnNumber++;
+            Debug.Log($"Turn {GetTurnNumber}");
         }
-
         private void CheckDelay()
         {
             if (_shotDelayTimer is null || !_shotDelayTimer.IsTimerEnd) return;
             _isDelay = false;
             _shotDelayTimer = null;
-            isPlayerTurn = true;
+            EnemyShot();
         }
-
         private void CheckStartTurn()
         {
-            if (_startTurnTimer is null || isPlayerTurn || !_startTurnTimer.IsTimerEnd) return;
-            if (_isDelay || !_enemies.Contains(_enemies.Find(enemy => !enemy.isShotReturn))) return;
+            if (isPlayerTurn|| _isDelay || !_enemies.Contains(_enemies.Find(enemy => !enemy.isShotReturn))) return; 
+            _isDelay = true;
           _shotDelayTimer = new TimerData(3f, Time.time);
-          EnemyShot(_enemies.FindIndex(enemy => !enemy.isShotReturn),_shotDelayTimer);
-          _isDelay = true;
+          _timerController.AddTimer(_shotDelayTimer);
         }
-
-      private void EnemyShot(int index, TimerData timer)
+        private void EnemyShot()
         {
-            _enemies[index].ReturnShot();
-            _enemies[index].isShotReturn = true;
-            if (index == _enemies.Count - 1)
+            foreach (var enemy in _enemies)
             {
-                _endTurnTimer = new TimerData(4f, Time.time);
-                _timerController.AddTimer(_endTurnTimer);
-                Debug.Log("TurnEnd");
+                enemy.ReturnShot();
+                enemy.isShotReturn = true;
             }
-            else _timerController.AddTimer(timer);
+            _endTurnTimer = new TimerData(4f, Time.time);
+            _timerController.AddTimer(_endTurnTimer);
         }
     }
 }

@@ -13,10 +13,11 @@ namespace SbSTanks
             _player = player;
             _stepController = stepController;
             inputState.ButtonDown += SkillSelector;
-            
         }
         private void EarthSkill()
         {
+            if (_stepController.GetTurnNumber%3 != 0) return;
+            
             _player.isPlayerTurn = true;
             var transformPosition = _player.SwitchEnemyButtonsMatching.ElementAt(Random.Range(0, _player.SwitchEnemyButtonsMatching.Count))
                 .Value.transform.position;
@@ -32,10 +33,12 @@ namespace SbSTanks
         }
         private void FireSkill()
         {
+            if (_stepController.GetTurnNumber%2 !=0) return;
+           
             _player.isPlayerTurn = true;
             foreach (var enemy in _player.SwitchEnemyButtonsMatching.Values)
             {
-                enemy.TakingDamage(10,_player.GetPlayerElement());
+                enemy.TakingDamage(10,1);
             }
             Debug.Log("AOE");
         }

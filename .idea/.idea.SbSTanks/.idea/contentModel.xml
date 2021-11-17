@@ -78,12 +78,10 @@
             <e p="GameControllerModel.cs" t="Include" />
             <e p="GameInitializationData.cs" t="Include" />
           </e>
-          <e p="NameManager.cs" t="Include" />
           <e p="Shell" t="Include">
             <e p="Shell.cs" t="Include" />
             <e p="ShellController.cs" t="Include" />
             <e p="ShellControllerData.cs" t="Include" />
-            <e p="ShellPool.cs" t="Include" />
           </e>
           <e p="Task2" t="Include">
             <e p="PlayerRotationEvent.cs" t="Include" />

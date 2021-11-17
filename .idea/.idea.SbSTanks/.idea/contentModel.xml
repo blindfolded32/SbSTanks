@@ -50,6 +50,7 @@
             </e>
             <e p="PlayerController.cs" t="Include" />
             <e p="ReInitController.cs" t="Include" />
+            <e p="SkillButtons.cs" t="Include" />
             <e p="SkillControler.cs" t="Include" />
             <e p="StepController.cs" t="Include" />
             <e p="TimerActionInvoker.cs" t="Include" />

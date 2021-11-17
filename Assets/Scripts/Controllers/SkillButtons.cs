@@ -1,0 +1,62 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace SbSTanks
+{
+    public class SkillButtons : IExecute
+    {
+        KeyCode[] keycodes = new KeyCode[]{KeyCode.Q, KeyCode.W, KeyCode.E};
+        private Dictionary<KeyCode, Button> _skillButtonsDict = new Dictionary<KeyCode, Button>();
+        public Action<KeyCode> UiSkill;
+        private StepController _stepController;
+
+        public SkillButtons(UIModel uiModel,StepController stepController)
+        {
+            _stepController = stepController;
+            var buttonArray = uiModel.GetCanvases[0].GetComponentsInChildren<Button>();
+             Debug.Log(buttonArray.Length);
+            for (int i = 0; i < buttonArray.Length; i++)
+            {
+                _skillButtonsDict.Add(keycodes[i],buttonArray[i]);
+            }
+            foreach (var button in _skillButtonsDict)
+            {
+                button.Value.onClick.AddListener(delegate
+                {
+                    Debug.Log("Click");
+                    UiSkill?.Invoke(button.Key);
+                });
+            }
+        }
+        public void Execute(float deltaTime)
+        {
+            CheckCD();
+        }
+        private void CheckCD()
+        {
+            if (_stepController.GetTurnNumber % 3 != 0)
+            {
+                Debug.Log("Q is incactive");
+                _skillButtonsDict[KeyCode.Q].interactable = false;
+            }
+            else
+            {
+                _skillButtonsDict[KeyCode.Q].interactable = true;
+            }
+            if (_stepController.GetTurnNumber % 2 != 0)
+            {
+                _skillButtonsDict[KeyCode.E].interactable = false;
+            }
+            else
+            {
+                _skillButtonsDict[KeyCode.E].interactable = true;
+            }
+        }
+    }
+
+}
+
+

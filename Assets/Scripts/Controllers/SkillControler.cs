@@ -8,11 +8,12 @@ namespace SbSTanks
         private readonly PlayerController _player;
         private readonly StepController _stepController;
         private IPCInputSpace _buttonControler;
-        public SkillControler(PlayerController player, StepController stepController,IPCInputSpace inputState)
+        public SkillControler(PlayerController player, StepController stepController, SkillButtons skillButtons,IPCInputSpace inputState)
         {
             _player = player;
             _stepController = stepController;
             inputState.ButtonDown += SkillSelector;
+            skillButtons.UiSkill += SkillSelector;
         }
         private void EarthSkill()
         {

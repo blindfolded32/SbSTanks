@@ -52,16 +52,18 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/PCInputSpace.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitParameters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/PlayerModel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Task2/PlayerRotationEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/Shell.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillControler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/NameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellPool.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/Shell.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs" />
       </list>
     </option>
   </component>
@@ -121,7 +123,7 @@
       <workItem from="1636895251964" duration="3560000" />
       <workItem from="1636914975435" duration="1900000" />
       <workItem from="1637079385661" duration="6167000" />
-      <workItem from="1637132615174" duration="4344000" />
+      <workItem from="1637132615174" duration="7121000" />
     </task>
     <servers />
   </component>

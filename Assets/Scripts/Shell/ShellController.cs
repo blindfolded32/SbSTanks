@@ -43,11 +43,11 @@ namespace SbSTanks
         public GameObject GetShell(int damage, Transform startPosition, int elementId)
         {
             GameObject shellObject = null;
-            foreach (var shell in _shells.Where(shell => !shell.isOnScene))
+            foreach (var shell in _shells.Where(shell => !shell.IsActive))
             {
                 shellObject = shell.ShellObject;
                 shell.damage = damage;
-                shell.isOnScene = true;
+                shell.Activate(true);
                 shell.ElementId = elementId;
                 break;
             }
@@ -56,7 +56,6 @@ namespace SbSTanks
                 CreateShell(NEW_SHELL_OFFSET);
                 shellObject = _shells[_shells.Count - 1].ShellObject;
                 _shells[_shells.Count - 1].damage = damage;
-                _shells[_shells.Count - 1].isOnScene = true;
             }
             shellObject.layer = _shellMask;
             shellObject.transform.position = startPosition.position;
@@ -66,32 +65,23 @@ namespace SbSTanks
         private void CreateShell(float offset)
         {
             var shellPrefab = Resources.Load(PREFAB_PATH) as GameObject;
-            var shellObject = UnityEngine.Object.Instantiate(shellPrefab, new Vector3(0 + offset,-20.5f,0), new Quaternion());
+            var shellObject = UnityEngine.Object.Instantiate(shellPrefab);
+            shellObject.SetActive(false);
             var shell = new Shell(shellObject);
             _shells.Add(shell);
         }
         private void InflictDamage(GameObject shell, IDamagebleUnit unit)
         {
-            if (unit.GetType() != typeof(Player) && unit.GetUnitElement == 1)
+            foreach (var shellitem in _shells)
             {
-                foreach (var enemy in _enemies)
+                if (shell.GetInstanceID() == shellitem.ShellObject.GetInstanceID())
                 {
-                    //Debug.Log($"Damage from element {_shells[0].ElementId}");
-                    enemy.TakingDamage(_shells[0].damage, _shells[0].ElementId);
+                    // Debug.Log($"Shell with element {shellitem.ElementId} to unit element {unit.GetUnitElement}");
+                    unit.TakingDamage(shellitem.damage, shellitem.ElementId);
+                    break;
                 }
             }
-            else
-            {
-                foreach (var shellitem in _shells)
-                {
-                    if (shell.GetInstanceID() == shellitem.ShellObject.GetInstanceID())
-                    {
-                       // Debug.Log($"Shell with element {shellitem.ElementId} to unit element {unit.GetUnitElement}");
-                        unit.TakingDamage(shellitem.damage, shellitem.ElementId);
-                        break;
-                    }
-                }
-            }
+          
         }
         public void ReturnShell(GameObject shell)
         {
@@ -99,10 +89,8 @@ namespace SbSTanks
             {
                 if (shell.GetInstanceID() == shellitem.ShellObject.GetInstanceID())
                 {
-                    shell.transform.position = shellitem.ShellPositionInPool;
                     shell.GetComponent<Rigidbody>().Sleep();
-                    shellitem.isOnScene = false;
-                    shellitem.damage = 0;
+                    shell.SetActive(false);
                     break;
                 }
             }

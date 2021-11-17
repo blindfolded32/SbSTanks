@@ -17,12 +17,13 @@ namespace SbSTanks
             get  => _elementId;
             set => _elementId = value;
         }
-
         public Shell(GameObject shellObject)
         {
             _shellObject = shellObject;
             _shellPositionInPool = shellObject.transform.position;
             _shellHeight = shellObject.GetComponent<CapsuleCollider>().height;
         }
+        public void Activate(bool val) => ShellObject.SetActive(val);
+        public bool IsActive => _shellObject.activeSelf;
     }
 }

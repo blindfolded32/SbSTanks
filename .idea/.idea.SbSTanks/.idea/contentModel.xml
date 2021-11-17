@@ -78,6 +78,7 @@
             <e p="GameControllerModel.cs" t="Include" />
             <e p="GameInitializationData.cs" t="Include" />
           </e>
+          <e p="NameManager.cs" t="Include" />
           <e p="Shell" t="Include">
             <e p="Shell.cs" t="Include" />
             <e p="ShellController.cs" t="Include" />

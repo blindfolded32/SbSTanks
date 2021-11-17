@@ -5,9 +5,8 @@ namespace SbSTanks
 {
     public class ReInitController
     {
-        private List<Enemy> _enemies;
-        private Player _player;
-
+        private readonly List<Enemy> _enemies;
+        private readonly Player _player;
         public ReInitController(List<Enemy> enemies, Player player)
         {
             _enemies = enemies;

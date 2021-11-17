@@ -33,10 +33,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6918F29E-7FD3-4DFC-BFD1-AE203995DDD9/81/65369f76/ParticleSystem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F2625FD8-44AA-4DD5-B6A3-882F24F14D79/cb/4f037ccc/Action`3.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -46,25 +42,26 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/ParticlesInitialization.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Model/TimerData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TimerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/Shell.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IDamagebleUnit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Enemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/PlayerModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IUnit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IParameters.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IPCInputSpace.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/PCInputSpaceInitialization.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/InputController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/PCInputSpace.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitParameters.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/PlayerModel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Task2/PlayerRotationEvent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/Shell.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillControler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" />
       </list>
     </option>
   </component>
@@ -124,6 +121,7 @@
       <workItem from="1636895251964" duration="3560000" />
       <workItem from="1636914975435" duration="1900000" />
       <workItem from="1637079385661" duration="6167000" />
+      <workItem from="1637132615174" duration="4344000" />
     </task>
     <servers />
   </component>

@@ -1,35 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-
 namespace SbSTanks
 {
     public class PlayerModel
     {
-
-
-
-        private IPCInputSpace _pcInputSpace;//
         private Player _player;//
-        private ParticleSystem _shotEvent;//
         private int _indexOfTimer;
         private TimerController _timerController;//
-        private bool _isSpdaceDown;
         private TimerData _timeData;
-        public IPCInputSpace GetpcInputSpace { get => _pcInputSpace; } 
         public Player GetPlayer { get => _player; }
-        public ParticleSystem GetShotEvent { get => _shotEvent; }
+       
         public int GetAndSetIndexOfTimer { get => _indexOfTimer; set => _indexOfTimer = value; }
         public TimerController GetAndSetTimerController { get => _timerController; set => _timerController = value; }
-        public bool IsSpaceDown { get => _isSpdaceDown; set => _isSpdaceDown = value; }
         public TimerData GetAndSetTimeData { get => _timeData; set => _timeData = value; }
-        public PlayerModel(IPCInputSpace pCInputSpace, TimerController timerController, Player player)
+        public PlayerModel(TimerController timerController, Player player)
         {
-            _pcInputSpace = pCInputSpace;
             _timerController = timerController;
             _player = player;
-            _shotEvent = _player.gameObject.GetComponentInChildren<ParticleSystemShotIdentificator>().GetComponent<ParticleSystem>();
         }
 
     }

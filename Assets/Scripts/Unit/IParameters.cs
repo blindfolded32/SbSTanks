@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SbSTanks
+﻿namespace SbSTanks
 {
     public interface IParameters
     {

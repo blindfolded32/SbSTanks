@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace SbSTanks
+﻿namespace SbSTanks
 {
     public class GameController : IController
     {

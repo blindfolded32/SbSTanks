@@ -8,20 +8,15 @@ namespace SbSTanks
         private Transform _player;
         private Transform _enemyPosition;
 
-        private float _time = 20f;
-        private bool _isComplete;
-        private float _lerpProgress = 0;
         private Quaternion _startRotation;
 
-        public PlayerRotationEvent(PlayerModel playerModel, Transform enemyPosition, Button button)
+        public PlayerRotationEvent(PlayerController player, Transform enemyPosition, Button button)
         {
-            _player = playerModel.GetPlayer.transform;
+            _player =player.GetTransform();
 
             _enemyPosition = enemyPosition;
             button.onClick.AddListener(RotatePlayerTank);
-   
         }
-
         public void RotatePlayerTank()
         {
             //_startRotation = _player.rotation;

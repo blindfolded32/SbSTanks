@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -26,10 +25,9 @@ namespace SbSTanks
             foreach (var enemy in _enemies)
             {
                 enemy.ShellHit += InflictDamage;
-                CreateShell(enemy.Parameters.ElementId);  //Забрать из параметров!!!
+                CreateShell(enemy.Parameters.ElementId);  
             }
         }
-
         public void FixedExecute(float deltaTime, float fixedDeltaTime)
         {
             foreach (var shell in _shells.Where(shell => shell.isOnScene))

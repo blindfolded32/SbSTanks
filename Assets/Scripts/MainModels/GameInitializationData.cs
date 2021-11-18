@@ -9,15 +9,17 @@ namespace SbSTanks
     public struct GameInitializationData
     {
         [SerializeField] private Player _player;
-        [SerializeField] private Enemy[] _enemies;
+        [SerializeField] private List<Enemy> _enemies;
         [SerializeField] private UnitInitializationData _playerInitializationData;
         [SerializeField] private UnitInitializationData _enemyInitializationData;
         [SerializeField] private List<Button> _enemiesSwitchButtons;
+        [SerializeField] private Text _textNewRound;
 
-        public Player Player { get => _player; }
-        public Enemy[] Enemies { get => _enemies; }
-        public UnitInitializationData PlayerInitializationData { get => _playerInitializationData; }
-        public UnitInitializationData EnemyInitializationData { get => _enemyInitializationData; }
-        public List<Button> EnemiesSwitchButtons { get => _enemiesSwitchButtons; }
+        public Player Player => _player;
+        public List<Enemy> Enemies => _enemies;
+        public UnitInitializationData PlayerInitializationData => _playerInitializationData;
+        public UnitInitializationData EnemyInitializationData => _enemyInitializationData;
+        public List<Button> EnemiesSwitchButtons => _enemiesSwitchButtons;
+        public Text Text => _textNewRound;
     }
 }

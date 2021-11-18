@@ -10,5 +10,7 @@ namespace SbSTanks
 
         public Transform GetShotPoint { get; }
         public Transform Transform { get; }
+        
+
     }
 }

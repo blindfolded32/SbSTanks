@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,7 +38,7 @@ namespace SbSTanks
                 if((currentTime - _timers[i].GetStartTime) > _timers[i].GetDeltaTime)
                 {
                     _timers[i].IsTimerEnd = true;
-                    //if ((Time.time -(currentTime + _timers[i].GetStartTime)) > 60f)
+                  //if ((Time.time -(currentTime + _timers[i].GetStartTime)) > 60f)
                     //{
                     //    DeleteTimer(_timers[i]);
                     //}

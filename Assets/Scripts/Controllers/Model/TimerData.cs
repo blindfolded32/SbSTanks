@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-
 namespace SbSTanks
 {
     public class TimerData
@@ -19,7 +14,7 @@ namespace SbSTanks
         {
             _startTime = currentTime;
             _deltaTime = deltatime;
-            _isTimerEnd = false; //поменять на событие
+            _isTimerEnd = false; //РїРѕРјРµРЅСЏС‚СЊ РЅР° СЃРѕР±С‹С‚РёРµ
         }
 
     }

@@ -16,12 +16,15 @@ namespace SbSTanks
         public Transform GetShotPoint { get => _shotStartPoint; }
         public Transform Transform { get => gameObject.transform; }
         public int GetUnitElement => _parameters.ElementId;
+
+        public bool isDead;
         public void SetUnitElement(int value) => _parameters.ElementId = value;
         public void Init(UnitInitializationData data, ShellController shellController, StepController stepController)
         {             
             _parameters = new UnitParameters(this, data.hp,data.element,data.damage); //changed
             _shellController = shellController;
             _stepController = stepController;
+            isDead = false;
            _parameters.ConfirmDeath +=KillUnit;
         }
         protected abstract void OnCollisionEnter(Collision collision);
@@ -33,7 +36,7 @@ namespace SbSTanks
         }
         private void KillUnit(bool val)
         {
-            if (val) Destroy(gameObject);
+            isDead = val;
         }
        
     }

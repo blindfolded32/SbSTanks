@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,6 +44,11 @@ namespace SbSTanks
         public int GetPlayerElement() => _playerModel.GetPlayer.GetUnitElement;
         public void Execute(float deltaTime)
         {
+            foreach (var element in SwitchEnemyButtonsMatching.Where(element => element.Value.isDead))
+            {
+                element.Key.interactable = false;
+            }
+            
             if (_stepController.isPlayerTurn && isPlayerTurn)
             {
                 _stepController.isPlayerTurn = false;

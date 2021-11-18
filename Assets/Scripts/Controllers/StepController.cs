@@ -36,11 +36,10 @@ namespace SbSTanks
         private void CheckEndTurn()
         {
             if (_endTurnTimer is null || !_endTurnTimer.IsTimerEnd) return;
-            foreach (var enemy in _enemies)
+            foreach (var enemy in _enemies.FindAll(x =>!x.isDead))
             {
                 enemy.isShotReturn = false;
             }
-
             _reInitController.ReInit();
             isPlayerTurn = true;
             _endTurnTimer = null;
@@ -57,14 +56,14 @@ namespace SbSTanks
         }
         private void CheckStartTurn()
         {
-            if (isPlayerTurn|| _isDelay || !_enemies.Contains(_enemies.Find(enemy => !enemy.isShotReturn))) return; 
+            if (isPlayerTurn|| _isDelay || !_enemies.Contains(_enemies.Find(enemy => !enemy.isShotReturn && !enemy.isDead))) return; 
             _isDelay = true;
           _shotDelayTimer = new TimerData(3f, Time.time);
           _timerController.AddTimer(_shotDelayTimer);
         }
         private void EnemyShot()
         {
-            foreach (var enemy in _enemies)
+            foreach (var enemy in _enemies.FindAll(x =>!x.isDead))
             {
                 enemy.ReturnShot();
                 enemy.isShotReturn = true;

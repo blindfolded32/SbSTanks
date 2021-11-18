@@ -39,7 +39,7 @@ namespace SbSTanks
             _player.isPlayerTurn = true;
             foreach (var enemy in _player.SwitchEnemyButtonsMatching.Values)
             {
-                enemy.TakingDamage(10,1);
+                if (!enemy.isDead) enemy.TakingDamage(10,1);
             }
             Debug.Log("AOE");
         }

@@ -16,7 +16,8 @@ namespace SbSTanks
         public SkillButtons(UIModel uiModel,StepController stepController)
         {
             _stepController = stepController;
-            var buttonArray = uiModel.GetCanvases[0].GetComponentsInChildren<Button>();
+            var canvas = uiModel.GetCanvases;
+            var buttonArray = canvas.Find(x => x.name == "SkillCanvas").GetComponentsInChildren<Button>();//uiModel.GetCanvases[1].GetComponentsInChildren<Button>();
              Debug.Log(buttonArray.Length);
             for (int i = 0; i < buttonArray.Length; i++)
             {

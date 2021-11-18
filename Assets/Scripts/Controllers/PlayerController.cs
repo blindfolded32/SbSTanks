@@ -6,45 +6,27 @@ using UnityEngine.UI;
 
 namespace SbSTanks
 {
-    public class PlayerController : IExecute
+    public class PlayerController : IController
     {
-        public PlayerModel GetPlayerModel { get; private set; }
+        public PlayerModel PlayerModel { get;}
 
-        private StepController _stepController;
-        
-        private bool _isOnRotation;
+        private readonly StepController _stepController;
         private Quaternion _targetRotation;
         private const float ROTATION_TIME = 0.5f;
         private float _lerpProgress;
         private Quaternion _startRotation;
-        public bool isPlayerTurn;
-        public PlayerController(PlayerModel model, StepController stepController)
+        public bool IsPlayerTurn;
+        public PlayerController(PlayerModel model)
         {
-            _stepController = stepController;
-            GetPlayerModel = model;
+            PlayerModel = model;
+            IsPlayerTurn = true;
         }
-        public Transform GetTransform() => GetPlayerModel.GetPlayer.transform;
-        public int GetPlayerElement() => GetPlayerModel.GetPlayer.GetUnitElement;
-        public void Execute(float deltaTime)
-        {
-            if (_stepController.isPlayerTurn && isPlayerTurn)
-            {
-                _stepController.isPlayerTurn = false;
-            }
-           
-            isPlayerTurn = false;
-        }
+        public Transform GetTransform() => PlayerModel.GetPlayer.transform;
         public void RotatePlayer(Transform targetTransform)
         {
             _lerpProgress += Time.deltaTime / ROTATION_TIME;
-            var targetRotation = Quaternion.LookRotation(targetTransform.position - GetPlayerModel.GetPlayer.transform.position);
-            GetPlayerModel.GetPlayer.transform.rotation = Quaternion.Lerp(_startRotation, targetRotation, _lerpProgress);
-
-            if (_lerpProgress >= 1)
-            {
-                _isOnRotation = false;
-                _lerpProgress = 0;
-            }
+            var targetRotation = Quaternion.LookRotation(targetTransform.position - PlayerModel.GetPlayer.transform.position);
+            PlayerModel.GetPlayer.transform.rotation = Quaternion.Lerp(_startRotation, targetRotation, _lerpProgress);
         }
         
     }

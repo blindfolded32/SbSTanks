@@ -14,11 +14,8 @@ namespace SbSTanks
         private readonly PlayerController _playerController;
         private readonly StepController _stepController;
         private bool _isPreviousPlayerTurn;
-        private Text _textNewRound;
-
         private const int RequiredCanvas = 0;
 
-     //   private IEnumerable<Button> CanvasButtons => _canvasButtons;
         public ButtonActivationController(UIModel uIModel, StepController stepController, List<Enemy> enemies, PlayerController playerController)
         {
             _isPreviousPlayerTurn = true;
@@ -27,7 +24,6 @@ namespace SbSTanks
             _playerController = playerController;
             _canvasButtons = new List<Button>();
             _canvasButtons.AddRange(uIModel.GetCanvases[RequiredCanvas].GetComponentsInChildren<Button>());
-            _textNewRound = uIModel.GetCanvases[RequiredCanvas].GetComponentInChildren<Text>();
             CreateDictionary(_canvasButtons,_enemies);
             AddListeners();
         }
@@ -47,26 +43,23 @@ namespace SbSTanks
                     delegate
                     {
                         _playerController.RotatePlayer(element.Value.transform);
-                    //   _playerController.GetPlayerModel.GetPlayer.transform.LookAt(element.Value.transform.position, Vector3.up);
                     });
             }
         }
         public void Execute(float deltaTime)
         {
-            if (_stepController.isPlayerTurn == _isPreviousPlayerTurn) return;
-            foreach (var element in SwitchEnemyButtonsMatching.Where(element => element.Value.isDead))
-            {
-                element.Key.interactable = false;
-            }
-            foreach (var canvasButton in _canvasButtons.FindAll(button => button.interactable))
-            {
-                canvasButton.interactable = !canvasButton.interactable;
-            }
+            if (_playerController.IsPlayerTurn == _isPreviousPlayerTurn) return;
+            ActiveCheck();
             _isPreviousPlayerTurn = !_isPreviousPlayerTurn;
-            bool enabled;
-            var enabler = _canvasButtons.ElementAt(0).interactable ? enabled = true : enabled = false;
-//            _textNewRound.enabled = enabled;
+        }
 
+        private void ActiveCheck()
+        {
+            foreach (var element in SwitchEnemyButtonsMatching)
+            {
+                element.Key.interactable = !element.Value.isDead && _playerController.IsPlayerTurn;
+            }
+          
         }
 
         public void Dispose()

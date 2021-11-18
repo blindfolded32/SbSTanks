@@ -5,24 +5,23 @@ namespace SbSTanks
 {
     public class StepController: IExecute
     {
-        public bool isPlayerTurn = true;
-
+       // public bool isPlayerTurn = true;
         private TimerData _startTurnTimer;
         private TimerData _shotDelayTimer;
         private TimerData _endTurnTimer;
         private bool _isDelay;
         private List<Enemy> _enemies;
-        private Player _player;
+        private PlayerController _player;
         private TimerController _timerController;
         private ReInitController _reInitController;
         public int GetTurnNumber { get; private set; }
 
-        public StepController(List<Enemy> enemies, Player player, TimerController timerController)
+        public StepController(List<Enemy> enemies, PlayerController player, TimerController timerController)
         {
             _enemies = enemies;
             _player = player;
             _timerController = timerController;
-            _reInitController = new ReInitController(enemies, player);
+            _reInitController = new ReInitController(enemies);
             _isDelay = false;
             GetTurnNumber = 1;
         }
@@ -41,7 +40,7 @@ namespace SbSTanks
                 enemy.isShotReturn = false;
             }
             _reInitController.ReInit();
-            isPlayerTurn = true;
+            _player.IsPlayerTurn = true;
             _endTurnTimer = null;
             _isDelay = false;
             GetTurnNumber++;
@@ -56,7 +55,7 @@ namespace SbSTanks
         }
         private void CheckStartTurn()
         {
-            if (isPlayerTurn|| _isDelay || !_enemies.Contains(_enemies.Find(enemy => !enemy.isShotReturn && !enemy.isDead))) return; 
+            if (_player.IsPlayerTurn|| _isDelay || !_enemies.Contains(_enemies.Find(enemy => !enemy.isShotReturn && !enemy.isDead))) return; 
             _isDelay = true;
           _shotDelayTimer = new TimerData(3f, Time.time);
           _timerController.AddTimer(_shotDelayTimer);

@@ -7,7 +7,6 @@ namespace SbSTanks
         private TimerController _timerController;//
         private TimerData _timeData;
         public Player GetPlayer { get => _player; }
-       
         public int GetAndSetIndexOfTimer { get => _indexOfTimer; set => _indexOfTimer = value; }
         public TimerController GetAndSetTimerController { get => _timerController; set => _timerController = value; }
         public TimerData GetAndSetTimeData { get => _timeData; set => _timeData = value; }

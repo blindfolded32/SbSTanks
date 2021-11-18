@@ -6,16 +6,14 @@ namespace SbSTanks
     public class ReInitController
     {
         private readonly List<Enemy> _enemies;
-        private readonly Player _player;
-        public ReInitController(List<Enemy> enemies, Player player)
+        public ReInitController(List<Enemy> enemies)
         {
             _enemies = enemies;
-            _player = player;
         }
 
         public void ReInit()
         {
-            _player.SetUnitElement(Random.Range(0,2));
+          // _player.SetUnitElement(Random.Range(0,2));
            // Debug.Log($"Player new element is {_player.GetUnitElement}");
             foreach (var enemy in _enemies)
             {

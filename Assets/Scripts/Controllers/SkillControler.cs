@@ -7,9 +7,10 @@ namespace SbSTanks
     {
         private readonly PlayerController _player;
         private readonly StepController _stepController;
-        private ButtonActivationController _buttonControler;
+        private readonly ButtonActivationController _buttonControler;
         private readonly ButtonActivationController _buttonActivationController;
-        public SkillControler(PlayerController player, StepController stepController, SkillButtons skillButtons,IPCInputSpace inputState, ButtonActivationController buttonActivationController)
+        public SkillControler(PlayerController player, StepController stepController, 
+                            SkillButtons skillButtons,IPCInputSpace inputState, ButtonActivationController buttonActivationController)
         {
             _player = player;
             _stepController = stepController;
@@ -20,51 +21,45 @@ namespace SbSTanks
         private void EarthSkill()
         {
             if (_stepController.GetTurnNumber%3 != 0) return;
-            
-            _player.isPlayerTurn = true;
-            var transformPosition = _buttonControler.SwitchEnemyButtonsMatching.ElementAt(Random.Range(0, _buttonControler.SwitchEnemyButtonsMatching.Count))
+            _player.IsPlayerTurn = true;
+            var transformPosition = _buttonControler.SwitchEnemyButtonsMatching.
+                ElementAt(Random.Range(0, _buttonControler.SwitchEnemyButtonsMatching.Count))
                 .Value.transform;
             _player.RotatePlayer(transformPosition);
-            _player.GetPlayerModel.GetPlayer.Shot(_player.GetPlayerModel,0);
-            Debug.Log("make it random");
+            _player.PlayerModel.GetPlayer.Shot(_player,0);
         }
         private void WaterSkill()
         {
-            _player.isPlayerTurn = true;
-            _player.GetPlayerModel.GetPlayer.Shot(_player.GetPlayerModel,2);
-            Debug.Log("Target on it");
+            _player.IsPlayerTurn = true;
+            _player.PlayerModel.GetPlayer.Shot(_player,2);
         }
         private void FireSkill()
         {
             if (_stepController.GetTurnNumber%2 !=0) return;
-           
-            _player.isPlayerTurn = true;
-            foreach (var enemy in _buttonControler.SwitchEnemyButtonsMatching.Values)
+            _player.IsPlayerTurn = true;
+            foreach (var enemy in _buttonControler.SwitchEnemyButtonsMatching.Values.Where(enemy => !enemy.isDead))
             {
-                if (!enemy.isDead) enemy.TakingDamage(10,1);
+                enemy.TakingDamage(10,1);
             }
-            Debug.Log("AOE");
+            _player.IsPlayerTurn = false;
         }
         private void SkillSelector(KeyCode id)
         {
-            if(!_stepController.isPlayerTurn) return;
+            if(!_player.IsPlayerTurn) return;
             switch (id)
             {
                 case KeyCode.Q:
                 {
-                    Debug.Log("Earth");
                     EarthSkill();
                     break;
                 }
                 case KeyCode.W:
                 {
-                    Debug.Log("Water");
                     WaterSkill();
                     break;
                 }
                 case KeyCode.E:
                 {
-                    Debug.Log("Fire");
                     FireSkill();
                     break;
                 }

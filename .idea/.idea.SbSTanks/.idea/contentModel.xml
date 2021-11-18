@@ -65,7 +65,6 @@
           <e p="Initialization" t="Include">
             <e p="ParticlesInitialization.cs" t="Include" />
             <e p="PCInputSpace.cs" t="Include" />
-            <e p="PCInputSpaceInitialization.cs" t="Include" />
             <e p="TimerSetsInitialization.cs" t="Include" />
           </e>
           <e p="Interfaces" t="Include">

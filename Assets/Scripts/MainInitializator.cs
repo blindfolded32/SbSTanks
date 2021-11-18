@@ -21,13 +21,13 @@
 
             var shellController = new ShellController(data.Player, data.Enemies);
             mainController.Add(shellController);
-            var playerController = new PlayerController(playerModel, stepController, uiModel, data.Enemies,
-                data.EnemiesSwitchButtons);
+            var playerController = new PlayerController(playerModel, stepController);
            var skillUI = new SkillButtons(uiModel, stepController);
             mainController.Add(new InputController(pcinput));
             mainController.Add(playerController);
-            mainController.Add(new ButtonActivationController(uiModel, stepController));
-            new SkillControler(playerController,stepController,skillUI,pcinput);
+            var buttonActivationController = new ButtonActivationController(uiModel, stepController, data.Enemies, playerController);
+            mainController.Add(buttonActivationController);
+            new SkillControler(playerController,stepController,skillUI,pcinput,buttonActivationController);
             mainController.Add(skillUI);
 
             for (int i = 0; i < data.Enemies.Count; i++)

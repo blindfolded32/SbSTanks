@@ -55,22 +55,23 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/PCInputSpace.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitParameters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/PlayerModel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Task2/PlayerRotationEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/NameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellPool.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shell/Shell.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ButtonActivationController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Model/UIModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillButtons.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/BattleController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Task2/PlayerRotationEvent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ButtonActivationController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillControler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
       </list>
     </option>
   </component>
@@ -94,10 +95,10 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="11400">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="11400" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -133,6 +134,7 @@
       <workItem from="1637132615174" duration="7121000" />
       <workItem from="1637147384211" duration="6401000" />
       <workItem from="1637218778392" duration="4158000" />
+      <workItem from="1637234243460" duration="2519000" />
     </task>
     <servers />
   </component>
@@ -237,9 +239,10 @@
     </state>
     <state width="1877" height="240" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1637223833516" />
     <state width="2517" height="315" key="GridCell.Tab.3.right/0.0.2560.1050@0.0.2560.1050" timestamp="1636219475348" />
-    <state x="1114" y="226" key="RiderGenerateDialog" timestamp="1637079924343">
-      <screen x="0" y="0" width="2560" height="1050" />
+    <state x="836" y="224" key="RiderGenerateDialog" timestamp="1637235851646">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="836" y="224" key="RiderGenerateDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1637235851646" />
     <state x="1114" y="226" key="RiderGenerateDialog/0.0.2560.1050@0.0.2560.1050" timestamp="1637079924343" />
     <state x="936" y="243" key="run.anything.popup" timestamp="1637084316768">
       <screen x="0" y="0" width="2560" height="1050" />

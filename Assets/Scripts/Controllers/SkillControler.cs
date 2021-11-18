@@ -7,11 +7,13 @@ namespace SbSTanks
     {
         private readonly PlayerController _player;
         private readonly StepController _stepController;
-        private IPCInputSpace _buttonControler;
-        public SkillControler(PlayerController player, StepController stepController, SkillButtons skillButtons,IPCInputSpace inputState)
+        private ButtonActivationController _buttonControler;
+        private readonly ButtonActivationController _buttonActivationController;
+        public SkillControler(PlayerController player, StepController stepController, SkillButtons skillButtons,IPCInputSpace inputState, ButtonActivationController buttonActivationController)
         {
             _player = player;
             _stepController = stepController;
+            _buttonControler = buttonActivationController;
             inputState.ButtonDown += SkillSelector;
             skillButtons.UiSkill += SkillSelector;
         }
@@ -20,9 +22,9 @@ namespace SbSTanks
             if (_stepController.GetTurnNumber%3 != 0) return;
             
             _player.isPlayerTurn = true;
-            var transformPosition = _player.SwitchEnemyButtonsMatching.ElementAt(Random.Range(0, _player.SwitchEnemyButtonsMatching.Count))
-                .Value.transform.position;
-            _player.RotatePlayer(Quaternion.LookRotation(transformPosition - _player.GetTransform().position));
+            var transformPosition = _buttonControler.SwitchEnemyButtonsMatching.ElementAt(Random.Range(0, _buttonControler.SwitchEnemyButtonsMatching.Count))
+                .Value.transform;
+            _player.RotatePlayer(transformPosition);
             _player.GetPlayerModel.GetPlayer.Shot(_player.GetPlayerModel,0);
             Debug.Log("make it random");
         }
@@ -37,7 +39,7 @@ namespace SbSTanks
             if (_stepController.GetTurnNumber%2 !=0) return;
            
             _player.isPlayerTurn = true;
-            foreach (var enemy in _player.SwitchEnemyButtonsMatching.Values)
+            foreach (var enemy in _buttonControler.SwitchEnemyButtonsMatching.Values)
             {
                 if (!enemy.isDead) enemy.TakingDamage(10,1);
             }

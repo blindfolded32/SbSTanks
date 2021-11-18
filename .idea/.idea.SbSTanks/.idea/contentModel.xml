@@ -42,6 +42,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Controllers" t="Include">
+            <e p="BattleController.cs" t="Include" />
             <e p="ButtonActivationController.cs" t="Include" />
             <e p="InputController.cs" t="Include" />
             <e p="Model" t="Include">

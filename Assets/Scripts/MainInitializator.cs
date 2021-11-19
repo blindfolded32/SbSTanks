@@ -16,9 +16,7 @@ namespace SbSTanks
             var playerController = new PlayerController(new PlayerModel(timerController), Object.FindObjectOfType<Player>());
             var stepController = new StepController(enemies,playerController, timerController);
             var shellController = new ShellController(playerController,enemies);
-            var skillUI = new SkillButtons(uiModel, stepController);
-            var keyBoardInput = new KeyBoardInput();
-            var inputController = new InputController(keyBoardInput, skillUI);
+            var inputController = new InputController(new KeyBoardInput(), new SkillButtons(uiModel, stepController));
             var buttonActivationController = new ButtonActivationController(uiModel, stepController, enemies, playerController);
             
             mainController.Add(shellController);
@@ -39,8 +37,6 @@ namespace SbSTanks
             }
 
             playerController.GetView.Init(new UnitInitializationData(new Health(100.0f),2.0f,0 ),shellController,stepController);
-
-
         }
     }
 }

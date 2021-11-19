@@ -2,8 +2,8 @@
 {
     public interface IParameters
     {
-        public int Hp { get; }
-        public int Damage { get; }
+        public Health Hp { get; }
+        public float Damage { get; set; }
         public int ElementId { get; }
     }
 }

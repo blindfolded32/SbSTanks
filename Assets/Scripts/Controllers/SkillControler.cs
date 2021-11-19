@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SbSTanks
 {
@@ -10,13 +12,16 @@ namespace SbSTanks
         private readonly ButtonActivationController _buttonControler;
         private readonly ButtonActivationController _buttonActivationController;
         public SkillControler(PlayerController player, StepController stepController, 
-                            SkillButtons skillButtons,IPCInputSpace inputState, ButtonActivationController buttonActivationController)
+                            InputController inputState, ButtonActivationController buttonActivationController)
         {
             _player = player;
             _stepController = stepController;
             _buttonControler = buttonActivationController;
-            inputState.ButtonDown += SkillSelector;
-            skillButtons.UiSkill += SkillSelector;
+            inputState.SkillUsed +=(x)=>
+            {
+                Debug.Log(x.ToString());
+                SkillSelector(x);
+            };
         }
         private void EarthSkill()
         {
@@ -26,12 +31,12 @@ namespace SbSTanks
                 ElementAt(Random.Range(0, _buttonControler.SwitchEnemyButtonsMatching.Count))
                 .Value.transform;
             _player.RotatePlayer(transformPosition);
-            _player.PlayerModel.GetPlayer.Shot(_player,0);
+            _player.GetView.Shot(_player,0);
         }
         private void WaterSkill()
         {
             _player.IsPlayerTurn = true;
-            _player.PlayerModel.GetPlayer.Shot(_player,2);
+            _player.GetView.Shot(_player,2);
         }
         private void FireSkill()
         {

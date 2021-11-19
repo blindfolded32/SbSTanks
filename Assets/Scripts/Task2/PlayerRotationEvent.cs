@@ -12,8 +12,7 @@ namespace SbSTanks
 
         public PlayerRotationEvent(PlayerController player, Transform enemyPosition, Button button)
         {
-            _player =player.GetTransform();
-
+            _player =player.GetTransform;
             _enemyPosition = enemyPosition;
             button.onClick.AddListener(RotatePlayerTank);
         }

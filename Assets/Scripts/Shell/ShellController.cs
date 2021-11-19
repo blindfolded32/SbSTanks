@@ -9,13 +9,13 @@ namespace SbSTanks
     {
         private List<Shell> _shells = new List<Shell>(8); //TODO - take out the model
         private readonly LayerMask _shellMask = 6;
-        private IUnit _player;
+        private PlayerController _player;
         private List<Enemy> _enemies;
         private LayerMask _groundMask;
         private const string PREFAB_PATH = "Prefabs/Shell";
         private const float NEW_SHELL_OFFSET = 0.5f;
         private const float X_ROTATE_IN_FLY = 0.7f;
-        public ShellController(IUnit player, List<Enemy> enemies)
+        public ShellController(PlayerController player, List<Enemy> enemies)
         {
             _player = player;
             _enemies = enemies;
@@ -40,7 +40,7 @@ namespace SbSTanks
                 }
             }
         }
-        public GameObject GetShell(int damage, Transform startPosition, int elementId)
+        public GameObject GetShell(float damage, Transform startPosition, int elementId)
         {
             GameObject shellObject = null;
             foreach (var shell in _shells.Where(shell => !shell.IsActive))

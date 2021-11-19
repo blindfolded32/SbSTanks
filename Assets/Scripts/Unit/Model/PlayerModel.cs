@@ -1,19 +1,15 @@
+using UnityEngine;
+
 namespace SbSTanks
 {
     public class PlayerModel
     {
-        private Player _player;//
-        private int _indexOfTimer;
-        private TimerController _timerController;//
-        private TimerData _timeData;
-        public Player GetPlayer { get => _player; }
-        public int GetAndSetIndexOfTimer { get => _indexOfTimer; set => _indexOfTimer = value; }
-        public TimerController GetAndSetTimerController { get => _timerController; set => _timerController = value; }
-        public TimerData GetAndSetTimeData { get => _timeData; set => _timeData = value; }
-        public PlayerModel(TimerController timerController, Player player)
+        public int GetAndSetIndexOfTimer { get; set; }
+        public TimerController GetAndSetTimerController { get; set; }
+        public TimerData GetAndSetTimeData { get; set; }
+        public PlayerModel(TimerController timerController)
         {
-            _timerController = timerController;
-            _player = player;
+            GetAndSetTimerController = timerController;
         }
 
     }

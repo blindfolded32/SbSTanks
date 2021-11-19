@@ -21,5 +21,15 @@ namespace SbSTanks
                // Debug.Log($"Enemy new element is {enemy.GetUnitElement}");
             }
         }
+        public void NewRound()
+        {
+            foreach (var enemy in _enemies)
+            {
+                enemy.isDead = false;
+                enemy.Parameters.Damage *= 1.1f;
+                enemy.Parameters.Hp.InjectNewHp(enemy.Parameters.Hp.Max*1.1f);
+                
+            }
+        }
     }
 }

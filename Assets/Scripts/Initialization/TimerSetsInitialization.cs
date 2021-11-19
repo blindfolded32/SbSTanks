@@ -5,36 +5,34 @@ namespace SbSTanks
 {
     public class TimerSetsInitialization
     {
-        private PlayerModel _playerModel;
+        private PlayerController _playerController;
 
         private const float DELTA_TIME_BETWEEN_SHOT = 4f;
 
-        public TimerSetsInitialization(PlayerModel playerModel, TimerActionInvoker timerActionInvoker)
+        public TimerSetsInitialization(PlayerController playerController, TimerActionInvoker timerActionInvoker)
         {
-            _playerModel = playerModel;
+            _playerController = playerController;
             timerActionInvoker.TimerSet += SetTimer;
             timerActionInvoker.TimerDelete += DeleteTimer;
         }
-
         public void SetTimer()
         {
-            if (_playerModel.GetPlayer.GetHitStatus)
+            if (_playerController.GetOrSetHit)
             {
-                _playerModel.GetAndSetTimeData = new TimerData(DELTA_TIME_BETWEEN_SHOT, Time.time);
-                _playerModel.GetAndSetTimerController.AddTimer(_playerModel.GetAndSetTimeData);
-                _playerModel.GetAndSetIndexOfTimer = _playerModel.GetAndSetTimerController.Count() - 1;
-                _playerModel.GetPlayer.GetHitStatus = false;
+                _playerController.PlayerModel.GetAndSetTimeData = new TimerData(DELTA_TIME_BETWEEN_SHOT, Time.time);
+                _playerController.PlayerModel.GetAndSetTimerController.AddTimer(_playerController.PlayerModel.GetAndSetTimeData);
+                _playerController.PlayerModel.GetAndSetIndexOfTimer = _playerController.PlayerModel.GetAndSetTimerController.Count() - 1;
+                _playerController.GetOrSetHit = false;
             }
 
         }
-
         public void DeleteTimer()
         {
-            if ((_playerModel.GetAndSetIndexOfTimer != -1))
+            if ((_playerController.PlayerModel.GetAndSetIndexOfTimer != -1))
             {
-                _playerModel.GetAndSetTimerController.DeleteTimer(_playerModel.GetAndSetTimeData);
-                _playerModel.GetAndSetTimeData = null;
-                _playerModel.GetAndSetIndexOfTimer = -1;
+                _playerController.PlayerModel.GetAndSetTimerController.DeleteTimer(_playerController.PlayerModel.GetAndSetTimeData);
+                _playerController.PlayerModel.GetAndSetTimeData = null;
+                _playerController.PlayerModel.GetAndSetIndexOfTimer = -1;
             }
 
         }

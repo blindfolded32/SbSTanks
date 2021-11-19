@@ -13,12 +13,9 @@ namespace SbSTanks
         {
             _keyBoardInput = keyBoardInput;
             _UIInput = uiInput;
-            _keyBoardInput.ButtonDown += SkillUsed;
-            _UIInput.ButtonDown +=(keycodein)=>
-            {
-                Debug.Log(keycodein.ToString());
-                SkillUsed(keycodein);
-            };
+            _keyBoardInput.ButtonDown +=(keycodein)=> SkillUsed.Invoke(keycodein);
+            _UIInput.ButtonDown +=(keycodein)=> SkillUsed.Invoke(keycodein);
+            
         }
 
         public void Execute(float deltaTime)

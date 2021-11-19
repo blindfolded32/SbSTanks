@@ -77,8 +77,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/KeyBoardInput.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/InputController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/InputController.cs" />
       </list>
     </option>
   </component>
@@ -103,10 +103,10 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17184">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="17184" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -144,6 +144,7 @@
       <workItem from="1637218778392" duration="4158000" />
       <workItem from="1637234243460" duration="5409000" />
       <workItem from="1637304613261" duration="12169000" />
+      <workItem from="1637323811693" duration="295000" />
     </task>
     <servers />
   </component>

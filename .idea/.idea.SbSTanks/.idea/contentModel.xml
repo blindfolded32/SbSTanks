@@ -63,8 +63,8 @@
             <e p="ParticleSystemShotIdentificator.cs" t="Include" />
           </e>
           <e p="Initialization" t="Include">
+            <e p="KeyBoardInput.cs" t="Include" />
             <e p="ParticlesInitialization.cs" t="Include" />
-            <e p="PCInputSpace.cs" t="Include" />
             <e p="TimerSetsInitialization.cs" t="Include" />
           </e>
           <e p="Interfaces" t="Include">
@@ -77,7 +77,6 @@
           <e p="MainInitializator.cs" t="Include" />
           <e p="MainModels" t="Include">
             <e p="GameControllerModel.cs" t="Include" />
-            <e p="GameInitializationData.cs" t="Include" />
           </e>
           <e p="Shell" t="Include">
             <e p="Shell.cs" t="Include" />

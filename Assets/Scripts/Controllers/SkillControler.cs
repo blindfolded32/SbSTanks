@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SbSTanks
 {
@@ -9,14 +11,15 @@ namespace SbSTanks
         private readonly StepController _stepController;
         private readonly ButtonActivationController _buttonControler;
         private readonly ButtonActivationController _buttonActivationController;
+        
+        
         public SkillControler(PlayerController player, StepController stepController, 
-                            SkillButtons skillButtons,IPCInputSpace inputState, ButtonActivationController buttonActivationController)
+                            IPCInputSpace inputState, ButtonActivationController buttonActivationController)
         {
             _player = player;
             _stepController = stepController;
             _buttonControler = buttonActivationController;
             inputState.ButtonDown += SkillSelector;
-            skillButtons.UiSkill += SkillSelector;
         }
         private void EarthSkill()
         {

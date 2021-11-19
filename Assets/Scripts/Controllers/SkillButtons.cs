@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 namespace SbSTanks
 {
-    public class SkillButtons : IExecute
+    public class SkillButtons : IPCInputSpace
     {
-        KeyCode[] keycodes = new KeyCode[]{KeyCode.Q, KeyCode.W, KeyCode.E};
-        private Dictionary<KeyCode, Button> _skillButtonsDict = new Dictionary<KeyCode, Button>();
-        public Action<KeyCode> UiSkill;
-        private StepController _stepController;
+        readonly KeyCode[] keycodes = new KeyCode[]{KeyCode.Q, KeyCode.W, KeyCode.E};
+        private readonly Dictionary<KeyCode, Button> _skillButtonsDict = new Dictionary<KeyCode, Button>();
 
+        private readonly StepController _stepController;
+        
+        public event Action<KeyCode> ButtonDown;
         public SkillButtons(UIModel uiModel,StepController stepController)
         {
             _stepController = stepController;
@@ -28,15 +29,11 @@ namespace SbSTanks
                 button.Value.onClick.AddListener(delegate
                 {
                     Debug.Log("Click");
-                    UiSkill?.Invoke(button.Key);
+                    ButtonDown?.Invoke(button.Key);
                 });
             }
         }
-        public void Execute(float deltaTime)
-        {
-            CheckCD();
-        }
-        private void CheckCD()
+        public void CheckButtons()
         {
             if (_stepController.GetTurnNumber % 3 != 0)
             {

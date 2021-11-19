@@ -23,7 +23,7 @@ namespace SbSTanks
             _enemies = enemies;
             _playerController = playerController;
             _canvasButtons = new List<Button>();
-            _canvasButtons.AddRange(uIModel.GetCanvases[RequiredCanvas].GetComponentsInChildren<Button>());
+            _canvasButtons.AddRange(uIModel.GetCanvases.Find(x =>x.name == "EnemyCanvas").GetComponentsInChildren<Button>());
             CreateDictionary(_canvasButtons,_enemies);
             AddListeners();
         }

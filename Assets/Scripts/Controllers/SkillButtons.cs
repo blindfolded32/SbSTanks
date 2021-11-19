@@ -18,7 +18,7 @@ namespace SbSTanks
         {
             _stepController = stepController;
             var canvas = uiModel.GetCanvases;
-            var buttonArray = canvas.Find(x => x.name == "SkillCanvas").GetComponentsInChildren<Button>();//uiModel.GetCanvases[1].GetComponentsInChildren<Button>();
+            var buttonArray = canvas.Find(x => x.name == "SkillCanvas").GetComponentsInChildren<Button>();
              Debug.Log(buttonArray.Length);
             for (int i = 0; i < buttonArray.Length; i++)
             {
@@ -35,23 +35,8 @@ namespace SbSTanks
         }
         public void CheckButtons()
         {
-            if (_stepController.GetTurnNumber % 3 != 0)
-            {
-                Debug.Log("Q is incactive");
-                _skillButtonsDict[KeyCode.Q].interactable = false;
-            }
-            else
-            {
-                _skillButtonsDict[KeyCode.Q].interactable = true;
-            }
-            if (_stepController.GetTurnNumber % 2 != 0)
-            {
-                _skillButtonsDict[KeyCode.E].interactable = false;
-            }
-            else
-            {
-                _skillButtonsDict[KeyCode.E].interactable = true;
-            }
+            _skillButtonsDict[KeyCode.Q].interactable = _stepController.GetTurnNumber % 3 == 0;
+            _skillButtonsDict[KeyCode.E].interactable = _stepController.GetTurnNumber % 2 == 0;
         }
     }
 

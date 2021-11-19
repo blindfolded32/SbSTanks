@@ -8,7 +8,7 @@ namespace SbSTanks
     {
       public float Max { get; set; }
      private float Current { get; set; }
-        public Health(int max, int current = default)
+        public Health(float max, float current = default)
         {
             Max = max;
             Current = current;

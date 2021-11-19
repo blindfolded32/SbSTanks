@@ -9,7 +9,7 @@ namespace SbSTanks
     {
         private Health _hp;
         private float _damage;
-        public bool IsDead { get; private set; }
+        public bool IsDead { get; internal set; }
         private int _elementId;
         public Health Hp
         {

@@ -7,16 +7,18 @@ namespace SbSTanks
     {
         private IPCInputSpace _keyBoardInput;
         private IPCInputSpace _UIInput;
-
         public Action<KeyCode> SkillUsed;
 
-        public InputController(KeyBoardInput keyBoardInput, SkillButtons UIInput)
+        public InputController(IPCInputSpace keyBoardInput, IPCInputSpace uiInput)
         {
             _keyBoardInput = keyBoardInput;
-            _UIInput = UIInput;
+            _UIInput = uiInput;
             _keyBoardInput.ButtonDown += SkillUsed;
-            _UIInput.ButtonDown += SkillUsed;
-
+            _UIInput.ButtonDown +=(keycodein)=>
+            {
+                Debug.Log(keycodein.ToString());
+                SkillUsed(keycodein);
+            };
         }
 
         public void Execute(float deltaTime)

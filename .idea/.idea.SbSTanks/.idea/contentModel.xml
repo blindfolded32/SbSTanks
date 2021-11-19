@@ -42,10 +42,10 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Controllers" t="Include">
-            <e p="BattleController.cs" t="Include" />
             <e p="ButtonActivationController.cs" t="Include" />
             <e p="InputController.cs" t="Include" />
             <e p="Model" t="Include">
+              <e p="Health.cs" t="Include" />
               <e p="TimerData.cs" t="Include" />
               <e p="UIModel.cs" t="Include" />
             </e>

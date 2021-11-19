@@ -8,11 +8,11 @@ namespace SbSTanks
         private GameObject _particleSystemGameObject;
 
         private const string PARTICLE_PATH = "Partcle/CompleteTankExplosion";
-        public ParticlesInitialization(Player player, List<Enemy> enemies)
+        public ParticlesInitialization(PlayerController player, List<Enemy> enemies)
         {
             _particleSystemGameObject = Resources.Load<GameObject>(PARTICLE_PATH);
             List<IUnit> tanks = new List<IUnit>();
-            tanks.Add(player);
+            tanks.Add(player.GetView);
             
             for (int i = 0; i < enemies.Count; i++)
             {

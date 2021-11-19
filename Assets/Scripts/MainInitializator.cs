@@ -1,8 +1,43 @@
-﻿namespace SbSTanks
+﻿using System.Collections.Generic;
+using System.Linq;
+using  Object = UnityEngine.Object;
+
+namespace SbSTanks
+
+
 {
     public class MainInitializator
     {
-        public MainInitializator(GameInitializationData data, GameController mainController)
+        private List<Enemy> _enemies;
+        public MainInitializator(GameController mainController)
+        {
+            var uiModel = new UIModel();
+            var timerController = new TimerController();
+            var pcinput = new PCInputSpace();
+            var timerActionInvoker = new TimerActionInvoker();
+            _enemies = Object.FindObjectsOfType<Enemy>().ToList();
+            //var playerModel = new PlayerModel(timerController, data.Player);
+            var playerController = new PlayerController(new PlayerModel(timerController), Object.FindObjectOfType<Player>());//, stepController);
+            var stepController = new StepController(_enemies,playerController, timerController);
+            var shellController = new ShellController(playerController,_enemies);
+            var skillUI = new SkillButtons(uiModel, stepController);
+            var buttonActivationController = new ButtonActivationController(uiModel, stepController, _enemies, playerController);
+            new TimerSetsInitialization(playerController, timerActionInvoker);
+            new ParticlesInitialization(playerController, _enemies);
+            new SkillControler(playerController,stepController,skillUI,pcinput,buttonActivationController);
+          
+            mainController.Add(shellController);
+            mainController.Add(stepController);
+          
+            mainController.Add(new InputController(pcinput));
+            mainController.Add(playerController);
+            mainController.Add(timerController);
+            mainController.Add(buttonActivationController);
+            mainController.Add(skillUI);
+        }
+        
+        
+     /*   public MainInitializator(GameInitializationData data, GameController mainController)
         {
             var uiModel = new UIModel();
             new ParticlesInitialization(data.Player, data.Enemies);
@@ -37,6 +72,6 @@
             }
             
             data.Player.Init(data.PlayerInitializationData, shellController, stepController); 
-        }
+        }*/
     }
 }

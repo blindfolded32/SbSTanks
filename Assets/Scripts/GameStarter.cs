@@ -10,7 +10,7 @@ namespace SbSTanks
         private void Awake()
         {
             _mainController = new GameController();
-            new MainInitializator(_dataForInitialization, _mainController);
+            new MainInitializator(_mainController);
         }
 
         void Update()

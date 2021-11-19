@@ -26,12 +26,12 @@ namespace SbSTanks
                 ElementAt(Random.Range(0, _buttonControler.SwitchEnemyButtonsMatching.Count))
                 .Value.transform;
             _player.RotatePlayer(transformPosition);
-            _player.PlayerModel.GetPlayer.Shot(_player,0);
+            _player.GetView.Shot(_player,0);
         }
         private void WaterSkill()
         {
             _player.IsPlayerTurn = true;
-            _player.PlayerModel.GetPlayer.Shot(_player,2);
+            _player.GetView.Shot(_player,2);
         }
         private void FireSkill()
         {

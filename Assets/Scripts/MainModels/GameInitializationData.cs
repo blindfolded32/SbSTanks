@@ -21,5 +21,6 @@ namespace SbSTanks
         public UnitInitializationData EnemyInitializationData => _enemyInitializationData;
         public List<Button> EnemiesSwitchButtons => _enemiesSwitchButtons;
         public Text Text => _textNewRound;
+
     }
 }

@@ -5,7 +5,7 @@ namespace SbSTanks
 {
     public abstract class Unit : MonoBehaviour, IDamagebleUnit, IUnit
     {
-        public Action<int> TakeDamage { get; set; }
+        public Action<float> TakeDamage { get; set; }
         public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
         [SerializeField] protected UnitParameters _parameters;
         [SerializeField] protected Transform _shotStartPoint;
@@ -14,18 +14,17 @@ namespace SbSTanks
         public IParameters Parameters => _parameters;
         public Transform GetShotPoint => _shotStartPoint;
         public Transform Transform => gameObject.transform;
-        //public int GetUnitElement => _parameters.ElementId;
         public bool isDead;
         public void SetUnitElement(int value) => _parameters.ElementId = value;
         public void Init(UnitInitializationData data, ShellController shellController, StepController stepController)
         {             
-            _parameters = new UnitParameters(this, data.hp,data.element,data.damage); //changed
+            _parameters = new UnitParameters(this, data.Hp,data.Element,data.Damage); //changed
             _shellController = shellController;
             isDead = false;
            _parameters.ConfirmDeath +=KillUnit;
         }
         protected abstract void OnCollisionEnter(Collision collision);
-        public void TakingDamage(int damage, int elementId)
+        public void TakingDamage(float damage, int elementId)
         {
             GetComponentInChildren<ParticleSystemShotIdentificator>().GetComponent<ParticleSystem>().Play();
             if (elementId == _parameters.ElementId || elementId - _parameters.ElementId == -1) TakeDamage?.Invoke(damage);

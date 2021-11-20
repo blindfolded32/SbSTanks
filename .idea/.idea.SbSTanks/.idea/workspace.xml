@@ -24,7 +24,393 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80811fad-5e4c-4411-addb-b24f708cb8d6" name="Default Changelist" comment="" />
+    <list default="true" id="80811fad-5e4c-4411-addb-b24f708cb8d6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/TargetSelectionController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/TargetSelectionController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pointers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pointers/TargetSelectedPoint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pointers/TargetSelectedPoint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pointers/TargetSelectionPoint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pointers/TargetSelectionPoint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/01 - Default.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/01 - Default.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Black.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Black.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 0.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 0.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 1.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 1.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 10.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 10.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 11.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 11.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 12.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 12.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 13.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 13.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 14.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 14.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 15.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 15.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 16.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 16.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 17.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 17.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 18.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 18.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 19.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 19.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 2.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 2.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 20.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 20.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 3.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 3.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 4.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 4.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 5.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 5.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 6.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 6.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 7.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 7.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 8.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 8.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 9.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Green/ring target 9.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 0.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 0.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 1.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 1.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 10.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 10.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 11.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 11.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 12.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 12.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 13.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 13.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 14.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 14.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 15.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 15.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 16.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 16.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 17.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 17.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 18.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 18.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 19.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 19.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 2.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 2.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 20.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 20.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 3.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 3.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 4.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 4.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 5.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 5.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 6.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 6.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 7.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 7.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 8.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 8.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 9.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Neutral/ring target 9.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 0.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 0.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 1.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 1.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 10.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 10.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 11.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 11.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 12.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 12.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 13.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 13.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 14.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 14.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 15.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 15.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 16.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 16.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 17.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 17.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 18.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 18.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 19.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 19.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 2.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 2.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 20.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 20.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 3.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 3.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 4.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 4.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 5.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 5.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 6.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 6.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 7.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 7.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 8.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 8.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 9.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Materials/Red/ring target 9.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 0.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 0.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 1.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 1.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 10.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 10.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 11.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 11.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 12.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 12.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 13.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 13.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 14.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 14.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 15.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 15.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 16.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 16.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 17.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 17.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 18.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 18.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 19.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 19.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 2.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 2.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 20.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 20.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 3.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 3.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 4.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 4.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 5.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 5.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 6.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 6.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 7.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 7.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 8.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 8.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 9.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Meshs/ring target 9.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 0 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 0 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 0 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 0 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 0.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 0.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 1 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 1 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 1 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 1 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 1.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 1.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 10 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 10 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 10 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 10 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 10.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 10.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 11 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 11 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 11 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 11 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 11.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 11.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 12 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 12 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 12 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 12 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 12.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 12.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 13 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 13 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 13 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 13 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 13.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 13.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 14 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 14 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 14 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 14 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 14.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 14.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 15 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 15 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 15 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 15 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 15.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 15.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 16 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 16 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 16 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 16 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 16.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 16.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 17 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 17 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 17 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 17 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 17.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 17.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 18 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 18 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 18 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 18 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 18.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 18.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 19 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 19 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 19 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 19 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 19.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 19.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 2 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 2 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 2 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 2 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 2.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 2.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 20 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 20 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 20 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 20 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 20.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 20.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 3 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 3 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 3 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 3 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 3.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 3.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 4 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 4 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 4 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 4 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 4.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 4.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 5 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 5 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 5 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 5 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 5.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 5.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 6 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 6 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 6 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 6 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 6.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 6.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 7 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 7 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 7 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 7 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 7.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 7.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 8 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 8 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 8 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 8 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 8.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 8.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 9 Green.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 9 Green.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 9 Red.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 9 Red.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 9.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/2d ring target 9.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 0.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 0.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 1.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 1.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 2.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 2.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 3.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 3.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 4.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 4.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 5.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 5.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 6.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 6.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 7.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 7.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 8.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 8.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 9.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Prefabs/ring target 9.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 0.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 1.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 10.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 11.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 12.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 13.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 14.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 15.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 16.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 17.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 18.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 19.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 20.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 3.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 4.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 5.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 6.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 7.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 8.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/sTargeting/Textures/ring target 9.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SbSTanks/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SbSTanks/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SbSTanks/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SbSTanks/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SbSTanks/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SbSTanks/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SbSTanks/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillControler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillControler.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,11 +420,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C7864A0E-AEB2-4B2A-999F-B177623D54B4/4b/6b2a7d0f/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695D1CC9-3CCA-4506-9C52-8C15C9FDD749/c2/ea818fe4/List`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Initialization/KeyBoardInput.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6b1444477c1d41c692ef6c02a838308529ac30/80/b10656b9/Action`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/TargetSelectionController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/TargetSelection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6AF207EC-D210-4462-8913-F7CC589986AE/15/051a3fee/Input.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -107,8 +492,9 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
+      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
-        <set />
+        <list />
       </option>
       <method v="2" />
     </configuration>
@@ -116,8 +502,9 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
+      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
-        <set />
+        <list />
       </option>
       <method v="2" />
     </configuration>
@@ -145,12 +532,15 @@
       <workItem from="1637234243460" duration="5409000" />
       <workItem from="1637304613261" duration="12169000" />
       <workItem from="1637323811693" duration="667000" />
+      <workItem from="1637333057760" duration="2691000" />
+      <workItem from="1637388649204" duration="18884000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="Vcs.Log.Tabs.Properties">
@@ -269,14 +659,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Initialization/KeyBoardInput.cs</url>
           <line>15</line>
-          <properties documentPath="C:\Users\1\Documents\GitHub\SbSTanks\Assets\Scripts\Initialization\KeyBoardInput.cs" initialLine="19">
-            <startOffsets>
-              <option value="383" />
-            </startOffsets>
-            <endOffsets>
-              <option value="413" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\1\Documents\GitHub\SbSTanks\Assets\Scripts\Initialization\KeyBoardInput.cs" initialLine="19" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

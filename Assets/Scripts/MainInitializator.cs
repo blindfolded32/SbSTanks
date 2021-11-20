@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using UnityEngine;
 using  Object = UnityEngine.Object;
 
 namespace SbSTanks
@@ -9,6 +10,7 @@ namespace SbSTanks
     {
         public MainInitializator(GameController mainController)
         {
+            var camera = Camera.main; // Может быть взять из GameStater.cs? 
             var enemies = Object.FindObjectsOfType<Enemy>().ToList();
             var uiModel = new UIModel();
             var timerController = new TimerController();
@@ -18,6 +20,7 @@ namespace SbSTanks
             var shellController = new ShellController(playerController,enemies);
             var inputController = new InputController(new KeyBoardInput(), new SkillButtons(uiModel, stepController));
             var buttonActivationController = new ButtonActivationController(uiModel, stepController, enemies, playerController);
+            var targetSelectionController = new TargetSelectionController(camera, playerController, enemies);
             
             mainController.Add(shellController);
             mainController.Add(stepController);
@@ -25,10 +28,11 @@ namespace SbSTanks
             mainController.Add(playerController);
             mainController.Add(timerController);
             mainController.Add(buttonActivationController);
+            mainController.Add(targetSelectionController);
             
             new TimerSetsInitialization(playerController, timerActionInvoker);
             new ParticlesInitialization(playerController, enemies);
-            new SkillControler(playerController,stepController,inputController,buttonActivationController);
+            new SkillController(playerController,stepController,inputController,buttonActivationController);
 
 
             foreach (var enemy in enemies)

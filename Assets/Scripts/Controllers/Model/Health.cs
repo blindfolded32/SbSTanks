@@ -6,8 +6,8 @@ namespace SbSTanks
     [Serializable]
     public class Health
     {
-      public float Max { get; set; }
-     private float Current { get; set; }
+        public float Max { get; set; }
+        private float Current { get; set; }
         public Health(float max, float current = default)
         {
             Max = max;

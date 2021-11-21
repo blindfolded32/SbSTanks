@@ -6,6 +6,7 @@ namespace SbSTanks
     public abstract class Unit : MonoBehaviour, IDamagebleUnit, IUnit
     {
         public Action<float> TakeDamage { get; set; }
+        public Action<float> HealthChanged { get; set; }
         public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
         [SerializeField] protected UnitParameters _parameters;
         [SerializeField] protected Transform _shotStartPoint;
@@ -29,6 +30,7 @@ namespace SbSTanks
             GetComponentInChildren<ParticleSystemShotIdentificator>().GetComponent<ParticleSystem>().Play();
             if (elementId == _parameters.ElementId || elementId - _parameters.ElementId == -1) TakeDamage?.Invoke(damage);
             else TakeDamage?.Invoke(damage*2);
+            HealthChanged(_parameters.Hp.GetCurrentHp);
         }
         private void KillUnit(bool val)
         {

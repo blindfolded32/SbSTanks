@@ -27,6 +27,7 @@ namespace SbSTanks
             set => _elementId = value;
         }
         public Action<bool> ConfirmDeath { get; set; }
+        
         public UnitParameters(Unit unit, Health hp, int elementId, float damage)
         {
             _hp = hp;
@@ -38,7 +39,7 @@ namespace SbSTanks
         private void GetDamage(float damage)
         {
             _hp.ChangeCurrentHealth(damage);
-            Debug.Log($"My hp is {_hp}");
+            Debug.Log($"My hp is {_hp.GetCurrentHp}");
            if (_hp.GetCurrentHp <= 0)
             {
                 Debug.Log("killed");

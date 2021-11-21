@@ -420,9 +420,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6b1444477c1d41c692ef6c02a838308529ac30/80/b10656b9/Action`2.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/TargetSelectionController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/TargetSelection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -435,14 +432,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellPool.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Model/UIModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Enemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/PCInputSpaceInitialization.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IParameters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/BattleController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IDamagebleUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shell/Shell.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitParameters.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitInitializationData.cs" />
@@ -464,6 +459,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/KeyBoardInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/InputController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
       </list>
     </option>
   </component>
@@ -492,9 +489,8 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
-      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
-        <list />
+        <set />
       </option>
       <method v="2" />
     </configuration>
@@ -502,9 +498,8 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
-      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
-        <list />
+        <set />
       </option>
       <method v="2" />
     </configuration>
@@ -534,6 +529,7 @@
       <workItem from="1637323811693" duration="667000" />
       <workItem from="1637333057760" duration="2691000" />
       <workItem from="1637388649204" duration="18884000" />
+      <workItem from="1637481138066" duration="1366000" />
     </task>
     <servers />
   </component>

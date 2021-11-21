@@ -18,15 +18,21 @@ namespace SbSTanks
 
         public StepController(List<Enemy> enemies, PlayerController player, TimerController timerController)
         {
+            _reInitController = new ReInitController();
             _enemies = enemies;
             _player = player;
             _timerController = timerController;
-            _reInitController = new ReInitController(enemies);
             _isDelay = false;
             GetTurnNumber = 1;
         }
         public void Execute(float deltaTime)
         {
+            if (CheckDead())
+            {
+                Debug.Log("Battle over");
+                _reInitController.NewRound(_enemies);
+                 return;
+            }
             CheckStartTurn();
             CheckDelay();
             CheckEndTurn();
@@ -39,7 +45,7 @@ namespace SbSTanks
             {
                 enemy.isShotReturn = false;
             }
-            _reInitController.ReInit();
+            _reInitController.ReInit(_enemies);
             _player.IsPlayerTurn = true;
             _endTurnTimer = null;
             _isDelay = false;
@@ -53,6 +59,12 @@ namespace SbSTanks
             _shotDelayTimer = null;
             EnemyShot();
         }
+
+        private bool CheckDead()
+        {
+            return !_enemies.Find(enemy => !enemy.isDead);
+        }
+        
         private void CheckStartTurn()
         {
             if (_player.IsPlayerTurn|| _isDelay || !_enemies.Contains(_enemies.Find(enemy => !enemy.isShotReturn && !enemy.isDead))) return; 

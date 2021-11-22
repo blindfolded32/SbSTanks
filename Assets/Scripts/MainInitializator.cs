@@ -37,10 +37,10 @@ namespace SbSTanks
 
             foreach (var enemy in enemies)
             {
-                enemy.Init(new UnitInitializationData(new Health(100.0f),1.0f,1),shellController,stepController );
+                enemy.Init(new UnitInitializationData(new Health(100.0f, 100.0f),1.0f,1),shellController,stepController );
             }
 
-            playerController.GetView.Init(new UnitInitializationData(new Health(100.0f),2.0f,0 ),shellController,stepController);
+            playerController.GetView.Init(new UnitInitializationData(new Health(100.0f,100.0f),2.0f,0 ),shellController,stepController);
         }
     }
 }

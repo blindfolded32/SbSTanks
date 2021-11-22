@@ -37,6 +37,7 @@ namespace SbSTanks
                 enemy.isDead = false;
                 enemy.Parameters.Damage *= 1.1f;
                 enemy.Parameters.Hp.InjectNewHp(enemy.Parameters.Hp.Max*1.1f);
+                enemy.GetComponentInChildren<EnemyHealthBar>()._foregroundImage.fillAmount =1;
             }
             _playerController.GetView.Parameters.ElementId = (Random.Range(0, 2));
         }
@@ -60,7 +61,9 @@ namespace SbSTanks
                 currentEnemy[i].isDead = false;
                 currentEnemy[i].Parameters.Damage = _defParams[i].Parameters.Damage;
                 currentEnemy[i].Parameters.Hp.InjectNewHp(_defParams[i].Parameters.Hp.Max);
+                currentEnemy[i].GetComponentInChildren<EnemyHealthBar>()._foregroundImage.fillAmount =1;
             }
+            
         }
     }
 }

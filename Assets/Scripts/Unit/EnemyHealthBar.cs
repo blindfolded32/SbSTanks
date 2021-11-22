@@ -7,7 +7,7 @@ namespace SbSTanks
     public class EnemyHealthBar : MonoBehaviour
     {
         [SerializeField] 
-        private Image _foregroundImage;
+        public Image _foregroundImage;
         private float _imageUpdateSpeed = 1f;
         private Unit _unit;
 

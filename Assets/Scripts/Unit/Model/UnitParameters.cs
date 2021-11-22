@@ -9,6 +9,7 @@ namespace SbSTanks
     {
         private Health _hp;
         private float _damage;
+        public Action<bool> ConfirmDeath { get; set; }
         public bool IsDead { get; internal set; }
         private int _elementId;
         public Health Hp
@@ -26,8 +27,6 @@ namespace SbSTanks
             get => _elementId;
             set => _elementId = value;
         }
-        public Action<bool> ConfirmDeath { get; set; }
-        
         public UnitParameters(Unit unit, Health hp, int elementId, float damage)
         {
             _hp = hp;

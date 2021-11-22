@@ -16,11 +16,9 @@ namespace SbSTanks
         public bool IsPlayerTurn;
         public PlayerController(PlayerModel model, Player player)
         {
-            
             PlayerModel = model;
             _player =player;
             IsPlayerTurn = true;
-            
         }
         public Transform GetTransform => _player.transform;
         public bool GetOrSetHit

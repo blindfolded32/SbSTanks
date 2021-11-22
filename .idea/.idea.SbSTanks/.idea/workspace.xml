@@ -88,12 +88,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Task2/PlayerRotationEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shell/Shell.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TimerActionInvoker.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Model/UIModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitParameters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/EnemyHealthBar.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitParameters.cs" />
       </list>
     </option>
   </component>
@@ -167,7 +167,7 @@
       <workItem from="1637491478719" duration="13430000" />
       <workItem from="1637529161795" duration="232000" />
       <workItem from="1637530193010" duration="339000" />
-      <workItem from="1637556142655" duration="2954000" />
+      <workItem from="1637556142655" duration="3423000" />
     </task>
     <servers />
   </component>

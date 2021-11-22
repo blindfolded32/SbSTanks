@@ -15,6 +15,7 @@ namespace SbSTanks
         {
             _enemy = GetComponentInParent<Unit>();
             _enemy.TakeDamage +=(x) =>HealthChanged(x);
+            
         }
 
         private void HealthChanged(float currentHP)

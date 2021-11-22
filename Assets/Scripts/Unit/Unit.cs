@@ -27,7 +27,7 @@ namespace SbSTanks
         protected abstract void OnCollisionEnter(Collision collision);
         public void TakingDamage(float damage, int elementId)
         {
-            Debug.Log($"My HP was {_parameters.Hp.GetCurrentHp}");
+           // Debug.Log($"My HP was {_parameters.Hp.GetCurrentHp}");
             GetComponentInChildren<ParticleSystemShotIdentificator>().GetComponent<ParticleSystem>().Play();
             if (elementId == _parameters.ElementId || elementId - _parameters.ElementId == -1) TakeDamage?.Invoke(damage);
             else TakeDamage?.Invoke(damage*2);

@@ -9,24 +9,18 @@ namespace SbSTanks
         [SerializeField] 
         private Image _foregroundImage;
         private float _imageUpdateSpeed = 1f;
-        private Unit _unit;
+        private Unit _enemy;
 
         void Awake()
         {
-            _unit = GetComponentInParent<Unit>();
-           // _enemy.HealthChanged += HealthChanged;
-           _unit.TakeDamage += (x)=>
-           {
-               HealthChanged(_unit.Parameters.Hp.GetCurrentHp - x);
-           };
+            _enemy = GetComponentInParent<Unit>();
+            _enemy.TakeDamage +=(x) =>HealthChanged(x);
         }
 
         private void HealthChanged(float currentHP)
         {
-            Debug.Log($"ТЕКУЩЕЕ Здоровье !!! ---- {_unit.Parameters.Hp.GetCurrentHp}");
-            Debug.Log($"ТЕКУЩЕЕ Здоровье из Action'a!!! ---- {currentHP}");
-            Debug.Log($"МАКС Здоровье !!! ---- {_unit.Parameters.Hp.Max}");
-            var damage = 0.4f;
+            Debug.Log($"{_enemy.Parameters.Hp.GetCurrentHp}- {currentHP}");
+            var damage = (_enemy.Parameters.Hp.GetCurrentHp- currentHP)/_enemy.Parameters.Hp.Max;//(_enemy.Parameters.Hp.GetCurrentHp -currentHP);
             StartCoroutine(ChangeHealthPicture(damage));
         }
 
@@ -34,6 +28,8 @@ namespace SbSTanks
         {
             var fullPictureHP = _foregroundImage.fillAmount;
             var elapsed = 0f;
+
+            
             
             while (elapsed < _imageUpdateSpeed)
             {
@@ -42,6 +38,7 @@ namespace SbSTanks
                 yield return null;
             }
             _foregroundImage.fillAmount = currentHP;
+            Debug.Log($"Filled for {_foregroundImage.fillAmount}");
         }
     }  
 }

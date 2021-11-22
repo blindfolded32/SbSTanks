@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,10 @@ namespace SbSTanks
         private TimerController _timerController;
         private ReInitController _reInitController;
         public int GetTurnNumber { get; private set; }
+
+        public bool PlayerTurn => _player.IsPlayerTurn;
+
+        public event Action<int> NewTurn; 
 
         public StepController(List<Enemy> enemies, PlayerController player, TimerController timerController)
         {
@@ -50,6 +55,7 @@ namespace SbSTanks
             _endTurnTimer = null;
             _isDelay = false;
             GetTurnNumber++;
+            NewTurn?.Invoke(GetTurnNumber);
             Debug.Log($"Turn {GetTurnNumber}");
         }
         private void CheckDelay()

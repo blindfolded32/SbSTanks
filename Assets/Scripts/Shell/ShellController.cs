@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace SbSTanks
 {
@@ -15,6 +17,17 @@ namespace SbSTanks
         private const string PREFAB_PATH = "Prefabs/Shell";
         private const float NEW_SHELL_OFFSET = 0.5f;
         private const float X_ROTATE_IN_FLY = 0.7f;
+        
+      /*  public ObjectPool<GameObject> shellobjectpool = new ObjectPool<GameObject>(CreateFunc);
+
+        private static GameObject CreateFunc()
+        {
+            var shellPrefab = Resources.Load(PREFAB_PATH) as GameObject;
+            var shellObject = UnityEngine.Object.Instantiate(shellPrefab);
+            shellObject.SetActive(false);
+            
+            return shellObject;
+        }*/
         public ShellController(PlayerController player, List<Enemy> enemies)
         {
             _player = player;

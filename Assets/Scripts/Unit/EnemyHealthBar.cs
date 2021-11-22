@@ -20,7 +20,8 @@ namespace SbSTanks
         private void HealthChanged(float currentHP)
         {
             Debug.Log($"{_unit.Parameters.Hp.GetCurrentHp}- {currentHP}");
-            var damage = (_unit.Parameters.Hp.GetCurrentHp- currentHP)/_unit.Parameters.Hp.Max;//(_enemy.Parameters.Hp.GetCurrentHp -currentHP);
+          
+            var damage = (_unit.Parameters.Hp.GetCurrentHp- currentHP)/_unit.Parameters.Hp.Max;
             StartCoroutine(ChangeHealthPicture(damage));
         }
 

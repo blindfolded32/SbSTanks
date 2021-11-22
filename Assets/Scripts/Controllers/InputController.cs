@@ -6,21 +6,21 @@ namespace SbSTanks
     public class InputController : IExecute
     {
         private IPCInputSpace _keyBoardInput;
-        private IPCInputSpace _UIInput;
-        public Action<KeyCode> SkillUsed;
+        public SkillButtons UIInput;
+        public event Action<KeyCode> SkillUsed;
 
-        public InputController(IPCInputSpace keyBoardInput, IPCInputSpace uiInput)
+        public InputController(IPCInputSpace keyBoardInput, SkillButtons uiInput)
         {
             _keyBoardInput = keyBoardInput;
-            _UIInput = uiInput;
+            UIInput = uiInput;
             _keyBoardInput.ButtonDown +=(keycodein)=> SkillUsed.Invoke(keycodein);
-            _UIInput.ButtonDown +=(keycodein)=> SkillUsed.Invoke(keycodein);
+            UIInput.ButtonDown +=(keycodein)=> SkillUsed.Invoke(keycodein);
         }
 
         public void Execute(float deltaTime)
         {
             _keyBoardInput.CheckButtons();
-            _UIInput.CheckButtons();
+            UIInput.CheckButtons();
         }
     }
 }

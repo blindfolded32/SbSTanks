@@ -18,8 +18,7 @@ namespace SbSTanks
             var playerController = new PlayerController(new PlayerModel(timerController), Object.FindObjectOfType<Player>());
             var stepController = new StepController(enemies,playerController, timerController);
             var shellController = new ShellController(playerController,enemies);
-            var inputController = new InputController(new KeyBoardInput(), new SkillButtons(uiModel, stepController));
-            var buttonActivationController = new ButtonActivationController(uiModel, stepController, enemies, playerController);
+            var inputController = new InputController(new KeyBoardInput(), new SkillButtons(uiModel));
             var targetSelectionController = new TargetSelectionController(camera, playerController, enemies);
             
             mainController.Add(shellController);
@@ -27,20 +26,21 @@ namespace SbSTanks
             mainController.Add(inputController);
             mainController.Add(playerController);
             mainController.Add(timerController);
-            mainController.Add(buttonActivationController);
             mainController.Add(targetSelectionController);
             
             new TimerSetsInitialization(playerController, timerActionInvoker);
             new ParticlesInitialization(playerController, enemies);
-            new SkillController(playerController,stepController,inputController,buttonActivationController);
+            new SkillArbitr(stepController, inputController, new SkillController(playerController,enemies));
 
 
             foreach (var enemy in enemies)
             {
-                enemy.Init(new UnitInitializationData(new Health(30.0f, 30.0f),1.0f,1),shellController,stepController );
+                enemy.Init(new UnitInitializationData(new Health(30.0f, 30.0f), 1.0f, 1),
+                    shellController); 
             }
 
-            playerController.GetView.Init(new UnitInitializationData(new Health(100.0f,100.0f),2.0f,0 ),shellController,stepController);
+            playerController.GetView.Init(new UnitInitializationData(new Health(100.0f,100.0f),2.0f,0 ),
+                    shellController);
         }
     }
 }

@@ -53,7 +53,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TimerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/NameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellPool.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/PCInputSpaceInitialization.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IParameters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/BattleController.cs" />
@@ -61,23 +60,15 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitInitializationData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/TimerSetsInitialization.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/PlayerModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainModels/GameInitializationData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameStarter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/PCInputSpace.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IPCInputSpace.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillButtons.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillControler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/ParticlesInitialization.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Model/Health.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/KeyBoardInput.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/InputController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ButtonActivationController.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/MoveSceneViewCamera.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TargetSelectionController.cs" />
         <option value="$PROJECT_DIR$/Assets/_Completed-Assets/Scripts/UI/UIDirectionControl.cs" />
         <option value="$PROJECT_DIR$/Assets/_Completed-Assets/Scripts/Tank/TankMovement.cs" />
@@ -86,14 +77,26 @@
         <option value="$PROJECT_DIR$/Assets/_Completed-Assets/Scripts/Managers/TankManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Completed-Assets/Scripts/Managers/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Task2/PlayerRotationEvent.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/Shell.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TimerActionInvoker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Model/UIModel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitParameters.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ButtonActivationController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IParameters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/EnemyHealthBar.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/Shell.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillButtons.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/InputController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/KeyBoardInput.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillArbitr.cs" />
       </list>
     </option>
   </component>
@@ -168,6 +171,8 @@
       <workItem from="1637529161795" duration="232000" />
       <workItem from="1637530193010" duration="339000" />
       <workItem from="1637556142655" duration="3811000" />
+      <workItem from="1637567559131" duration="738000" />
+      <workItem from="1637568757964" duration="9805000" />
     </task>
     <servers />
   </component>
@@ -288,16 +293,6 @@
     <state x="943" y="227" width="672" height="678" key="search.everywhere.popup/0.0.2560.1050@0.0.2560.1050" timestamp="1636897109381" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Initialization/KeyBoardInput.cs</url>
-          <line>15</line>
-          <properties documentPath="C:\Users\1\Documents\GitHub\SbSTanks\Assets\Scripts\Initialization\KeyBoardInput.cs" initialLine="19" />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#SbSTanks.UnitInitializationData" memberName="element" />

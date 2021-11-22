@@ -13,6 +13,13 @@ namespace SbSTanks
         }
         public void Shot(PlayerController playerController, int shotElement)
         {
+        /*  _shellController.shellobjectpool.Get(out var sh);
+          sh.Activate(true);
+          var rb = sh.ShellObject.GetComponent<Rigidbody>();
+          sh.ShellObject.transform.position = playerController.GetView._shotStartPoint.position;
+          sh.ShellObject.transform.rotation = playerController.GetView._shotStartPoint.rotation;
+          rb.AddForce(sh.ShellObject.transform.forward * SHOT_FORCE, ForceMode.Impulse);*/
+            
             var shell = _shellController.GetShell(_parameters.Damage, _shotStartPoint,shotElement);
             var shellRb = shell.GetComponent<Rigidbody>();
             shellRb.AddForce(shell.transform.forward * SHOT_FORCE, ForceMode.Impulse);

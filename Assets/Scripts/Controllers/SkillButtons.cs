@@ -6,55 +6,37 @@ using UnityEngine.UI;
 
 namespace SbSTanks
 {
-    public class SkillButtons : IExecute
+    public class SkillButtons : IPCInputSpace
     {
-        KeyCode[] keycodes = new KeyCode[]{KeyCode.Q, KeyCode.W, KeyCode.E};
-        private Dictionary<KeyCode, Button> _skillButtonsDict = new Dictionary<KeyCode, Button>();
-        public Action<KeyCode> UiSkill;
-        private StepController _stepController;
-
-        public SkillButtons(UIModel uiModel,StepController stepController)
+        public event Action<KeyCode> ButtonDown;
+        private readonly KeyCode[] _keycodes = new KeyCode[]{KeyCode.Q, KeyCode.W, KeyCode.E};
+        private readonly Dictionary<KeyCode, Button> _skillButtonsDict = new Dictionary<KeyCode, Button>();
+        private readonly StepController _stepController;
+        public SkillButtons(UIModel uiModel)
         {
-            _stepController = stepController;
             var canvas = uiModel.GetCanvases;
-            var buttonArray = canvas.Find(x => x.name == "SkillCanvas").GetComponentsInChildren<Button>();//uiModel.GetCanvases[1].GetComponentsInChildren<Button>();
+            var buttonArray = canvas.Find(x => x.name == "SkillCanvas").GetComponentsInChildren<Button>();
              Debug.Log(buttonArray.Length);
             for (int i = 0; i < buttonArray.Length; i++)
             {
-                _skillButtonsDict.Add(keycodes[i],buttonArray[i]);
+                _skillButtonsDict.Add(_keycodes[i],buttonArray[i]);
             }
             foreach (var button in _skillButtonsDict)
             {
                 button.Value.onClick.AddListener(delegate
                 {
                     Debug.Log("Click");
-                    UiSkill?.Invoke(button.Key);
+                    ButtonDown?.Invoke(button.Key);
                 });
             }
         }
-        public void Execute(float deltaTime)
+        public void CheckButtons()
         {
-            CheckCD();
+         
         }
-        private void CheckCD()
+        public void ButtonState(KeyCode keyCode, bool state)
         {
-            if (_stepController.GetTurnNumber % 3 != 0)
-            {
-                Debug.Log("Q is incactive");
-                _skillButtonsDict[KeyCode.Q].interactable = false;
-            }
-            else
-            {
-                _skillButtonsDict[KeyCode.Q].interactable = true;
-            }
-            if (_stepController.GetTurnNumber % 2 != 0)
-            {
-                _skillButtonsDict[KeyCode.E].interactable = false;
-            }
-            else
-            {
-                _skillButtonsDict[KeyCode.E].interactable = true;
-            }
+            _skillButtonsDict.Single(x => x.Key == keyCode).Value.interactable = state;
         }
     }
 

@@ -1,82 +1,44 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
+using Quaternion = UnityEngine.Quaternion;
 
 namespace SbSTanks
 {
-    public class PlayerController : IExecute, IDisposable
+    public class PlayerController : IController
     {
-        private PlayerModel _playerModel;
-        public PlayerModel GetPlayerModel => _playerModel;
-        private StepController _stepController;
-        public Dictionary<Button, Enemy> SwitchEnemyButtonsMatching = new Dictionary<Button, Enemy>();
-        private bool _isOnRotation;
+        public PlayerModel PlayerModel { get;}
+        private readonly Player _player;
+        private readonly StepController _stepController;
         private Quaternion _targetRotation;
         private const float ROTATION_TIME = 0.5f;
         private float _lerpProgress;
         private Quaternion _startRotation;
-        public bool isPlayerTurn;
-        public PlayerController(PlayerModel model, StepController stepController, UIModel uIModel, List<Enemy> enemies, List<Button> switchEnemyButtons)
+        public bool IsPlayerTurn;
+        public PlayerController(PlayerModel model, Player player)
         {
-            _stepController = stepController;
-            _playerModel = model;
-
-            for (int i = 0; i < enemies.Count; i++)
-            {
-                SwitchEnemyButtonsMatching.Add(switchEnemyButtons[i], enemies[i]);
-            }
-
-            foreach(var element in SwitchEnemyButtonsMatching)
-            {
-                element.Key.onClick.AddListener(
-                    delegate
-                    {
-                        _targetRotation = Quaternion.LookRotation(element.Value.transform.position - _playerModel.GetPlayer.transform.position);
-                        _isOnRotation = true; 
-                        _startRotation = _playerModel.GetPlayer.transform.rotation;
-                        _lerpProgress = 0; 
-                    });
-            }
+            PlayerModel = model;
+            _player =player;
+            IsPlayerTurn = true;
         }
-        public Transform GetTransform() => _playerModel.GetPlayer.transform;
-        public int GetPlayerElement() => _playerModel.GetPlayer.GetUnitElement;
-        public void Execute(float deltaTime)
+        public Transform GetTransform => _player.transform;
+        public bool GetOrSetHit
         {
-            foreach (var element in SwitchEnemyButtonsMatching.Where(element => element.Value.isDead))
-            {
-                element.Key.interactable = false;
-            }
-            
-            if (_stepController.isPlayerTurn && isPlayerTurn)
-            {
-                _stepController.isPlayerTurn = false;
-            }
-            if (_isOnRotation)
-            {
-                RotatePlayer(_targetRotation);
-            }
-            isPlayerTurn = false;
+            get => _player.GetHitStatus;
+            set => _player.GetHitStatus = value;
         }
-        public void RotatePlayer(Quaternion targetRotation)
+        public Action<GameObject, IDamagebleUnit> ShellHit
+        {
+            get => _player.ShellHit;
+            set => _player.ShellHit = value;
+        }
+        public Player GetView  => _player;
+        public void RotatePlayer(Transform targetTransform)
         {
             _lerpProgress += Time.deltaTime / ROTATION_TIME;
-            _playerModel.GetPlayer.transform.rotation = Quaternion.Lerp(_startRotation, targetRotation, _lerpProgress);
-
-            if (_lerpProgress >= 1)
-            {
-                _isOnRotation = false;
-                _lerpProgress = 0;
-            }
+            var targetRotation = Quaternion.LookRotation(targetTransform.position - GetTransform.position);
+            GetTransform.rotation = Quaternion.Lerp(_startRotation, targetRotation, _lerpProgress);
         }
-        public void Dispose()
-        {
-            foreach (var element in SwitchEnemyButtonsMatching)
-            {
-                element.Key.onClick.RemoveAllListeners();
-            }
-        }
+        
     }
 }
 

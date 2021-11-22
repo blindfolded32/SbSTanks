@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Numerics;
+using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 namespace SbSTanks
 {
@@ -8,11 +10,12 @@ namespace SbSTanks
         private Vector3 _shellPositionInPool;
         private float _shellHeight;
         private int _elementId;
-        public int damage;
+        public float damage;
         public bool isOnScene;
         public GameObject ShellObject { get => _shellObject; }
         public Vector3 ShellPositionInPool { get => _shellPositionInPool; }
         public float ShellHeight { get => _shellHeight; }
+       
         public int ElementId { 
             get  => _elementId;
             set => _elementId = value;

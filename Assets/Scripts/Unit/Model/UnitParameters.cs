@@ -7,16 +7,16 @@ namespace SbSTanks
     [Serializable]
     public class UnitParameters : IParameters
     {
-        [SerializeField] private int _hp;
-        [SerializeField] private int _damage;
-        public bool isDead { get; private set; }
+        private Health _hp;
+        private float _damage;
+        public Action<bool> ConfirmDeath { get; set; }
         private int _elementId;
-        public int Hp
+        public Health Hp
         {
             get => _hp;
             set => _hp = value;
         }
-        public int Damage
+        public float Damage
         {
             get => _damage;
             set => _damage = value;
@@ -26,25 +26,20 @@ namespace SbSTanks
             get => _elementId;
             set => _elementId = value;
         }
-        public Action<bool> ConfirmDeath { get; set; }
-
-        public UnitParameters(Unit unit, int hp, int elementId, int damage)
+        public UnitParameters(Unit unit, Health hp, int elementId, float damage)
         {
             _hp = hp;
             _damage = damage;
             _elementId = elementId;
-            isDead = false;
             unit.TakeDamage += GetDamage;
         }
-        private void GetDamage(int damage)
+        private void GetDamage(float damage)
         {
-            _hp -= damage;
-            Debug.Log($"My hp is {_hp}");
-           if (_hp <= 0)
+            _hp.ChangeCurrentHealth(damage);
+            Debug.Log($"My hp is {_hp.GetCurrentHp}");
+           if (_hp.GetCurrentHp <= 0)
             {
-                Debug.Log("killed");
-               isDead = true;
-               ConfirmDeath?.Invoke(true);
+                ConfirmDeath?.Invoke(true);
             }
         }
        

@@ -1,17 +1,26 @@
+using System;
+using UnityEngine;
+
 namespace SbSTanks
 {
     public class InputController : IExecute
     {
-        private IPCInputSpace _pCInputSpace;
+        private IPCInputSpace _keyBoardInput;
+        public SkillButtons UIInput;
+        public event Action<KeyCode> SkillUsed;
 
-        public InputController(PCInputSpace pCInputSpace)
+        public InputController(IPCInputSpace keyBoardInput, SkillButtons uiInput)
         {
-            _pCInputSpace = pCInputSpace;
+            _keyBoardInput = keyBoardInput;
+            UIInput = uiInput;
+            _keyBoardInput.ButtonDown +=(keycodein)=> SkillUsed.Invoke(keycodein);
+            UIInput.ButtonDown +=(keycodein)=> SkillUsed.Invoke(keycodein);
         }
 
         public void Execute(float deltaTime)
         {
-            _pCInputSpace.CheckButtons();
+            _keyBoardInput.CheckButtons();
+            UIInput.CheckButtons();
         }
     }
 }

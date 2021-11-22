@@ -8,8 +8,10 @@ namespace SbSTanks
 
         protected override void OnCollisionEnter(Collision collision)
         {
+           
             ShellHit?.Invoke(collision.gameObject, this);
             _shellController.ReturnShell(collision.gameObject);
+           // _shellController.shellobjectpool.Release(collision.gameObject);
         }
         public void ReturnShot()
         {

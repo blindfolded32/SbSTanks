@@ -1,19 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace SbSTanks
 {
     public class PlayerRotationEvent
     {
-        private Transform _player;
+      /*  private Transform _player;
         private Transform _enemyPosition;
 
         private Quaternion _startRotation;
 
         public PlayerRotationEvent(PlayerController player, Transform enemyPosition, Button button)
         {
-            _player =player.GetTransform();
-
+            _player =player.GetTransform;
             _enemyPosition = enemyPosition;
             button.onClick.AddListener(RotatePlayerTank);
         }
@@ -33,7 +34,7 @@ namespace SbSTanks
             //_isComplete = false;
             _player.LookAt(_enemyPosition, Vector3.up);
         }
-
+*/
     }
 }
 

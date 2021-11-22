@@ -1,41 +1,46 @@
-﻿namespace SbSTanks
+﻿using System.Linq;
+using UnityEngine;
+using  Object = UnityEngine.Object;
+
+namespace SbSTanks
+
+
 {
     public class MainInitializator
     {
-        public MainInitializator(GameInitializationData data, GameController mainController)
+        public MainInitializator(GameController mainController)
         {
+            var camera = Camera.main; // Может быть взять из GameStater.cs? 
+            var enemies = Object.FindObjectsOfType<Enemy>().ToList();
             var uiModel = new UIModel();
-            
             var timerController = new TimerController();
-            mainController.Add(timerController);
-    
-            var stepController = new StepController(data.Enemies,data.Player, timerController);
-            mainController.Add(stepController);
-
-            new ParticlesInitialization(data.Player, data.Enemies);
-            var pcinput = new PCInputSpace();
             var timerActionInvoker = new TimerActionInvoker();
-
-            var playerModel = new PlayerModel(timerController, data.Player);
-            new TimerSetsInitialization(playerModel, timerActionInvoker);
-
-            var shellController = new ShellController(data.Player, data.Enemies);
-            mainController.Add(shellController);
-            var playerController = new PlayerController(playerModel, stepController, uiModel, data.Enemies,
-                data.EnemiesSwitchButtons);
-           var skillUI = new SkillButtons(uiModel, stepController);
-            mainController.Add(new InputController(pcinput));
-            mainController.Add(playerController);
-            mainController.Add(new ButtonActivationController(uiModel, stepController));
-            new SkillControler(playerController,stepController,skillUI,pcinput);
-            mainController.Add(skillUI);
-
-            for (int i = 0; i < data.Enemies.Count; i++)
-            {
-                data.Enemies[i].Init(data.EnemyInitializationData, shellController, stepController); 
-            }
+            var playerController = new PlayerController(new PlayerModel(timerController), Object.FindObjectOfType<Player>());
+            var stepController = new StepController(enemies,playerController, timerController);
+            var shellController = new ShellController(playerController,enemies);
+            var inputController = new InputController(new KeyBoardInput(), new SkillButtons(uiModel));
+            var targetSelectionController = new TargetSelectionController(camera, playerController, enemies);
             
-            data.Player.Init(data.PlayerInitializationData, shellController, stepController); 
+            mainController.Add(shellController);
+            mainController.Add(stepController);
+            mainController.Add(inputController);
+            mainController.Add(playerController);
+            mainController.Add(timerController);
+            mainController.Add(targetSelectionController);
+            
+            new TimerSetsInitialization(playerController, timerActionInvoker);
+            new ParticlesInitialization(playerController, enemies);
+            new SkillArbitr(stepController, inputController, new SkillController(playerController,enemies));
+
+
+            foreach (var enemy in enemies)
+            {
+                enemy.Init(new UnitInitializationData(new Health(30.0f, 30.0f), 1.0f, 1),
+                    shellController); 
+            }
+
+            playerController.GetView.Init(new UnitInitializationData(new Health(100.0f,100.0f),2.0f,0 ),
+                    shellController);
         }
     }
 }

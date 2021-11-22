@@ -38,11 +38,10 @@ namespace SbSTanks
         private void GetDamage(float damage)
         {
             _hp.ChangeCurrentHealth(damage);
-          //  Debug.Log($"My hp is {_hp.GetCurrentHp}");
+            Debug.Log($"My hp is {_hp.GetCurrentHp}");
            if (_hp.GetCurrentHp <= 0)
             {
-                Debug.Log("killed");
-               IsDead = true;
+                IsDead = true;
                ConfirmDeath?.Invoke(true);
             }
         }

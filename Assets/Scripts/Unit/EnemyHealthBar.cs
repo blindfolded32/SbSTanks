@@ -9,19 +9,18 @@ namespace SbSTanks
         [SerializeField] 
         private Image _foregroundImage;
         private float _imageUpdateSpeed = 1f;
-        private Unit _enemy;
+        private Unit _unit;
 
         void Awake()
         {
-            _enemy = GetComponentInParent<Unit>();
-            _enemy.TakeDamage +=(x) =>HealthChanged(x);
-            
+            _unit = GetComponentInParent<Unit>();
+            _unit.TakeDamage +=HealthChanged;
         }
 
         private void HealthChanged(float currentHP)
         {
-            Debug.Log($"{_enemy.Parameters.Hp.GetCurrentHp}- {currentHP}");
-            var damage = (_enemy.Parameters.Hp.GetCurrentHp- currentHP)/_enemy.Parameters.Hp.Max;//(_enemy.Parameters.Hp.GetCurrentHp -currentHP);
+            Debug.Log($"{_unit.Parameters.Hp.GetCurrentHp}- {currentHP}");
+            var damage = (_unit.Parameters.Hp.GetCurrentHp- currentHP)/_unit.Parameters.Hp.Max;//(_enemy.Parameters.Hp.GetCurrentHp -currentHP);
             StartCoroutine(ChangeHealthPicture(damage));
         }
 

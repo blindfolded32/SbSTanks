@@ -9,13 +9,9 @@ namespace SbSTanks
     public class SkillButtons : IPCInputSpace
     {
         public event Action<KeyCode> ButtonDown;
-        
-        
         private readonly KeyCode[] _keycodes = new KeyCode[]{KeyCode.Q, KeyCode.W, KeyCode.E};
         private readonly Dictionary<KeyCode, Button> _skillButtonsDict = new Dictionary<KeyCode, Button>();
         private readonly StepController _stepController;
-        
-
         public SkillButtons(UIModel uiModel)
         {
             var canvas = uiModel.GetCanvases;
@@ -38,7 +34,6 @@ namespace SbSTanks
         {
          
         }
-
         public void ButtonState(KeyCode keyCode, bool state)
         {
             _skillButtonsDict.Single(x => x.Key == keyCode).Value.interactable = state;

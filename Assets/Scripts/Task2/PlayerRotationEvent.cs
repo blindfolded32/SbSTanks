@@ -7,7 +7,7 @@ namespace SbSTanks
 {
     public class PlayerRotationEvent
     {
-        private Transform _player;
+      /*  private Transform _player;
         private Transform _enemyPosition;
 
         private Quaternion _startRotation;
@@ -34,7 +34,7 @@ namespace SbSTanks
             //_isComplete = false;
             _player.LookAt(_enemyPosition, Vector3.up);
         }
-
+*/
     }
 }
 

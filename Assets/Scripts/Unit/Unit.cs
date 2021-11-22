@@ -7,8 +7,8 @@ namespace SbSTanks
     {
         public Action<float> TakeDamage { get; set; }
         public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
-        [SerializeField] protected UnitParameters _parameters;
-        [SerializeField] protected Transform _shotStartPoint;
+        [SerializeField]protected UnitParameters _parameters;
+        [SerializeField]protected Transform _shotStartPoint;
         protected ShellController _shellController;
         protected const float SHOT_FORCE = 180f;
         public IParameters Parameters => _parameters;
@@ -16,7 +16,7 @@ namespace SbSTanks
         public Transform Transform => gameObject.transform;
         public bool isDead;
         public void SetUnitElement(int value) => _parameters.ElementId = value;
-        public void Init(UnitInitializationData data, ShellController shellController)//, StepController stepController)
+        public void Init(UnitInitializationData data, ShellController shellController)
         {             
             _parameters = new UnitParameters(this, data.Hp,data.Element,data.Damage); //changed
             _shellController = shellController;
@@ -26,15 +26,13 @@ namespace SbSTanks
         protected abstract void OnCollisionEnter(Collision collision);
         public void TakingDamage(float damage, int elementId)
         {
-           // Debug.Log($"My HP was {_parameters.Hp.GetCurrentHp}");
+            if (isDead) return;
             GetComponentInChildren<ParticleSystemShotIdentificator>().GetComponent<ParticleSystem>().Play();
             if (elementId == _parameters.ElementId || elementId - _parameters.ElementId == -1) TakeDamage?.Invoke(damage);
             else TakeDamage?.Invoke(damage*2);
         }
-        private void KillUnit(bool val)
-        {
-            isDead = val;
-        }
+        private void KillUnit(bool val) => isDead = val;
+      
        
     }
 }

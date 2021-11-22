@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace SbSTanks
@@ -5,11 +6,13 @@ namespace SbSTanks
    // [RequireComponent(typeof(Animator))]
     public class Player : Unit
     {
+        public event Action PlayerDead; 
         public bool GetHitStatus { get; set; } = false;
         protected override void OnCollisionEnter(Collision collision)
         {
             ShellHit?.Invoke(collision.gameObject, this);
             _shellController.ReturnShell(collision.gameObject);
+            if (_parameters.Hp.GetCurrentHp<=0) PlayerDead?.Invoke(); 
         }
         public void Shot(PlayerController playerController, int shotElement)
         {

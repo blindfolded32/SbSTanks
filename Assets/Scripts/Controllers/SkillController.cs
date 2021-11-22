@@ -19,7 +19,7 @@ namespace SbSTanks
         {
             _player.IsPlayerTurn = true;
             var transformPosition = _enemies.
-                ElementAt(Random.Range(0, _enemies.Count))
+                ElementAt(Random.Range(0, _enemies.FindAll(x=>!x.isDead).Count))
                 .transform;
             _player.RotatePlayer(transformPosition);
             _player.GetView.Shot(_player,0);

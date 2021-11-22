@@ -23,15 +23,21 @@ namespace SbSTanks
 
         public StepController(List<Enemy> enemies, PlayerController player, TimerController timerController)
         {
-            _reInitController = new ReInitController();
+            
             _enemies = enemies;
             _player = player;
             _timerController = timerController;
             _isDelay = false;
             GetTurnNumber = 1;
+            _reInitController = new ReInitController(_player,enemies);
+            _reInitController.StartAgain += () =>
+            {
+                GetTurnNumber = 1;
+            };
         }
         public void Execute(float deltaTime)
         {
+            if (_reInitController.Lost) return;
             if (CheckDead())
             {
                 Debug.Log("Battle over");

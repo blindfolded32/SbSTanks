@@ -9,7 +9,6 @@ namespace Controllers
 {
     public class StepController : IExecute
     {
-       // public bool isPlayerTurn = true;
         private TimerData _startTurnTimer;
         private TimerData _shotDelayTimer;
         private TimerData _endTurnTimer;
@@ -19,11 +18,8 @@ namespace Controllers
         private TimerController _timerController;
         private ReInitController _reInitController;
         public int GetTurnNumber { get; private set; }
-
         public bool PlayerTurn => _player.IsPlayerTurn;
-
-        public event Action<int> NewTurn; 
-
+        public event Action<int> NewTurn;
         public StepController(List<Enemy> enemies, PlayerController player, TimerController timerController)
         {
             _enemies = enemies;
@@ -90,6 +86,7 @@ namespace Controllers
         {
             foreach (var enemy in _enemies.FindAll(x =>!x.IsDead))
             {
+                Debug.Log("Backshot");
                 enemy.ReturnShot();
                 enemy.isShotReturn = true;
             }

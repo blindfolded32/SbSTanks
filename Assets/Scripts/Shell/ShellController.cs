@@ -34,13 +34,13 @@ namespace Shell
             _player = player;
             _enemies = enemies;
             _groundMask = 1<<8;
-            _player.ShellHit += InflictDamage;
+           // _player.ShellHit += InflictDamage;
             CreateShell(0);
-            foreach (var enemy in _enemies)
+            /*foreach (var enemy in _enemies)
             {
                 enemy.ShellHit += InflictDamage;
                // CreateShell(enemy.Parameters.ElementId);  
-            }
+            }*/
         }
         public void FixedExecute(float deltaTime, float fixedDeltaTime)
         {
@@ -111,8 +111,8 @@ namespace Shell
         }
         public void Dispose()
         {
-            _player.ShellHit -= InflictDamage;
-            foreach (var shell in _enemies) shell.ShellHit -= InflictDamage;
+            //_player.ShellHit -= InflictDamage;
+           // foreach (var shell in _enemies) shell.ShellHit -= InflictDamage;
         }
     }
 }

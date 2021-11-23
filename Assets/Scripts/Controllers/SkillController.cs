@@ -23,12 +23,12 @@ namespace Controllers
                 ElementAt(Random.Range(0, _enemies.FindAll(x=>!x.IsDead).Count))
                 .transform;
             _player.RotatePlayer(transformPosition);
-            _player._PlayerShoot.Shot(_player,0);
+            PlayerShoot.Shot(_player,0);
         }
         protected internal void WaterSkill()
         {
             _player.IsPlayerTurn = true;
-            _player._PlayerShoot.Shot(_player,2);
+           PlayerShoot.Shot(_player,2);
         }
         protected internal void FireSkill()
         {

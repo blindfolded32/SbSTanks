@@ -16,7 +16,6 @@ namespace Unit
         protected override void OnCollisionEnter(Collision collision)
         {
             ShellHit?.Invoke(collision.gameObject, this);
-            if (unitInitializationData.Hp.GetCurrentHp <= 0) PlayerDead?.Invoke();
         }
       
     }

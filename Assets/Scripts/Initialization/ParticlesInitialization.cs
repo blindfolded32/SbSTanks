@@ -26,7 +26,7 @@ namespace Initialization
             for(int i = 0; i < tanks.Count; i++)
             {
                 var particleSystem = GameObject.Instantiate(_particleSystemGameObject);
-                particleSystem.transform.position = tanks[i].shotPoint.transform.position;
+                particleSystem.transform.position = tanks[i].ShotPoint.transform.position;
 
                 particleSystem.transform.SetParent(tanks[i].transform);
                 particleSystem.gameObject.AddComponent<ParticleSystemShotIdentificator>();

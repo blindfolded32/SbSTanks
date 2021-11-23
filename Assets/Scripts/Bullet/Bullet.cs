@@ -23,6 +23,7 @@ namespace Bullet
         private void OnCollisionEnter(Collision other)
         {
             if (!other.gameObject.TryGetComponent<IDamagebleUnit>(out var unit)) return;
+            Debug.Log($"Damaging {Damage} elem {Element}");
             unit.TakingDamage(Damage,Element);
             ReturnToPool();
         }

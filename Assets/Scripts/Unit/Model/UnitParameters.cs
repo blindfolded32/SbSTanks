@@ -32,17 +32,9 @@ namespace Unit.Model
             _hp = hp;
             _damage = damage;
             _elementId = elementId;
-            unit.TakeDamage += GetDamage;
+          //  unit.TakeDamage += GetDamage;
         }
-        private void GetDamage(float damage)
-        {
-            _hp.ChangeCurrentHealth(damage);
-            Debug.Log($"My hp is {_hp.GetCurrentHp}");
-           if (_hp.GetCurrentHp <= 0)
-            {
-                ConfirmDeath?.Invoke(true);
-            }
-        }
+        
        
     }
 }

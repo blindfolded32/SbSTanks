@@ -15,20 +15,18 @@ namespace Spawners
         public bool IsDead { get; set; }
         public PlayerController PlayerController;
         private Enemy _enemy;
-        public BulletPool BulletPool;
-        public Transform shotPoint;
-        
+        internal BulletPool BulletPool;
+        internal Transform ShotPoint;
+        internal int Element;
         public Action<float> TakeDamage { get; set; }
         public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
-        public UnitInitializationData unitInitializationData;
-
-
+       // internal UnitInitializationData UnitInitializationData;
         protected abstract void OnCollisionEnter(Collision collision);
         public void TakingDamage(float damage, int element)
         {
             if (IsDead) return;
             GetComponentInChildren<ParticleSystemShotIdentificator>().GetComponent<ParticleSystem>().Play();
-            if (element == unitInitializationData.Element || element - unitInitializationData.Element == -1) TakeDamage?.Invoke(damage);
+            if (element == Element || element - Element == -1) TakeDamage?.Invoke(damage);
             else TakeDamage?.Invoke(damage*2);
         }
     }

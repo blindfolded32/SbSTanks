@@ -9,18 +9,20 @@ namespace Unit
     {
         private readonly BulletPool _bulletPool;
        
-        private readonly float SHOT_FORCE = 250.0f;
-        public void Shot(PlayerController playerController, int shotElement)
+        private static readonly float SHOT_FORCE = 250.0f;
+        public static void Shot(PlayerController playerController, int shotElement)
         {
+            if (playerController.GetView.IsDead) return;;
+            
             var shell = playerController.GetView.BulletPool.GetItem("Bullet");
-            shell.Damage = playerController.GetView.unitInitializationData.Damage;
+            shell.Damage = playerController.GetView.PlayerController.PlayerModel.Damage;
             shell.Element = shotElement;
-            shell.Transform.position = playerController.GetView.shotPoint.position;
-            shell.transform.rotation = playerController.GetView.shotPoint.rotation;
+            shell.Transform.position = playerController.GetView.ShotPoint.position;
+            shell.transform.rotation = playerController.GetView.ShotPoint.rotation;
             shell.gameObject.SetActive(true);
             var shellRb = shell.GetComponent<Rigidbody>();
             shellRb.AddForce(shell.transform.forward * SHOT_FORCE, ForceMode.Impulse);
-            //GetHitStatus = true;
+            
             playerController.IsPlayerTurn = false;
         }
     }

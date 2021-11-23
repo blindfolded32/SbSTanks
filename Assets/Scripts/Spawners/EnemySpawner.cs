@@ -15,7 +15,7 @@ namespace Spawners
             var fabric = new EnemyFabric();;
             foreach (var point in points)
             {
-               Enemies.Add(fabric.Create(point.transform, 
+               Enemies.Add(EnemyFabric.Create(point.transform, 
                    new UnitInitializationData(new Health(10, 10), 1, 0)));
             }
         }

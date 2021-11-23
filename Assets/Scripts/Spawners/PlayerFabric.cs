@@ -1,4 +1,8 @@
-﻿using Controllers.Model;
+﻿using Bullet;
+using Controllers;
+using Controllers.Model;
+using Markers;
+using Shell;
 using Unit;
 using Unit.Model;
 using UnityEngine;
@@ -7,11 +11,16 @@ namespace Spawners
 {
     public class PlayerFabric
     {
-        public Player Create(Transform transform, UnitInitializationData parameters)
+        public Player Player { get; private set; }
+
+        public Player Create(Transform transform, UnitInitializationData parameters, TimerController timerController)
         {
-            var player = Object.Instantiate(Resources.Load<Player>("Prefabs/Player"), transform);
-            player.unitInitializationData = parameters;
-            return player;
+            Player = Object.Instantiate(Resources.Load<Player>("Prefabs/Player"), transform);
+            Player.unitInitializationData = parameters;
+            Player.PlayerController = new PlayerController(new PlayerModel(timerController), Object.FindObjectOfType<Player>());
+            Player.ShotPoint = Player.GetComponentInChildren<ShotPoint>().transform;
+            Player.ShellController = ServiceLocator.Resolve<BulletPool>();
+            return Player;
         }
     }
 }

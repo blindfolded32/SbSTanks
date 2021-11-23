@@ -20,7 +20,7 @@ namespace Controllers
         {
             _player.IsPlayerTurn = true;
             var transformPosition = _enemies.
-                ElementAt(Random.Range(0, _enemies.FindAll(x=>!x.isDead).Count))
+                ElementAt(Random.Range(0, _enemies.FindAll(x=>!x.IsDead).Count))
                 .transform;
             _player.RotatePlayer(transformPosition);
             _player.GetView.Shot(_player,0);
@@ -33,12 +33,11 @@ namespace Controllers
         protected internal void FireSkill()
         {
             _player.IsPlayerTurn = true;
-            foreach (var enemy in _enemies.Where(enemy => !enemy.isDead))
+            foreach (var enemy in _enemies.Where(enemy => !enemy.IsDead))
             {
                 enemy.TakingDamage(10,1);
             }
             _player.IsPlayerTurn = false;
         }
-        
     }
 }

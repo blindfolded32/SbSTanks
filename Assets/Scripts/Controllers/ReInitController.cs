@@ -35,7 +35,7 @@ namespace Controllers
         {
             foreach (var enemy in enemies)
             {
-                enemy.isDead = false;
+                enemy.IsDead = false;
                enemy.unitInitializationData.Damage *= 1.1f;
                 enemy.unitInitializationData.Hp.InjectNewHp(enemy.unitInitializationData.Hp.Max*1.1f);
                 enemy.GetComponentInChildren<EnemyHealthBar>()._foregroundImage.fillAmount =1;
@@ -58,7 +58,7 @@ namespace Controllers
             var currentEnemy = FindObjectsOfType<Enemy>();
             for (int i = 0; i < currentEnemy.Length; i++)
             {
-                currentEnemy[i].isDead = false;
+                currentEnemy[i].IsDead = false;
                 currentEnemy[i].unitInitializationData.Damage = _defParams[i].unitInitializationData.Damage;
                 currentEnemy[i].unitInitializationData.Hp.InjectNewHp(_defParams[i].unitInitializationData.Hp.Max);
                 currentEnemy[i].GetComponentInChildren<EnemyHealthBar>()._foregroundImage.fillAmount =1;

@@ -1,3 +1,5 @@
+using Bullet;
+using Shell;
 using UnityEngine;
 
 public class GameStarter : MonoBehaviour
@@ -8,6 +10,7 @@ public class GameStarter : MonoBehaviour
     {
         _mainController = new GameController();
         new MainInitializator(_mainController);
+        ServiceLocator.SetService<BulletPool>( new BulletPool(5));
     }
     void Update()
     {

@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Controllers.Model;
 using Interfaces;
+using Markers;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
+
 
 namespace Controllers
 {
@@ -14,11 +17,10 @@ namespace Controllers
         private readonly KeyCode[] _keycodes = new KeyCode[]{KeyCode.Q, KeyCode.W, KeyCode.E};
         private readonly Dictionary<KeyCode, Button> _skillButtonsDict = new Dictionary<KeyCode, Button>();
         private readonly StepController _stepController;
-        public SkillButtons(UIModel uiModel)
+        public SkillButtons()
         {
-            var canvas = uiModel.GetCanvases;
-            var buttonArray = canvas.Find(x => x.name == "SkillCanvas").GetComponentsInChildren<Button>();
-             Debug.Log(buttonArray.Length);
+            var buttonArray = Object.FindObjectOfType<SkillCanvas>().GetComponentsInChildren<Button>();
+            Debug.Log(buttonArray.Length);
             for (int i = 0; i < buttonArray.Length; i++)
             {
                 _skillButtonsDict.Add(_keycodes[i],buttonArray[i]);

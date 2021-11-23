@@ -1,4 +1,6 @@
-﻿using Unit;
+﻿using Bullet;
+using Shell;
+using Unit;
 using Unit.Model;
 using UnityEngine;
 
@@ -10,6 +12,7 @@ namespace Spawners
         {
             var enemy = Object.Instantiate(Resources.Load<Enemy>("Prefabs/Enemy"), transform);
             enemy.unitInitializationData = parameters;
+            enemy.ShellController = ServiceLocator.Resolve<BulletPool>();
             return enemy;
         }
     }

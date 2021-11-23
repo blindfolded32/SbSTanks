@@ -54,7 +54,7 @@ namespace Controllers
         private void CheckEndTurn()
         {
             if (_endTurnTimer is null || !_endTurnTimer.IsTimerEnd) return;
-            foreach (var enemy in _enemies.FindAll(x =>!x.isDead))
+            foreach (var enemy in _enemies.FindAll(x =>!x.IsDead))
             {
                 enemy.isShotReturn = false;
             }
@@ -76,19 +76,19 @@ namespace Controllers
 
         private bool CheckDead()
         {
-            return !_enemies.Find(enemy => !enemy.isDead);
+            return !_enemies.Find(enemy => !enemy.IsDead);
         }
         
         private void CheckStartTurn()
         {
-            if (_player.IsPlayerTurn|| _isDelay || !_enemies.Contains(_enemies.Find(enemy => !enemy.isShotReturn && !enemy.isDead))) return; 
+            if (_player.IsPlayerTurn|| _isDelay || !_enemies.Contains(_enemies.Find(enemy => !enemy.isShotReturn && !enemy.IsDead))) return; 
             _isDelay = true;
           _shotDelayTimer = new TimerData(3f, Time.time);
           _timerController.AddTimer(_shotDelayTimer);
         }
         private void EnemyShot()
         {
-            foreach (var enemy in _enemies.FindAll(x =>!x.isDead))
+            foreach (var enemy in _enemies.FindAll(x =>!x.IsDead))
             {
                 enemy.ReturnShot();
                 enemy.isShotReturn = true;

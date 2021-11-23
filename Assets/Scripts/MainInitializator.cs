@@ -14,30 +14,29 @@ public class MainInitializator
 {
     public MainInitializator(GameController mainController)
     {
-        var playerFabric = new PlayerFabric();
-        playerFabric.Create(Object.FindObjectOfType<PlayerSpawnPoint>().transform,
-            new UnitInitializationData(new Health(10,10),0,10 ));
-        var enemySpawn = new EnemySpawner(Object.FindObjectsOfType<EnemySpawnPoint>());
-        
-        var camera = Camera.main; // Может быть взять из GameStater.cs? 
-        var uiModel = new UIModel();
         var timerController = new TimerController();
         var timerActionInvoker = new TimerActionInvoker();
-        var playerController = new PlayerController(new PlayerModel(timerController), Object.FindObjectOfType<Player>());
-        var stepController = new StepController(enemySpawn.Enemies,playerController, timerController);
-        var shellController = new ShellController(playerController,enemySpawn.Enemies);
-        var inputController = new InputController(new KeyBoardInput(), new SkillButtons(uiModel));
-        var targetSelectionController = new TargetSelectionController(camera, playerController,enemySpawn.Enemies);
+        
+        var playerFabric = new PlayerFabric();
+        playerFabric.Create(Object.FindObjectOfType<PlayerSpawnPoint>().transform,
+            new UnitInitializationData(new Health(10,10),0,10 ), timerController);
+        var enemySpawn = new EnemySpawner(Object.FindObjectsOfType<EnemySpawnPoint>());
+        var camera = Camera.main; // Может быть взять из GameStater.cs? 
+        var stepController = new StepController(enemySpawn.Enemies,playerFabric.Player.PlayerController, timerController);
+        var shellController = new ShellController(playerFabric.Player.PlayerController,enemySpawn.Enemies);
+        var inputController = new InputController(new KeyBoardInput(), new SkillButtons());
+        var targetSelectionController = new TargetSelectionController(camera, playerFabric.Player.PlayerController,enemySpawn.Enemies);
             
         mainController.Add(shellController);
         mainController.Add(stepController);
         mainController.Add(inputController);
-        mainController.Add(playerController);
+        mainController.Add(playerFabric.Player.PlayerController);
         mainController.Add(timerController);
         mainController.Add(targetSelectionController);
             
-        new TimerSetsInitialization(playerController, timerActionInvoker);
-        new ParticlesInitialization(playerController, enemySpawn.Enemies);
-        new SkillArbitr(stepController, inputController, new SkillController(playerController, enemySpawn.Enemies));
+        new TimerSetsInitialization(playerFabric.Player.PlayerController, timerActionInvoker);
+        new ParticlesInitialization(playerFabric.Player.PlayerController, enemySpawn.Enemies);
+        new SkillArbitr(stepController, inputController, 
+                        new SkillController(playerFabric.Player.PlayerController, enemySpawn.Enemies));
     }
 }

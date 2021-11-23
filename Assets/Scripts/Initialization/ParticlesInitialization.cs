@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Controllers;
 using IdentificationElements;
 using Interfaces;
-using Spawners;
+using Player;
 using Unit;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ namespace Initialization
         private GameObject _particleSystemGameObject;
 
         private const string PARTICLE_PATH = "Partcle/CompleteTankExplosion";
-        public ParticlesInitialization(PlayerController player, IReadOnlyList<Enemy> enemies)
+        public ParticlesInitialization(IPlayerController player, IReadOnlyList<Enemy.Enemy> enemies)
         {
             _particleSystemGameObject = Resources.Load<GameObject>(PARTICLE_PATH);
             List<AbstractUnit> tanks = new List<AbstractUnit>();

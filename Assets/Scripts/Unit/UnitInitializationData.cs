@@ -1,7 +1,7 @@
 ﻿using System;
 using Controllers.Model;
 
-namespace Unit.Model
+namespace Unit
 {
     [Serializable]
     public struct UnitInitializationData

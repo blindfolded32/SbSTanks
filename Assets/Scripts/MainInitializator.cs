@@ -1,12 +1,10 @@
-﻿using System.Linq;
-using Controllers;
+﻿using Controllers;
 using Controllers.Model;
+using Enemy;
 using Initialization;
 using Markers;
-using Shell;
-using Spawners;
+using Player;
 using Unit;
-using Unit.Model;
 using UnityEngine;
 using  Object = UnityEngine.Object;
 
@@ -21,19 +19,19 @@ public class MainInitializator
             new UnitInitializationData(new Health(10,10),1,0 ), timerController);
         var enemySpawn = new EnemySpawner(Object.FindObjectsOfType<EnemySpawnPoint>());
         var camera = Camera.main; // Может быть взять из GameStater.cs? 
-        var stepController = new StepController(enemySpawn.Enemies,playerFabric.Player.PlayerController, timerController);
+        var stepController = new StepController(enemySpawn.Enemies,playerFabric.Player.Controller, timerController);
         var inputController = new InputController(new KeyBoardInput(), new SkillButtons());
-        var targetSelectionController = new TargetSelectionController(camera, playerFabric.Player.PlayerController,enemySpawn.Enemies);
+        var targetSelectionController = new TargetSelectionController(camera, playerFabric.Player.Controller,enemySpawn.Enemies);
             
         mainController.Add(stepController);
         mainController.Add(inputController);
-        mainController.Add(playerFabric.Player.PlayerController);
+        mainController.Add(playerFabric.Player.Controller);
         mainController.Add(timerController);
         mainController.Add(targetSelectionController);
             
-        new TimerSetsInitialization(playerFabric.Player.PlayerController, timerActionInvoker);
-        new ParticlesInitialization(playerFabric.Player.PlayerController, enemySpawn.Enemies);
+        new TimerSetsInitialization(playerFabric.Player.Controller, timerActionInvoker);
+        new ParticlesInitialization(playerFabric.Player.Controller as IPlayerController, enemySpawn.Enemies);
         new SkillArbitr(stepController, inputController, 
-                        new SkillController(playerFabric.Player.PlayerController, enemySpawn.Enemies));
+                        new SkillController(playerFabric.Player.Controller, enemySpawn.Enemies));
     }
 }

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Interfaces;
 using Pointers;
-using Unit;
 using UnityEngine;
 using Component = UnityEngine.Component;
 
@@ -11,12 +10,12 @@ namespace Controllers
     {
         private readonly Camera _camera;
         private readonly PlayerController _playerController;
-        private readonly List<Enemy> _enemyList;
+        private readonly List<Enemy.Enemy> _enemyList;
         
-        public TargetSelectionController(Camera camera, PlayerController playerController, List<Enemy> enemyList)
+        public TargetSelectionController(Camera camera, IController playerController, List<Enemy.Enemy> enemyList)
         {
             _camera = camera;
-            _playerController = playerController;
+            _playerController = playerController as PlayerController;
             _enemyList = enemyList;
         }
 
@@ -25,7 +24,7 @@ namespace Controllers
             if (!Input.GetMouseButtonDown(0)) return;
             var ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.GetComponent<Enemy>())
+            if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.GetComponent<Enemy.Enemy>())
             {
                 _playerController.RotatePlayer(hitInfo.transform);
                 TargetSelected(hitInfo.transform);
@@ -46,6 +45,8 @@ namespace Controllers
         {
             SelectingTarget();
         }
+
+        public IModel Model { get; set; }
     }  
 }
 

@@ -1,5 +1,6 @@
 using Controllers;
 using Controllers.Model;
+using Interfaces;
 using UnityEngine;
 
 namespace Initialization
@@ -10,9 +11,9 @@ namespace Initialization
 
         private const float DELTA_TIME_BETWEEN_SHOT = 4f;
 
-        public TimerSetsInitialization(PlayerController playerController, TimerActionInvoker timerActionInvoker)
+        public TimerSetsInitialization(IController playerController, TimerActionInvoker timerActionInvoker)
         {
-            _playerController = playerController;
+            _playerController = playerController as PlayerController;
             timerActionInvoker.TimerSet += SetTimer;
             timerActionInvoker.TimerDelete += DeleteTimer;
         }

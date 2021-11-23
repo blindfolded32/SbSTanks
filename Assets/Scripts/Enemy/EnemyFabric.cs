@@ -1,11 +1,9 @@
 ﻿using Bullet;
 using Markers;
-using Shell;
 using Unit;
-using Unit.Model;
 using UnityEngine;
 
-namespace Spawners
+namespace Enemy
 {
     public class EnemyFabric
     {
@@ -17,7 +15,7 @@ namespace Spawners
            enemy.Element = parameters.Element;
             enemy.BulletPool = ServiceLocator.Resolve<BulletPool>();
             enemy.TakeDamage += enemy.GetDamage;
-            enemy.transform.LookAt(Object.FindObjectOfType<Player>().transform);
+            enemy.transform.LookAt(Object.FindObjectOfType<Player.Player>().transform);
             return enemy;
         }
     }

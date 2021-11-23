@@ -1,9 +1,8 @@
 ﻿using Bullet;
 using Controllers;
-using Shell;
 using UnityEngine;
 
-namespace Unit
+namespace Player
 {
     public class PlayerShoot
     {
@@ -15,7 +14,7 @@ namespace Unit
             if (playerController.GetView.IsDead) return;;
             
             var shell = playerController.GetView.BulletPool.GetItem("Bullet");
-            shell.Damage = playerController.GetView.PlayerController.PlayerModel.Damage;
+            shell.Damage = playerController.GetView.Controller.Model.Damage;
             shell.Element = shotElement;
             shell.Transform.position = playerController.GetView.ShotPoint.position;
             shell.transform.rotation = playerController.GetView.ShotPoint.rotation;

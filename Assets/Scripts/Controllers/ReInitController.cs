@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Unit;
-using Random = UnityEngine.Random;
 using static UnityEngine.Object;
 
 
@@ -15,23 +14,23 @@ namespace Controllers
         public bool Lost = false;
         
         private PlayerController _playerController;
-        private readonly List<Enemy> _enemies;
-        private List<Enemy> _defParams;
-        public ReInitController(PlayerController playerController,List<Enemy> enemies)
+        private readonly List<Enemy.Enemy> _enemies;
+        private List<Enemy.Enemy> _defParams;
+        public ReInitController(PlayerController playerController,List<Enemy.Enemy> enemies)
         {
             _playerController = playerController;
             _enemies = enemies;
             _defParams = _enemies;
             _playerController.GetView.PlayerDead += NewTry;
         }
-        public static void ReInit(IEnumerable<Enemy> enemies)
+        public static void ReInit(IEnumerable<Enemy.Enemy> enemies)
         {
             foreach (var enemy in enemies)
             {
                 //enemy.UnitInitializationData.Element = (Random.Range(0,2));
             }
         }
-        public void NewRound(List<Enemy> enemies)
+        public void NewRound(List<Enemy.Enemy> enemies)
         {
             foreach (var enemy in enemies)
             {
@@ -55,7 +54,7 @@ namespace Controllers
         }
         private void RestartGame()
         {
-            var currentEnemy = FindObjectsOfType<Enemy>();
+            var currentEnemy = FindObjectsOfType<Enemy.Enemy>();
             for (int i = 0; i < currentEnemy.Length; i++)
             {
                 currentEnemy[i].IsDead = false;

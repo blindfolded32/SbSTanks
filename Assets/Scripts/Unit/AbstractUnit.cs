@@ -3,18 +3,15 @@ using Bullet;
 using Controllers;
 using IdentificationElements;
 using Interfaces;
-using Shell;
-using Unit;
-using Unit.Model;
 using UnityEngine;
 
-namespace Spawners
+namespace Unit
 {
     public abstract class AbstractUnit : MonoBehaviour, IDamagebleUnit
     {
         public bool IsDead { get; set; }
-        public PlayerController PlayerController;
-        private Enemy _enemy;
+        public IController Controller;
+
         internal BulletPool BulletPool;
         internal Transform ShotPoint;
         internal int Element;

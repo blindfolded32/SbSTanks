@@ -2,10 +2,8 @@
 using Controllers.Model;
 using Markers;
 using Unit;
-using Unit.Model;
-using UnityEngine;
 
-namespace Spawners
+namespace Enemy
 {
     public class EnemySpawner
     {

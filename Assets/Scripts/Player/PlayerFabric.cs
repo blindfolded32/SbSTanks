@@ -1,13 +1,10 @@
 ﻿using Bullet;
 using Controllers;
-using Controllers.Model;
 using Markers;
-using Shell;
 using Unit;
-using Unit.Model;
 using UnityEngine;
 
-namespace Spawners
+namespace Player
 {
     public class PlayerFabric
     {
@@ -16,7 +13,7 @@ namespace Spawners
         public Player Create(Transform transform, UnitInitializationData parameters, TimerController timerController)
         {
             Player = Object.Instantiate(Resources.Load<Player>("Prefabs/Player"), transform);
-            Player.PlayerController = new PlayerController(new PlayerModel(timerController,parameters), 
+            Player.Controller = new PlayerController(new PlayerModel(timerController,parameters), 
                                                         Object.FindObjectOfType<Player>());
             Player.Element = parameters.Element;
             Player.ShotPoint = Player.GetComponentInChildren<ShotPoint>().transform;

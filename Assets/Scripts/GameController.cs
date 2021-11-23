@@ -51,4 +51,6 @@ public class GameController : IController
             _model.FixedControllers[element].FixedExecute(fixedTime, fixedDeltaTime);
         }
     }
+
+    public IModel Model { get; set; }
 }

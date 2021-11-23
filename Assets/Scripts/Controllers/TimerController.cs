@@ -47,6 +47,8 @@ namespace Controllers
                 }
             }
         }
+
+        public IModel Model { get; set; }
     }
 }
 

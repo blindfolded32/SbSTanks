@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Controllers.Model;
 using Interfaces;
-using Unit;
 using UnityEngine;
 
 namespace Controllers
@@ -13,17 +12,17 @@ namespace Controllers
         private TimerData _shotDelayTimer;
         private TimerData _endTurnTimer;
         private bool _isDelay;
-        private List<Enemy> _enemies;
+        private List<Enemy.Enemy> _enemies;
         private PlayerController _player;
         private TimerController _timerController;
         private ReInitController _reInitController;
         public int GetTurnNumber { get; private set; }
         public bool PlayerTurn => _player.IsPlayerTurn;
         public event Action<int> NewTurn;
-        public StepController(List<Enemy> enemies, PlayerController player, TimerController timerController)
+        public StepController(List<Enemy.Enemy> enemies, IController player, TimerController timerController)
         {
             _enemies = enemies;
-            _player = player;
+            _player = player as PlayerController;
             _timerController = timerController;
             _isDelay = false;
             GetTurnNumber = 1;
@@ -93,5 +92,7 @@ namespace Controllers
             _endTurnTimer = new TimerData(4f, Time.time);
             _timerController.AddTimer(_endTurnTimer);
         }
+
+        public IModel Model { get; set; }
     }
 }

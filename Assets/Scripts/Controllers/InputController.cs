@@ -23,6 +23,8 @@ namespace Controllers
             _keyBoardInput.CheckButtons();
             UIInput.CheckButtons();
         }
+
+        public IModel Model { get; set; }
     }
 }
 

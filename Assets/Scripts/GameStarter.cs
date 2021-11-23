@@ -1,5 +1,4 @@
 using Bullet;
-using Shell;
 using UnityEngine;
 
 public class GameStarter : MonoBehaviour

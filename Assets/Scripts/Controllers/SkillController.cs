@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Interfaces;
-using Unit;
+using Player;
 using Random = UnityEngine.Random;
 
 namespace Controllers
@@ -10,10 +10,10 @@ namespace Controllers
     {
         private readonly PlayerController _player;
         private readonly StepController _stepController;
-        private readonly List<Enemy> _enemies;
-        public SkillController(PlayerController player,  List<Enemy> enemies)
+        private readonly List<Enemy.Enemy> _enemies;
+        public SkillController(IController player,  List<Enemy.Enemy> enemies)
         {
-            _player = player;
+            _player = player as PlayerController;
             _enemies = enemies;
         }
         protected internal void EarthSkill()
@@ -39,5 +39,7 @@ namespace Controllers
             }
             _player.IsPlayerTurn = false;
         }
+
+        public IModel Model { get; set; }
     }
 }

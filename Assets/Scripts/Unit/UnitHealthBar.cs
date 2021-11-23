@@ -9,19 +9,19 @@ namespace Unit
         [SerializeField] 
         public Image _foregroundImage;
         private float _imageUpdateSpeed = 1f;
-        private Unit _unit;
+        private UnitModel _unit;
 
         void Awake()
         {
-            _unit = GetComponentInParent<Unit>();
+            _unit = GetComponentInParent<UnitModel>();
 //            _unit.TakeDamage +=HealthChanged;
         }
 
         private void HealthChanged(float currentHP)
         {
-            Debug.Log($"{_unit.Parameters.Hp.GetCurrentHp}- {currentHP}");
+            Debug.Log($"{_unit.HP.GetCurrentHp}- {currentHP}");
           
-            var damage = (_unit.Parameters.Hp.GetCurrentHp- currentHP)/_unit.Parameters.Hp.Max;
+            var damage = (_unit.HP.GetCurrentHp- currentHP)/_unit.HP.Max;
             StartCoroutine(ChangeHealthPicture(damage));
         }
 

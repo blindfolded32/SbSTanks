@@ -1,4 +1,4 @@
-namespace Task2
+namespace Player
 {
     public class PlayerRotationEvent
     {

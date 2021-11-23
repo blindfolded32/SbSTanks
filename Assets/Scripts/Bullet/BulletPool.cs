@@ -7,12 +7,11 @@ using Object = UnityEngine.Object;
 
 namespace Bullet
 {
-    internal sealed class BulletPool 
+    public sealed class BulletPool 
     {
         private readonly Dictionary<string, HashSet<Bullet>> _bulletPool;
         private readonly int _capacity;
-        private Transform _rootPool;
-        
+        private readonly Transform _rootPool;
         public BulletPool(int capacityPool)
         {
             _bulletPool = new Dictionary<string, HashSet<Bullet>>();
@@ -21,6 +20,7 @@ namespace Bullet
             {
                 _rootPool = new GameObject(NameManager.BULLET_POOL).transform;
             }
+            
         }
         public Bullet GetItem(string type)
         {
@@ -44,10 +44,11 @@ namespace Bullet
             var bullet = bullets.FirstOrDefault(a => !a.gameObject.activeSelf);
             if (bullet == null )
             {
-                var laser = Resources.Load<Bullet>("Prefabs/Bullet");
+                var laser = Resources.Load<Bullet>("Prefabs/Shell");
                 for (var i = 0; i < _capacity; i++)
                 {
                     var instantiate = Object.Instantiate(laser);
+                    
                     ReturnToPool(instantiate.transform);
                     bullets.Add(instantiate);
                     

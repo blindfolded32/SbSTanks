@@ -20,7 +20,7 @@ namespace Controllers
         public SkillButtons()
         {
             var buttonArray = Object.FindObjectOfType<SkillCanvas>().GetComponentsInChildren<Button>();
-            Debug.Log(buttonArray.Length);
+//            Debug.Log(buttonArray.Length);
             for (int i = 0; i < buttonArray.Length; i++)
             {
                 _skillButtonsDict.Add(_keycodes[i],buttonArray[i]);

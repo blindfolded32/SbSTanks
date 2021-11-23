@@ -18,8 +18,8 @@ namespace Spawners
             Player = Object.Instantiate(Resources.Load<Player>("Prefabs/Player"), transform);
             Player.unitInitializationData = parameters;
             Player.PlayerController = new PlayerController(new PlayerModel(timerController), Object.FindObjectOfType<Player>());
-            Player.ShotPoint = Player.GetComponentInChildren<ShotPoint>().transform;
-            Player.ShellController = ServiceLocator.Resolve<BulletPool>();
+            Player.shotPoint = Player.GetComponentInChildren<ShotPoint>().transform;
+            Player.BulletPool = ServiceLocator.Resolve<BulletPool>();
             return Player;
         }
     }

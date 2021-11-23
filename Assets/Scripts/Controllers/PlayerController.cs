@@ -17,11 +17,13 @@ namespace Controllers
         private float _lerpProgress;
         private Quaternion _startRotation;
         public bool IsPlayerTurn;
+        public readonly PlayerShoot _PlayerShoot;
         public PlayerController(PlayerModel model, Player player)
         {
             PlayerModel = model;
             _player =player;
             IsPlayerTurn = true;
+            _PlayerShoot = new PlayerShoot();
         }
         public Transform GetTransform => _player.transform;
         public bool GetOrSetHit

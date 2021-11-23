@@ -35,7 +35,7 @@ namespace Controllers
         }
         private void SkillSelector(KeyCode id)
         {
-            /*if (!_stepController.PlayerTurn) return;
+            if (!_stepController.PlayerTurn) return;
             switch (id)
             {
                 case KeyCode.E:
@@ -70,7 +70,7 @@ namespace Controllers
                     Debug.Log("Something Wrong");
                     break;
                 }
-            }*/
+            }
         }
     }
 }

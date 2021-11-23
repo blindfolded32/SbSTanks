@@ -8,9 +8,10 @@ public class GameStarter : MonoBehaviour
 
     private void Awake()
     {
+        ServiceLocator.SetService(new BulletPool(5));
         _mainController = new GameController();
         new MainInitializator(_mainController);
-        ServiceLocator.SetService<BulletPool>( new BulletPool(5));
+
     }
     void Update()
     {

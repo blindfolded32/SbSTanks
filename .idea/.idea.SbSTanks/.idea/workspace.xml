@@ -48,14 +48,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Model/TimerData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TimerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/NameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellPool.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/PCInputSpaceInitialization.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IParameters.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/BattleController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IDamagebleUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/IUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitInitializationData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/TimerSetsInitialization.cs" />
@@ -65,7 +57,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/PCInputSpace.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IPCInputSpace.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillControler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/ParticlesInitialization.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Model/Health.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/MoveSceneViewCamera.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TargetSelectionController.cs" />
@@ -78,25 +69,36 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TimerActionInvoker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Model/UIModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitParameters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ButtonActivationController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IParameters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Shell/Shell.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Enemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/InputController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/KeyBoardInput.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillArbitr.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/EnemyHealthBar.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellControllerData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillButtons.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Task2/PlayerRotationEvent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Markers/ShotPoint.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Markers/PlayerSpawnPoimt.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Markers/PlayerSpawnPoint.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Markers/EnemySpawnPoint.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellControllerData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Spawners/PlayerFabrick.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitParameters.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Spawners/PlayerFabric.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Spawners/EnemyFabric.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/ParticlesInitialization.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillArbitr.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/EnemyHealthBar.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Spawners/EnemySpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Spawners/AbstractUnit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillController.cs" />
       </list>
     </option>
   </component>
@@ -121,10 +123,10 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="952">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="952" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -173,6 +175,7 @@
       <workItem from="1637556142655" duration="3811000" />
       <workItem from="1637567559131" duration="738000" />
       <workItem from="1637568757964" duration="13883000" />
+      <workItem from="1637650169147" duration="3993000" />
     </task>
     <servers />
   </component>
@@ -283,6 +286,10 @@
     </state>
     <state x="836" y="224" key="RiderGenerateDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1637313046404" />
     <state x="1114" y="226" key="RiderGenerateDialog/0.0.2560.1050@0.0.2560.1050" timestamp="1637079924343" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1637650723755">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1637650723755" />
     <state x="936" y="243" key="run.anything.popup" timestamp="1637084316768">
       <screen x="0" y="0" width="2560" height="1050" />
     </state>
@@ -297,42 +304,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Shell/ShellController.cs</url>
-          <line>40</line>
+          <line>41</line>
           <properties documentPath="C:\Users\1\Documents\GitHub\SbSTanks\Assets\Scripts\Shell\ShellController.cs" initialLine="40">
             <startOffsets>
-              <option value="1481" />
+              <option value="1448" />
             </startOffsets>
             <endOffsets>
-              <option value="1521" />
+              <option value="1488" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs</url>
-          <line>22</line>
-          <properties documentPath="C:\Users\1\Documents\GitHub\SbSTanks\Assets\Scripts\Unit\Unit.cs" initialLine="22">
-            <startOffsets>
-              <option value="1028" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1043" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitParameters.cs</url>
-          <line>32</line>
-          <properties documentPath="C:\Users\1\Documents\GitHub\SbSTanks\Assets\Scripts\Unit\Model\UnitParameters.cs" initialLine="32">
-            <startOffsets>
-              <option value="760" />
-            </startOffsets>
-            <endOffsets>
-              <option value="783" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,7 +1,6 @@
 using System;
 
-
-namespace SbSTanks
+namespace Controllers
 {
     public class TimerActionInvoker
     {

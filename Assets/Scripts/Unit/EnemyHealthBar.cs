@@ -1,8 +1,8 @@
 using System.Collections;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace SbSTanks
+namespace Unit
 {
     public class EnemyHealthBar : MonoBehaviour
     {
@@ -14,7 +14,7 @@ namespace SbSTanks
         void Awake()
         {
             _unit = GetComponentInParent<Unit>();
-            _unit.TakeDamage +=HealthChanged;
+//            _unit.TakeDamage +=HealthChanged;
         }
 
         private void HealthChanged(float currentHP)

@@ -1,7 +1,8 @@
 using System;
+using Interfaces;
 using UnityEngine;
 
-namespace SbSTanks
+namespace Controllers
 {
     public class InputController : IExecute
     {

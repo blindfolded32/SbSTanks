@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SbSTanks
+namespace IdentificationElements
 {
     public class ParticleSystemShotIdentificator : MonoBehaviour
     {

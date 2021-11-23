@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using Controllers.Model;
+using Interfaces;
 using UnityEngine;
 
-namespace SbSTanks
+namespace Controllers
 {
     public class TimerController : IExecute
     {

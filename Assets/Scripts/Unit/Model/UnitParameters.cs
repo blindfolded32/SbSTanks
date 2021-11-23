@@ -1,8 +1,9 @@
 using System;
+using Controllers.Model;
+using Interfaces;
 using UnityEngine;
 
-
-namespace SbSTanks
+namespace Unit.Model
 {
     [Serializable]
     public class UnitParameters : IParameters

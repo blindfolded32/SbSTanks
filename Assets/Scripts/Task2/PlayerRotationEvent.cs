@@ -1,9 +1,4 @@
-using UnityEngine;
-using UnityEngine.UI;
-using Quaternion = UnityEngine.Quaternion;
-using Vector3 = UnityEngine.Vector3;
-
-namespace SbSTanks
+namespace Task2
 {
     public class PlayerRotationEvent
     {

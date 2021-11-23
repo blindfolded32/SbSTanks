@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Interfaces;
 
-namespace SbSTanks
+namespace MainModels
 {
     public class GameControllerModel
     {

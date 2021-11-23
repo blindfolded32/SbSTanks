@@ -1,7 +1,8 @@
-using UnityEngine;
 using System;
+using Interfaces;
+using UnityEngine;
 
-namespace SbSTanks
+namespace Initialization
 {
     public class KeyBoardInput : IPCInputSpace
     {

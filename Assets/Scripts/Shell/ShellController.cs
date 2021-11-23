@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditorInternal.Profiling.Memory.Experimental;
+using Controllers;
+using Interfaces;
+using Unit;
 using UnityEngine;
-using UnityEngine.Pool;
 
-namespace SbSTanks
+namespace Shell
 {
     public class ShellController: IDisposable, IFixedExecute, IController
     {
@@ -38,7 +39,7 @@ namespace SbSTanks
             foreach (var enemy in _enemies)
             {
                 enemy.ShellHit += InflictDamage;
-                CreateShell(enemy.Parameters.ElementId);  
+               // CreateShell(enemy.Parameters.ElementId);  
             }
         }
         public void FixedExecute(float deltaTime, float fixedDeltaTime)

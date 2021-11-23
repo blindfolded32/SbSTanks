@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SbSTanks
+namespace Controllers
 {
     public class SkillArbitr
     {
@@ -35,7 +35,7 @@ namespace SbSTanks
         }
         private void SkillSelector(KeyCode id)
         {
-            if (!_stepController.PlayerTurn) return;
+            /*if (!_stepController.PlayerTurn) return;
             switch (id)
             {
                 case KeyCode.E:
@@ -70,7 +70,7 @@ namespace SbSTanks
                     Debug.Log("Something Wrong");
                     break;
                 }
-            }
+            }*/
         }
     }
 }

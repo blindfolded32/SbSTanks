@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
+using Interfaces;
+using Unit;
 using Random = UnityEngine.Random;
 
-namespace SbSTanks
+namespace Controllers
 {
     public class SkillController : IController
     {

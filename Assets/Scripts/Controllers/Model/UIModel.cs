@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class UIModel
+namespace Controllers.Model
 {
-    private List<Canvas> _canvases;
-
-    public List<Canvas> GetCanvases { get => _canvases; }
-
-    public UIModel()
+    public class UIModel
     {
-        _canvases = new List<Canvas>();
-        _canvases.AddRange(GameObject.FindObjectsOfType<Canvas>());
+        private List<Canvas> _canvases;
+
+        public List<Canvas> GetCanvases { get => _canvases; }
+
+        public UIModel()
+        {
+            _canvases = new List<Canvas>();
+            _canvases.AddRange(GameObject.FindObjectsOfType<Canvas>());
+        }
     }
 }

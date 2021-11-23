@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using Controllers.Model;
+using Interfaces;
+using Unit;
 using UnityEngine;
 
-namespace SbSTanks
+namespace Controllers
 {
-    public class StepController: IExecute
+    public class StepController : IExecute
     {
        // public bool isPlayerTurn = true;
         private TimerData _startTurnTimer;
@@ -23,7 +26,6 @@ namespace SbSTanks
 
         public StepController(List<Enemy> enemies, PlayerController player, TimerController timerController)
         {
-            
             _enemies = enemies;
             _player = player;
             _timerController = timerController;
@@ -56,7 +58,7 @@ namespace SbSTanks
             {
                 enemy.isShotReturn = false;
             }
-            _reInitController.ReInit(_enemies);
+            ReInitController.ReInit(_enemies);
             _player.IsPlayerTurn = true;
             _endTurnTimer = null;
             _isDelay = false;

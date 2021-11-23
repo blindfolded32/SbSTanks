@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
 
-namespace SbSTanks
+namespace Shell
 {
     public class ShellControllerData
     {
-        public List<Shell> shells = new List<Shell>(8);
+    /*    public List<Shell> shells = new List<Shell>(8);
         public readonly LayerMask shellMask = 6;
         public IUnit player;
         public IUnit enemy;
@@ -21,6 +22,6 @@ namespace SbSTanks
             this.player = player;
             this.enemy = enemy;
             groundMask = 1 << 8;
-        }
+        }*/
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
+using Controllers.Model;
 
-namespace SbSTanks
+namespace Unit.Model
 {
     [Serializable]
     public struct UnitInitializationData

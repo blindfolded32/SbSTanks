@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SbSTanks
+namespace Controllers.Model
 {
     [Serializable]
     public class Health

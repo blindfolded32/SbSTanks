@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Controllers.Model;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SbSTanks
+namespace Controllers
 {
     public class SkillButtons : IPCInputSpace
     {

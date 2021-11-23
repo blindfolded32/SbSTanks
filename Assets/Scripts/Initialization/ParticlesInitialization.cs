@@ -1,7 +1,11 @@
 using System.Collections.Generic;
+using Controllers;
+using IdentificationElements;
+using Interfaces;
+using Unit;
 using UnityEngine;
 
-namespace SbSTanks
+namespace Initialization
 {
     public class ParticlesInitialization
     {
@@ -12,11 +16,11 @@ namespace SbSTanks
         {
             _particleSystemGameObject = Resources.Load<GameObject>(PARTICLE_PATH);
             List<IUnit> tanks = new List<IUnit>();
-            tanks.Add(player.GetView);
+           // tanks.Add(player.GetView);
             
             for (int i = 0; i < enemies.Count; i++)
             {
-                tanks.Add(enemies[i]);
+            //    tanks.Add(enemies[i]);
             }
             
 

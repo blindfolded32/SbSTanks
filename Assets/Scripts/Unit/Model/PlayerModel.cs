@@ -1,4 +1,7 @@
-namespace SbSTanks
+using Controllers;
+using Controllers.Model;
+
+namespace Unit.Model
 {
     public class PlayerModel
     {

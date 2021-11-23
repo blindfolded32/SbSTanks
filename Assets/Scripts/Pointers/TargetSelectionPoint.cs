@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class TargetSelectionPoint : MonoBehaviour
+namespace Pointers
 {
+    public class TargetSelectionPoint : MonoBehaviour
+    {
 
+    }
 }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unit;
 using Random = UnityEngine.Random;
 using static UnityEngine.Object;
 
 
-namespace SbSTanks
+namespace Controllers
 {
     public class ReInitController
     {
@@ -23,11 +24,11 @@ namespace SbSTanks
             _defParams = _enemies;
             _playerController.GetView.PlayerDead += NewTry;
         }
-        public void ReInit(List<Enemy> enemies)
+        public static void ReInit(IEnumerable<Enemy> enemies)
         {
             foreach (var enemy in enemies)
             {
-                enemy.SetUnitElement(Random.Range(0,2));
+                enemy.unitInitializationData.Element = (Random.Range(0,2));
             }
         }
         public void NewRound(List<Enemy> enemies)
@@ -35,13 +36,12 @@ namespace SbSTanks
             foreach (var enemy in enemies)
             {
                 enemy.isDead = false;
-                enemy.Parameters.Damage *= 1.1f;
-                enemy.Parameters.Hp.InjectNewHp(enemy.Parameters.Hp.Max*1.1f);
+               enemy.unitInitializationData.Damage *= 1.1f;
+                enemy.unitInitializationData.Hp.InjectNewHp(enemy.unitInitializationData.Hp.Max*1.1f);
                 enemy.GetComponentInChildren<EnemyHealthBar>()._foregroundImage.fillAmount =1;
             }
-            _playerController.GetView.Parameters.ElementId = (Random.Range(0, 2));
+            _playerController.GetView.unitInitializationData.Element = (Random.Range(0, 2));
         }
-
         public void NewTry()
         {
             if (_triesCount == 0)
@@ -59,8 +59,8 @@ namespace SbSTanks
             for (int i = 0; i < currentEnemy.Length; i++)
             {
                 currentEnemy[i].isDead = false;
-                currentEnemy[i].Parameters.Damage = _defParams[i].Parameters.Damage;
-                currentEnemy[i].Parameters.Hp.InjectNewHp(_defParams[i].Parameters.Hp.Max);
+                currentEnemy[i].unitInitializationData.Damage = _defParams[i].unitInitializationData.Damage;
+                currentEnemy[i].unitInitializationData.Hp.InjectNewHp(_defParams[i].unitInitializationData.Hp.Max);
                 currentEnemy[i].GetComponentInChildren<EnemyHealthBar>()._foregroundImage.fillAmount =1;
             }
             

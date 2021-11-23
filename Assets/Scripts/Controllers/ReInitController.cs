@@ -28,7 +28,7 @@ namespace Controllers
         {
             foreach (var enemy in enemies)
             {
-                enemy.UnitInitializationData.Element = (Random.Range(0,2));
+                //enemy.UnitInitializationData.Element = (Random.Range(0,2));
             }
         }
         public void NewRound(List<Enemy> enemies)
@@ -36,11 +36,11 @@ namespace Controllers
             foreach (var enemy in enemies)
             {
                 enemy.IsDead = false;
-               enemy.UnitInitializationData.Damage *= 1.1f;
-                enemy.UnitInitializationData.Hp.InjectNewHp(enemy.UnitInitializationData.Hp.Max*1.1f);
+             //  enemy.UnitInitializationData.Damage *= 1.1f;
+             //   enemy.UnitInitializationData.Hp.InjectNewHp(enemy.UnitInitializationData.Hp.Max*1.1f);
                 enemy.GetComponentInChildren<EnemyHealthBar>()._foregroundImage.fillAmount =1;
             }
-            _playerController.GetView.UnitInitializationData.Element = (Random.Range(0, 2));
+           // _playerController.GetView.UnitInitializationData.Element = (Random.Range(0, 2));
         }
         public void NewTry()
         {
@@ -59,8 +59,8 @@ namespace Controllers
             for (int i = 0; i < currentEnemy.Length; i++)
             {
                 currentEnemy[i].IsDead = false;
-                currentEnemy[i].UnitInitializationData.Damage = _defParams[i].UnitInitializationData.Damage;
-                currentEnemy[i].UnitInitializationData.Hp.InjectNewHp(_defParams[i].UnitInitializationData.Hp.Max);
+               // currentEnemy[i].UnitInitializationData.Damage = _defParams[i].UnitInitializationData.Damage;
+               // currentEnemy[i].UnitInitializationData.Hp.InjectNewHp(_defParams[i].UnitInitializationData.Hp.Max);
                 currentEnemy[i].GetComponentInChildren<EnemyHealthBar>()._foregroundImage.fillAmount =1;
             }
             

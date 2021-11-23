@@ -44,9 +44,9 @@ namespace Controllers
         }
         private void GetDamage(float damage)
         {
-            _player.UnitInitializationData.Hp.ChangeCurrentHealth(damage);
-            Debug.Log($"My hp is {GetView.UnitInitializationData.Hp.GetCurrentHp}");
-            if (_player.UnitInitializationData.Hp.GetCurrentHp <= 0)
+            PlayerModel.HP.ChangeCurrentHealth(damage);
+            Debug.Log($"My hp is {PlayerModel.HP.GetCurrentHp}");
+            if (PlayerModel.HP.GetCurrentHp <= 0)
             {
                 _player.IsDead = true;
             }

@@ -17,6 +17,7 @@ namespace Spawners
            enemy.Element = parameters.Element;
             enemy.BulletPool = ServiceLocator.Resolve<BulletPool>();
             enemy.TakeDamage += enemy.GetDamage;
+            enemy.transform.LookAt(Object.FindObjectOfType<Player>().transform);
             return enemy;
         }
     }

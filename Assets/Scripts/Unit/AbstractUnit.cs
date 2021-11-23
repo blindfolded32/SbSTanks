@@ -1,6 +1,5 @@
 ﻿using System;
 using Bullet;
-using Controllers;
 using IdentificationElements;
 using Interfaces;
 using UnityEngine;
@@ -9,9 +8,8 @@ namespace Unit
 {
     public abstract class AbstractUnit : MonoBehaviour, IDamagebleUnit
     {
-        public bool IsDead { get; set; }
-        public IController Controller;
-
+        public bool IsDead { get; set; } = false;
+        public IUnitController Controller;
         internal BulletPool BulletPool;
         internal Transform ShotPoint;
         internal int Element;

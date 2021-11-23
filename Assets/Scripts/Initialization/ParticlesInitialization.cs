@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using Controllers;
 using IdentificationElements;
-using Interfaces;
 using Player;
 using Unit;
 using UnityEngine;
@@ -13,7 +11,7 @@ namespace Initialization
         private GameObject _particleSystemGameObject;
 
         private const string PARTICLE_PATH = "Partcle/CompleteTankExplosion";
-        public ParticlesInitialization(IPlayerController player, IReadOnlyList<Enemy.Enemy> enemies)
+        public ParticlesInitialization(IPlayerController player, List<Enemy.Enemy> enemies)
         {
             _particleSystemGameObject = Resources.Load<GameObject>(PARTICLE_PATH);
             List<AbstractUnit> tanks = new List<AbstractUnit>();
@@ -25,10 +23,10 @@ namespace Initialization
             }
             for(int i = 0; i < tanks.Count; i++)
             {
-                var particleSystem = GameObject.Instantiate(_particleSystemGameObject);
-                particleSystem.transform.position = tanks[i].ShotPoint.transform.position;
+                var particleSystem = Object.Instantiate(_particleSystemGameObject);
+                particleSystem.transform.position = tanks[i].ShotPoint.position;
 
-                particleSystem.transform.SetParent(tanks[i].transform);
+                particleSystem.transform.SetParent(tanks[i].ShotPoint.transform);
                 particleSystem.gameObject.AddComponent<ParticleSystemShotIdentificator>();
             }
         }

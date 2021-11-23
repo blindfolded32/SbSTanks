@@ -8,11 +8,12 @@ namespace Bullet
     {
         private Transform _bulletPool;
         public Transform Transform;
+        public float Damage { get; private set; }
+        public int Element { get; private set; }
 
-        public float Damage { get; set; }
-
-        public int Element { get; set; }
-
+        public float AddDamage(float value) => Damage = value;
+        public int AddElement(int value) => Element = value;
+        
         private void Awake()
         {
             Transform = transform;

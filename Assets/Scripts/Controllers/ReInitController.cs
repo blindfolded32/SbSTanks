@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Player;
 using Unit;
 using static UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 
 namespace Controllers
@@ -27,7 +29,8 @@ namespace Controllers
         {
             foreach (var enemy in enemies)
             {
-                //enemy.UnitInitializationData.Element = (Random.Range(0,2));
+                enemy.Controller.IsFired = false;
+                enemy.Element = (Random.Range(0, 2));
             }
         }
         public void NewRound(List<Enemy.Enemy> enemies)
@@ -35,11 +38,11 @@ namespace Controllers
             foreach (var enemy in enemies)
             {
                 enemy.IsDead = false;
-             //  enemy.UnitInitializationData.Damage *= 1.1f;
-             //   enemy.UnitInitializationData.Hp.InjectNewHp(enemy.UnitInitializationData.Hp.Max*1.1f);
+                enemy.Controller.Model.Damage *= 1.1f;
+                enemy.Controller.Model.HP.InjectNewHp( enemy.Controller.Model.HP.Max * 1.1f);
                 enemy.GetComponentInChildren<EnemyHealthBar>()._foregroundImage.fillAmount =1;
             }
-           // _playerController.GetView.UnitInitializationData.Element = (Random.Range(0, 2));
+            _playerController.Model.Element = (Random.Range(0, 2));
         }
         public void NewTry()
         {

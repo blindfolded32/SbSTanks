@@ -1,6 +1,5 @@
 ﻿using Controllers;
 using Controllers.Model;
-using Interfaces;
 using Unit;
 
 namespace Player
@@ -10,7 +9,7 @@ namespace Player
         public int GetAndSetIndexOfTimer { get; set; }
         public TimerController GetAndSetTimerController { get; set; }
         public TimerData GetAndSetTimeData { get; set; }
-        public PlayerModel(TimerController timerController, UnitInitializationData parameters )
+        public PlayerModel(TimerController timerController, UnitInitializationData parameters ) : base(parameters.Hp,parameters.Damage, parameters.Element)
         {
             GetAndSetTimerController = timerController;
             HP = parameters.Hp;

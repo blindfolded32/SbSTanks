@@ -1,39 +1,37 @@
+using Controllers;
 using Interfaces;
-using Player;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 
-namespace Controllers
+namespace Player
 {
     public class PlayerController : IPlayerController
     {
         public PlayerModel PlayerModel { get; private set; }
-        public Player.Player GetView  => _player;
-        private readonly Player.Player _player;
+        public Player GetView { get; }
+        public bool IsDead => GetView.IsDead;
         private readonly StepController _stepController;
         private Quaternion _targetRotation;
         private const float ROTATION_TIME = 0.5f;
         private float _lerpProgress;
         private Quaternion _startRotation;
         public bool IsPlayerTurn;
-        public PlayerController(PlayerModel model, Player.Player player)
-        {
-            PlayerModel = model;
-            _player =player;
-            IsPlayerTurn = true;
-            player.TakeDamage+=GetDamage;
-        }
-        public Transform GetTransform => _player.transform;
+        public IModel Model { get => PlayerModel; set => PlayerModel = value as PlayerModel; }
+        public bool IsFired { get; set; } = false;
+        public Transform GetShotPoint  => GetView.ShotPoint; 
+        public Transform GetTransform => GetView.transform;
        public bool GetOrSetHit
         {
-            get => _player.GetHitStatus;
-            set => _player.GetHitStatus = value;
+            get => GetView.GetHitStatus;
+            set => GetView.GetHitStatus = value;
         }
-     /*   public Action<GameObject, IDamagebleUnit> ShellHit
-        {
-            get => _player.ShellHit;
-            set => _player.ShellHit = value;
-        }*/
+       public PlayerController(PlayerModel model, Player player)
+     {
+         PlayerModel = model;
+         GetView =player;
+         IsPlayerTurn = true;
+         player.TakeDamage+=GetDamage;
+     }
         
         public void RotatePlayer(Transform targetTransform)
         {
@@ -47,12 +45,10 @@ namespace Controllers
             Debug.Log($"My hp is {PlayerModel.HP.GetCurrentHp}");
             if (PlayerModel.HP.GetCurrentHp <= 0)
             {
-                _player.IsDead = true;
+                GetView.IsDead = true;
             }
         }
-
-
-        public IModel Model { get => PlayerModel; set => PlayerModel = value as PlayerModel; }
+        
     }
 }
 

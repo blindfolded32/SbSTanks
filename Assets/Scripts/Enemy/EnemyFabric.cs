@@ -1,4 +1,5 @@
 ﻿using Bullet;
+using Controllers.Model;
 using Markers;
 using Unit;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace Enemy
         {
             var enemy = Object.Instantiate(Resources.Load<Enemy>("Prefabs/Enemy"), transform);
             enemy.ShotPoint = enemy.GetComponentInChildren<ShotPoint>().transform;
+            enemy.Controller = new EnemyController(new UnitModel(new Health(10,10),1,0 ), enemy);
            // enemy.UnitInitializationData = parameters;
            enemy.Element = parameters.Element;
             enemy.BulletPool = ServiceLocator.Resolve<BulletPool>();

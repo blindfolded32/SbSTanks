@@ -1,6 +1,7 @@
 using Controllers;
 using Controllers.Model;
 using Interfaces;
+using Player;
 using UnityEngine;
 
 namespace Initialization

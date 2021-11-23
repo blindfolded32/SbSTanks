@@ -19,7 +19,7 @@ public class MainInitializator
             new UnitInitializationData(new Health(10,10),1,0 ), timerController);
         var enemySpawn = new EnemySpawner(Object.FindObjectsOfType<EnemySpawnPoint>());
         var camera = Camera.main; // Может быть взять из GameStater.cs? 
-        var stepController = new StepController(enemySpawn.Enemies,playerFabric.Player.Controller, timerController);
+        var stepController = new StepController(enemySpawn.Enemies,playerFabric.Player.Controller as IPlayerController, timerController);
         var inputController = new InputController(new KeyBoardInput(), new SkillButtons());
         var targetSelectionController = new TargetSelectionController(camera, playerFabric.Player.Controller,enemySpawn.Enemies);
             

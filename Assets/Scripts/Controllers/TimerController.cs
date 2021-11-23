@@ -40,15 +40,11 @@ namespace Controllers
                 if((currentTime - _timers[i].GetStartTime) > _timers[i].GetDeltaTime)
                 {
                     _timers[i].IsTimerEnd = true;
-                  //if ((Time.time -(currentTime + _timers[i].GetStartTime)) > 60f)
-                    //{
-                    //    DeleteTimer(_timers[i]);
-                    //}
+                    //DeleteTimer(_timers[i]);
                 }
             }
         }
 
-        public IModel Model { get; set; }
     }
 }
 

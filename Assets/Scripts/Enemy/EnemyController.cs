@@ -1,19 +1,29 @@
 ﻿using Interfaces;
 using Unit;
+using UnityEngine;
 
 namespace Enemy
 {
-    public class EnemyController : IController
+    public class EnemyController : IUnitController
     {
-        public UnitModel UnitModel { get; set; }
-        public Enemy Enemy;
+        private UnitModel UnitModel { get; set; }
+        private readonly Enemy _enemy;
+        public Transform GetShotPoint => _enemy.ShotPoint;
         
         public EnemyController(UnitModel unitModel, Enemy enemy)
         {
             UnitModel = unitModel;
-            Enemy = enemy;
+            _enemy = enemy;
         }
-
+        public bool IsDead => _enemy.IsDead;
         public IModel Model { get => UnitModel; set => UnitModel = value as UnitModel; }
+
+        public bool IsFired
+        {
+            get;
+            set;
+        } = false;
+
+
     }
 }

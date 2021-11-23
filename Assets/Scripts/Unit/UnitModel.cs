@@ -7,9 +7,16 @@ namespace Unit
     {
         public Health HP { get; set; }
         public float Damage { get; set; }
-
         public int Element { get; set; }
-       
+
+        public UnitModel(Health hp, float damage, int element)
+        {
+            HP = hp;
+            Damage = damage;
+            Element = element;
+        }
+
+        
     }
 }
 

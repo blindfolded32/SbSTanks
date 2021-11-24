@@ -14,6 +14,7 @@ namespace Enemy
             if (  Controller.Model.HP.GetCurrentHp <= 0)
             {
                 IsDead = true;
+                Controller.IsFired = true;
             }
         }
         protected override void OnCollisionEnter(Collision collision)

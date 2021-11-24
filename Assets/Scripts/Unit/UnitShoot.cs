@@ -9,7 +9,11 @@ namespace Unit
         private static readonly float SHOT_FORCE = 250.0f;
         public static void Shot(IUnitController controller, Transform shotTransform, float damage, int shotElement)
         {
-            if (controller.IsDead) return;
+            if (controller.IsDead)
+            {
+                controller.IsFired = true;
+                return;
+            }
             var shell = ServiceLocator.Resolve<BulletPool>().GetItem("Bullet");
             shell.AddDamage(damage);
             shell.AddElement(shotElement);

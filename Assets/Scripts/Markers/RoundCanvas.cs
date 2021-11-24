@@ -1,3 +1,4 @@
+using System;
 using Interfaces;
 using TMPro;
 using UnityEngine;
@@ -21,19 +22,16 @@ namespace Controllers
             //_stepController.NewTurn += ShowText;
         }
 
-        
+        private void Update()
+        {
+            ShowText(1);
+        }
+
         private void ShowText(int roundNumber)
         {
             _textMeshPro.text = $"Round {roundNumber}";
             _animator.enabled = true;
         }
-
-        private void Update()
-        {
-            ShowText(1);
-        }
-        
-        public IModel Model { get; set; }
         public void Execute(float deltaTime)
         {
             

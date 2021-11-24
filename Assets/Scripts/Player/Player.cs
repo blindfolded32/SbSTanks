@@ -4,12 +4,11 @@ using UnityEngine;
 
 namespace Player
 {
-   // [RequireComponent(typeof(Animator))]
+    [Serializable]
     public class Player : AbstractUnit
     {
         public event Action PlayerDead;
-        public bool GetHitStatus { get; set; } = false;
-
+        public void ConfirmDeath() => PlayerDead?.Invoke();
         protected override void OnCollisionEnter(Collision collision)
         {
             ShellHit?.Invoke(collision.gameObject, this);

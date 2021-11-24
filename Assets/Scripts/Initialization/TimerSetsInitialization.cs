@@ -12,13 +12,13 @@ namespace Initialization
 
         private const float DELTA_TIME_BETWEEN_SHOT = 4f;
 
-        public TimerSetsInitialization(IController playerController, TimerActionInvoker timerActionInvoker)
+     /*   public TimerSetsInitialization(IController playerController, TimerActionInvoker timerActionInvoker)
         {
             _playerController = playerController as PlayerController;
             timerActionInvoker.TimerSet += SetTimer;
             timerActionInvoker.TimerDelete += DeleteTimer;
-        }
-        public void SetTimer()
+        }*/
+     /*   public void SetTimer()
         {
             if (_playerController.GetOrSetHit)
             {
@@ -38,7 +38,7 @@ namespace Initialization
                 _playerController.PlayerModel.GetAndSetIndexOfTimer = -1;
             }
 
-        }
+        }*/
     }
 }
 

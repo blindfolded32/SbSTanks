@@ -31,7 +31,7 @@ public class MainInitializator
         mainController.Add(targetSelectionController);
         mainController.Add(RoundCanvas);
             
-        new TimerSetsInitialization(playerFabric.Player.Controller, timerActionInvoker);
+      //  new TimerSetsInitialization(playerFabric.Player.Controller, timerActionInvoker);
         new ParticlesInitialization(playerFabric.Player.Controller as IPlayerController, enemySpawn.Enemies);
         new SkillArbitr(stepController, inputController, 
                         new SkillController(playerFabric.Player.Controller, enemySpawn.Enemies));

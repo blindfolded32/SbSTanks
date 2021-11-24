@@ -14,11 +14,7 @@ namespace Player
         public bool IsFired { get; set; } = false;
         public Transform GetShotPoint  => GetView.ShotPoint; 
         public Transform GetTransform => GetView.transform;
-       public bool GetOrSetHit
-        {
-            get => GetView.GetHitStatus;
-            set => GetView.GetHitStatus = value;
-        }
+      
        public PlayerController(PlayerModel model, Player player)
      {
          PlayerModel = model;
@@ -32,6 +28,7 @@ namespace Player
             if (PlayerModel.HP.GetCurrentHp <= 0)
             {
                 GetView.IsDead = true;
+                GetView.ConfirmDeath();
             }
         }
     }

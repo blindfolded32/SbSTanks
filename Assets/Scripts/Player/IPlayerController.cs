@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using UnityEngine;
 
 namespace Player
 {
@@ -6,6 +7,5 @@ namespace Player
     {
         public PlayerModel PlayerModel { get; }
         public Player GetView { get; }
-
     }
 }

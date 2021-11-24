@@ -9,7 +9,8 @@ namespace Enemy
         private UnitModel UnitModel { get; set; }
         private readonly Enemy _enemy;
         public Transform GetShotPoint => _enemy.ShotPoint;
-        
+        public Transform GetTransform => _enemy.transform;
+
         public EnemyController(UnitModel unitModel, Enemy enemy)
         {
             UnitModel = unitModel;

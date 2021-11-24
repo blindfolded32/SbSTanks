@@ -19,26 +19,23 @@ namespace Controllers
         }
         protected internal void EarthSkill()
         {
-            _player.IsPlayerTurn = true;
             var transformPosition = _enemies.
                 ElementAt(Random.Range(0, _enemies.FindAll(x=>!x.IsDead).Count))
                 .transform;
-            _player.RotatePlayer(transformPosition);
+            PlayerRotation.RotatePlayer(_player,transformPosition);
             UnitShoot.Shot(_player,_player.GetView.ShotPoint,_player.Model.Damage,2);
         }
         protected internal void WaterSkill()
         {
-            _player.IsPlayerTurn = true;
             UnitShoot.Shot(_player,_player.GetView.ShotPoint,_player.Model.Damage,1);
         }
         protected internal void FireSkill()
         {
-            _player.IsPlayerTurn = true;
             foreach (var enemy in _enemies.Where(enemy => !enemy.IsDead))
             {
                 enemy.TakingDamage(10,0);
             }
-            _player.IsPlayerTurn = false;
+            _player.IsFired = true;
         }
     }
 }

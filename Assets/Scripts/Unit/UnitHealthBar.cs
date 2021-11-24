@@ -4,24 +4,24 @@ using UnityEngine.UI;
 
 namespace Unit
 {
-    public class EnemyHealthBar : MonoBehaviour
+    public class UnitHealthBar : MonoBehaviour
     {
         [SerializeField] 
         public Image _foregroundImage;
         private float _imageUpdateSpeed = 1f;
-        private UnitModel _unit;
+        private AbstractUnit _unit;
 
-        void Awake()
+        private void Awake()
         {
-            _unit = GetComponentInParent<UnitModel>();
-//            _unit.TakeDamage +=HealthChanged;
+            _unit = GetComponentInParent<AbstractUnit>();
+            _unit.TakeDamage +=HealthChanged;
         }
 
         private void HealthChanged(float currentHP)
         {
-            Debug.Log($"{_unit.HP.GetCurrentHp}- {currentHP}");
+            Debug.Log($"{_unit.Controller.Model.HP.GetCurrentHp}- {currentHP}");
           
-            var damage = (_unit.HP.GetCurrentHp- currentHP)/_unit.HP.Max;
+            var damage = (_unit.Controller.Model.HP.GetCurrentHp- currentHP)/_unit.Controller.Model.HP.Max;
             StartCoroutine(ChangeHealthPicture(damage));
         }
 

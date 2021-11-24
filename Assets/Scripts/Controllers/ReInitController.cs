@@ -40,7 +40,7 @@ namespace Controllers
                 enemy.IsDead = false;
                 enemy.Controller.Model.Damage *= 1.1f;
                 enemy.Controller.Model.HP.InjectNewHp( enemy.Controller.Model.HP.Max * 1.1f);
-                enemy.GetComponentInChildren<EnemyHealthBar>()._foregroundImage.fillAmount =1;
+                enemy.GetComponentInChildren<UnitHealthBar>()._foregroundImage.fillAmount =1;
             }
             _playerController.Model.Element = (Random.Range(0, 2));
         }
@@ -63,7 +63,7 @@ namespace Controllers
                 currentEnemy[i].IsDead = false;
                // currentEnemy[i].UnitInitializationData.Damage = _defParams[i].UnitInitializationData.Damage;
                // currentEnemy[i].UnitInitializationData.Hp.InjectNewHp(_defParams[i].UnitInitializationData.Hp.Max);
-                currentEnemy[i].GetComponentInChildren<EnemyHealthBar>()._foregroundImage.fillAmount =1;
+                currentEnemy[i].GetComponentInChildren<UnitHealthBar>()._foregroundImage.fillAmount =1;
             }
             
         }

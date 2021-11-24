@@ -52,6 +52,8 @@ namespace Controllers
             if (_endTurnTimer is null || !_endTurnTimer.IsTimerEnd || !_player.IsFired) return;
             ReInitController.ReInit(_enemies);
             _isDelay = false;
+            _endTurnTimer = null;
+            _shotDelayTimer = null;
             _player.IsFired = false;
             GetTurnNumber++;
             NewTurn?.Invoke(GetTurnNumber);
@@ -60,7 +62,7 @@ namespace Controllers
 
         private void CheckDelay()
         {
-            if (!_isDelay || !_shotDelayTimer.IsTimerEnd || _shotDelayTimer is null) return;
+            if (!_isDelay || !_shotDelayTimer.IsTimerEnd) return;
             //if (_shotDelayTimer is null|| !_shotDelayTimer.IsTimerEnd ) return;
             _isDelay = false;
             EnemyShot();
@@ -73,11 +75,10 @@ namespace Controllers
 
         private void CheckStartTurn()
         {
-            if (!_player.IsFired) return;
-           // if (CheckDead() || !_enemies.Find(x => !x.Controller.IsFired || !_player.IsFired||!_isDelay)) return; //( _isDelay || !CheckDead()) return; 
+            if (!_player.IsFired || _shotDelayTimer is not null) return;
             _isDelay = true;
-            if (_shotDelayTimer is not null) return;
-            _shotDelayTimer = new TimerData(1f, Time.time);
+         //   if (_shotDelayTimer is not null) return;
+            _shotDelayTimer = new TimerData(3.0f, Time.time);
             _timerController.AddTimer(_shotDelayTimer);
         }
 
@@ -90,7 +91,7 @@ namespace Controllers
                 enemy.Controller.IsFired = true;
             }
             if (_endTurnTimer is not null) return;
-            _endTurnTimer = new TimerData(4f, Time.time);
+            _endTurnTimer = new TimerData(4.0f, Time.time);
             _timerController.AddTimer(_endTurnTimer);
         }
     }

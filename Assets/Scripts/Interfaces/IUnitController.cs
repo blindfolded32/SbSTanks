@@ -8,6 +8,7 @@ namespace Interfaces
         public IModel Model { get; set; }
         public bool IsFired { get; set; }
         public Transform GetShotPoint { get; }
+        public Transform GetTransform { get; }
         
     }
 }

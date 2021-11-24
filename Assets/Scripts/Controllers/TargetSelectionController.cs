@@ -27,7 +27,7 @@ namespace Controllers
 
             if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.GetComponent<Enemy.Enemy>())
             {
-                _playerController.RotatePlayer(hitInfo.transform);
+               PlayerRotation.RotatePlayer( _playerController,hitInfo.transform);
                 TargetSelected(hitInfo.transform);
             }
         }

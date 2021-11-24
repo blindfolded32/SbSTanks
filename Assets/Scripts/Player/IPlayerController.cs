@@ -1,5 +1,4 @@
 ﻿using Interfaces;
-using UnityEngine;
 
 namespace Player
 {

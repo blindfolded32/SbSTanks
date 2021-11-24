@@ -19,19 +19,21 @@ namespace Unit
 
         private void HealthChanged(float currentHP)
         {
-            Debug.Log($"{_unit.Controller.Model.HP.GetCurrentHp}- {currentHP}");
-          
-            var damage = (_unit.Controller.Model.HP.GetCurrentHp- currentHP)/_unit.Controller.Model.HP.Max;
+          //  Debug.Log($"{_unit.Controller.Model.HP.GetCurrentHp}- {currentHP}");
+
+            var damage = (_unit.Controller.Model.HP.GetCurrentHp - currentHP)/_unit.Controller.Model.HP.Max;
             StartCoroutine(ChangeHealthPicture(damage));
+        }
+
+        public void ResetBar(float maxVal)
+        {
+            StartCoroutine(ChangeHealthPicture(maxVal));
         }
 
         private IEnumerator ChangeHealthPicture(float currentHP)
         {
             var fullPictureHP = _foregroundImage.fillAmount;
             var elapsed = 0f;
-
-            
-            
             while (elapsed < _imageUpdateSpeed)
             {
                 elapsed += Time.deltaTime;
@@ -39,7 +41,7 @@ namespace Unit
                 yield return null;
             }
             _foregroundImage.fillAmount = currentHP;
-            Debug.Log($"Filled for {_foregroundImage.fillAmount}");
+           // Debug.Log($"Filled for {_foregroundImage.fillAmount}");
         }
     }  
 }

@@ -78,10 +78,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Bullet/Bullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerShoot.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemySpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/ParticlesInitialization.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/AbstractUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerModel.cs" />
@@ -89,16 +87,18 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitShoot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TimerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillArbitr.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitHealthBar.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/IPlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IUnitController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerRotation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TargetSelectionController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitHealthBar.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
       </list>
     </option>
   </component>
@@ -177,7 +177,7 @@
       <workItem from="1637568757964" duration="13883000" />
       <workItem from="1637650169147" duration="18340000" />
       <workItem from="1637688812917" duration="10990000" />
-      <workItem from="1637752794045" duration="1449000" />
+      <workItem from="1637752794045" duration="3941000" />
     </task>
     <servers />
   </component>

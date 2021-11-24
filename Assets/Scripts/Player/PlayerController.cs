@@ -1,7 +1,6 @@
 using Controllers;
 using Interfaces;
 using UnityEngine;
-using Quaternion = UnityEngine.Quaternion;
 
 namespace Player
 {
@@ -11,8 +10,6 @@ namespace Player
         public Player GetView { get; }
         public bool IsDead => GetView.IsDead;
         private readonly StepController _stepController;
-       
-        public bool IsPlayerTurn;
         public IModel Model { get => PlayerModel; set => PlayerModel = value as PlayerModel; }
         public bool IsFired { get; set; } = false;
         public Transform GetShotPoint  => GetView.ShotPoint; 
@@ -26,12 +23,9 @@ namespace Player
      {
          PlayerModel = model;
          GetView =player;
-         IsPlayerTurn = true;
          player.TakeDamage+=GetDamage;
      }
-        
-       
-        private void GetDamage(float damage)
+       private void GetDamage(float damage)
         {
             PlayerModel.HP.ChangeCurrentHealth(damage);
             Debug.Log($"My hp is {PlayerModel.HP.GetCurrentHp}");
@@ -40,7 +34,6 @@ namespace Player
                 GetView.IsDead = true;
             }
         }
-        
     }
 }
 

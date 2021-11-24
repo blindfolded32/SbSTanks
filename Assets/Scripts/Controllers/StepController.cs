@@ -40,6 +40,7 @@ namespace Controllers
             {
                 Debug.Log("Battle over");
                 _reInitController.NewRound(_enemies);
+                GetTurnNumber = 1;
                 return;
             }
             CheckStartTurn();
@@ -86,7 +87,6 @@ namespace Controllers
         {
             foreach (var enemy in _enemies.FindAll(x => !x.IsDead && !x.Controller.IsFired))
             {
-                Debug.Log("Backshot");
                 UnitShoot.Shot(enemy.Controller, enemy.ShotPoint, enemy.Controller.Model.Damage, enemy.Element);
                 enemy.Controller.IsFired = true;
             }

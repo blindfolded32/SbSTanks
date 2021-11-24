@@ -16,7 +16,7 @@ public class MainInitializator
         var timerActionInvoker = new TimerActionInvoker();
         var playerFabric = new PlayerFabric();
         playerFabric.Create(Object.FindObjectOfType<PlayerSpawnPoint>().transform,
-            new UnitInitializationData(new Health(10,10),1,0 ), timerController);
+            new UnitInitializationData(new Health(100,100),1,0 ), timerController);
         var enemySpawn = new EnemySpawner(Object.FindObjectsOfType<EnemySpawnPoint>());
         var camera = Camera.main; // Может быть взять из GameStater.cs? 
         var stepController = new StepController(enemySpawn.Enemies,playerFabric.Player.Controller as IPlayerController, timerController);

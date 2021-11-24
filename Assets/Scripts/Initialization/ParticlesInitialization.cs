@@ -3,6 +3,7 @@ using IdentificationElements;
 using Player;
 using Unit;
 using UnityEngine;
+using static Markers.NameManager;
 
 namespace Initialization
 {
@@ -10,7 +11,7 @@ namespace Initialization
     {
         private GameObject _particleSystemGameObject;
 
-        private const string PARTICLE_PATH = "Partcle/CompleteTankExplosion";
+       
         public ParticlesInitialization(IPlayerController player, List<Enemy.Enemy> enemies)
         {
             _particleSystemGameObject = Resources.Load<GameObject>(PARTICLE_PATH);

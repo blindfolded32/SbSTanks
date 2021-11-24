@@ -13,7 +13,7 @@ namespace Controllers
     public class SkillButtons : IPCInputSpace
     {
         public event Action<KeyCode> ButtonDown;
-        private readonly KeyCode[] _keycodes = new KeyCode[]{KeyCode.Q, KeyCode.W, KeyCode.E};
+        private readonly KeyCode[] _keycodes = {KeyCode.Q, KeyCode.W, KeyCode.E};
         private readonly Dictionary<KeyCode, Button> _skillButtonsDict = new Dictionary<KeyCode, Button>();
         private readonly StepController _stepController;
         public SkillButtons()

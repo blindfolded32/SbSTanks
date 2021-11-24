@@ -1,12 +1,13 @@
 ﻿using Bullet;
 using Interfaces;
 using UnityEngine;
+using static Markers.NameManager;
 
 namespace Unit
 {
     public static class UnitShoot
     {
-        private static readonly float SHOT_FORCE = 250.0f;
+       
         public static void Shot(IUnitController controller, Transform shotTransform, float damage, int shotElement)
         {
             if (controller.IsDead)

@@ -14,10 +14,10 @@ namespace Controllers
         private TimerData _shotDelayTimer;
         private TimerData _endTurnTimer;
         private bool _isDelay;
-        private List<Enemy.Enemy> _enemies;
-        private PlayerController _player;
-        private TimerController _timerController;
-        private ReInitController _reInitController;
+        private readonly List<Enemy.Enemy> _enemies;
+        private readonly PlayerController _player;
+        private readonly TimerController _timerController;
+        public readonly IReInit ReInitController;
         public int GetTurnNumber { get; private set; }
         public bool PlayerTurn => !_player.IsFired;
         public event Action<int> NewTurn;
@@ -29,17 +29,17 @@ namespace Controllers
             _timerController = timerController;
             _isDelay = false;
             GetTurnNumber = 1;
-            _reInitController = new ReInitController(_player, enemies);
-            _reInitController.StartAgain += () => { GetTurnNumber = 1; };
+            ReInitController = new ReInitController(_player, enemies);
+            ReInitController.StartAgain += () => { GetTurnNumber = 1; };
         }
 
         public void Execute(float deltaTime)
         {
-            if (_reInitController.Lost) return;
+            if (ReInitController.Lost) return;
             if (CheckDead())
             {
                 Debug.Log("Battle over");
-                _reInitController.NewRound(_enemies);
+                ReInitController.NewRound(_enemies);
                 GetTurnNumber = 1;
                 return;
             }
@@ -51,7 +51,7 @@ namespace Controllers
         private void CheckEndTurn()
         {
             if (_endTurnTimer is null || !_endTurnTimer.IsTimerEnd || !_player.IsFired) return;
-            ReInitController.ReInit(_enemies);
+            Controllers.ReInitController.ReInit(_enemies);
             _isDelay = false;
             _endTurnTimer = null;
             _shotDelayTimer = null;
@@ -76,21 +76,20 @@ namespace Controllers
 
         private void CheckStartTurn()
         {
-            if (!_player.IsFired || _shotDelayTimer is not null) return;
+            if (!_player.IsFired || _shotDelayTimer is not null || ReInitController.Lost) return;
             _isDelay = true;
-         //   if (_shotDelayTimer is not null) return;
             _shotDelayTimer = new TimerData(3.0f, Time.time);
             _timerController.AddTimer(_shotDelayTimer);
         }
 
         private void EnemyShot()
         {
+            if (_endTurnTimer is not null) return;
             foreach (var enemy in _enemies.FindAll(x => !x.IsDead && !x.Controller.IsFired))
             {
                 UnitShoot.Shot(enemy.Controller, enemy.ShotPoint, enemy.Controller.Model.Damage, enemy.Element);
                 enemy.Controller.IsFired = true;
             }
-            if (_endTurnTimer is not null) return;
             _endTurnTimer = new TimerData(4.0f, Time.time);
             _timerController.AddTimer(_endTurnTimer);
         }

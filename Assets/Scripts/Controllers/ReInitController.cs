@@ -1,33 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using Interfaces;
 using Player;
 using Unit;
 using static UnityEngine.Object;
 using Random = UnityEngine.Random;
+using static Markers.NameManager;
 
 
 namespace Controllers
 {
-    public class ReInitController
+    public class ReInitController : IReInit
     {
         public event Action StartAgain;
         public event Action GameOver;
         public event Action<int> NewRoundStart;
-        private int _triesCount = 3;
-        public bool Lost = false;
-        
-        public int GetRoundNumber { get; private set; }
+        public bool Lost { get; private set; } = false;
+        private int RoundNumber { get; set; }
         
         private readonly PlayerController _playerController;
         private readonly List<Enemy.Enemy> _enemies;
         private List<Enemy.Enemy> _defParams;
+        private int _triesCount;
         public ReInitController(PlayerController playerController,List<Enemy.Enemy> enemies)
         {
             _playerController = playerController;
             _enemies = enemies;
             _defParams = _enemies;
             _playerController.GetView.PlayerDead += NewTry;
-            GetRoundNumber = 1;
+            _triesCount = TriesCount;
+            RoundNumber = 1;
         }
         public static void ReInit(IEnumerable<Enemy.Enemy> enemies)
         {
@@ -37,18 +39,18 @@ namespace Controllers
                 enemy.Element = (Random.Range(0, 2));
             }
         }
-        public void NewRound(List<Enemy.Enemy> enemies)
+        public void NewRound(IEnumerable<Enemy.Enemy> enemies)
         {
             foreach (var enemy in enemies)
             {
                 enemy.IsDead = false;
-                enemy.Controller.Model.Damage *= 1.1f;
-                enemy.Controller.Model.HP.InjectNewHp( enemy.Controller.Model.HP.Max * 1.1f);
+                enemy.Controller.Model.Damage *= RoundModifier;
+                enemy.Controller.Model.HP.InjectNewHp( enemy.Controller.Model.HP.Max * RoundModifier);
                 enemy.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
-                GetRoundNumber++;
+                RoundNumber++;
             }
             _playerController.Model.Element = (Random.Range(0, 2));
-            NewRoundStart?.Invoke(GetRoundNumber);
+            NewRoundStart?.Invoke(RoundNumber);
         }
         public void NewTry()
         {
@@ -59,8 +61,8 @@ namespace Controllers
             }
             StartAgain?.Invoke();
             _triesCount--;
-            GetRoundNumber = 1;
-            NewRoundStart?.Invoke(GetRoundNumber);
+            RoundNumber = 1;
+            NewRoundStart?.Invoke(RoundNumber);
             Lost = true;
         }
         private void RestartGame()

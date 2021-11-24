@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static Markers.NameManager;
 
 namespace Controllers
 {
@@ -7,10 +8,9 @@ namespace Controllers
         
         private int _fireUsed=0;
         private bool _isFireAvailable = true;
-        private const int FireSkillCd = 3;
+        
         private int _earthUsed =0;
         private bool _isEarthAvailable = true;
-        private const int EarthSkillCd = 2;
 
         private StepController _stepController;
         private InputController _controller;

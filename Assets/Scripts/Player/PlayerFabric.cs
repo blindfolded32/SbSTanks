@@ -10,14 +10,13 @@ namespace Player
     {
         public Player Player { get; private set; }
 
-        public Player Create(Transform transform, UnitInitializationData parameters, TimerController timerController)
+        public Player Create(Transform transform, UnitModel parameters)
         {
             Player = Object.Instantiate(Resources.Load<Player>("Prefabs/Player"), transform);
-            Player.Controller = new PlayerController(new PlayerModel(timerController,parameters), 
+            Player.Controller = new PlayerController(new PlayerModel(parameters), 
                                                         Object.FindObjectOfType<Player>());
             Player.Element = parameters.Element;
             Player.ShotPoint = Player.GetComponentInChildren<ShotPoint>().transform;
-            Player.BulletPool = ServiceLocator.Resolve<BulletPool>();
             return Player;
         }
     }

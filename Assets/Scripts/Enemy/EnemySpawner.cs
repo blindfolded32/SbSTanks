@@ -10,11 +10,11 @@ namespace Enemy
         internal readonly List<Enemy> Enemies = new List<Enemy>();
         public EnemySpawner(IEnumerable<EnemySpawnPoint> points)
         {
-            var fabric = new EnemyFabric();
+            //var fabric = new EnemyFabric();
             foreach (var point in points)
             {
                 var enemy = EnemyFabric.Create(point.transform,
-                    new UnitInitializationData(new Health(10, 10), 1, 0));
+                    new UnitModel(new Health(10, 10), 1, 0));
                 Enemies.Add(enemy);
             }
         }

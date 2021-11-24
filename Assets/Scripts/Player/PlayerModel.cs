@@ -5,14 +5,10 @@ using Unit;
 namespace Player
 {
     public class PlayerModel : UnitModel
-    {
-        public int GetAndSetIndexOfTimer { get; set; }
-        public TimerController GetAndSetTimerController { get; set; }
-        public TimerData GetAndSetTimeData { get; set; }
-        public PlayerModel(TimerController timerController, UnitInitializationData parameters ) : base(parameters.Hp,parameters.Damage, parameters.Element)
+    { 
+        public PlayerModel(UnitModel parameters ) : base(parameters.HP,parameters.Damage, parameters.Element)
         {
-            GetAndSetTimerController = timerController;
-            HP = parameters.Hp;
+            HP = parameters.HP;
             Damage = parameters.Damage;
             Element = parameters.Element;
         }

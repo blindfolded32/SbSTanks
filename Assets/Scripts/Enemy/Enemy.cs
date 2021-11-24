@@ -5,8 +5,6 @@ namespace Enemy
 {
     public class Enemy : AbstractUnit
     {
-        public bool isShotReturn = false;
-        private readonly float SHOT_FORCE = 250.0f;
         public void GetDamage(float damage)
         {
            Controller.Model.HP.ChangeCurrentHealth(damage);

@@ -27,7 +27,6 @@ public class GameController : IController
             _model.FixedControllers.Add(fixedController);
         }
     }
-
     public void Execute(float deltaTime)
     {
         for (var element = 0; element < _model.ExecuteControllers.Count; ++element)
@@ -35,7 +34,6 @@ public class GameController : IController
             _model.ExecuteControllers[element].Execute(deltaTime);
         }
     }
-
     public void LateExecute(float deltaTime)
     {
         for (var element = 0; element < _model.LateExecuteControllers.Count; ++element)
@@ -51,6 +49,4 @@ public class GameController : IController
             _model.FixedControllers[element].FixedExecute(fixedTime, fixedDeltaTime);
         }
     }
-
-    public IModel Model { get; set; }
 }

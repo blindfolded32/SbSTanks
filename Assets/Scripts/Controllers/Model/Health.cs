@@ -1,12 +1,15 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Controllers.Model
 {
     [Serializable]
     public class Health
     {
-        public float Max { get; set; }
-        private float Current { get; set; }
+         [SerializeField]private float _max;
+         [SerializeField]private float _current;
+        public float Max { get=> _max; set=> _max = value; }
+        private float Current { get=>_current; set=>_current = value; }
         public Health(float max, float current = default)
         {
             Max = max;

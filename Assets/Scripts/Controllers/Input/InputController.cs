@@ -17,14 +17,11 @@ namespace Controllers
             _keyBoardInput.ButtonDown +=(keycodein)=> SkillUsed?.Invoke(keycodein);
             UIInput.ButtonDown +=(keycodein)=> SkillUsed?.Invoke(keycodein);
         }
-
         public void Execute(float deltaTime)
         {
             _keyBoardInput.CheckButtons();
             UIInput.CheckButtons();
         }
-
-        public IModel Model { get; set; }
     }
 }
 

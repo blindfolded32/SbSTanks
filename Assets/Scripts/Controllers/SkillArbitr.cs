@@ -1,16 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using static Markers.NameManager;
 
 namespace Controllers
 {
+    [Serializable] 
     public class SkillArbitr
     {
         
-        private int _fireUsed=0;
-        private bool _isFireAvailable = true;
+        [SerializeField]private int _fireUsed=0;
+        [SerializeField] private bool _isFireAvailable = true;
         
-        private int _earthUsed =0;
-        private bool _isEarthAvailable = true;
+        [SerializeField]private int _earthUsed =0;
+        [SerializeField]private bool _isEarthAvailable = true;
 
         private StepController _stepController;
         private InputController _controller;
@@ -23,6 +25,15 @@ namespace Controllers
             _skillController = skillController;
             _controller.SkillUsed += SkillSelector;
             stepController.NewTurn += CheckAvailability;
+            stepController.ReInitController.NewRoundStart += (x) => ResetCd();
+        }
+        private void ResetCd()
+        {
+         _fireUsed=0;
+       _isFireAvailable = true;
+       _earthUsed =0;
+         _isEarthAvailable = true;
+         CheckAvailability(_stepController.GetTurnNumber);
         }
         private void CheckAvailability(int turnNumber)
         {

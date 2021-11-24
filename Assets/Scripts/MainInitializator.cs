@@ -4,6 +4,7 @@ using Enemy;
 using Initialization;
 using Markers;
 using Player;
+using SaveLoad;
 using Unit;
 using UnityEngine;
 using  Object = UnityEngine.Object;
@@ -22,7 +23,8 @@ public class MainInitializator
         var inputController = new InputController(new KeyBoardInput(), new SkillButtons());
         var targetSelectionController = new TargetSelectionController(camera, playerFabric.Player.Controller,enemySpawn.Enemies);
         var RoundCanvas = new RoundCanvas(stepController);
-            
+        var skillArbiter = new SkillArbitr(stepController, inputController, 
+            new SkillController(playerFabric.Player.Controller, enemySpawn.Enemies));
         mainController.Add(stepController);
         mainController.Add(inputController);
         mainController.Add(timerController);
@@ -30,7 +32,7 @@ public class MainInitializator
         mainController.Add(RoundCanvas);
 
         new ParticlesInitialization(playerFabric.Player.Controller as IPlayerController, enemySpawn.Enemies);
-        new SkillArbitr(stepController, inputController, 
-                        new SkillController(playerFabric.Player.Controller, enemySpawn.Enemies));
+        
+        new SaveStruct(inputController,skillArbiter);
     }
 }

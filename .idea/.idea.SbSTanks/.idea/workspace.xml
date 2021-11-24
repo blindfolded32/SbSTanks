@@ -48,7 +48,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Bullet/BulletPool.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/UnitParameters.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/Model/PlayerModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/PlayerShoot.cs" />
@@ -79,14 +78,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/TimerSetsInitialization.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Markers/RoundCanvas.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveLoad/SaveStruct.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitInitializationData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyFabric.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerFabric.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitModel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillArbitr.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillButtons.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TimerActionInvoker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" />
@@ -98,6 +95,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IReInit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillArbitr.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Input/InputController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SaveLoad/SaveStruct.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
       </list>
     </option>
@@ -132,10 +132,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="4184">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="4184" />
       <option name="selectedOptions">
         <set />
       </option>

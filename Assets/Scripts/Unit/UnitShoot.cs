@@ -8,7 +8,7 @@ namespace Unit
     public static class UnitShoot
     {
        
-        public static void Shot(IUnitController controller, Transform shotTransform, float damage, int shotElement)
+        public static void Shot(IUnitController controller, Transform shotTransform, float damage, ElementList shotElement)
         {
             if (controller.IsDead)
             {

@@ -9,10 +9,10 @@ namespace Bullet
         private Transform _bulletPool;
         public Transform Transform;
         public float Damage { get; private set; }
-        public int Element { get; private set; }
+        public NameManager.ElementList Element { get; private set; }
 
         public float AddDamage(float value) => Damage = value;
-        public int AddElement(int value) => Element = value;
+        public NameManager.ElementList AddElement(NameManager.ElementList value) => Element = value;
         
         private void Awake()
         {

@@ -1,4 +1,5 @@
 ﻿using Controllers.Model;
+using Markers;
 
 namespace Interfaces
 {
@@ -7,6 +8,6 @@ namespace Interfaces
         public Health HP { get; set; }
         public float Damage { get; set; }
 
-        public int Element { get; set; }
+        public NameManager.ElementList Element { get; set; }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using Bullet;
 using UnityEngine;
 
@@ -8,10 +9,15 @@ public class GameStarter : MonoBehaviour
     private void Awake()
     {
         ServiceLocator.SetService(new BulletPool(5));
-        _mainController = new GameController();
-        new MainInitializator(_mainController);
-
+        ServiceLocator.SetService(new GameController());
     }
+
+    private void Start()
+    {
+        _mainController = ServiceLocator.Resolve<GameController>();
+        new MainInitializator(_mainController);
+    }
+
     void Update()
     {
         var time = Time.deltaTime;

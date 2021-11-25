@@ -36,7 +36,7 @@ namespace Controllers
             foreach (var enemy in enemies)
             {
                 enemy.Controller.IsFired = false;
-                enemy.Element = (Random.Range(0, 2));
+                enemy.Element = (ElementList) (Random.Range(0, 2));
             }
         }
         public void NewRound(IEnumerable<Enemy.Enemy> enemies)
@@ -49,7 +49,7 @@ namespace Controllers
                 enemy.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
                 RoundNumber++;
             }
-            _playerController.Model.Element = (Random.Range(0, 2));
+            _playerController.Model.Element = (ElementList) (Random.Range(0, 2));
             NewRoundStart?.Invoke(RoundNumber);
         }
         public void NewTry()

@@ -9,6 +9,11 @@
         public const float RoundModifier = 1.1f;
         internal const int FireSkillCd = 3;
         internal const int EarthSkillCd = 2;
-
+        public enum ElementList 
+        {
+            Fire=0,
+            Water =1,
+            Earth =2
+        }
     }
 }

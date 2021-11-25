@@ -3,7 +3,7 @@ using MainModels;
 
 public class GameController : IController
 {
-    private GameControllerModel _model;
+    public GameControllerModel _model { get; private set; }
 
     public GameController()
     {

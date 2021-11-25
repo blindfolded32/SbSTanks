@@ -12,8 +12,8 @@ namespace MainModels
             FixedControllers = new List<IFixedExecute>(8);
         }
 
-        public List<IExecute> ExecuteControllers { get; }
-        public List<ILateExecute> LateExecuteControllers { get; }
-        internal List<IFixedExecute> FixedControllers { get; }
+        public List<IExecute> ExecuteControllers { get; set; }
+        public List<ILateExecute> LateExecuteControllers { get; set; }
+        internal List<IFixedExecute> FixedControllers { get; set; }
     }
 }

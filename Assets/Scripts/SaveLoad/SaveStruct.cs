@@ -23,7 +23,7 @@ namespace SaveLoad
             _savelist.AddLast(save);
             var jsonstruct = JsonUtility.ToJson(save);
             File.WriteAllText(Application.persistentDataPath + "/Gamedata.json", jsonstruct);
-            SaveFile(save.PlayerModel.Element.ToString());
+            SaveFile(jsonstruct);
         }
 
         public SaveStruct(InputController inputController,SkillArbitr turn)
@@ -75,7 +75,7 @@ namespace SaveLoad
         
     }
     [Serializable]
-    internal struct Saver
+    public struct Saver
     {
         public UnitModel PlayerModel;
         public List<UnitModel> AbstractUnits;

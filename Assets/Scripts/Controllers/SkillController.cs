@@ -3,6 +3,7 @@ using System.Linq;
 using Interfaces;
 using Player;
 using Unit;
+using static Markers.NameManager;
 using Random = UnityEngine.Random;
 
 namespace Controllers
@@ -23,17 +24,17 @@ namespace Controllers
                 ElementAt(Random.Range(0, _enemies.FindAll(x=>!x.IsDead).Count))
                 .transform;
             PlayerRotation.RotatePlayer(_player,transformPosition);
-            UnitShoot.Shot(_player,_player.GetView.ShotPoint,_player.Model.Damage,2);
+            UnitShoot.Shot(_player,_player.GetView.ShotPoint,_player.Model.Damage, ElementList.Earth);
         }
         protected internal void WaterSkill()
         {
-            UnitShoot.Shot(_player,_player.GetView.ShotPoint,_player.Model.Damage,1);
+            UnitShoot.Shot(_player,_player.GetView.ShotPoint,_player.Model.Damage,ElementList.Water);
         }
         protected internal void FireSkill()
         {
             foreach (var enemy in _enemies.Where(enemy => !enemy.IsDead))
             {
-                enemy.TakingDamage(10,0);
+                enemy.TakingDamage(10,ElementList.Fire);
             }
             _player.IsFired = true;
         }

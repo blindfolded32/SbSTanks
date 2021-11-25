@@ -10,7 +10,7 @@ using static Markers.NameManager;
 
 namespace Controllers
 {
-    public class ReInitController : IReInit
+    public class ReInitController : IReInit, IController
     {
         public event Action StartAgain;
         public event Action GameOver;
@@ -46,7 +46,7 @@ namespace Controllers
                 enemy.IsDead = false;
                 enemy.Controller.Model.Damage *= RoundModifier;
                 enemy.Controller.Model.HP.InjectNewHp( enemy.Controller.Model.HP.Max * RoundModifier);
-                enemy.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
+               // enemy.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
                 RoundNumber++;
             }
             _playerController.Model.Element = (ElementList) (Random.Range(0, 2));

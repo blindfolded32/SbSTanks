@@ -1,13 +1,15 @@
-﻿using Interfaces;
+﻿using Bullet;
+using Interfaces;
 using MainModels;
 
 public class GameController : IController
 {
-    public GameControllerModel _model { get; private set; }
+    public GameControllerModel _model { get; set; }
 
     public GameController()
     {
         _model = new GameControllerModel();
+        ServiceLocator.SetService(new BulletPool(5));
     }
 
     public void Add(IController controller)

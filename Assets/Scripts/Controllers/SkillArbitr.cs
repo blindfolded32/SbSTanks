@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using SaveLoad;
 using UnityEngine;
 using static Markers.NameManager;
 
@@ -8,11 +10,11 @@ namespace Controllers
     public class SkillArbitr
     {
         
-        [SerializeField]private int _fireUsed=0;
-        [SerializeField] private bool _isFireAvailable = true;
+        [SerializeField]public int _fireUsed=0;
+        [SerializeField] public bool _isFireAvailable = true;
         
-        [SerializeField]private int _earthUsed =0;
-        [SerializeField]private bool _isEarthAvailable = true;
+        [SerializeField]public int _earthUsed =0;
+        [SerializeField]public bool _isEarthAvailable = true;
 
         private StepController _stepController;
         private InputController _controller;
@@ -27,6 +29,18 @@ namespace Controllers
             stepController.NewTurn += CheckAvailability;
             stepController.ReInitController.NewRoundStart += (x) => ResetCd();
         }
+
+        public void SetSkills(List<SkillCd> skill = default)
+        {
+            if (skill != null && !skill.Equals(default))
+            {
+                _earthUsed = skill[0].skillCool;
+                _isEarthAvailable = skill[0].skillAvail;
+                _fireUsed = skill[1].skillCool;
+                _isFireAvailable = skill[1].skillAvail;
+            }
+        }
+        
         private void ResetCd()
         {
          _fireUsed=0;

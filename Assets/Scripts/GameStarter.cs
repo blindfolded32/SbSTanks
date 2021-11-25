@@ -6,19 +6,14 @@ public class GameStarter : MonoBehaviour
 {
     private GameController _mainController;
 
-    private void Awake()
+   private void Awake()
     {
-        ServiceLocator.SetService(new BulletPool(5));
         ServiceLocator.SetService(new GameController());
-    }
-
-    private void Start()
-    {
         _mainController = ServiceLocator.Resolve<GameController>();
-        new MainInitializator(_mainController);
+        ServiceLocator.SetService(new MainInitializator(_mainController));
     }
 
-    void Update()
+   private void Update()
     {
         var time = Time.deltaTime;
         _mainController.Execute(time);

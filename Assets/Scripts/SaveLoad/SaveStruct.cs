@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.Serialization.Formatters.Binary;
 using Controllers;
 using Player;
@@ -15,13 +16,18 @@ namespace SaveLoad
     [Serializable]
     public class SaveStruct
     { 
-        private LinkedList<Saver> _savelist = new LinkedList<Saver>();
-        private SkillArbitr _skill;
+        [SerializeField]private LinkedList<Saver> _savelist = new LinkedList<Saver>();
+        private List<SkillCd> _skillCds = new List<SkillCd>();
+        private SkillArbitr _arbiter;
+        private List<SkillCd> _skill;
 
-        private void AddSave(Saver save)
+        private void AddSave(UnitModel player, List<UnitModel> enemies,SkillArbitr skills)
         {
-            _savelist.AddLast(save);
-            var jsonstruct = JsonUtility.ToJson(save);
+            _skillCds.Add(new SkillCd(skills._earthUsed, skills._isEarthAvailable));
+            _skillCds.Add(new SkillCd(skills._fireUsed,skills._isEarthAvailable));
+            var save = new Saver(player, enemies, _skillCds);
+           _savelist.AddLast(save);
+           var jsonstruct = JsonUtility.ToJson(save);
             File.WriteAllText(Application.persistentDataPath + "/Gamedata.json", jsonstruct);
             SaveFile(jsonstruct);
         }
@@ -29,7 +35,7 @@ namespace SaveLoad
         public SaveStruct(InputController inputController,SkillArbitr turn)
         {
             inputController.SkillUsed += CheckButton;
-            _skill = turn;
+            _arbiter = turn;
         }
 
         private void CheckButton(KeyCode key)
@@ -46,9 +52,13 @@ namespace SaveLoad
                         enemyUnit.Add(enemy.Controller.Model as UnitModel);
                     }
                     var cds = _skill;
-                    AddSave(new Saver(player,enemyUnit,_skill));
+                    AddSave(player,enemyUnit,_arbiter);
                     break;
                 }
+                case KeyCode.L:
+                    var load = new Loader();
+                    load.Load();
+                    break;
                 default: break;
             }
         }
@@ -72,21 +82,31 @@ namespace SaveLoad
             bf.Serialize(file, data);
             file.Close();
         }
-        
     }
     [Serializable]
     public struct Saver
     {
         public UnitModel PlayerModel;
         public List<UnitModel> AbstractUnits;
-        public SkillArbitr SkillCDs;
+        public List<SkillCd> SkillCDs;
 
-
-        internal Saver(PlayerModel playerModel, List<UnitModel> enemy, SkillArbitr CDController)
+        internal Saver(UnitModel playerModel, List<UnitModel> enemy, List<SkillCd> CDController)
         {
             PlayerModel = playerModel;
             AbstractUnits = enemy;
             SkillCDs = CDController;
+        }
+    }
+[Serializable]
+    public struct SkillCd
+    {
+        public int skillCool;
+        public bool skillAvail;
+
+        internal SkillCd(int skill, bool aval)
+        {
+            skillCool = skill;
+            skillAvail = aval;
         }
     }
 }

@@ -1,24 +1,19 @@
-﻿using UnityEngine.SceneManagement;
+﻿using System.IO;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+using UnityEngine.Purchasing.MiniJSON;
+using UnityEngine.SceneManagement;
 
 namespace SaveLoad
 {
     public class Loader
     {
-        private GameController _gameController;
-        public void Load(Saver saver)
+        public void Load()
         {
-            SceneManager.LoadScene("Scenes/SampleScene");
-            _gameController = ServiceLocator.Resolve<GameController>();
-            if (_gameController._model.ExecuteControllers.Count > 0)
-            {
-                _gameController._model.ExecuteControllers = null;
-                _gameController._model.FixedControllers = null;
-                _gameController._model.LateExecuteControllers = null;
-            }
-
-            new MainInitializator(_gameController);
-            
-            
+            var jsonstring = File.ReadAllText(Application.persistentDataPath + "/Gamedata.json");
+            var jsonstruct = JsonUtility.FromJson<Saver>(jsonstring);
+            var reinit = ServiceLocator.Resolve<MainInitializator>();
+            reinit.GameLoad(jsonstruct);
         }
     }
 }

@@ -7,9 +7,9 @@ namespace MainModels
     {
         public GameControllerModel()
         {
-            ExecuteControllers = new List<IExecute>(8);
-            LateExecuteControllers = new List<ILateExecute>(8);
-            FixedControllers = new List<IFixedExecute>(8);
+            ExecuteControllers = new List<IExecute>();
+            LateExecuteControllers = new List<ILateExecute>();
+            FixedControllers = new List<IFixedExecute>();
         }
 
         public List<IExecute> ExecuteControllers { get; set; }

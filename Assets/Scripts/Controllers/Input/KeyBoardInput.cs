@@ -14,6 +14,7 @@ namespace Initialization
            if (Input.GetKeyUp(KeyCode.W)) ButtonDown?.Invoke(KeyCode.W);
            if (Input.GetKeyUp(KeyCode.E)) ButtonDown?.Invoke(KeyCode.E);
            if (Input.GetKeyUp(KeyCode.R)) ButtonDown?.Invoke(KeyCode.R);
+           if (Input.GetKeyUp(KeyCode.L)) ButtonDown?.Invoke(KeyCode.L);
         }
     }
 }

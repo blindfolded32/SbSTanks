@@ -51,7 +51,7 @@ namespace Controllers
         private void CheckEndTurn()
         {
             if (_endTurnTimer is null || !_endTurnTimer.IsTimerEnd || !_player.IsFired) return;
-            Controllers.ReInitController.ReInit(_enemies);
+            ReInitController.ReInit(_enemies);
             _isDelay = false;
             _endTurnTimer = null;
             _shotDelayTimer = null;

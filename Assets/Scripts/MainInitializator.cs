@@ -28,29 +28,7 @@ public class MainInitializator
     private SkillController SkillControl;
 
     private Player.Player _player;
-   /* public MainInitializator(GameController mainController)
-    {
-        var timerController = new TimerController();
-        var playerFabric = new PlayerFabric();
-        playerFabric.Create(Object.FindObjectOfType<PlayerSpawnPoint>().transform,
-            new UnitModel(new Health(100,100),1,0 ));
-        var enemySpawn = new EnemySpawner(Object.FindObjectsOfType<EnemySpawnPoint>());
-        var camera = Camera.main; // Может быть взять из GameStater.cs? 
-        var stepController = new StepController(enemySpawn.Enemies,playerFabric.Player.Controller as IPlayerController, timerController);
-        var inputController = new InputController(new KeyBoardInput(), new SkillButtons());
-        var targetSelectionController = new TargetSelectionController(camera, playerFabric.Player.Controller,enemySpawn.Enemies);
-        var RoundCanvas = new RoundCanvas(stepController);
-        var skillArbiter = new SkillArbitr(stepController, inputController, 
-            new SkillController(playerFabric.Player.Controller, enemySpawn.Enemies));
-        mainController.Add(stepController);
-        mainController.Add(inputController);
-        mainController.Add(timerController);
-        mainController.Add(targetSelectionController);
-        mainController.Add(RoundCanvas);
-
-        new ParticlesInitialization(playerFabric.Player.Controller as IPlayerController, enemySpawn.Enemies);
-        new SaveStruct(inputController,skillArbiter);
-    }*/
+   
     public MainInitializator(GameController mainController)
     {
         _playerFabric = new PlayerFabric();
@@ -60,7 +38,7 @@ public class MainInitializator
             _player= _playerFabric.Create(Object.FindObjectOfType<PlayerSpawnPoint>().transform,
                 new UnitModel(new Health(100,100),1,0 ));
             _enemySpawn = new EnemySpawner(Object.FindObjectsOfType<EnemySpawnPoint>());
-            SkillControl = new SkillController(_player.Controller, _enemySpawn.Enemies);
+            SkillControl = new SkillController(_player.Controller as PlayerController, _enemySpawn.Enemies);
             stepController = new StepController(_enemySpawn.Enemies,_player.Controller as IPlayerController, timerController);
             skillArbiter = new SkillArbitr(stepController, inputController, SkillControl);//TODO here! default values
             InitControllers();
@@ -96,23 +74,24 @@ public class MainInitializator
         }
     _enemySpawn.Enemies.Clear();
     _enemySpawn = null;
+    _playerFabric = null;
+    _playerFabric = new PlayerFabric();
         _player =_playerFabric.Create(Object.FindObjectOfType<PlayerSpawnPoint>().transform,
             new UnitModel(new Health(save.PlayerModel.HP.Max, save.PlayerModel.HP.GetCurrentHp),
                 save.PlayerModel.Damage, save.PlayerModel.Element));
         _enemySpawn = new EnemySpawner(Object.FindObjectsOfType<EnemySpawnPoint>());
-        SkillControl = new SkillController(_player.Controller, _enemySpawn.Enemies);
+        SkillControl = new SkillController(_player.Controller as PlayerController, _enemySpawn.Enemies);
         stepController = new StepController(_enemySpawn.Enemies,_player.Controller as IPlayerController, timerController);
         skillArbiter = new SkillArbitr(stepController, inputController, SkillControl);//TODO here! default values
         skillArbiter.SetSkills(save.SkillCDs);
-
-        
+        Debug.Log($"{_player.Controller.GetShotPoint.position}");
         InitControllers();
-
         _gameController.Add(stepController);
         _gameController.Add(inputController);
         _gameController.Add(timerController);
         _gameController.Add(targetSelectionController);
         _gameController.Add(RoundCanvas);
-        
+        stepController.ReInitController.ReInit(_enemySpawn.Enemies);
+        stepController.ReInitController.NewRound(_enemySpawn.Enemies);
     }
 }

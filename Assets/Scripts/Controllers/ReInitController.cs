@@ -31,7 +31,7 @@ namespace Controllers
             _triesCount = TriesCount;
             RoundNumber = 1;
         }
-        public static void ReInit(IEnumerable<Enemy.Enemy> enemies)
+        public void ReInit(IEnumerable<Enemy.Enemy> enemies)
         {
             foreach (var enemy in enemies)
             {
@@ -46,7 +46,7 @@ namespace Controllers
                 enemy.IsDead = false;
                 enemy.Controller.Model.Damage *= RoundModifier;
                 enemy.Controller.Model.HP.InjectNewHp( enemy.Controller.Model.HP.Max * RoundModifier);
-               // enemy.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
+                enemy.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
                 RoundNumber++;
             }
             _playerController.Model.Element = (ElementList) (Random.Range(0, 2));

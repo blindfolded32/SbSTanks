@@ -7,7 +7,6 @@ namespace Interfaces
     {
         public Health HP { get; set; }
         public float Damage { get; set; }
-
         public NameManager.ElementList Element { get; set; }
     }
 }

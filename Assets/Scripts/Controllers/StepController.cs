@@ -22,7 +22,7 @@ namespace Controllers
         public bool PlayerTurn => !_player.IsFired;
         public event Action<int> NewTurn;
 
-        public StepController(List<Enemy.Enemy> enemies, IPlayerController player, TimerController timerController)
+        public StepController(List<Enemy.Enemy> enemies, IUnitController player, TimerController timerController)
         {
             _enemies = enemies;
             _player = player as PlayerController;

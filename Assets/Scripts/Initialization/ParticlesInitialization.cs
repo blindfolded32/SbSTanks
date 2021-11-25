@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using IdentificationElements;
+using Interfaces;
 using Player;
 using Unit;
 using UnityEngine;
@@ -12,11 +13,11 @@ namespace Initialization
         private GameObject _particleSystemGameObject;
 
        
-        public ParticlesInitialization(IPlayerController player, List<Enemy.Enemy> enemies)
+        public ParticlesInitialization(AbstractUnit player, List<Enemy.Enemy> enemies)
         {
             _particleSystemGameObject = Resources.Load<GameObject>(PARTICLE_PATH);
             List<AbstractUnit> tanks = new List<AbstractUnit>();
-            tanks.Add(player.GetView);
+            tanks.Add(player);
             
             for (int i = 0; i < enemies.Count; i++)
             {

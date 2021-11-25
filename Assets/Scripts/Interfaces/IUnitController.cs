@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unit;
+using UnityEngine;
 
 namespace Interfaces
 {
@@ -9,6 +10,8 @@ namespace Interfaces
         public bool IsFired { get; set; }
         public Transform GetShotPoint { get; }
         public Transform GetTransform { get; }
-        
+
+        public void SetParams(UnitModel parameters);
+
     }
 }

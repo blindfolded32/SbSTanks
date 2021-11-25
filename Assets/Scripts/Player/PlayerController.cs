@@ -1,10 +1,12 @@
 using Controllers;
 using Interfaces;
+using Markers;
+using Unit;
 using UnityEngine;
 
 namespace Player
 {
-    public class PlayerController : IPlayerController
+    public class PlayerController : IUnitController
     {
         public PlayerModel PlayerModel { get; private set; }
         public Player GetView { get; }
@@ -12,10 +14,16 @@ namespace Player
         private readonly StepController _stepController;
         public IModel Model { get => PlayerModel; set => PlayerModel = value as PlayerModel; }
         public bool IsFired { get; set; } = false;
-        public Transform GetShotPoint  => GetView.ShotPoint; 
+        public Transform GetShotPoint => GetView.ShotPoint; 
         public Transform GetTransform => GetView.transform;
-      
-       public PlayerController(PlayerModel model, Player player)
+        public void SetParams(UnitModel parameters)
+        {
+            PlayerModel.Damage = parameters.Damage;
+            PlayerModel.Element = parameters.Element;
+            PlayerModel.HP = parameters.HP;
+        }
+
+        public PlayerController(PlayerModel model, Player player)
      {
          PlayerModel = model;
          GetView =player;

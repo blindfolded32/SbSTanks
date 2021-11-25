@@ -52,6 +52,16 @@ namespace Controllers
             _playerController.Model.Element = (ElementList) (Random.Range(0, 2));
             NewRoundStart?.Invoke(RoundNumber);
         }
+
+        public void Renew()
+        {
+            _playerController.GetView.GetComponentInChildren<UnitHealthBar>().RenewBar(_playerController.GetView);
+            foreach (var enemy in _enemies)
+            {
+                enemy.GetComponentInChildren<UnitHealthBar>().RenewBar(enemy);
+            }
+        }
+
         public void NewTry()
         {
             if (_triesCount == 0)

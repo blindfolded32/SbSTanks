@@ -12,14 +12,22 @@ namespace Unit
         [SerializeField]private Health _health;
         [SerializeField]private float _damage;
         [SerializeField]private NameManager.ElementList _element;
+        [SerializeField] private Transform _position;
         public Health HP { get => _health; set=>_health =value; }
         public float Damage { get=> _damage; set=> _damage=value; }
         public NameManager.ElementList Element { get=> _element; set=> _element = value; }
-        public UnitModel(Health hp, float damage, NameManager.ElementList element)
+        public Transform UnitPosition
+        {
+            get => _position;
+            set => _position = value;
+        }
+
+        public UnitModel(Health hp, float damage, NameManager.ElementList element, Transform position = default)
         {
             HP = hp;
             Damage = damage;
             Element = element;
+            UnitPosition = position;
         }
 
         

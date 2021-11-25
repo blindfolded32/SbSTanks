@@ -30,6 +30,12 @@ namespace Unit
             StartCoroutine(ChangeHealthPicture(maxVal));
         }
 
+        public void RenewBar(AbstractUnit unit)
+        {
+            var filled = _unit.Controller.Model.HP.GetCurrentHp /_unit.Controller.Model.HP.Max;
+            StartCoroutine(ChangeHealthPicture(filled));
+        }
+
         private IEnumerator ChangeHealthPicture(float currentHP)
         {
             var fullPictureHP = _foregroundImage.fillAmount;

@@ -1,8 +1,5 @@
 ﻿using System.IO;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.Purchasing.MiniJSON;
-using UnityEngine.SceneManagement;
 
 namespace SaveLoad
 {

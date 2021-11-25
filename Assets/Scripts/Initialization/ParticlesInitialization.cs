@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using IdentificationElements;
-using Interfaces;
-using Player;
 using Unit;
 using UnityEngine;
 using static Markers.NameManager;

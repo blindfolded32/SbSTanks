@@ -18,7 +18,6 @@ namespace Controllers
         {
             _player = player ;
             _enemies = enemies;
-            Debug.Log($" constructor player at {_player.Controller.GetShotPoint.position}");
         }
          internal void EarthSkill()
         {
@@ -30,7 +29,6 @@ namespace Controllers
         }
          internal void WaterSkill()
         {
-            Debug.Log($"player at {_player.Controller.GetShotPoint.position}");
             UnitShoot.Shot(_player.Controller,_player.Controller.GetShotPoint,_player.Controller.Model.Damage,ElementList.Water);
         }
          internal void FireSkill()

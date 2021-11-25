@@ -20,8 +20,7 @@ namespace Unit
         private void HealthChanged(float currentHP)
         {
           //  Debug.Log($"{_unit.Controller.Model.HP.GetCurrentHp}- {currentHP}");
-
-            var damage = (_unit.Controller.Model.HP.GetCurrentHp - currentHP)/_unit.Controller.Model.HP.Max;
+          var damage = (_unit.Controller.Model.HP.GetCurrentHp - currentHP)/_unit.Controller.Model.HP.Max;
             StartCoroutine(ChangeHealthPicture(damage));
         }
 

@@ -1,5 +1,3 @@
-using System;
-using Bullet;
 using UnityEngine;
 
 public class GameStarter : MonoBehaviour

@@ -1,8 +1,4 @@
-﻿using System;
-using Controllers.Model;
-using Unit;
-using UnityEngine;
-using UnityEngine.UIElements;
+﻿using Unit;
 
 namespace Player
 {

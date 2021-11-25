@@ -1,5 +1,4 @@
-﻿using System;
-using Controllers;
+﻿using Controllers;
 using Controllers.Model;
 using Enemy;
 using Initialization;

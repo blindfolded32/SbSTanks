@@ -15,9 +15,9 @@ namespace Unit
         internal Transform ShotPoint;
         internal NameManager.ElementList Element;
         public Action<float> TakeDamage { get; set; }
-        public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
+       // public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
        // internal UnitInitializationData UnitInitializationData;
-        protected abstract void OnCollisionEnter(Collision collision);
+      //  protected abstract void OnCollisionEnter(Collision collision);
         public void TakingDamage(float damage, NameManager.ElementList element)
         {
             if (IsDead) return;

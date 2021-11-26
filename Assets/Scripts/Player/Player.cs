@@ -9,10 +9,5 @@ namespace Player
     {
         public event Action PlayerDead;
         public void ConfirmDeath() => PlayerDead?.Invoke();
-        protected override void OnCollisionEnter(Collision collision)
-        {
-            ShellHit?.Invoke(collision.gameObject, this);
-        }
-      
     }
 }

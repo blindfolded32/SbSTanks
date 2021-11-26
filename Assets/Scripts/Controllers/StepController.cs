@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Controllers.Model;
 using Interfaces;
+using Markers;
 using Player;
 using Unit;
 using UnityEngine;
@@ -18,7 +19,7 @@ namespace Controllers
         private readonly PlayerController _player;
         private readonly TimerController _timerController;
         public readonly IReInit ReInitController;
-        public int GetTurnNumber { get; private set; }
+        public int TurnNumber { get;  set; }
         public bool PlayerTurn => !_player.IsFired;
         public event Action<int> NewTurn;
 
@@ -28,9 +29,9 @@ namespace Controllers
             _player = player as PlayerController;
             _timerController = timerController;
             _isDelay = false;
-            GetTurnNumber = 1;
+            TurnNumber = 0;
             ReInitController = new ReInitController(_player, enemies);
-            ReInitController.StartAgain += () => { GetTurnNumber = 1; };
+            ReInitController.StartAgain += () => { TurnNumber = 0; };
         }
 
         public void Execute(float deltaTime)
@@ -40,7 +41,7 @@ namespace Controllers
             {
                 Debug.Log("Battle over");
                 ReInitController.NewRound(_enemies);
-                GetTurnNumber = 1;
+                TurnNumber = 0;
                 return;
             }
             CheckStartTurn();
@@ -56,22 +57,21 @@ namespace Controllers
             _endTurnTimer = null;
             _shotDelayTimer = null;
             _player.IsFired = false;
-            GetTurnNumber++;
-            NewTurn?.Invoke(GetTurnNumber);
-            Debug.Log($"Turn {GetTurnNumber}");
+            TurnNumber++;
+            NewTurn?.Invoke(TurnNumber);
+            Debug.Log($"Turn {TurnNumber}");
         }
 
         private void CheckDelay()
         {
             if (!_isDelay || !_shotDelayTimer.IsTimerEnd) return;
-            //if (_shotDelayTimer is null|| !_shotDelayTimer.IsTimerEnd ) return;
             _isDelay = false;
             EnemyShot();
         }
 
         private bool CheckDead()
         {
-            return !_enemies.Find(enemy => !enemy.IsDead);
+            return !_enemies.Find(enemy => enemy.Controller.State != NameManager.State.Dead);
         }
 
         private void CheckStartTurn()
@@ -90,7 +90,7 @@ namespace Controllers
                 UnitShoot.Shot(enemy.Controller, enemy.ShotPoint, enemy.Controller.Model.Damage, enemy.Element);
                 enemy.Controller.IsFired = true;
             }
-            _endTurnTimer = new TimerData(4.0f, Time.time);
+            _endTurnTimer = new TimerData(1.0f, Time.time);
             _timerController.AddTimer(_endTurnTimer);
         }
     }

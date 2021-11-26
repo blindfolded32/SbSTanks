@@ -40,14 +40,21 @@ namespace Controllers
                 _isFireAvailable = skill[1].skillAvail;
             }
         }
-        
+
+        public List<SkillCd> GetCoolDowns()
+        {
+            var coolDownList = new List<SkillCd>();
+            coolDownList.Add(new SkillCd(_earthUsed,_isEarthAvailable));
+            coolDownList.Add(new SkillCd(_fireUsed,_isFireAvailable));
+            return coolDownList;
+        }
         private void ResetCd()
         {
          _fireUsed=0;
        _isFireAvailable = true;
        _earthUsed =0;
          _isEarthAvailable = true;
-         CheckAvailability(_stepController.GetTurnNumber);
+         CheckAvailability(_stepController.TurnNumber);
         }
         private void CheckAvailability(int turnNumber)
         {
@@ -69,7 +76,7 @@ namespace Controllers
                     {
                         _skillController.EarthSkill();
                         _isEarthAvailable = false;
-                        _earthUsed = _stepController.GetTurnNumber;
+                        _earthUsed = _stepController.TurnNumber;
                     }
                     _controller.UIInput.ButtonState(id,_isEarthAvailable);
                     break;
@@ -85,7 +92,7 @@ namespace Controllers
                     {
                         _skillController.FireSkill();
                         _isFireAvailable = false;
-                        _fireUsed = _stepController.GetTurnNumber;
+                        _fireUsed = _stepController.TurnNumber;
                     }
                     _controller.UIInput.ButtonState(id,_isFireAvailable);
                     break;

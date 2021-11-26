@@ -4,7 +4,7 @@
     {
         public const string BULLET_POOL = "[Bullet_Pool]";
         internal const string PARTICLE_PATH = "Partcle/CompleteTankExplosion";
-        internal static readonly float SHOT_FORCE = 250.0f;
+        internal const float SHOT_FORCE = 250.0f;
         public const int TriesCount = 3;
         public const float RoundModifier = 1.1f;
         internal const int FireSkillCd = 3;
@@ -14,6 +14,13 @@
             Fire=0,
             Water =1,
             Earth =2
+        }
+        public enum State
+        {
+            Idle=0,
+            Fired=1,
+            Levitate=2,
+            Dead=3
         }
     }
 }

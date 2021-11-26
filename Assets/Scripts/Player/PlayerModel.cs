@@ -1,16 +1,23 @@
-﻿using Unit;
+﻿using Controllers.Model;
+using Interfaces;
+using Markers;
+using Unit;
+using UnityEngine;
 
 namespace Player
 {
-    public class PlayerModel : UnitModel
+    public class PlayerModel : IModel
     {
-        public PlayerModel(UnitModel parameters ) : base(parameters.HP,parameters.Damage, parameters.Element, parameters.UnitPosition)
+        public Health HP { get; set;}
+        public float Damage { get; set; }
+        public NameManager.ElementList Element { get; set;}
+        public Transform UnitPosition { get; set; } = default;
+        public PlayerModel(IModel parameters) 
         {
             HP = parameters.HP;
             Damage = parameters.Damage;
             Element = parameters.Element;
             UnitPosition = parameters.UnitPosition;
         }
-
     }
 }

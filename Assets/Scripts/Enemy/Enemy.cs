@@ -14,9 +14,5 @@ namespace Enemy
                Controller.IsFired = true;
            }
         }
-        protected override void OnCollisionEnter(Collision collision)
-        {
-            ShellHit?.Invoke(collision.gameObject, this);
-        }
     }
 }

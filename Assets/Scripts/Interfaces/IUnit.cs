@@ -8,8 +8,5 @@ namespace Interfaces
         public IParameters Parameters { get; set; }
         public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
         public Transform GetShotPoint { get; }
-        public Transform Transform { get; }
-        
-
     }
 }

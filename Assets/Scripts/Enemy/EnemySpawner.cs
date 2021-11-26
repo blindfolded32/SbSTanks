@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Controllers.Model;
 using Markers;
+using SaveLoad;
 using Unit;
 
 namespace Enemy
@@ -16,6 +17,14 @@ namespace Enemy
                 var enemy = EnemyFabric.Create(point.transform,
                     new UnitModel(new Health(10, 10), 1, 0));
                 Enemies.Add(enemy);
+            }
+        }
+
+        public void LoadEnemies(Saver save)
+        {
+            for (int i = 0; i <Enemies.Count; i++)
+            {
+                Enemies[i].Controller.SetParams(save.AbstractUnits[i]);
             }
         }
     }

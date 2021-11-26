@@ -3,6 +3,7 @@
   <component name="ContentModelUserStore">
     <attachedFolders />
     <explicitIncludes>
+      <Path>Assets</Path>
       <Path>Library/PackageCache/com.unity.addressables@1.19.11</Path>
       <Path>Library/PackageCache/com.unity.ads@3.7.5</Path>
       <Path>Library/PackageCache/com.unity.analytics@3.6.12</Path>
@@ -28,6 +29,7 @@
       <Path>.idea</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
+      <Path>Temp</Path>
       <Path>UserSettings</Path>
       <Path>obj</Path>
     </explicitExcludes>

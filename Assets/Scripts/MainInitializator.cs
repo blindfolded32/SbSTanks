@@ -47,7 +47,7 @@ public class MainInitializator
         mainController.Add(inputController);
         mainController.Add(timerController);
         mainController.Add(targetSelectionController);
-        mainController.Add(RoundCanvas);
+        RoundCanvas.Init(stepController);
 
         
         stepController.TurnState();
@@ -57,7 +57,6 @@ public class MainInitializator
     {
         camera = Camera.main; // Может быть взять из GameStater.cs? 
         targetSelectionController = new TargetSelectionController(camera, _player.Controller,_enemySpawn.Enemies);
-        RoundCanvas = new RoundCanvas(stepController);
         new ParticlesInitialization(_player, _enemySpawn.Enemies);
     }
     public void GameLoad(Saver save)

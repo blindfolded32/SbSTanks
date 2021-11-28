@@ -4,6 +4,7 @@ using Interfaces;
 using Markers;
 using Player;
 using Unit;
+using UnityEngine;
 using static UnityEngine.Object;
 using Random = UnityEngine.Random;
 using static Markers.NameManager;
@@ -39,6 +40,7 @@ namespace Controllers
         {
             foreach (var unit in _unitControllers)
             {
+                if (unit.GetState == State.Dead) continue;
                 if (unit is PlayerController) unit.State = State.Idle;
                 else
                 {
@@ -46,11 +48,6 @@ namespace Controllers
                     unit.State = State.Idle;
                 }
             }
-         /*   foreach (var enemy in enemies)
-            {
-                enemy.Controller.State = State.Idle;
-                enemy.Element = (ElementList) (Random.Range(0, 2));
-            }*/
         }
         public void NewRound()
         {
@@ -65,9 +62,10 @@ namespace Controllers
                 {
                     unit.State = State.Idle;
                     unit.Model.Damage *= RoundModifier;
-                    unit.Model.HP.InjectNewHp( unit.Model.HP.Max * RoundModifier);
+                    unit.Model.HP.InjectNewHp(unit.Model.HP.Max * RoundModifier);
                     unit.GetTransform.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
                     unit.Model.Element = (ElementList) (Random.Range(0, 2));
+                    Debug.Log($"{unit.GetTransform.name} health is {unit.Model.HP.GetCurrentHp}");
                 }
             }
             RoundNumber++;

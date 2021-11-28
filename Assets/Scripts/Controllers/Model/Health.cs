@@ -16,7 +16,12 @@ namespace Controllers.Model
             set
             {
                 current = value;
-                if (current <=0) IsDead?.Invoke();
+                Debug.Log($"HP is {current}");
+                if (current <= 0)
+                {
+                    IsDead?.Invoke();
+                    Debug.Log("Is Dead");
+                }
             }
         }
 

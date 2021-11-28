@@ -17,7 +17,7 @@ namespace Controllers
         {
             _animator = GetComponentInChildren<Animator>();
             _textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
-            _stepController.NewTurn += ShowText;
+            _stepController.ReInitController.NewRoundStart += ShowText;
             
         }
 

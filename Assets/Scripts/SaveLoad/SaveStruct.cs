@@ -20,7 +20,7 @@ namespace SaveLoad
         private SkillArbitr _arbitr;
         private StepController _step;
 
-        private void AddSave(UnitModel player, List<UnitModel> enemies,List<SkillCd> skills, int turnNumber)
+        private void AddSave(PlayerModel player, List<UnitModel> enemies,List<SkillCd> skills, int turnNumber)
         {
             var save = new Saver(player, enemies, skills, turnNumber);
            _savelist.AddLast(save);
@@ -31,7 +31,7 @@ namespace SaveLoad
 
         private void AddSave()
         {
-            var player = FindObjectOfType<Player.Player>().Controller.Model as UnitModel;
+            var player = FindObjectOfType<Player.Player>().Controller.Model as PlayerModel;
             var enemies = FindObjectsOfType<Enemy.Enemy>().ToList();
             var enemyUnit = enemies.Select(enemy => enemy.Controller.Model as UnitModel).ToList() ;
             var cds = _skill;
@@ -54,7 +54,7 @@ namespace SaveLoad
             {
                 case KeyCode.R:
                 {
-                    var player = FindObjectOfType<Player.Player>().Controller.Model as UnitModel;
+                    var player = FindObjectOfType<Player.Player>().Controller.Model as PlayerModel;
                     var enemies = FindObjectsOfType<Enemy.Enemy>().ToList();
                     var enemyUnit = enemies.Select(enemy => enemy.Controller.Model as UnitModel).ToList();
                     var cds = _skill;
@@ -91,12 +91,12 @@ namespace SaveLoad
     [Serializable]
     public struct Saver
     {
-        public UnitModel PlayerModel;
+        public PlayerModel PlayerModel;
         public List<UnitModel> AbstractUnits;
         public List<SkillCd> SkillCDs;
         public int turnNumber;
 
-        internal Saver(UnitModel playerModel, List<UnitModel> enemy, List<SkillCd> CDController, int turnNum)
+        internal Saver(PlayerModel playerModel, List<UnitModel> enemy, List<SkillCd> CDController, int turnNum)
         {
             PlayerModel = playerModel;
             AbstractUnits = enemy;

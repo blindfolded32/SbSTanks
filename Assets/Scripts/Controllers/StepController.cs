@@ -14,7 +14,7 @@ namespace Controllers
 {
     public class StepController
     {
-        private bool _isPlayerTurn;
+        public bool IsPlayerTurn;
         private readonly List<IUnitController> _enemies;
         private readonly IUnitController _player;
         private readonly TimerController _timerController;
@@ -34,7 +34,7 @@ namespace Controllers
             _unitList.Add(_player);
             _player.StateChanged += () =>
             {
-                _isPlayerTurn = false;
+                IsPlayerTurn = false;
                 AddTimer();
             };
             foreach (var enemy in _enemies)
@@ -70,12 +70,12 @@ namespace Controllers
         {
             var unit = _unitList.First(x => x.GetState == NameManager.State.Idle);
             unit.ChangeState(NameManager.State.Attack);
-            _isPlayerTurn = unit is PlayerController;
+            IsPlayerTurn = unit is PlayerController;
             return unit;
         }
         private void UnitTurn(IUnitController unit)
         {
-            if (_isPlayerTurn) return;
+            if (IsPlayerTurn) return;
             UnitShoot.Shot(unit, unit.GetShotPoint, unit.Model.Damage, unit.Model.Element);
         }
         public void TurnState()
@@ -96,7 +96,7 @@ namespace Controllers
                 ReInitController.StarnNewTurn();
                 CountTurnOrder();
             }
-            if (_isPlayerTurn) return;
+            if (IsPlayerTurn) return;
             UnitTurn(GetUnitForShoot());
         }
         private bool CheckIdle()

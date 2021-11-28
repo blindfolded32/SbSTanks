@@ -67,7 +67,7 @@ namespace Controllers
         }
         private void SkillSelector(KeyCode id)
         {
-            if(_stepController.PlayerTurn != State.Attack) return;
+            if(!_stepController.IsPlayerTurn) return;
             switch (id)
             {
                 case KeyCode.E:

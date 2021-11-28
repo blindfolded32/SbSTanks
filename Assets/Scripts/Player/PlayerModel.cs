@@ -1,4 +1,5 @@
-﻿using Controllers.Model;
+﻿using System;
+using Controllers.Model;
 using Interfaces;
 using Markers;
 using Unit;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 namespace Player
 {
+    [Serializable]
     public class PlayerModel : IModel
     {
         public Health HP { get; set;}

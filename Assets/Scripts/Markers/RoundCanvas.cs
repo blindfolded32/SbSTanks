@@ -1,16 +1,15 @@
-using Interfaces;
 using TMPro;
 using UnityEngine;
 
 namespace Controllers
 {
-    public class RoundCanvas : MonoBehaviour,IExecute
+    public class RoundCanvas : MonoBehaviour
     {
         private Animator _animator;
         private TextMeshProUGUI _textMeshPro;
-        private StepController _stepController;
+        private static StepController _stepController;
 
-        public RoundCanvas(StepController stepController)
+        public static void Init(StepController stepController)
         {
             _stepController = stepController;
         }
@@ -18,22 +17,15 @@ namespace Controllers
         {
             _animator = GetComponentInChildren<Animator>();
             _textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
-            //_stepController.NewTurn += ShowText;
+            _stepController.NewTurn += ShowText;
+            
         }
 
-        private void Update()
-        {
-            ShowText(1);
-        }
-
+ 
         private void ShowText(int roundNumber)
         {
             _textMeshPro.text = $"Round {roundNumber}";
-            _animator.enabled = true;
-        }
-        public void Execute(float deltaTime)
-        {
-            
+            _animator.Play("NewRound",-1,0f);
         }
     }
 }

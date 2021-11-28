@@ -22,15 +22,14 @@ public class MainInitializator
         var stepController = new StepController(enemySpawn.Enemies,playerFabric.Player.Controller as IPlayerController, timerController);
         var inputController = new InputController(new KeyBoardInput(), new SkillButtons());
         var targetSelectionController = new TargetSelectionController(camera, playerFabric.Player.Controller,enemySpawn.Enemies);
-        var RoundCanvas = new RoundCanvas(stepController);
-        var skillArbiter = new SkillArbitr(stepController, inputController, 
+        var skillArbiter =  new SkillArbitr(stepController, inputController, 
             new SkillController(playerFabric.Player.Controller, enemySpawn.Enemies));
         mainController.Add(stepController);
         mainController.Add(inputController);
         mainController.Add(timerController);
         mainController.Add(targetSelectionController);
-        mainController.Add(RoundCanvas);
 
+        RoundCanvas.Init(stepController);
         new ParticlesInitialization(playerFabric.Player.Controller as IPlayerController, enemySpawn.Enemies);
         
         new SaveStruct(inputController,skillArbiter);

@@ -58,8 +58,8 @@ namespace Controllers
         }
         private void CheckAvailability(int turnNumber)
         {
-            Debug.Log($"Turn is {turnNumber} and earth next use is  {(_earthUsed + EarthSkillCd)}");
-            Debug.Log($"Turn is {turnNumber} and fire next use is  {(_fireUsed + FireSkillCd)}");
+          //  Debug.Log($"Turn is {turnNumber} and earth next use is  {(_earthUsed + EarthSkillCd)}");
+          //  Debug.Log($"Turn is {turnNumber} and fire next use is  {(_fireUsed + FireSkillCd)}");
             if (turnNumber - (_earthUsed + EarthSkillCd) >= 0) _isEarthAvailable = true;
             if (turnNumber - (_fireUsed + FireSkillCd) >= 0) _isFireAvailable = true;
             _controller.UIInput.ButtonState(KeyCode.Q,_isFireAvailable);

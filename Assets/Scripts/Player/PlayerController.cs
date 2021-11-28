@@ -46,7 +46,7 @@ namespace Player
        private void GetDamage(float damage)
         {
             _playerModel.HP.ChangeCurrentHealth(damage);
-            Debug.Log($"My hp is {_playerModel.HP.GetCurrentHp}");
+          //  Debug.Log($"My hp is {_playerModel.HP.GetCurrentHp}");
             if (_playerModel.HP.GetCurrentHp <= 0)
             {
                 GetView.IsDead = true;

@@ -43,8 +43,7 @@ public class MainInitializator
             skillArbiter = new SkillArbitr(stepController, inputController, SkillControl);
             InitUIControllers();
         new SaveStruct(inputController,skillArbiter,stepController);
-        
-        mainController.Add(stepController);
+       
         mainController.Add(inputController);
         mainController.Add(timerController);
         mainController.Add(targetSelectionController);

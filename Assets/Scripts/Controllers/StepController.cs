@@ -30,7 +30,7 @@ namespace Controllers
             _player = player;
             _timerController = timerController;
             _timerController.IsEnd += TurnState;
-            TurnNumber = 0;
+            TurnNumber = 1;
             _unitList.Add(_player);
             _player.StateChanged += () =>
             {
@@ -90,6 +90,7 @@ namespace Controllers
             }
             if (!CheckIdle())
             {
+                TurnNumber++;
                 NewTurn?.Invoke(TurnNumber);
                 Debug.Log($"Turn {TurnNumber}");
                 AddTimer();

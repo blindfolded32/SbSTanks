@@ -18,13 +18,17 @@ namespace Controllers
             _animator = GetComponentInChildren<Animator>();
             _textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
             _stepController.ReInitController.NewRoundStart += ShowText;
-            
+            _stepController.NewTurn += ShowTurn;
         }
-
- 
         private void ShowText(int roundNumber)
         {
             _textMeshPro.text = $"Round {roundNumber}";
+            _animator.Play("NewRound",-1,0f);
+        }
+
+        private void ShowTurn(int turnNumber)
+        {
+            _textMeshPro.text = $"turn {turnNumber}";
             _animator.Play("NewRound",-1,0f);
         }
     }

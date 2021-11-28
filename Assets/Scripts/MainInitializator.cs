@@ -48,6 +48,7 @@ public class MainInitializator
         mainController.Add(timerController);
         mainController.Add(targetSelectionController);
         mainController.Add(RoundCanvas);
+
         
         stepController.TurnState();
     }

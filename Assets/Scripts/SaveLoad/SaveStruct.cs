@@ -20,11 +20,24 @@ namespace SaveLoad
         private SkillArbitr _arbitr;
         private StepController _step;
 
-        private void AddSave(IModel player, List<IModel> enemies,List<SkillCd> skills, int turnNumber)
+        private void AddSave(UnitModel player, List<UnitModel> enemies,List<SkillCd> skills, int turnNumber)
         {
             var save = new Saver(player, enemies, skills, turnNumber);
            _savelist.AddLast(save);
            var jsonstruct = JsonUtility.ToJson(save);
+            File.WriteAllText(Application.persistentDataPath + "/Gamedata.json", jsonstruct);
+            SaveFile(jsonstruct);
+        }
+
+        private void AddSave()
+        {
+            var player = FindObjectOfType<Player.Player>().Controller.Model as UnitModel;
+            var enemies = FindObjectsOfType<Enemy.Enemy>().ToList();
+            var enemyUnit = enemies.Select(enemy => enemy.Controller.Model as UnitModel).ToList() ;
+            var cds = _skill;
+            var save = new Saver(player, enemyUnit, _arbitr.GetCoolDowns(), _step.TurnNumber);
+            _savelist.AddLast(save);
+            var jsonstruct = JsonUtility.ToJson(save);
             File.WriteAllText(Application.persistentDataPath + "/Gamedata.json", jsonstruct);
             SaveFile(jsonstruct);
         }
@@ -33,6 +46,7 @@ namespace SaveLoad
             inputController.SkillUsed += CheckButton;
             _arbitr = turn;
             _step = step;
+            step.NewTurn += (x) => AddSave();
         }
         private void CheckButton(KeyCode key)
         {
@@ -40,9 +54,9 @@ namespace SaveLoad
             {
                 case KeyCode.R:
                 {
-                    var player = FindObjectOfType<Player.Player>().Controller.Model;
+                    var player = FindObjectOfType<Player.Player>().Controller.Model as UnitModel;
                     var enemies = FindObjectsOfType<Enemy.Enemy>().ToList();
-                    var enemyUnit = enemies.Select(enemy => enemy.Controller.Model).ToList();
+                    var enemyUnit = enemies.Select(enemy => enemy.Controller.Model as UnitModel).ToList();
                     var cds = _skill;
                     AddSave(player,enemyUnit,_arbitr.GetCoolDowns(),_step.TurnNumber);
                     break;
@@ -77,12 +91,12 @@ namespace SaveLoad
     [Serializable]
     public struct Saver
     {
-        public IModel PlayerModel;
-        public List<IModel> AbstractUnits;
+        public UnitModel PlayerModel;
+        public List<UnitModel> AbstractUnits;
         public List<SkillCd> SkillCDs;
         public int turnNumber;
 
-        internal Saver(IModel playerModel, List<IModel> enemy, List<SkillCd> CDController, int turnNum)
+        internal Saver(UnitModel playerModel, List<UnitModel> enemy, List<SkillCd> CDController, int turnNum)
         {
             PlayerModel = playerModel;
             AbstractUnits = enemy;
@@ -95,7 +109,6 @@ namespace SaveLoad
     {
         public int skillCool;
         public bool skillAvail;
-
         internal SkillCd(int skill, bool aval)
         {
             skillCool = skill;

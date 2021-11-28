@@ -14,9 +14,6 @@ namespace Controllers
 {
     public class StepController
     {
-        private TimerData _startTurnTimer;
-        private TimerData _shotDelayTimer;
-        private TimerData _endTurnTimer;
         private bool _isPlayerTurn;
         private readonly List<IUnitController> _enemies;
         private readonly IUnitController _player;
@@ -25,7 +22,7 @@ namespace Controllers
         private readonly float _turnCoolDown =1.5f;
         private readonly List<IUnitController> _unitList = new List<IUnitController>();
         public int TurnNumber { get;  set; }
-        public NameManager.State PlayerTurn => _player.GetState;
+        public NameManager.State PlayerTurn => _player.GetState;//TODO remove?
         public event Action<int> NewTurn;
         public StepController(List<IUnitController> enemies, IUnitController player, TimerController timerController)
         {
@@ -84,7 +81,7 @@ namespace Controllers
         public void TurnState()
         {
             if (ReInitController.Lost) return;
-            if (!CheckDead())
+          if (!CheckDead())
             {
                 Debug.Log("Battle over");
                 ReInitController.NewRound();

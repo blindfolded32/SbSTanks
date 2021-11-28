@@ -39,8 +39,8 @@ public class MainInitializator
                 new UnitModel(new Health(100,100),1,0));
             _enemySpawn = new EnemySpawner(Object.FindObjectsOfType<EnemySpawnPoint>());
             SkillControl = new SkillController(_player, _enemySpawn.Enemies);
-            stepController = new StepController(_enemySpawn.Enemies,_player.Controller, timerController);
-            skillArbiter = new SkillArbitr(stepController, inputController, SkillControl);//TODO here! default values
+            stepController = new StepController(_enemySpawn.UnitControllers,_player.Controller, timerController);
+            skillArbiter = new SkillArbitr(stepController, inputController, SkillControl);
             InitUIControllers();
         new SaveStruct(inputController,skillArbiter,stepController);
         
@@ -49,6 +49,8 @@ public class MainInitializator
         mainController.Add(timerController);
         mainController.Add(targetSelectionController);
         mainController.Add(RoundCanvas);
+        
+        stepController.TurnState();
     }
 
     private void InitUIControllers()

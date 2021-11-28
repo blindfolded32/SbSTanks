@@ -10,9 +10,8 @@ namespace Unit
        
         public static void Shot(IUnitController controller, Transform shotTransform, float damage, ElementList shotElement)
         {
-            if (controller.State == State.Dead)
+            if (controller.State != State.Attack)
             {
-                controller.State = State.Fired;
                 return;
             }
             var shell = ServiceLocator.Resolve<BulletPool>().GetItem("Bullet");
@@ -23,7 +22,7 @@ namespace Unit
             shell.gameObject.SetActive(true);
             var shellRb = shell.GetComponent<Rigidbody>();
             shellRb.AddForce(shell.transform.forward * SHOT_FORCE, ForceMode.Impulse);
-            controller.State = State.Fired;
+            controller.ChangeState(State.Fired);
         }
     }
 }

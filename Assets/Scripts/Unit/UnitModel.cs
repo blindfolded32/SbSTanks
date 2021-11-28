@@ -22,6 +22,8 @@ namespace Unit
             set => _position = value;
         }
 
+        public int Initiative { get; set; }
+
         public UnitModel(Health hp, float damage, NameManager.ElementList element, Transform position = default)
         {
             HP = hp;

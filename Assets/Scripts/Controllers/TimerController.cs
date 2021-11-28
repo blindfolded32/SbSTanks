@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Controllers.Model;
 using Interfaces;
@@ -8,6 +9,7 @@ namespace Controllers
     public class TimerController : IExecute
     {
         private List<TimerData> _timers = new List<TimerData>();
+        public event Action IsEnd;
 
         public void AddTimer(TimerData timeData)
         {
@@ -40,7 +42,8 @@ namespace Controllers
                 if((currentTime - _timers[i].GetStartTime) > _timers[i].GetDeltaTime)
                 {
                     _timers[i].IsTimerEnd = true;
-                    //DeleteTimer(_timers[i]);
+                    IsEnd?.Invoke();
+                    DeleteTimer(_timers[i]);
                 }
             }
         }

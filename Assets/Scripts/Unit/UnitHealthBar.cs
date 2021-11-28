@@ -1,4 +1,5 @@
 using System.Collections;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,7 +30,7 @@ namespace Unit
             StartCoroutine(ChangeHealthPicture(maxVal));
         }
 
-        public void RenewBar(AbstractUnit unit)
+        public void RenewBar(IUnitController unit)
         {
             var filled = _unit.Controller.Model.HP.GetCurrentHp /_unit.Controller.Model.HP.Max;
             StartCoroutine(ChangeHealthPicture(filled));

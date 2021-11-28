@@ -1,3 +1,4 @@
+using Markers;
 using Unit;
 using UnityEngine;
 
@@ -10,8 +11,7 @@ namespace Enemy
            Controller.Model.HP.ChangeCurrentHealth(damage);
            if (  Controller.Model.HP.GetCurrentHp <= 0)
            {
-               IsDead = true;
-               Controller.IsFired = true;
+               Controller.State = NameManager.State.Dead;
            }
         }
     }

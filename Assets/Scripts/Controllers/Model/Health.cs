@@ -9,7 +9,17 @@ namespace Controllers.Model
          [SerializeField]private float max;
          [SerializeField]private float current;
         public float Max { get=> max; set=> max = value; }
-        private float Current { get=>current; set=>current = value; }
+        public event Action IsDead;
+        private float Current
+        {
+            get=>current;
+            set
+            {
+                current = value;
+                if (current <=0) IsDead?.Invoke();
+            }
+        }
+
         public Health(float max, float current = default)
         {
             Max = max;

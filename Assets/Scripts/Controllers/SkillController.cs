@@ -30,6 +30,7 @@ namespace Controllers
          internal void WaterSkill()
         {
             UnitShoot.Shot(_player.Controller,_player.Controller.GetShotPoint,_player.Controller.Model.Damage,ElementList.Water);
+            _player.Controller.ChangeState(State.Fired);
         }
          internal void FireSkill()
         {
@@ -37,7 +38,8 @@ namespace Controllers
             {
                 enemy.TakingDamage(10,ElementList.Fire);
             }
-            _player.Controller.IsFired = true;
+
+            _player.Controller.State = State.Fired;
         }
     }
 }

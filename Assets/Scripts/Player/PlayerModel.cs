@@ -12,6 +12,8 @@ namespace Player
         public float Damage { get; set; }
         public NameManager.ElementList Element { get; set;}
         public Transform UnitPosition { get; set; } = default;
+        public int Initiative { get; set; }
+
         public PlayerModel(IModel parameters) 
         {
             HP = parameters.HP;

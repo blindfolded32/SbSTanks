@@ -18,9 +18,10 @@
         public enum State
         {
             Idle=0,
-            Fired=1,
-            Levitate=2,
-            Dead=3
+            Attack =1,
+            Fired=2,
+            Levitate=3,
+            Dead=4
         }
     }
 }

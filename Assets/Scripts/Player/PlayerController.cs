@@ -1,3 +1,4 @@
+using System;
 using Controllers;
 using Interfaces;
 using Markers;
@@ -17,6 +18,8 @@ namespace Player
         public NameManager.State State { get; set; }
         public Transform GetShotPoint => GetView.ShotPoint; 
         public Transform GetTransform => GetView.transform;
+        public NameManager.State GetState => State;
+
         public void SetParams(IModel parameters)
         {
             _playerModel.Damage = parameters.Damage;
@@ -24,6 +27,13 @@ namespace Player
             _playerModel.HP = parameters.HP;
             _playerModel.UnitPosition = parameters.UnitPosition;
         }
+        public event Action StateChanged;
+        public void ChangeState(NameManager.State state)
+        {
+            if (GetState == state) return;
+            State = state;
+           if (state == NameManager.State.Fired) StateChanged?.Invoke();
+        } 
 
         public PlayerController(PlayerModel model, Player player)
      {
@@ -31,6 +41,7 @@ namespace Player
          GetView =player;
          player.TakeDamage+=GetDamage;
          State = NameManager.State.Idle;
+         Model.HP.IsDead += () => ChangeState(NameManager.State.Dead);
      }
        private void GetDamage(float damage)
         {

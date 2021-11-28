@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Interfaces;
+using Markers;
 using Player;
 using Unit;
 using static UnityEngine.Object;
@@ -18,48 +19,71 @@ namespace Controllers
         public bool Lost { get; private set; } = false;
         private int RoundNumber { get; set; }
         
-        private readonly PlayerController _playerController;
-        private readonly List<Enemy.Enemy> _enemies;
+      //  private readonly PlayerController _playerController;
+      //  private readonly List<Enemy.Enemy> _enemies;
+
+        private readonly IEnumerable<IUnitController> _unitControllers;
         private List<Enemy.Enemy> _defParams;
         private int _triesCount;
-        public ReInitController(PlayerController playerController,List<Enemy.Enemy> enemies)
+        public ReInitController(IEnumerable<IUnitController> unitControllers)
         {
-            _playerController = playerController;
-            _enemies = enemies;
-            _defParams = _enemies;
-            _playerController.GetView.PlayerDead += NewTry;
+          //  _playerController = playerController;
+          //  _enemies = enemies;
+          _unitControllers = unitControllers;
+        //    _defParams = _enemies;
+            //_playerController.GetView.PlayerDead += NewTry;
             _triesCount = TriesCount;
             RoundNumber = 1;
         }
-        public void ReInit(IEnumerable<Enemy.Enemy> enemies)
+        public void StarnNewTurn()
         {
-            foreach (var enemy in enemies)
+            foreach (var unit in _unitControllers)
             {
-                enemy.Controller.IsFired = false;
+                if (unit is PlayerController) unit.State = State.Idle;
+                else
+                {
+                    unit.Model.Element = (ElementList) (Random.Range(0, 2)); //TODO count elements in enum
+                    unit.State = State.Idle;
+                }
+            }
+         /*   foreach (var enemy in enemies)
+            {
+                enemy.Controller.State = State.Idle;
                 enemy.Element = (ElementList) (Random.Range(0, 2));
-            }
+            }*/
         }
-        public void NewRound(IEnumerable<Enemy.Enemy> enemies)
+        public void NewRound()
         {
-            foreach (var enemy in enemies)
+            foreach (var unit in _unitControllers)
             {
-                enemy.IsDead = false;
-                enemy.Controller.Model.Damage *= RoundModifier;
-                enemy.Controller.Model.HP.InjectNewHp( enemy.Controller.Model.HP.Max * RoundModifier);
-                enemy.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
-                RoundNumber++;
+                if (unit is PlayerController)
+                {
+                    unit.State = State.Idle;
+                    unit.Model.Element = (ElementList) (Random.Range(0, 2));
+                }
+                else
+                {
+                    unit.State = State.Idle;
+                    unit.Model.Damage *= RoundModifier;
+                    unit.Model.HP.InjectNewHp( unit.Model.HP.Max * RoundModifier);
+                    unit.GetTransform.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
+                    unit.Model.Element = (ElementList) (Random.Range(0, 2));
+                }
             }
-            _playerController.Model.Element = (ElementList) (Random.Range(0, 2));
+            RoundNumber++;
             NewRoundStart?.Invoke(RoundNumber);
         }
-
         public void Renew()
         {
-            _playerController.GetView.GetComponentInChildren<UnitHealthBar>().RenewBar(_playerController.GetView);
+            foreach (var unitController in _unitControllers)
+            {
+                unitController.GetTransform.GetComponentInChildren<UnitHealthBar>().RenewBar(unitController);
+            }
+        /*    _playerController.GetView.GetComponentInChildren<UnitHealthBar>().RenewBar(_playerController.GetView);
             foreach (var enemy in _enemies)
             {
                 enemy.GetComponentInChildren<UnitHealthBar>().RenewBar(enemy);
-            }
+            }*/
         }
 
         public void NewTry()

@@ -10,5 +10,7 @@ namespace Interfaces
         public float Damage { get; set; }
         public NameManager.ElementList Element { get; set; }
         public Transform UnitPosition { get; set; }
+        public int Initiative { get; set; }
+
     }
 }

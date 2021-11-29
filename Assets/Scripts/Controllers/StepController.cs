@@ -22,7 +22,6 @@ namespace Controllers
         public readonly IReInit ReInitController;
         private readonly List<IUnitController> _unitList = new List<IUnitController>();
         public int TurnNumber { get;  set; }
-      
         public event Action<int> NewTurn;
         public StepController(List<IUnitController> enemies, List<IUnitController> player, TimerController timerController)
         {
@@ -94,6 +93,7 @@ namespace Controllers
                 Debug.Log("Battle over");
                 ReInitController.NewRound();
                 TurnNumber = 0;
+                ChooseABeliever();
                 CountTurnOrder();
             }
             if (!CheckIdle())
@@ -112,13 +112,23 @@ namespace Controllers
         {
             return _unitList.Contains(_unitList.Find(x => x.GetState == NameManager.State.Idle));
         }
-
         private void RotateEnemy(IUnitController unit)
         {
             var playerPos = _players[Random.Range(0, _players.FindAll(x => x.GetState != NameManager.State.Dead).Count)].GetTransform;
-            
-                PlayerRotation.RotatePlayer(unit,playerPos);
+            PlayerRotation.RotatePlayer(unit,playerPos);
            
+        }
+
+        private void ChooseABeliever()
+        {
+            var alive = _enemies.FindAll(x => x.GetState != State.Dead).Count;
+            if (alive < 2 ) return;
+            var count = Random.Range(1, alive);
+            for (int i = 0; i < count; i++)
+            {
+              _enemies[Random.Range(0,alive)].ChangeState(State.Levitate);
+              Debug.Log($"Believers count {count}");
+            }
         }
     }
 }

@@ -31,6 +31,7 @@ namespace Unit
 
         private void HealthChanged(float currentHP)
         {
+            if (!this._unit.isActiveAndEnabled) return;
           //  Debug.Log($"{_unit.Controller.Model.HP.GetCurrentHp}- {currentHP}");
           var damage = (_unit.Controller.Model.HP.GetCurrentHp - currentHP)/_unit.Controller.Model.HP.Max;
             _unit.ChildCouroutine(ChangeHealthPicture(damage));

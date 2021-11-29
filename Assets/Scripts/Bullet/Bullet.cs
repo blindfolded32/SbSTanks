@@ -10,9 +10,7 @@ namespace Bullet
         public Transform Transform;
         private float Damage { get; set; }
         private NameManager.ElementList Element { get; set; }
-        
-        [SerializeField] private float _ttl = 0.8f;
-        public float _timeToDie;
+
 
         public float AddDamage(float value) => Damage = value;
         public NameManager.ElementList AddElement(NameManager.ElementList value) => Element = value;
@@ -20,16 +18,8 @@ namespace Bullet
         private void Awake()
         {
             Transform = transform;
-            _timeToDie = Time.time + _ttl;
         }
-        private void Update()
-        {
-            if (Time.time > _ttl + _timeToDie && isActiveAndEnabled)
-            {
-                ReturnToPool();
-            }
-        }
-       
+
         private void OnCollisionEnter(Collision other)
         {
             if (!other.gameObject.TryGetComponent<IDamagebleUnit>(out var unit)) return;

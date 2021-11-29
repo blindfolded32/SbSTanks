@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Controllers.Model;
-using Enemy;
 using Interfaces;
 using Markers;
 using SaveLoad;
 using Unit;
+using Random=UnityEngine.Random;
 
 namespace Player
 {
@@ -18,7 +19,7 @@ namespace Player
             foreach (var point in points)
             {
                 var player = PlayerFabric.Create(point.transform,
-                    new UnitModel(new Health(10, 10), 1, 0));
+                    new UnitModel(new Health(10, 10), 1,(NameManager.ElementList) Random.Range(0,2)));
                 Players.Add(player);
                 PlayerControllers.Add(player.Controller);
             }

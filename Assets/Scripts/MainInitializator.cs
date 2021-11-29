@@ -1,11 +1,9 @@
 ﻿using Controllers;
-using Controllers.Model;
 using Enemy;
 using Initialization;
 using Markers;
 using Player;
 using SaveLoad;
-using Unit;
 using UnityEngine;
 using  Object = UnityEngine.Object;
 
@@ -45,9 +43,7 @@ public class MainInitializator
         mainController.Add(timerController);
         mainController.Add(targetSelectionController);
         RoundCanvas.Init(stepController);
-
-        
-        stepController.TurnState();
+        stepController.AddTimer();
     }
 
     private void InitUIControllers()
@@ -98,5 +94,6 @@ public class MainInitializator
         skillArbiter.SetSkills(save.SkillCDs);
         stepController.TurnNumber = save.turnNumber;
         stepController.ReInitController.Renew();
+        stepController.AddTimer();
     }
 }

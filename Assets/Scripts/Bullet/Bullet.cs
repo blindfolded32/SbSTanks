@@ -8,8 +8,9 @@ namespace Bullet
     {
         private Transform _bulletPool;
         public Transform Transform;
-        public float Damage { get; private set; }
-        public NameManager.ElementList Element { get; private set; }
+        private float Damage { get; set; }
+        private NameManager.ElementList Element { get; set; }
+
 
         public float AddDamage(float value) => Damage = value;
         public NameManager.ElementList AddElement(NameManager.ElementList value) => Element = value;
@@ -18,7 +19,7 @@ namespace Bullet
         {
             Transform = transform;
         }
-       
+
         private void OnCollisionEnter(Collision other)
         {
             if (!other.gameObject.TryGetComponent<IDamagebleUnit>(out var unit)) return;

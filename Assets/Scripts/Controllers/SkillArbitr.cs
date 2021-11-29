@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using SaveLoad;
 using UnityEngine;
-using static Markers.NameManager;
+using static NameManager;
 
 namespace Controllers
 {

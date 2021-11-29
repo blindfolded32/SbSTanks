@@ -46,7 +46,7 @@ namespace Player
           //  Debug.Log($"My hp is {_playerModel.HP.GetCurrentHp}");
             if (_playerModel.HP.GetCurrentHp <= 0)
             {
-                GetView.IsDead = true;
+                ChangeState(NameManager.State.Dead);
                 GetView.ConfirmDeath();
             }
         }

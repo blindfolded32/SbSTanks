@@ -25,22 +25,20 @@ namespace Unit
                 OnElementChange?.Invoke(_element);
             }
         }
-
         public Transform UnitPosition
         {
             get => _position;
             set => _position = value;
         }     
         public int Initiative { get; set; }
-        public UnitModel(Health hp, float damage, NameManager.ElementList element, Transform position = default)
+        public UnitModel(Health hp, float damage, NameManager.ElementList element,  Transform position = default)
         {
             HP = hp;
             Damage = damage;
             Element = element;
             UnitPosition = position;
+            
         }
-
-        
     }
 }
 

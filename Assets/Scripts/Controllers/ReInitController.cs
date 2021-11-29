@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Interfaces;
-using Markers;
 using Player;
 using Unit;
 using UnityEngine;
 using static UnityEngine.Object;
 using Random = UnityEngine.Random;
-using static Markers.NameManager;
+using static NameManager;
 
 
 namespace Controllers
@@ -28,7 +27,7 @@ namespace Controllers
             _triesCount = TriesCount;
             RoundNumber = 1;
         }
-        public void StarnNewTurn()
+        public void StartNewTurn()
         {
             foreach (var unit in _unitControllers)
             {
@@ -36,7 +35,7 @@ namespace Controllers
                 if (unit is PlayerController) unit.ChangeState(State.Idle);
                 else
                 {
-                    unit.Model.Element = (ElementList) (Random.Range(0, 2)); //TODO count elements in enum
+                    unit.Model.Element = (ElementList) (Random.Range(0, 2));
                     unit.ChangeState(State.Idle);
                 }
             }
@@ -89,10 +88,10 @@ namespace Controllers
             var currentEnemy = FindObjectsOfType<Enemy.Enemy>();
             for (int i = 0; i < currentEnemy.Length; i++)
             {
-                currentEnemy[i].IsDead = false;
+                currentEnemy[i].Controller.ChangeState(State.Idle);
                // currentEnemy[i].UnitInitializationData.Damage = _defParams[i].UnitInitializationData.Damage;
                // currentEnemy[i].UnitInitializationData.Hp.InjectNewHp(_defParams[i].UnitInitializationData.Hp.Max);
-                currentEnemy[i].GetComponentInChildren<UnitHealthBar>()._foregroundImage.fillAmount =1;
+                currentEnemy[i].GetComponentInChildren<UnitHealthBar>().foregroundImage.fillAmount =1;
             }
             
         }

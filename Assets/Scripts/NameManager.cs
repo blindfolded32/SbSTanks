@@ -11,17 +11,17 @@
         internal const int EarthSkillCd = 2;
         public enum ElementList 
         {
-            Fire=0,
-            Water =1,
-            Earth =2
+            Fire = 0,
+            Water = 1,
+            Earth = 2
         }
         public enum State
         {
-            Idle=0,
-            Attack =1,
-            Fired=2,
-            Levitate=3,
-            Dead=4
+            Idle = 0,
+            Attack = 1,
+            Fired = 2,
+            Levitate = 3,
+            Dead = 4
         }
     }
 }

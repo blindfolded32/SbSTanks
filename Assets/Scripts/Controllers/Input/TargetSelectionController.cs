@@ -27,11 +27,9 @@ namespace Controllers
             if (!Input.GetMouseButtonDown(0)) return;
             var ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.GetComponent<Enemy.Enemy>())
-            {
-               PlayerRotation.RotatePlayer( _playerController.Find(x=>x.GetState!=NameManager.State.Fired),hitInfo.transform);
-                TargetSelected(hitInfo.transform);
-            }
+            if (!Physics.Raycast(ray, out var hitInfo) || !hitInfo.transform.GetComponent<Enemy.Enemy>()) return;
+            PlayerRotation.RotatePlayer( _playerController.Find(x=>x.GetState==NameManager.State.Attack),hitInfo.transform);
+            TargetSelected(hitInfo.transform);
         }
 
         private void TargetSelected(Component transform)

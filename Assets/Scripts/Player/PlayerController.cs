@@ -28,9 +28,9 @@ namespace Player
         public event Action StateChanged;
         public void ChangeState(NameManager.State state)
         {
-            if (GetState == state) return;
-            State = state;
-           if (state == NameManager.State.Fired) StateChanged?.Invoke();
+            if (GetState == state) return; 
+            State = state; 
+            if (state == NameManager.State.Fired) StateChanged?.Invoke();
         }
         public PlayerController(UnitModel model, Player player)
      {

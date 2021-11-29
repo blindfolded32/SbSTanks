@@ -26,7 +26,7 @@ namespace Player
 
         public void LoadPlayers(Saver save)
         {
-            for (int i = 0; i <Players.Count; i++)
+            for (var i = 0; i <Players.Count; i++)
             {
                 Players[i].Controller.SetParams(save.PlayerModel[i]);
             }

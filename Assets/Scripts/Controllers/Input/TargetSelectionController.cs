@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using Interfaces;
-using Markers;
 using Player;
 using Pointers;
 using UnityEngine;
-using Component = UnityEngine.Component;
 
 namespace Controllers
 {
@@ -23,8 +21,8 @@ namespace Controllers
 
         private void SelectingTarget()
         {
-            if (!Input.GetMouseButtonDown(0)) return;
-            var ray = _camera.ScreenPointToRay(Input.mousePosition);
+            if (!UnityEngine.Input.GetMouseButtonDown(0)) return;
+            var ray = _camera.ScreenPointToRay(UnityEngine.Input.mousePosition);
 
             if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.GetComponent<Enemy.Enemy>())
             {

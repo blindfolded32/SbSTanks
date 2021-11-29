@@ -40,7 +40,7 @@ namespace SaveLoad
         }
         public SaveStruct(InputController inputController,SkillArbitr turn, StepController step)
         {
-            inputController.SkillUsed += CheckButton;
+            inputController.ControlButtonPressed += CheckButton;
             _arbitr = turn;
             _step = step;
             step.NewTurn += (x) => AddSave();

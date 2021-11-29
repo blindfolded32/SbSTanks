@@ -1,4 +1,5 @@
 ﻿using Controllers;
+using Controllers.Input;
 using Enemy;
 using Initialization;
 using Markers;
@@ -30,7 +31,7 @@ public class MainInitializator
     public MainInitializator(GameController mainController)
     {
         _playerSpawner = new PlayerSpawner(Object.FindObjectsOfType<PlayerSpawnPoint>());
-        inputController = new InputController(new KeyBoardInput(), new SkillButtons());
+        inputController = new InputController(new KeyBoardInput(), new SkillButtons(), new ControlButtons());
         timerController = new TimerController();
         _enemySpawn = new EnemySpawner(Object.FindObjectsOfType<EnemySpawnPoint>());
             SkillControl = new SkillController(_enemySpawn.Enemies);

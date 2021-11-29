@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using IdentificationElements;
 using Unit;
 using UnityEngine;
@@ -11,22 +12,23 @@ namespace Initialization
         private GameObject _particleSystemGameObject;
 
        
-        public ParticlesInitialization(AbstractUnit player, List<Enemy.Enemy> enemies)
+        public ParticlesInitialization(List<Player.Player> player, List<Enemy.Enemy> enemies)
         {
             _particleSystemGameObject = Resources.Load<GameObject>(PARTICLE_PATH);
             List<AbstractUnit> tanks = new List<AbstractUnit>();
-            tanks.Add(player);
-            
-            for (int i = 0; i < enemies.Count; i++)
+            tanks.AddRange(player.Cast<AbstractUnit>());
+            tanks.AddRange(enemies.Cast<AbstractUnit>());
+
+            /* for (int i = 0; i < enemies.Count; i++)
             {
                 tanks.Add(enemies[i]);
-            }
-            for(int i = 0; i < tanks.Count; i++)
+            }*/
+            foreach (var tank in tanks)
             {
                 var particleSystem = Object.Instantiate(_particleSystemGameObject);
-                particleSystem.transform.position = tanks[i].ShotPoint.position;
+                particleSystem.transform.position = tank.ShotPoint.position;
 
-                particleSystem.transform.SetParent(tanks[i].ShotPoint.transform);
+                particleSystem.transform.SetParent(tank.ShotPoint.transform);
                 particleSystem.gameObject.AddComponent<ParticleSystemShotIdentificator>();
             }
         }

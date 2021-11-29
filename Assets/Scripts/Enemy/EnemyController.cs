@@ -9,7 +9,8 @@ namespace Enemy
     public class EnemyController : IUnitController
     {
         private readonly Enemy _enemy;
-        public NameManager.State State { get; set; }
+        private NameManager.State State { get; set; }
+        public IModel Model { get; private set; }
         public Transform GetShotPoint => _enemy.ShotPoint;
         public Transform GetTransform => _enemy.transform;
         public NameManager.State GetState => State;
@@ -21,7 +22,6 @@ namespace Enemy
             State = state;
             if(state == NameManager.State.Fired) StateChanged?.Invoke();
         }
-        public IModel Model { get; private set; }
         public EnemyController(IModel unitModel, Enemy enemy)
         {
             Model = unitModel;

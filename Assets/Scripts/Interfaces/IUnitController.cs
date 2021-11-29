@@ -8,7 +8,6 @@ namespace Interfaces
     public interface IUnitController : IController
     {
         public IModel Model {get; }
-        public NameManager.State State { get; set; }
         public Transform GetShotPoint {get; }
         public Transform GetTransform {get; }
         public NameManager.State GetState{ get;}

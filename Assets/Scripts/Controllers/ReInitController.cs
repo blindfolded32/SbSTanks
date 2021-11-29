@@ -19,20 +19,12 @@ namespace Controllers
         public event Action<int> NewRoundStart;
         public bool Lost { get; private set; } = false;
         private int RoundNumber { get; set; }
-        
-      //  private readonly PlayerController _playerController;
-      //  private readonly List<Enemy.Enemy> _enemies;
-
         private readonly IEnumerable<IUnitController> _unitControllers;
         private List<Enemy.Enemy> _defParams;
         private int _triesCount;
         public ReInitController(IEnumerable<IUnitController> unitControllers)
         {
-          //  _playerController = playerController;
-          //  _enemies = enemies;
-          _unitControllers = unitControllers;
-        //    _defParams = _enemies;
-            //_playerController.GetView.PlayerDead += NewTry;
+            _unitControllers = unitControllers;
             _triesCount = TriesCount;
             RoundNumber = 1;
         }
@@ -41,11 +33,11 @@ namespace Controllers
             foreach (var unit in _unitControllers)
             {
                 if (unit.GetState == State.Dead) continue;
-                if (unit is PlayerController) unit.State = State.Idle;
+                if (unit is PlayerController) unit.ChangeState(State.Idle);
                 else
                 {
                     unit.Model.Element = (ElementList) (Random.Range(0, 2)); //TODO count elements in enum
-                    unit.State = State.Idle;
+                    unit.ChangeState(State.Idle);
                 }
             }
         }
@@ -55,12 +47,12 @@ namespace Controllers
             {
                 if (unit is PlayerController)
                 {
-                    unit.State = State.Idle;
+                    unit.ChangeState(State.Idle);
                     unit.Model.Element = (ElementList) (Random.Range(0, 2));
                 }
                 else
                 {
-                    unit.State = State.Idle;
+                    unit.ChangeState(State.Idle);
                     unit.Model.Damage *= RoundModifier;
                     unit.Model.HP.InjectNewHp(unit.Model.HP.Max * RoundModifier);
                     unit.GetTransform.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
@@ -77,11 +69,6 @@ namespace Controllers
             {
                 unitController.GetTransform.GetComponentInChildren<UnitHealthBar>().RenewBar(unitController);
             }
-        /*    _playerController.GetView.GetComponentInChildren<UnitHealthBar>().RenewBar(_playerController.GetView);
-            foreach (var enemy in _enemies)
-            {
-                enemy.GetComponentInChildren<UnitHealthBar>().RenewBar(enemy);
-            }*/
         }
 
         public void NewTry()

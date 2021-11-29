@@ -10,7 +10,7 @@ namespace Unit
        
         public static void Shot(IUnitController controller, Transform shotTransform, float damage, ElementList shotElement)
         {
-            if (controller.State != State.Attack && controller.State != State.Idle)
+            if (controller.GetState != State.Attack && controller.GetState != State.Idle)
             {
                 return;
             }

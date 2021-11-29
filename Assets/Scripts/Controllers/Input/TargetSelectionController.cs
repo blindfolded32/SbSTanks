@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using Interfaces;
+using Markers;
 using Player;
 using Pointers;
 using UnityEngine;
@@ -10,13 +12,13 @@ namespace Controllers
     public class TargetSelectionController : IExecute
     {
         private readonly Camera _camera;
-        private readonly PlayerController _playerController;
+        private readonly List<IUnitController> _playerController;
         private readonly List<Enemy.Enemy> _enemyList;
         
-        public TargetSelectionController(Camera camera, IController playerController, List<Enemy.Enemy> enemyList)
+        public TargetSelectionController(Camera camera, List<IUnitController> playerController, List<Enemy.Enemy> enemyList)
         {
             _camera = camera;
-            _playerController = playerController as PlayerController;
+            _playerController = playerController;
             _enemyList = enemyList;
         }
 
@@ -27,7 +29,7 @@ namespace Controllers
 
             if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.GetComponent<Enemy.Enemy>())
             {
-               PlayerRotation.RotatePlayer( _playerController,hitInfo.transform);
+               PlayerRotation.RotatePlayer( _playerController.Find(x=>x.GetState!=NameManager.State.Fired),hitInfo.transform);
                 TargetSelected(hitInfo.transform);
             }
         }

@@ -10,16 +10,14 @@ namespace Player
     public class PlayerController : IUnitController
     {
         private UnitModel _playerModel;
-        public Player GetView { get; }
-        public bool IsDead => GetView.IsDead;
+        private Player GetView { get; }
         private readonly StepController _stepController;
         public IModel Model { get => _playerModel; set => _playerModel = value as UnitModel; }
         public bool IsFired { get; set; } = false;
-        public NameManager.State State { get; set; }
+        private NameManager.State State { get; set; }
         public Transform GetShotPoint => GetView.ShotPoint; 
         public Transform GetTransform => GetView.transform;
         public NameManager.State GetState => State;
-
         public void SetParams(IModel parameters)
         {
             _playerModel.Damage = parameters.Damage;
@@ -33,8 +31,7 @@ namespace Player
             if (GetState == state) return;
             State = state;
            if (state == NameManager.State.Fired) StateChanged?.Invoke();
-        } 
-
+        }
         public PlayerController(UnitModel model, Player player)
      {
          _playerModel = model;

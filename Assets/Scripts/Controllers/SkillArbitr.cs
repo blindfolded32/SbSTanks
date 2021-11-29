@@ -74,7 +74,7 @@ namespace Controllers
                 {
                     if (_isEarthAvailable)
                     {
-                        _skillController.EarthSkill();
+                        _skillController.EarthSkill(_stepController.AttackingPlayer);
                         _isEarthAvailable = false;
                         _earthUsed = _stepController.TurnNumber;
                     }
@@ -83,14 +83,14 @@ namespace Controllers
                 }
                 case KeyCode.W:
                 {
-                    _skillController.WaterSkill();
+                    _skillController.WaterSkill(_stepController.AttackingPlayer);
                     break;
                 }
                 case KeyCode.Q:
                 {
                     if (_isFireAvailable)
                     {
-                        _skillController.FireSkill();
+                        _skillController.FireSkill(_stepController.AttackingPlayer);
                         _isFireAvailable = false;
                         _fireUsed = _stepController.TurnNumber;
                     }

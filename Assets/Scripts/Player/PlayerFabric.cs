@@ -8,13 +8,13 @@ namespace Player
     {
         //public Player Player { get; private set; }
 
-        public Player Create(Transform transform, UnitModel parameters)
+        public static Player Create(Transform transform, UnitModel parameters)
         {
-            var Player = Object.Instantiate(Resources.Load<Player>("Prefabs/Player"), transform);
-            Player.Controller = new PlayerController(new UnitModel(parameters.HP,parameters.Damage,parameters.Element), Player);
-            Player.Element = parameters.Element;
-            Player.ShotPoint = Player.GetComponentInChildren<ShotPoint>().transform;
-            return Player;
+            var player = Object.Instantiate(Resources.Load<Player>("Prefabs/Player"), transform);
+            player.Controller = new PlayerController(new UnitModel(parameters.HP,parameters.Damage,parameters.Element), player);
+            player.Element = parameters.Element;
+            player.ShotPoint = player.GetComponentInChildren<ShotPoint>().transform;
+            return player;
         }
     }
 }

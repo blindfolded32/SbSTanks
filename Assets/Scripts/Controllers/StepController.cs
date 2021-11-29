@@ -15,28 +15,34 @@ namespace Controllers
     public class StepController
     {
         public bool IsPlayerTurn;
+        public IUnitController AttackingPlayer;
         private readonly List<IUnitController> _enemies;
-        private readonly IUnitController _player;
+        private readonly List<IUnitController> _player;
         private readonly TimerController _timerController;
         public readonly IReInit ReInitController;
-        private readonly float _turnCoolDown =1.5f;
+        private const float TurnCoolDown = 1.5f;
         private readonly List<IUnitController> _unitList = new List<IUnitController>();
         public int TurnNumber { get;  set; }
-        public NameManager.State PlayerTurn => _player.GetState;//TODO remove?
+      
         public event Action<int> NewTurn;
-        public StepController(List<IUnitController> enemies, IUnitController player, TimerController timerController)
+        public StepController(List<IUnitController> enemies, List<IUnitController> player, TimerController timerController)
         {
             _enemies = enemies;
             _player = player;
             _timerController = timerController;
             _timerController.IsEnd += TurnState;
             TurnNumber = 1;
-            _unitList.Add(_player);
-            _player.StateChanged += () =>
+            foreach (var unitController in _player)
             {
-                IsPlayerTurn = false;
-                AddTimer();
-            };
+                
+                _unitList.Add(unitController);
+                unitController.StateChanged += () =>
+                {
+                    IsPlayerTurn = false;
+                    AddTimer();
+                };
+            }
+            
             foreach (var enemy in _enemies)
             {
                _unitList.Add(enemy);
@@ -45,16 +51,16 @@ namespace Controllers
             ReInitController = new ReInitController(_unitList);
             ReInitController.StartAgain += () => { TurnNumber = 0; };
             CountTurnOrder();
-            timerController.AddTimer(new TimerData(_turnCoolDown,Time.time));
+            timerController.AddTimer(new TimerData(TurnCoolDown,Time.time));
         }
         private void AddTimer()
         {
           //  if (_timerController.Count()>1) return;
-            _timerController.AddTimer(new TimerData(_turnCoolDown,Time.time));//TurnState;
+            _timerController.AddTimer(new TimerData(TurnCoolDown,Time.time));//TurnState;
         }
         private bool CheckDead()
         {
-            return _enemies.Contains(_enemies.Find(x => x.State != NameManager.State.Dead));
+            return _enemies.Contains(_enemies.Find(x => x.GetState != NameManager.State.Dead));
             //Если содержит кого-то не мертвого, то трушка
         }
         private void CountTurnOrder()
@@ -70,7 +76,11 @@ namespace Controllers
         {
             var unit = _unitList.First(x => x.GetState == NameManager.State.Idle);
             unit.ChangeState(NameManager.State.Attack);
-            IsPlayerTurn = unit is PlayerController;
+            if (unit is PlayerController)
+            {
+                IsPlayerTurn = true;
+                AttackingPlayer = unit;
+            }
             return unit;
         }
         private void UnitTurn(IUnitController unit)
@@ -102,7 +112,7 @@ namespace Controllers
         }
         private bool CheckIdle()
         {
-            return _unitList.Contains(_unitList.Find(x => x.State == NameManager.State.Idle));
+            return _unitList.Contains(_unitList.Find(x => x.GetState == NameManager.State.Idle));
         }
     }
 }

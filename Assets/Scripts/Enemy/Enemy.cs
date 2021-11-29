@@ -11,7 +11,7 @@ namespace Enemy
            Controller.Model.HP.ChangeCurrentHealth(damage);
            if (  Controller.Model.HP.GetCurrentHp <= 0)
            {
-               Controller.State = NameManager.State.Dead;
+               Controller.ChangeState(NameManager.State.Dead);
            }
         }
     }

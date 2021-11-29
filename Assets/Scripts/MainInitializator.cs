@@ -13,7 +13,7 @@ public class MainInitializator
 {
     private EnemySpawner _enemySpawn;
     private StepController stepController;
-    private PlayerFabric _playerFabric;
+    private PlayerSpawner _playerSpawner;
     private SkillArbitr skillArbiter;
 
     private TimerController timerController;
@@ -27,19 +27,16 @@ public class MainInitializator
     private RoundCanvas RoundCanvas;
     private SkillController SkillControl;
 
-    private Player.Player _player;
+    //private Player.Player _player;
    
     public MainInitializator(GameController mainController)
     {
-        _playerFabric = new PlayerFabric();
+        _playerSpawner = new PlayerSpawner(Object.FindObjectsOfType<PlayerSpawnPoint>());
         inputController = new InputController(new KeyBoardInput(), new SkillButtons());
         timerController = new TimerController();
-        
-            _player= _playerFabric.Create(Object.FindObjectOfType<PlayerSpawnPoint>().transform,
-                new UnitModel(new Health(100,100),1,0));
-            _enemySpawn = new EnemySpawner(Object.FindObjectsOfType<EnemySpawnPoint>());
-            SkillControl = new SkillController(_player, _enemySpawn.Enemies);
-            stepController = new StepController(_enemySpawn.UnitControllers,_player.Controller, timerController);
+        _enemySpawn = new EnemySpawner(Object.FindObjectsOfType<EnemySpawnPoint>());
+            SkillControl = new SkillController(_enemySpawn.Enemies);
+            stepController = new StepController(_enemySpawn.UnitControllers,_playerSpawner.PlayerControllers, timerController);
             skillArbiter = new SkillArbitr(stepController, inputController, SkillControl);
             InitUIControllers();
         new SaveStruct(inputController,skillArbiter,stepController);
@@ -56,8 +53,8 @@ public class MainInitializator
     private void InitUIControllers()
     {
         camera = Camera.main; // Может быть взять из GameStater.cs? 
-        targetSelectionController = new TargetSelectionController(camera, _player.Controller,_enemySpawn.Enemies);
-        new ParticlesInitialization(_player, _enemySpawn.Enemies);
+        targetSelectionController = new TargetSelectionController(camera, _playerSpawner.PlayerControllers,_enemySpawn.Enemies);
+        new ParticlesInitialization(_playerSpawner.Players, _enemySpawn.Enemies);
     }
     public void GameLoad(Saver save)
     {
@@ -96,7 +93,7 @@ public class MainInitializator
         _gameController.Add(timerController);
         _gameController.Add(targetSelectionController);
         _gameController.Add(RoundCanvas);*/
-     _player.Controller.SetParams(save.PlayerModel);
+     _playerSpawner.LoadPlayers(save);
      _enemySpawn.LoadEnemies(save);
         skillArbiter.SetSkills(save.SkillCDs);
         stepController.TurnNumber = save.turnNumber;

@@ -1,99 +1,134 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Controllers.Model;
+using Interfaces;
+using Markers;
+using Player;
+using Unit;
 using UnityEngine;
+using static NameManager;
+using Random = UnityEngine.Random;
 
-namespace SbSTanks
+namespace Controllers
 {
-    public class StepController: IExecute
+    public class StepController 
     {
-        public bool isPlayerTurn = true;
-
-        private TimerData _startTurnTimer;
-        private TimerData _shotDelayTimer;
-        private TimerData _endTurnTimer;
-        private bool _isDelay = false;
-        private Enemy[] _enemies;
-        private TimerController _timerController;
-
-        public StepController(Enemy[] enemies, TimerController timerController)
+        public bool IsPlayerTurn;
+        public IUnitController AttackingPlayer;
+        private readonly List<IUnitController> _players;
+        private readonly List<IUnitController> _enemies;
+        private readonly TimerController _timerController;
+        public readonly IReInit ReInitController;
+        private readonly List<IUnitController> _unitList = new List<IUnitController>();
+        public int TurnNumber { get;  set; }
+        public event Action<int> NewTurn;
+        public StepController(List<IUnitController> enemies, List<IUnitController> player, TimerController timerController)
         {
+            _players = player;
             _enemies = enemies;
             _timerController = timerController;
-        }
-
-        public void EnemiesTurn()
-        {
-            _startTurnTimer = new TimerData(2f, Time.time);
-            _timerController.AddTimer(_startTurnTimer);
-        }
-
-        public void Execute(float deltaTime)
-        {
-            CheckStartTurn();
-
-            CheckDelay();
-
-            CheckEndTurn();
-        }
-
-        private void CheckEndTurn()
-        {
-            if (!(_endTurnTimer is null))
+            _timerController.IsEnd += TurnState;
+            TurnNumber = 1;
+            foreach (var unitController in player)
             {
-                if (_endTurnTimer.IsTimerEnd)
+                
+                _unitList.Add(unitController);
+                unitController.StateChanged += () =>
                 {
-                    isPlayerTurn = true;
-                    for (int i = 0; i < _enemies.Length; i++)
-                    {
-                        _enemies[i].isShotReturn = false;
-                    }
-                    _endTurnTimer = null;
-                    _isDelay = false;
-                }
-                _startTurnTimer = null;
+                    IsPlayerTurn = false;
+                    AddTimer();
+                };
             }
-        }
-
-        private void CheckDelay()
-        {
-            if (!(_shotDelayTimer is null))
+            
+            foreach (var enemy in _enemies)
             {
-                if (_shotDelayTimer.IsTimerEnd)
-                {
-                    _isDelay = false;
-                    _shotDelayTimer = null;
-                }
+               _unitList.Add(enemy);
+               enemy.StateChanged += AddTimer;
             }
+            ReInitController = new ReInitController(_unitList);
+            ReInitController.StartAgain += () => { TurnNumber = 0; };
+            CountTurnOrder();
+            timerController.AddTimer(new TimerData(TurnCoolDown,Time.time));
         }
-
-        private void CheckStartTurn()
+        public void AddTimer()
         {
-            if (!(_startTurnTimer is null) && isPlayerTurn == false)
+            _timerController.AddTimer(new TimerData(TurnCoolDown,Time.time));//TurnState;
+        }
+        private bool CheckDead()
+        {
+            return _enemies.Contains(_enemies.Find(x => x.GetState != NameManager.State.Dead));
+            //Если содержит кого-то не мертвого, то трушка
+        }
+        private void CountTurnOrder()
+        {
+            foreach (var unit in _unitList)
             {
-                if (_startTurnTimer.IsTimerEnd)
-                {
-                    for (int i = 0; i < _enemies.Length; i++)
-                    {
-                        if (!_isDelay && !_enemies[i].isShotReturn && i < _enemies.Length - 1)
-                        {
-                            _shotDelayTimer = new TimerData(1f, Time.time);
-                            EnemyShot(i, _shotDelayTimer);
-                        }
-                        else if (!_isDelay && i == _enemies.Length - 1)
-                        {
-                            _endTurnTimer = new TimerData(4f, Time.time);
-                            EnemyShot(i, _endTurnTimer);
-                        }
-                    }
-                }
+                unit.Model.Initiative = Random.Range(0, 100);
             }
+            _unitList.Sort((u1,u2)=>u1.Model.Initiative.CompareTo(u2.Model.Initiative));
+        }
+        private IUnitController GetUnitForShoot()
+        {
+            var unit = _unitList.First(x => x.GetState == NameManager.State.Idle);
+            unit.ChangeState(NameManager.State.Attack);
+            if (unit is PlayerController)
+            {
+                IsPlayerTurn = true;
+                AttackingPlayer = unit;
+            }
+            return unit;
+        }
+        private void UnitTurn(IUnitController unit)
+        {
+            if (IsPlayerTurn) return;
+            RotateEnemy(unit);
+            UnitShoot.Shot(unit, unit.GetShotPoint, unit.Model.Damage, unit.Model.Element);
+        }
+        public void TurnState()
+        {
+            if (ReInitController.Lost) return;
+          if (!CheckDead())
+            {
+                Debug.Log("Battle over");
+                ReInitController.NewRound();
+                TurnNumber = 0;
+                ChooseABeliever();
+                CountTurnOrder();
+            }
+            if (!CheckIdle())
+            {
+                TurnNumber++;
+                NewTurn?.Invoke(TurnNumber);
+                Debug.Log($"Turn {TurnNumber}");
+                AddTimer();
+                ReInitController.StartNewTurn();
+                CountTurnOrder();
+            }
+            if (IsPlayerTurn) return;
+            UnitTurn(GetUnitForShoot());
+        }
+        private bool CheckIdle()
+        {
+            return _unitList.Contains(_unitList.Find(x => x.GetState == NameManager.State.Idle));
+        }
+        private void RotateEnemy(IUnitController unit)
+        {
+            var playerPos = _players[Random.Range(0, _players.FindAll(x => x.GetState != NameManager.State.Dead).Count)].GetTransform;
+            PlayerRotation.RotatePlayer(unit,playerPos);
+           
         }
 
-        private void EnemyShot(int index, TimerData timer)
+        private void ChooseABeliever()
         {
-            _enemies[index].ReturnShot();
-            _enemies[index].isShotReturn = true;
-            _isDelay = true;
-            _timerController.AddTimer(timer);
+            var alive = _enemies.FindAll(x => x.GetState != State.Dead).Count;
+            if (alive < 2 ) return;
+            var count = Random.Range(1, alive);
+            for (int i = 0; i < count; i++)
+            {
+              _enemies[Random.Range(0,alive)].ChangeState(State.Levitate);
+              Debug.Log($"Believers count {count}");
+            }
         }
     }
 }

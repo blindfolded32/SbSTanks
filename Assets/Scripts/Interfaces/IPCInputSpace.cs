@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using UnityEngine;
 
-namespace SbSTanks
+namespace Interfaces
 {
     public interface IPCInputSpace
     {
-        public event Action<bool> OnSpaceDown;
-
+        public event Action<KeyCode> ButtonDown;
         public void CheckButtons();
     }
 }

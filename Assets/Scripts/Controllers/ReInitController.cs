@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Enemy;
 using Interfaces;
 using Markers;
 using Player;
@@ -28,7 +29,7 @@ namespace Controllers
             _triesCount = TriesCount;
             RoundNumber = 1;
         }
-        public void StarnNewTurn()
+        public void StartNewTurn()
         {
             foreach (var unit in _unitControllers)
             {
@@ -36,7 +37,9 @@ namespace Controllers
                 if (unit is PlayerController) unit.ChangeState(State.Idle);
                 else
                 {
-                    unit.Model.Element = (ElementList) (Random.Range(0, 2)); //TODO count elements in enum
+                   // var enemy = unit as EnemyController;
+                    unit.Model.Element = (ElementList) (Random.Range(0, 2));
+                   // enemy?.RandomRotate(); //TODO count elements in enum
                     unit.ChangeState(State.Idle);
                 }
             }
@@ -92,7 +95,7 @@ namespace Controllers
                 currentEnemy[i].IsDead = false;
                // currentEnemy[i].UnitInitializationData.Damage = _defParams[i].UnitInitializationData.Damage;
                // currentEnemy[i].UnitInitializationData.Hp.InjectNewHp(_defParams[i].UnitInitializationData.Hp.Max);
-                currentEnemy[i].GetComponentInChildren<UnitHealthBar>()._foregroundImage.fillAmount =1;
+                currentEnemy[i].GetComponentInChildren<UnitHealthBar>().foregroundImage.fillAmount =1;
             }
             
         }

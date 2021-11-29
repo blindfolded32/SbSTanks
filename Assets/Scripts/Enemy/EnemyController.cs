@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using Interfaces;
 using Markers;
+using Player;
 using Unit;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Enemy
 {
     public class EnemyController : IUnitController
     {
         private readonly Enemy _enemy;
+        private readonly List<Player.Player> _player;
         private NameManager.State State { get; set; }
         public IModel Model { get; private set; }
         public Transform GetShotPoint => _enemy.ShotPoint;
@@ -29,6 +33,9 @@ namespace Enemy
             State = NameManager.State.Idle;
             Model.HP.IsDead += () => ChangeState(NameManager.State.Dead);
         }
-
+        public void RandomRotate()
+        {
+            PlayerRotation.RotatePlayer(this, _player[Random.Range(0, _player.Count)].Controller.GetTransform);
+        }
     }
 }

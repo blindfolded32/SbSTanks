@@ -104,7 +104,7 @@ namespace Controllers
                 NewTurn?.Invoke(TurnNumber);
                 Debug.Log($"Turn {TurnNumber}");
                 AddTimer();
-                ReInitController.StarnNewTurn();
+                ReInitController.StartNewTurn();
                 CountTurnOrder();
             }
             if (IsPlayerTurn) return;

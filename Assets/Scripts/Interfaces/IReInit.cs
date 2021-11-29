@@ -9,7 +9,7 @@ namespace Interfaces
         public event Action GameOver;
         public event Action<int> NewRoundStart;
         public bool Lost { get; }
-        public void StarnNewTurn();
+        public void StartNewTurn();
         public void NewRound();
         public void Renew();
     }

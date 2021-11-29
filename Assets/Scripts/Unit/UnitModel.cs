@@ -3,7 +3,6 @@ using Controllers.Model;
 using Interfaces;
 using Markers;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Unit
 {
@@ -40,8 +39,6 @@ namespace Unit
             UnitPosition = position;
             
         }
-
-        
     }
 }
 

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Interfaces;
 using Markers;
 using Player;
@@ -29,7 +28,7 @@ namespace Controllers
 
             if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.GetComponent<Enemy.Enemy>())
             {
-               PlayerRotation.RotatePlayer( _playerController.Find(x=>x.GetState!=NameManager.State.Fired),hitInfo.transform);
+               PlayerRotation.RotatePlayer( _playerController.Find(x=>x.GetState==NameManager.State.Attack),hitInfo.transform);
                 TargetSelected(hitInfo.transform);
             }
         }

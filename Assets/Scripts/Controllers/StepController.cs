@@ -7,32 +7,31 @@ using Markers;
 using Player;
 using Unit;
 using UnityEngine;
-using Object = UnityEngine.Object;
+using static NameManager;
 using Random = UnityEngine.Random;
 
 namespace Controllers
 {
-    public class StepController
+    public class StepController 
     {
         public bool IsPlayerTurn;
         public IUnitController AttackingPlayer;
+        private readonly List<IUnitController> _players;
         private readonly List<IUnitController> _enemies;
-        private readonly List<IUnitController> _player;
         private readonly TimerController _timerController;
         public readonly IReInit ReInitController;
-        private const float TurnCoolDown = 1.5f;
         private readonly List<IUnitController> _unitList = new List<IUnitController>();
         public int TurnNumber { get;  set; }
       
         public event Action<int> NewTurn;
         public StepController(List<IUnitController> enemies, List<IUnitController> player, TimerController timerController)
         {
+            _players = player;
             _enemies = enemies;
-            _player = player;
             _timerController = timerController;
             _timerController.IsEnd += TurnState;
             TurnNumber = 1;
-            foreach (var unitController in _player)
+            foreach (var unitController in player)
             {
                 
                 _unitList.Add(unitController);
@@ -53,9 +52,8 @@ namespace Controllers
             CountTurnOrder();
             timerController.AddTimer(new TimerData(TurnCoolDown,Time.time));
         }
-        private void AddTimer()
+        public void AddTimer()
         {
-          //  if (_timerController.Count()>1) return;
             _timerController.AddTimer(new TimerData(TurnCoolDown,Time.time));//TurnState;
         }
         private bool CheckDead()
@@ -68,7 +66,6 @@ namespace Controllers
             foreach (var unit in _unitList)
             {
                 unit.Model.Initiative = Random.Range(0, 100);
-               // Debug.Log($"{unit.GetTransform.name} initiative is {unit.Model.Initiative}");
             }
             _unitList.Sort((u1,u2)=>u1.Model.Initiative.CompareTo(u2.Model.Initiative));
         }
@@ -86,6 +83,7 @@ namespace Controllers
         private void UnitTurn(IUnitController unit)
         {
             if (IsPlayerTurn) return;
+            RotateEnemy(unit);
             UnitShoot.Shot(unit, unit.GetShotPoint, unit.Model.Damage, unit.Model.Element);
         }
         public void TurnState()
@@ -113,6 +111,14 @@ namespace Controllers
         private bool CheckIdle()
         {
             return _unitList.Contains(_unitList.Find(x => x.GetState == NameManager.State.Idle));
+        }
+
+        private void RotateEnemy(IUnitController unit)
+        {
+            var playerPos = _players[Random.Range(0, _players.FindAll(x => x.GetState != NameManager.State.Dead).Count)].GetTransform;
+            
+                PlayerRotation.RotatePlayer(unit,playerPos);
+           
         }
     }
 }

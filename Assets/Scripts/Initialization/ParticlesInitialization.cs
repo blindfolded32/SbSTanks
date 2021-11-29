@@ -3,7 +3,7 @@ using System.Linq;
 using IdentificationElements;
 using Unit;
 using UnityEngine;
-using static Markers.NameManager;
+using static NameManager;
 
 namespace Initialization
 {

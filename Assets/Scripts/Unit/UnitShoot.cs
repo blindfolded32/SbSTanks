@@ -1,7 +1,7 @@
 ﻿using Bullet;
 using Interfaces;
 using UnityEngine;
-using static Markers.NameManager;
+using static NameManager;
 
 namespace Unit
 {

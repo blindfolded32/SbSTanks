@@ -3,8 +3,7 @@ using System.Linq;
 using Interfaces;
 using Player;
 using Unit;
-using UnityEngine;
-using static Markers.NameManager;
+using static NameManager;
 using Random = UnityEngine.Random;
 
 namespace Controllers
@@ -21,7 +20,7 @@ namespace Controllers
          internal void EarthSkill(IUnitController player)
         {
             var transformPosition = _enemies.
-                ElementAt(Random.Range(0, _enemies.FindAll(x=>!x.IsDead).Count))
+                ElementAt(Random.Range(0, _enemies.FindAll(x=> x.Controller.GetState != State.Dead).Count))
                 .transform;
             PlayerRotation.RotatePlayer(player,transformPosition);
             UnitShoot.Shot(player,player.GetShotPoint,player.Model.Damage, ElementList.Earth);
@@ -32,7 +31,7 @@ namespace Controllers
         }
          internal void FireSkill(IUnitController player)
         {
-            foreach (var enemy in _enemies.Where(enemy => !enemy.IsDead))
+            foreach (var enemy in _enemies.Where(enemy => enemy.Controller.GetState != State.Dead))
             {
                 enemy.TakingDamage(10,ElementList.Fire);
             }

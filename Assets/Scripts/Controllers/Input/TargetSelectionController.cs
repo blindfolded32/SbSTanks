@@ -26,7 +26,9 @@ namespace Controllers
 
             if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.GetComponent<Enemy.Enemy>())
             {
-               PlayerRotation.RotatePlayer( _playerController.Find(x=>x.GetState==NameManager.State.Attack),hitInfo.transform);
+                var activePlater = _playerController.Find(x => x.GetState == NameManager.State.Attack);
+                if (activePlater == null) return;
+               PlayerRotation.RotatePlayer( activePlater,hitInfo.transform);
                 TargetSelected(hitInfo.transform);
             }
         }

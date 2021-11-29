@@ -62,6 +62,7 @@ namespace SaveLoad
                     Loader.Load();
                     break;
                 case KeyCode.Z:
+                    if (_savelist.Count==0) break;
                     Loader.Load(GetPrevious());
                     break;
                 default: break;

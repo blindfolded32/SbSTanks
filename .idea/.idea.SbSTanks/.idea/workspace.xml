@@ -78,7 +78,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveLoad/Loader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitShoot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveLoad/SaveStruct.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/ParticlesInitialization.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillArbitr.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IUnitController.cs" />
@@ -102,6 +101,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Markers/ControlCanvas.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Input/ControlButtons.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SaveLoad/SaveStruct.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Input/InputController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Input/TargetSelectionController.cs" />
       </list>
@@ -202,7 +202,7 @@
       <workItem from="1638108345945" duration="3037000" />
       <workItem from="1638162791638" duration="3266000" />
       <workItem from="1638168792269" duration="14219000" />
-      <workItem from="1638201125865" duration="976000" />
+      <workItem from="1638201125865" duration="1693000" />
     </task>
     <servers />
   </component>

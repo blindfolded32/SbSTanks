@@ -11,7 +11,7 @@ namespace Player
         public Player Create(Transform transform, UnitModel parameters)
         {
             var Player = Object.Instantiate(Resources.Load<Player>("Prefabs/Player"), transform);
-            Player.Controller = new PlayerController(new PlayerModel(parameters), Player);
+            Player.Controller = new PlayerController(new UnitModel(parameters.HP,parameters.Damage,parameters.Element), Player);
             Player.Element = parameters.Element;
             Player.ShotPoint = Player.GetComponentInChildren<ShotPoint>().transform;
             return Player;

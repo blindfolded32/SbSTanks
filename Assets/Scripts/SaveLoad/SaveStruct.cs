@@ -19,27 +19,26 @@ namespace SaveLoad
         private List<SkillCd> _skill;
         private SkillArbitr _arbitr;
         private StepController _step;
-
-        private void AddSave(PlayerModel player, List<UnitModel> enemies,List<SkillCd> skills, int turnNumber)
+        private Saver _saver;
+        private void AddSave(UnitModel player, List<UnitModel> enemies,List<SkillCd> skills, int turnNumber)
         {
-            var save = new Saver(player, enemies, skills, turnNumber);
-           _savelist.AddLast(save);
-           var jsonstruct = JsonUtility.ToJson(save);
+            _saver = new Saver(player, enemies, skills, turnNumber);
+           _savelist.AddLast(_saver);
+           var jsonstruct = JsonUtility.ToJson(_saver);
             File.WriteAllText(Application.persistentDataPath + "/Gamedata.json", jsonstruct);
             SaveFile(jsonstruct);
         }
 
         private void AddSave()
         {
-            var player = FindObjectOfType<Player.Player>().Controller.Model as PlayerModel;
+            var player = FindObjectOfType<Player.Player>().Controller.Model as UnitModel;
             var enemies = FindObjectsOfType<Enemy.Enemy>().ToList();
             var enemyUnit = enemies.Select(enemy => enemy.Controller.Model as UnitModel).ToList() ;
             var cds = _skill;
-            var save = new Saver(player, enemyUnit, _arbitr.GetCoolDowns(), _step.TurnNumber);
-            _savelist.AddLast(save);
-            var jsonstruct = JsonUtility.ToJson(save);
-            File.WriteAllText(Application.persistentDataPath + "/Gamedata.json", jsonstruct);
-            SaveFile(jsonstruct);
+            _saver = new Saver(player, enemyUnit, _arbitr.GetCoolDowns(), _step.TurnNumber);
+            var jsonstruct = JsonUtility.ToJson(_saver);
+       //     File.WriteAllText(Application.persistentDataPath + "/tmp_save.json", jsonstruct);
+            _savelist.AddLast(JsonUtility.FromJson<Saver>(jsonstruct));
         }
         public SaveStruct(InputController inputController,SkillArbitr turn, StepController step)
         {
@@ -54,16 +53,17 @@ namespace SaveLoad
             {
                 case KeyCode.R:
                 {
-                    var player = FindObjectOfType<Player.Player>().Controller.Model as PlayerModel;
+                    var player = FindObjectOfType<Player.Player>().Controller.Model as UnitModel;
                     var enemies = FindObjectsOfType<Enemy.Enemy>().ToList();
                     var enemyUnit = enemies.Select(enemy => enemy.Controller.Model as UnitModel).ToList();
-                    var cds = _skill;
                     AddSave(player,enemyUnit,_arbitr.GetCoolDowns(),_step.TurnNumber);
                     break;
                 }
                 case KeyCode.L:
-                    var load = new Loader();
-                    load.Load();
+                    Loader.Load();
+                    break;
+                case KeyCode.Z:
+                    Loader.Load(GetPrevious());
                     break;
                 default: break;
             }
@@ -91,12 +91,12 @@ namespace SaveLoad
     [Serializable]
     public struct Saver
     {
-        public PlayerModel PlayerModel;
+        public UnitModel PlayerModel;
         public List<UnitModel> AbstractUnits;
         public List<SkillCd> SkillCDs;
         public int turnNumber;
 
-        internal Saver(PlayerModel playerModel, List<UnitModel> enemy, List<SkillCd> CDController, int turnNum)
+        internal Saver(UnitModel playerModel, List<UnitModel> enemy, List<SkillCd> CDController, int turnNum) :this()
         {
             PlayerModel = playerModel;
             AbstractUnits = enemy;
@@ -109,7 +109,7 @@ namespace SaveLoad
     {
         public int skillCool;
         public bool skillAvail;
-        internal SkillCd(int skill, bool aval)
+        internal SkillCd(int skill, bool aval):this()
         {
             skillCool = skill;
             skillAvail = aval;

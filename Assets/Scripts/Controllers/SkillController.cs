@@ -1,43 +1,41 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
+using Interfaces;
+using Player;
+using Unit;
+using static NameManager;
 using Random = UnityEngine.Random;
 
-namespace SbSTanks
+namespace Controllers
 {
     public class SkillController : IController
     {
-        private readonly PlayerController _player;
-        private readonly StepController _stepController;
-        private readonly List<Enemy> _enemies;
-        public SkillController(PlayerController player,  List<Enemy> enemies)
+        
+        private  StepController _stepController;
+        private  List<Enemy.Enemy> _enemies;
+        public SkillController(List<Enemy.Enemy> enemies)
         {
-            _player = player;
             _enemies = enemies;
         }
-        protected internal void EarthSkill()
+         internal void EarthSkill(IUnitController player)
         {
-            _player.IsPlayerTurn = true;
             var transformPosition = _enemies.
-                ElementAt(Random.Range(0, _enemies.FindAll(x=>!x.isDead).Count))
+                ElementAt(Random.Range(0, _enemies.FindAll(x=> x.Controller.GetState != State.Dead).Count))
                 .transform;
-            _player.RotatePlayer(transformPosition);
-            _player.GetView.Shot(_player,0);
+            PlayerRotation.RotatePlayer(player,transformPosition);
+            UnitShoot.Shot(player,player.GetShotPoint,player.Model.Damage, ElementList.Earth);
         }
-        protected internal void WaterSkill()
+         internal void WaterSkill(IUnitController player)
         {
-            _player.IsPlayerTurn = true;
-            _player.GetView.Shot(_player,2);
+            UnitShoot.Shot(player,player.GetShotPoint,player.Model.Damage,ElementList.Water);
         }
-        protected internal void FireSkill()
+         internal void FireSkill(IUnitController player)
         {
-            _player.IsPlayerTurn = true;
-            foreach (var enemy in _enemies.Where(enemy => !enemy.isDead))
+            foreach (var enemy in _enemies.Where(enemy => enemy.Controller.GetState != State.Dead))
             {
-                enemy.TakingDamage(10,1);
+                enemy.TakingDamage(10,ElementList.Fire);
             }
-            _player.IsPlayerTurn = false;
+            player.ChangeState(State.Fired);
         }
-        
     }
 }

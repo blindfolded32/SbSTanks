@@ -1,7 +1,9 @@
-﻿namespace SbSTanks
+﻿using Markers;
+
+namespace Interfaces
 {
     public interface IDamagebleUnit
     {
-        public void TakingDamage(float damage, int element);
+        public void TakingDamage(float damage, NameManager.ElementList element);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace SbSTanks
+﻿namespace Interfaces
 {
     public interface ILateExecute
     {

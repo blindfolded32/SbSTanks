@@ -1,4 +1,6 @@
-﻿namespace SbSTanks
+﻿using Controllers.Model;
+
+namespace Interfaces
 {
     public interface IParameters
     {

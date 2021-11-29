@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
+using Interfaces;
 
-namespace SbSTanks
+namespace MainModels
 {
     public class GameControllerModel
     {
         public GameControllerModel()
         {
-            ExecuteControllers = new List<IExecute>(8);
-            LateExecuteControllers = new List<ILateExecute>(8);
-            FixedControllers = new List<IFixedExecute>(8);
+            ExecuteControllers = new List<IExecute>();
+            LateExecuteControllers = new List<ILateExecute>();
+            FixedControllers = new List<IFixedExecute>();
         }
 
-        public List<IExecute> ExecuteControllers { get; }
-        public List<ILateExecute> LateExecuteControllers { get; }
-        internal List<IFixedExecute> FixedControllers { get; }
+        public List<IExecute> ExecuteControllers { get; set; }
+        public List<ILateExecute> LateExecuteControllers { get; set; }
+        internal List<IFixedExecute> FixedControllers { get; set; }
     }
 }

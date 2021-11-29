@@ -1,6 +1,7 @@
-﻿namespace SbSTanks
+﻿namespace Interfaces
 {
     public interface IController
     {
+      
     }
 }

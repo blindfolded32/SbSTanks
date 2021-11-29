@@ -1,4 +1,4 @@
-namespace SbSTanks
+namespace Controllers.Model
 {
     public class TimerData
     {

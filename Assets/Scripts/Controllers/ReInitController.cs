@@ -1,45 +1,73 @@
 ﻿using System;
 using System.Collections.Generic;
-using Random = UnityEngine.Random;
+using Interfaces;
+using Player;
+using Unit;
+using UnityEngine;
 using static UnityEngine.Object;
+using Random = UnityEngine.Random;
+using static NameManager;
 
 
-namespace SbSTanks
+namespace Controllers
 {
-    public class ReInitController
+    public class ReInitController : IReInit, IController
     {
         public event Action StartAgain;
         public event Action GameOver;
-        private int _triesCount = 3;
-        public bool Lost = false;
-        
-        private PlayerController _playerController;
-        private readonly List<Enemy> _enemies;
-        private List<Enemy> _defParams;
-        public ReInitController(PlayerController playerController,List<Enemy> enemies)
+        public event Action<int> NewRoundStart;
+        public bool Lost { get; private set; } = false;
+        private int RoundNumber { get; set; }
+        private readonly IEnumerable<IUnitController> _unitControllers;
+        private List<Enemy.Enemy> _defParams;
+        private int _triesCount;
+        public ReInitController(IEnumerable<IUnitController> unitControllers)
         {
-            _playerController = playerController;
-            _enemies = enemies;
-            _defParams = _enemies;
-            _playerController.GetView.PlayerDead += NewTry;
+            _unitControllers = unitControllers;
+            _triesCount = TriesCount;
+            RoundNumber = 1;
         }
-        public void ReInit(List<Enemy> enemies)
+        public void StartNewTurn()
         {
-            foreach (var enemy in enemies)
+            foreach (var unit in _unitControllers)
             {
-                enemy.SetUnitElement(Random.Range(0,2));
+                if (unit.GetState == State.Dead) continue;
+                if (unit is PlayerController) unit.ChangeState(State.Idle);
+                else
+                {
+                    unit.Model.Element = (ElementList) (Random.Range(0, 2));
+                    unit.ChangeState(State.Idle);
+                }
             }
         }
-        public void NewRound(List<Enemy> enemies)
+        public void NewRound()
         {
-            foreach (var enemy in enemies)
+            foreach (var unit in _unitControllers)
             {
-                enemy.isDead = false;
-                enemy.Parameters.Damage *= 1.1f;
-                enemy.Parameters.Hp.InjectNewHp(enemy.Parameters.Hp.Max*1.1f);
-                enemy.GetComponentInChildren<EnemyHealthBar>()._foregroundImage.fillAmount =1;
+                if (unit is PlayerController)
+                {
+                    unit.ChangeState(State.Idle);
+                    unit.Model.Element = (ElementList) (Random.Range(0, 2));
+                }
+                else
+                {
+                    unit.ChangeState(State.Idle);
+                    unit.Model.Damage *= RoundModifier;
+                    unit.Model.HP.InjectNewHp(unit.Model.HP.Max * RoundModifier);
+                    unit.GetTransform.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
+                    unit.Model.Element = (ElementList) (Random.Range(0, 2));
+                    Debug.Log($"{unit.GetTransform.name} health is {unit.Model.HP.GetCurrentHp}");
+                }
             }
-            _playerController.GetView.Parameters.ElementId = (Random.Range(0, 2));
+            RoundNumber++;
+            NewRoundStart?.Invoke(RoundNumber);
+        }
+        public void Renew()
+        {
+            foreach (var unitController in _unitControllers)
+            {
+                unitController.GetTransform.GetComponentInChildren<UnitHealthBar>().RenewBar(unitController);
+            }
         }
 
         public void NewTry()
@@ -51,17 +79,19 @@ namespace SbSTanks
             }
             StartAgain?.Invoke();
             _triesCount--;
+            RoundNumber = 1;
+            NewRoundStart?.Invoke(RoundNumber);
             Lost = true;
         }
         private void RestartGame()
         {
-            var currentEnemy = FindObjectsOfType<Enemy>();
+            var currentEnemy = FindObjectsOfType<Enemy.Enemy>();
             for (int i = 0; i < currentEnemy.Length; i++)
             {
-                currentEnemy[i].isDead = false;
-                currentEnemy[i].Parameters.Damage = _defParams[i].Parameters.Damage;
-                currentEnemy[i].Parameters.Hp.InjectNewHp(_defParams[i].Parameters.Hp.Max);
-                currentEnemy[i].GetComponentInChildren<EnemyHealthBar>()._foregroundImage.fillAmount =1;
+                currentEnemy[i].Controller.ChangeState(State.Idle);
+               // currentEnemy[i].UnitInitializationData.Damage = _defParams[i].UnitInitializationData.Damage;
+               // currentEnemy[i].UnitInitializationData.Hp.InjectNewHp(_defParams[i].UnitInitializationData.Hp.Max);
+                currentEnemy[i].GetComponentInChildren<UnitHealthBar>().foregroundImage.fillAmount =1;
             }
             
         }

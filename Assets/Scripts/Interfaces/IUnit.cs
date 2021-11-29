@@ -1,15 +1,12 @@
 ﻿using System;
 using UnityEngine;
 
-namespace SbSTanks
+namespace Interfaces
 {
     public interface IUnit
     {
-      //  public IParameters Parameters { get; }
+        public IParameters Parameters { get; set; }
         public Action<GameObject, IDamagebleUnit> ShellHit { get; set; }
         public Transform GetShotPoint { get; }
-        public Transform Transform { get; }
-        
-
     }
 }

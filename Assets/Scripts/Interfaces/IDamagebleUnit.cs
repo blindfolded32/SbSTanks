@@ -1,6 +1,4 @@
-﻿using Markers;
-
-namespace Interfaces
+﻿namespace Interfaces
 {
     public interface IDamagebleUnit
     {

@@ -12,7 +12,7 @@ namespace Controllers
     {
         
         private  StepController _stepController;
-        private  List<Enemy.Enemy> _enemies;
+        private readonly List<Enemy.Enemy> _enemies;
         public SkillController(List<Enemy.Enemy> enemies)
         {
             _enemies = enemies;
@@ -20,9 +20,10 @@ namespace Controllers
          internal void EarthSkill(IUnitController player)
         {
             var transformPosition = _enemies.
-                ElementAt(Random.Range(0, _enemies.FindAll(x=> x.Controller.GetState != State.Dead).Count))
+                ElementAt(Random.Range(0, _enemies.FindAll(x=> x.Controller.State != State.Dead &&  
+                                                               x.Controller.State != State.Levitate).Count))
                 .transform;
-            PlayerRotation.RotatePlayer(player,transformPosition);
+            UnitRotation.RotateUnit(player,transformPosition);
             UnitShoot.Shot(player,player.GetShotPoint,player.Model.Damage, ElementList.Earth);
         }
          internal void WaterSkill(IUnitController player)
@@ -31,7 +32,8 @@ namespace Controllers
         }
          internal void FireSkill(IUnitController player)
         {
-            foreach (var enemy in _enemies.Where(enemy => enemy.Controller.GetState != State.Dead))
+            foreach (var enemy in _enemies.Where(x =>  x.Controller.State != State.Dead &&  
+                                                               x.Controller.State != State.Levitate))
             {
                 enemy.TakingDamage(10,ElementList.Fire);
             }

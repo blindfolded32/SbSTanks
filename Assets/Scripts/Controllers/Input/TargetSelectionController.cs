@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using Interfaces;
-using Player;
-using Pointers;
+using Markers;
+using Unit;
 using UnityEngine;
 
-namespace Controllers
+namespace Controllers.Input
 {
     public class TargetSelectionController : IExecute
     {
@@ -26,9 +26,9 @@ namespace Controllers
 
             if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.GetComponent<Enemy.Enemy>())
             {
-                var activePlater = _playerController.Find(x => x.GetState == NameManager.State.Attack);
+                var activePlater = _playerController.Find(x => x.State == NameManager.State.Attack);
                 if (activePlater == null) return;
-               PlayerRotation.RotatePlayer( activePlater,hitInfo.transform);
+               UnitRotation.RotateUnit( activePlater,hitInfo.transform);
                 TargetSelected(hitInfo.transform);
             }
         }

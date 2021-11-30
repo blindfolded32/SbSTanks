@@ -1,7 +1,8 @@
+using Controllers;
 using TMPro;
 using UnityEngine;
 
-namespace Controllers
+namespace Markers
 {
     public class RoundCanvas : MonoBehaviour
     {

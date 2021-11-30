@@ -1,5 +1,4 @@
 ﻿using System;
-using Markers;
 using UnityEngine;
 
 namespace Interfaces
@@ -9,7 +8,7 @@ namespace Interfaces
         public IModel Model {get; }
         public Transform GetShotPoint {get; }
         public Transform GetTransform {get; }
-        public NameManager.State GetState{ get;}
+        public NameManager.State State{ get;}
         public void SetParams(IModel parameters);
         public event Action StateChanged;
         public void ChangeState(NameManager.State state);

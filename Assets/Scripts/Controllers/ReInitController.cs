@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Interfaces;
 using Player;
 using Unit;
-using UnityEngine;
 using static UnityEngine.Object;
 using Random = UnityEngine.Random;
 using static NameManager;
@@ -31,7 +30,7 @@ namespace Controllers
         {
             foreach (var unit in _unitControllers)
             {
-                if (unit.GetState == State.Dead) continue;
+                if (unit.State == State.Dead) continue;
                 if (unit is PlayerController) unit.ChangeState(State.Idle);
                 else
                 {
@@ -47,17 +46,17 @@ namespace Controllers
                 if (unit is PlayerController)
                 {
                     unit.ChangeState(State.Idle);
-                    unit.Model.Element = (ElementList) (Random.Range(0, 2));
+                    unit.Model.HP.InjectNewHp(unit.Model.HP.Max);
                 }
                 else
                 {
                     unit.ChangeState(State.Idle);
                     unit.Model.Damage *= RoundModifier;
                     unit.Model.HP.InjectNewHp(unit.Model.HP.Max * RoundModifier);
-                    unit.GetTransform.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
-                    unit.Model.Element = (ElementList) (Random.Range(0, 2));
-                    Debug.Log($"{unit.GetTransform.name} health is {unit.Model.HP.GetCurrentHp}");
+                   // Debug.Log($"{unit.GetTransform.name} health is {unit.Model.HP.GetCurrentHp}");
                 }
+                unit.GetTransform.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
+                unit.Model.Element = (ElementList) (Random.Range(0, 2));
             }
             RoundNumber++;
             NewRoundStart?.Invoke(RoundNumber);
@@ -69,7 +68,6 @@ namespace Controllers
                 unitController.GetTransform.GetComponentInChildren<UnitHealthBar>().RenewBar(unitController);
             }
         }
-
         public void NewTry()
         {
             if (_triesCount == 0)
@@ -86,14 +84,13 @@ namespace Controllers
         private void RestartGame()
         {
             var currentEnemy = FindObjectsOfType<Enemy.Enemy>();
-            for (int i = 0; i < currentEnemy.Length; i++)
+            foreach (var t in currentEnemy)
             {
-                currentEnemy[i].Controller.ChangeState(State.Idle);
-               // currentEnemy[i].UnitInitializationData.Damage = _defParams[i].UnitInitializationData.Damage;
-               // currentEnemy[i].UnitInitializationData.Hp.InjectNewHp(_defParams[i].UnitInitializationData.Hp.Max);
-                currentEnemy[i].GetComponentInChildren<UnitHealthBar>().foregroundImage.fillAmount =1;
+                t.Controller.ChangeState(State.Idle);
+                // currentEnemy[i].UnitInitializationData.Damage = _defParams[i].UnitInitializationData.Damage;
+                // currentEnemy[i].UnitInitializationData.Hp.InjectNewHp(_defParams[i].UnitInitializationData.Hp.Max);
+                t.GetComponentInChildren<UnitHealthBar>().foregroundImage.fillAmount =1;
             }
-            
         }
     }
 }

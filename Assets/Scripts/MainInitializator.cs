@@ -44,6 +44,7 @@ public class MainInitializator
         mainController.Add(timerController);
         mainController.Add(targetSelectionController);
         RoundCanvas.Init(stepController);
+        
         stepController.AddTimer();
     }
 

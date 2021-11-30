@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using IdentificationElements;
 using Interfaces;
 using Markers;
 using UnityEngine;
@@ -17,7 +16,7 @@ namespace Unit
         public void TakingDamage(float damage, NameManager.ElementList element)
         {
             
-            if (Controller.GetState ==NameManager.State.Dead) return;
+            if (Controller.State ==NameManager.State.Dead) return;
             GetComponentInChildren<ParticleSystemShotIdentificator>().GetComponent<ParticleSystem>().Play();
             if (element == Controller.Model.Element || element - Controller.Model.Element == -1) TakeDamage?.Invoke(damage);
             else TakeDamage?.Invoke(damage*2);

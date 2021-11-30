@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 
-namespace Controllers
+namespace Controllers.Input
 {
     public class SkillButtons : IPCInputSpace
     {

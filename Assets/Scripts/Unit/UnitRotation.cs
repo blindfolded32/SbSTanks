@@ -1,16 +1,16 @@
 ﻿using Interfaces;
 using UnityEngine;
+using static NameManager;
 
-namespace Player
+namespace Unit
 {
-    public static class PlayerRotation
+    public static class UnitRotation
     {
         private static Quaternion _targetRotation;
-        private const float ROTATION_TIME = 0.5f;
         private static float _lerpProgress;
         private static Quaternion _startRotation;
         
-        public static void RotatePlayer(IUnitController controller,Transform targetTransform)
+        public static void RotateUnit(IUnitController controller,Transform targetTransform)
         {
             _lerpProgress += Time.deltaTime / ROTATION_TIME;
             var targetRotation = Quaternion.LookRotation(targetTransform.position - controller.GetTransform.position);

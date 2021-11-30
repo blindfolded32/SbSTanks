@@ -1,6 +1,5 @@
 ﻿using System;
 using Controllers.Model;
-using Markers;
 using UnityEngine;
 
 namespace Interfaces

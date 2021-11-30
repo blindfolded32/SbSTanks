@@ -1,7 +1,7 @@
-using Pointers;
+using Markers;
 using UnityEngine;
 
-namespace Controllers
+namespace Controllers.Input
 {
     public class TargetSelection : MonoBehaviour
     {

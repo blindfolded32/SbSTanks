@@ -1,7 +1,5 @@
 using System;
-using Controllers;
 using Interfaces;
-using Markers;
 using Unit;
 using UnityEngine;
 
@@ -11,13 +9,11 @@ namespace Player
     {
         private UnitModel _playerModel;
         private Player GetView { get; }
-        private readonly StepController _stepController;
         public IModel Model { get => _playerModel; set => _playerModel = value as UnitModel; }
-        public bool IsFired { get; set; } = false;
-        private NameManager.State State { get; set; }
         public Transform GetShotPoint => GetView.ShotPoint; 
         public Transform GetTransform => GetView.transform;
-        public NameManager.State GetState => State;
+        public NameManager.State State { get; private set; }
+        public event Action StateChanged;
         public void SetParams(IModel parameters)
         {
             _playerModel.Damage = parameters.Damage;
@@ -25,10 +21,9 @@ namespace Player
             _playerModel.HP = parameters.HP;
             _playerModel.UnitPosition = parameters.UnitPosition;
         }
-        public event Action StateChanged;
         public void ChangeState(NameManager.State state)
         {
-            if (GetState == state) return;
+            if (State == state) return;
             State = state;
            if (state == NameManager.State.Fired) StateChanged?.Invoke();
         }

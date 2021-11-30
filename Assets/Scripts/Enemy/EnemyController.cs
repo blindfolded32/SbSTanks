@@ -1,26 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using Interfaces;
-using Markers;
-using Player;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Enemy
 {
     public class EnemyController : IUnitController
     {
         private Enemy _enemy;
-        private NameManager.State State { get; set; }
+
         public IModel Model { get; private set; }
         public Transform GetShotPoint => _enemy.ShotPoint;
         public Transform GetTransform => _enemy.transform;
-        public NameManager.State GetState => State;
+        public NameManager.State State { get; private set; }
         public void SetParams(IModel parameters) => Model = parameters;
         public event Action StateChanged;
         public void ChangeState(NameManager.State state)
         {
-            if (GetState == state) return;
+            if (State == state) return;
             switch (state)
             {
                 case NameManager.State.Idle:
@@ -52,7 +48,16 @@ namespace Enemy
             Model = unitModel;
             _enemy = enemy;
             State = NameManager.State.Idle;
+            enemy.TakeDamage+=GetDamage;
             Model.HP.IsDead += () => ChangeState(NameManager.State.Dead);
+        }
+        private void GetDamage(float damage)
+        {
+            Model.HP.ChangeCurrentHealth(damage);
+            if (  Model.HP.GetCurrentHp <= 0)
+            {
+                ChangeState(NameManager.State.Dead);
+            }
         }
     }
 }

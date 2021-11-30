@@ -43,19 +43,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/StandaloneInputModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/InputController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerShoot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerRotation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TargetSelectionController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/TimerSetsInitialization.cs" />
@@ -68,7 +65,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/GameController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerRotationEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/IPlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IReInit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemySpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TimerController.cs" />
@@ -76,34 +72,38 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Markers/RoundCanvas.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Input/KeyBoardInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveLoad/Loader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitShoot.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/ParticlesInitialization.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillArbitr.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IUnitController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerFabric.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitHealthBar.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyFabric.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitModel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/AbstractUnit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/NameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Bullet/Bullet.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyLevitate.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Markers/ControlCanvas.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Input/ControlButtons.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveLoad/SaveStruct.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Input/InputController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/UnitRotation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IUnitController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/AbstractUnit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyFabric.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TargetAvailability.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitShoot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Input/TargetSelectionController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IUnit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/NameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitRotation.cs" />
       </list>
     </option>
   </component>
@@ -203,6 +203,7 @@
       <workItem from="1638162791638" duration="3266000" />
       <workItem from="1638168792269" duration="14219000" />
       <workItem from="1638201125865" duration="1693000" />
+      <workItem from="1638254435208" duration="2835000" />
     </task>
     <servers />
   </component>
@@ -347,7 +348,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/SaveLoad/SaveStruct.cs</url>
-          <line>71</line>
+          <line>73</line>
           <properties documentPath="C:\Users\1\Documents\Unity Rep\HW_Terrain\SbSTanks\Assets\Scripts\SaveLoad\SaveStruct.cs" initialLine="76" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>

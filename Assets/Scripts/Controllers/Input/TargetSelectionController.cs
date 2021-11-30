@@ -24,16 +24,15 @@ namespace Controllers.Input
             if (!UnityEngine.Input.GetMouseButtonDown(0)) return;
             var ray = _camera.ScreenPointToRay(UnityEngine.Input.mousePosition);
 
-            if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.GetComponent<Enemy.Enemy>())
-            {
-                var activePlater = _playerController.Find(x => x.State == NameManager.State.Attack);
-                if (activePlater == null) return;
-               UnitRotation.RotateUnit( activePlater,hitInfo.transform);
-                TargetSelected(hitInfo.transform);
-            }
+            if (!Physics.Raycast(ray, out var hitInfo) || !hitInfo.transform.GetComponent<Enemy.Enemy>()) return;
+            var activePlayer = _playerController.Find(x => x.State == NameManager.State.Attack);
+            var deadPlayer = _playerController.Find(x => x.State == NameManager.State.Dead);
+            if (activePlayer == null) return;
+            UnitRotation.RotateUnit( activePlayer,hitInfo.transform);
+            TargetSelected(hitInfo.transform, deadPlayer);
         }
 
-        private void TargetSelected(Component transform)
+        private void TargetSelected(Component transform, IUnitController deadPlayer)
         {
             foreach (var enemy in _enemyList)
             {

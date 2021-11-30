@@ -57,6 +57,7 @@ namespace Enemy
             if (  Model.HP.GetCurrentHp <= 0)
             {
                 ChangeState(NameManager.State.Dead);
+                _enemy.ConfirmDeath();
             }
         }
     }

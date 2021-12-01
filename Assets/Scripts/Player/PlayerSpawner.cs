@@ -18,7 +18,7 @@ namespace Player
             foreach (var point in points)
             {
                 var player = PlayerFabric.Create(point.transform,
-                    new UnitModel(new Health(10, 10), 1,(NameManager.ElementList) Random.Range(0,2)));
+                    new UnitModel(new Health(20), 1,(NameManager.ElementList) Random.Range(0,2)));
                 Players.Add(player);
                 PlayerControllers.Add(player.Controller);
             }

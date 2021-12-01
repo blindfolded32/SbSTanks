@@ -56,6 +56,7 @@ namespace Controllers
                 }
                 unit.GetTransform.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
                 unit.Model.Element = (ElementList) (Random.Range(0, 2));
+                
             }
             RoundNumber++;
         }

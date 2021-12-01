@@ -16,7 +16,6 @@ namespace Controllers.Model
             set
             {
                 current = value;
-                Debug.Log($"HP is {current}");
                 if (current <= 0)
                 {
                     IsDead?.Invoke();

@@ -6,7 +6,7 @@ namespace Enemy
 {
     public class EnemyController : IUnitController
     {
-        private Enemy _enemy;
+        private readonly Enemy _enemy;
 
         public IModel Model { get; private set; }
         public Transform GetShotPoint => _enemy.ShotPoint;
@@ -22,6 +22,7 @@ namespace Enemy
                 case NameManager.State.Idle:
                 //    EnemyLevitate.ReturnToGround(_enemy);
                // _enemy.gameObject.SetActive(true);
+                _enemy.StopSmoke();
                     break;
                 case NameManager.State.Attack:
                     break;
@@ -29,10 +30,11 @@ namespace Enemy
                     StateChanged?.Invoke();
                     break;
                 case NameManager.State.Levitate:
-                    EnemyLevitate.Levitate(_enemy);
+                   // EnemyLevitate.Levitate(_enemy);
+                   _enemy.FlyCanI();
                     break;
                 case NameManager.State.Dead:
-                  //  _enemy.gameObject.SetActive(false);
+                    _enemy.ConfirmDeath();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
@@ -41,7 +43,6 @@ namespace Enemy
           /* if(state == NameManager.State.Fired) StateChanged?.Invoke();
            if (state == NameManager.State.Levitate) EnemyLevitate.Levitate(_enemy);*/
            //  if (State == NameManager.State.Levitate) EnemyLevitate.ReturnToGround(_enemy);
-          
         }
         public EnemyController(IModel unitModel, Enemy enemy)
         {
@@ -57,7 +58,6 @@ namespace Enemy
             if (  Model.HP.GetCurrentHp <= 0)
             {
                 ChangeState(NameManager.State.Dead);
-                _enemy.ConfirmDeath();
             }
         }
     }

@@ -77,7 +77,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerModel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerFabric.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitHealthBar.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitModel.cs" />
@@ -92,9 +91,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IUnitController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/AbstractUnit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyFabric.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
@@ -104,6 +101,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/NameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitRotation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerFabric.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" />
       </list>
     </option>
   </component>
@@ -204,6 +204,7 @@
       <workItem from="1638168792269" duration="14219000" />
       <workItem from="1638201125865" duration="1693000" />
       <workItem from="1638254435208" duration="2835000" />
+      <workItem from="1638341975037" duration="1229000" />
     </task>
     <servers />
   </component>

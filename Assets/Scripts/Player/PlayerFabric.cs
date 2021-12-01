@@ -6,8 +6,6 @@ namespace Player
 {
     public static class PlayerFabric
     {
-        //public Player Player { get; private set; }
-
         public static Player Create(Transform transform, UnitModel parameters)
         {
             var player = Object.Instantiate(Resources.Load<Player>("Prefabs/Player"), transform);
@@ -16,7 +14,6 @@ namespace Player
             player.ShotPoint = player.GetComponentInChildren<ShotPoint>().transform;
             player.HealthBar = player.gameObject.GetComponentInChildren<UnitHealthBar>();
             player.HealthBar.Init(player);
-            
             return player;
         }
     }

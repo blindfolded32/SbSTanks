@@ -7,9 +7,9 @@ namespace Player
 {
     public class PlayerController : IUnitController
     {
-        private UnitModel _playerModel;
+        private readonly UnitModel _playerModel;
         private Player GetView { get; }
-        public IModel Model { get => _playerModel; set => _playerModel = value as UnitModel; }
+        public IModel Model  => _playerModel;
         public Transform GetShotPoint => GetView.ShotPoint; 
         public Transform GetTransform => GetView.transform;
         public NameManager.State State { get; private set; }
@@ -24,8 +24,23 @@ namespace Player
         public void ChangeState(NameManager.State state)
         {
             if (State == state) return;
+            switch (state)
+            {
+                case NameManager.State.Idle:
+                  //  GetView.StopSmoke();
+                    break;
+                case NameManager.State.Attack:
+                    break;
+                case NameManager.State.Fired:
+                    StateChanged?.Invoke();
+                    break;
+                case NameManager.State.Dead:
+                    GetView.ConfirmDeath();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            }
             State = state;
-           if (state == NameManager.State.Fired) StateChanged?.Invoke();
         }
         public PlayerController(UnitModel model, Player player)
      {
@@ -35,16 +50,7 @@ namespace Player
          State = NameManager.State.Idle;
          Model.HP.IsDead += () => ChangeState(NameManager.State.Dead);
      }
-       private void GetDamage(float damage)
-        {
-            _playerModel.HP.ChangeCurrentHealth(damage);
-          //  Debug.Log($"My hp is {_playerModel.HP.GetCurrentHp}");
-            if (_playerModel.HP.GetCurrentHp <= 0)
-            {
-                ChangeState(NameManager.State.Dead);
-                GetView.ConfirmDeath();
-            }
-        }
+       private void GetDamage(float damage) => _playerModel.HP.ChangeCurrentHealth(damage);
     }
 }
 

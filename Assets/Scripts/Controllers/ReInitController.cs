@@ -14,9 +14,8 @@ namespace Controllers
     {
         public event Action StartAgain;
         public event Action<int> GameOver;
-        public event Action<int> NewRoundStart;
         public bool Lost { get; private set; } = false;
-        private int RoundNumber { get; set; }
+        public int RoundNumber { get; private set; }
         private readonly IEnumerable<IUnitController> _unitControllers;
         private List<Enemy.Enemy> _defParams;
         private int _triesCount;
@@ -59,7 +58,6 @@ namespace Controllers
                 unit.Model.Element = (ElementList) (Random.Range(0, 2));
             }
             RoundNumber++;
-            NewRoundStart?.Invoke(RoundNumber);
         }
         public void Renew()
         {

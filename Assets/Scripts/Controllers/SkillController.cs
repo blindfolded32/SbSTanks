@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Interfaces;
-using Player;
 using Unit;
 using static NameManager;
 using Random = UnityEngine.Random;
@@ -35,7 +34,7 @@ namespace Controllers
             foreach (var enemy in _enemies.Where(x =>  x.Controller.State != State.Dead &&  
                                                                x.Controller.State != State.Levitate))
             {
-                enemy.TakingDamage(10,ElementList.Fire);
+                enemy.TakingDamage(player.Model.Damage,ElementList.Fire);
             }
             player.ChangeState(State.Fired);
         }

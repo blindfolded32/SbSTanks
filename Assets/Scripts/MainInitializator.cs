@@ -26,8 +26,6 @@ public class MainInitializator
     private RoundCanvas RoundCanvas;
     private SkillController SkillControl;
 
-    //private Player.Player _player;
-   
     public MainInitializator(GameController mainController)
     {
         _playerSpawner = new PlayerSpawner(Object.FindObjectsOfType<PlayerSpawnPoint>());

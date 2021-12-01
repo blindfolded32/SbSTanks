@@ -2,6 +2,7 @@ using System.Collections;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
+using static NameManager;
 
 namespace Unit
 {
@@ -9,7 +10,6 @@ namespace Unit
     {
         [SerializeField] 
         public Image foregroundImage;
-        private float _imageUpdateSpeed = 1f;
         private AbstractUnit _unit;
         public Image elementImage;
         public void Init(AbstractUnit unit)
@@ -20,25 +20,25 @@ namespace Unit
             ElementChanged(_unit.Controller.Model.Element);
         }
 
-        private void HealthChanged(float currentHP)
+        private void HealthChanged(float damageValue)
         {
-            if (!this._unit.isActiveAndEnabled) return;
+            if (!_unit.isActiveAndEnabled) return;
           //  Debug.Log($"{_unit.Controller.Model.HP.GetCurrentHp}- {currentHP}");
-          var damage = (_unit.Controller.Model.HP.GetCurrentHp - currentHP)/_unit.Controller.Model.HP.Max;
+          var damage = (_unit.Controller.Model.HP.GetCurrentHp - damageValue)/_unit.Controller.Model.HP.Max;
             _unit.ChildCouroutine(ChangeHealthPicture(damage));
         }
 
-        private void ElementChanged(NameManager.ElementList elementList)
+        private void ElementChanged(ElementList elementList)
         {
             switch (elementList)
             {
-                case NameManager.ElementList.Fire:
+                case ElementList.Fire:
                     elementImage.sprite = Resources.Load<Sprite>("Sprite/Fire"); 
                     break;
-                case NameManager.ElementList.Water:
+                case ElementList.Water:
                     elementImage.sprite = Resources.Load<Sprite>("Sprite/Water"); 
                     break;
-                case NameManager.ElementList.Earth:
+                case ElementList.Earth:
                     elementImage.sprite = Resources.Load<Sprite>("Sprite/Earth"); 
                     break;
                 default:
@@ -60,10 +60,10 @@ namespace Unit
         {
             var fullPictureHP = foregroundImage.fillAmount;
             var elapsed = 0f;
-            while (elapsed < _imageUpdateSpeed)
+            while (elapsed < ImageUpdateSpeed)
             {
                 elapsed += Time.deltaTime;
-                foregroundImage.fillAmount = Mathf.Lerp(fullPictureHP, currentHP, elapsed / _imageUpdateSpeed);
+                foregroundImage.fillAmount = Mathf.Lerp(fullPictureHP, currentHP, elapsed / ImageUpdateSpeed);
                 yield return null;
             }
             foregroundImage.fillAmount = currentHP;

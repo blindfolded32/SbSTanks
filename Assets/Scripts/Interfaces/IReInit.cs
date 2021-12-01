@@ -6,7 +6,7 @@ namespace Interfaces
     {
         public event Action StartAgain;
         public event Action<int> GameOver;
-        public event Action<int> NewRoundStart;
+        public int RoundNumber { get; }
         public bool Lost { get; }
         public void StartNewTurn();
         public void NewRound();

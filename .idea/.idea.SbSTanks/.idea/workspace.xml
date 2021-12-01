@@ -53,7 +53,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerRotation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TargetSelectionController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/TimerSetsInitialization.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitInitializationData.cs" />
@@ -71,7 +70,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Input/KeyBoardInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveLoad/Loader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initialization/ParticlesInitialization.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillArbitr.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerModel.cs" />
@@ -83,27 +81,29 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Input/ControlButtons.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveLoad/SaveStruct.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Input/InputController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/UnitRotation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IUnitController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/AbstractUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyFabric.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/TargetAvailability.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitShoot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Input/TargetSelectionController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IUnit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/NameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitRotation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerFabric.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/AbstractUnit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/NameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitHealthBar.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Markers/RoundCanvas.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IReInit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Markers/RoundCanvas.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/IStepController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/SkillArbitr.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
       </list>
     </option>
   </component>
@@ -205,7 +205,7 @@
       <workItem from="1638201125865" duration="1693000" />
       <workItem from="1638254435208" duration="2835000" />
       <workItem from="1638341975037" duration="1229000" />
-      <workItem from="1638373441906" duration="2134000" />
+      <workItem from="1638373441906" duration="5764000" />
     </task>
     <servers />
   </component>
@@ -353,19 +353,6 @@
           <line>73</line>
           <properties documentPath="C:\Users\1\Documents\Unity Rep\HW_Terrain\SbSTanks\Assets\Scripts\SaveLoad\SaveStruct.cs" initialLine="76" />
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs</url>
-          <line>123</line>
-          <properties documentPath="C:\Users\1\Documents\Unity Rep\HW_Terrain\SbSTanks\Assets\Scripts\Controllers\StepController.cs" initialLine="120">
-            <startOffsets>
-              <option value="4413" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4413" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

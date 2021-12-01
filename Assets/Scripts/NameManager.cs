@@ -9,6 +9,7 @@
     internal const int FireSkillCd = 3;
     internal const int EarthSkillCd = 2;
     public const float TurnCoolDown = 2.0f;
+    public const float ImageUpdateSpeed = 1f;
     public enum ElementList 
     {
         Fire=0,

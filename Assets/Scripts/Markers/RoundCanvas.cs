@@ -18,7 +18,7 @@ namespace Markers
         {
             _animator = GetComponentInChildren<Animator>();
             _textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
-            _stepController.ReInitController.NewRoundStart += ShowText;
+            _stepController.NewRound += ShowText;
             _stepController.NewTurn += ShowTurn;
             _stepController.ReInitController.GameOver += LostBaner;
         }

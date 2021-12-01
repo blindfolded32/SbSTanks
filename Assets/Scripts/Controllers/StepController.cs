@@ -11,9 +11,9 @@ using Random = UnityEngine.Random;
 
 namespace Controllers
 {
-    public class StepController 
+    public class StepController : IStepController
     {
-        public bool IsPlayerTurn;
+        public bool IsPlayerTurn { get; private set; }
         public IUnitController AttackingPlayer;
         private readonly List<IUnitController> _players;
         private readonly List<IUnitController> _enemies;
@@ -22,6 +22,8 @@ namespace Controllers
         private readonly List<IUnitController> _unitList = new List<IUnitController>();
         public int TurnNumber { get;  set; }
         public event Action<int> NewTurn;
+        public event Action<int> NewRound;
+
         public StepController(List<IUnitController> enemies, List<IUnitController> player, TimerController timerController)
         {
             _players = player;
@@ -56,7 +58,7 @@ namespace Controllers
         }
         private bool CheckDead(List<IUnitController> units)
         {
-            return units.Contains(units.Find(x => x.State != NameManager.State.Dead));
+            return units.Contains(units.Find(x => x.State != State.Dead));
             //Если содержит кого-то не мертвого, то трушка
         }
         private void CountTurnOrder()
@@ -69,8 +71,8 @@ namespace Controllers
         }
         private IUnitController GetUnitForShoot()
         {
-            var unit = _unitList.First(x => x.State == NameManager.State.Idle);
-            unit.ChangeState(NameManager.State.Attack);
+            var unit = _unitList.First(x => x.State == State.Idle);
+            unit.ChangeState(State.Attack);
             if (unit is PlayerController)
             {
                 IsPlayerTurn = true;
@@ -96,6 +98,7 @@ namespace Controllers
             }
           if (!CheckDead(_enemies))
             {
+                NewRound?.Invoke(ReInitController.RoundNumber);
                 ReInitController.NewRound();
                 TurnNumber = 1;
                 ChooseABeliever();
@@ -115,12 +118,12 @@ namespace Controllers
         }
         private bool CheckIdle()
         {
-            return _unitList.Contains(_unitList.Find(x => x.State == NameManager.State.Idle));
+            return _unitList.Contains(_unitList.Find(x => x.State == State.Idle));
         }
         private void RotateEnemy(IUnitController unit)
         {
             Transform playerPos;
-            var activePlayers = _players.FindAll(x => x.State != NameManager.State.Dead);
+            var activePlayers = _players.FindAll(x => x.State != State.Dead);
             playerPos = activePlayers.Count > 1 ? activePlayers[Random.Range(0, activePlayers.Count - 1)].GetTransform : activePlayers[0].GetTransform;
             UnitRotation.RotateUnit(unit,playerPos);
         }

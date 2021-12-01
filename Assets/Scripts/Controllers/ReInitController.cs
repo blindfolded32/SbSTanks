@@ -13,7 +13,7 @@ namespace Controllers
     public class ReInitController : IReInit, IController
     {
         public event Action StartAgain;
-        public event Action GameOver;
+        public event Action<int> GameOver;
         public event Action<int> NewRoundStart;
         public bool Lost { get; private set; } = false;
         private int RoundNumber { get; set; }
@@ -72,13 +72,14 @@ namespace Controllers
         {
             if (_triesCount == 0)
             {
-                GameOver?.Invoke();
+                
                 return;
             }
-            StartAgain?.Invoke();
+            GameOver?.Invoke(RoundNumber);
+           // StartAgain?.Invoke();
             _triesCount--;
             RoundNumber = 1;
-            NewRoundStart?.Invoke(RoundNumber);
+         //   NewRoundStart?.Invoke(RoundNumber);
             Lost = true;
         }
         private void RestartGame()

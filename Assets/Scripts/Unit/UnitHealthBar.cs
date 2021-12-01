@@ -12,19 +12,11 @@ namespace Unit
         private float _imageUpdateSpeed = 1f;
         private AbstractUnit _unit;
         public Image elementImage;
-
-      /*  public UnitHealthBar(AbstractUnit unit)
-        {
-            _unit = unit;
-            unit.TakeDamage +=HealthChanged;
-            unit.Controller.Model.OnElementChange += ElementChanged;
-        }*/
         public void Init(AbstractUnit unit)
         {
             _unit = unit;
             _unit.TakeDamage +=HealthChanged;
             _unit.Controller.Model.OnElementChange += ElementChanged;
-            //elementImage.sprite = ElementChanged(_unit.Controller.Model.Element);
             ElementChanged(_unit.Controller.Model.Element);
         }
 
@@ -52,7 +44,6 @@ namespace Unit
                 default:
                   break;
             }
-            
         }
         public void ResetBar(float maxVal)
         {

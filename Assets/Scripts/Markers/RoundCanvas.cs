@@ -20,6 +20,7 @@ namespace Markers
             _textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
             _stepController.ReInitController.NewRoundStart += ShowText;
             _stepController.NewTurn += ShowTurn;
+            _stepController.ReInitController.GameOver += LostBaner;
         }
         private void ShowText(int roundNumber)
         {
@@ -32,6 +33,13 @@ namespace Markers
             _textMeshPro.text = $"turn {turnNumber}";
             _animator.Play("NewRound",-1,0f);
         }
+
+        private void LostBaner(int round)
+        {
+            _textMeshPro.text = $"You reached round {round}. Try Better";
+            _animator.Play("NewRound",-1,0f);
+        }
+        
     }
 }
 

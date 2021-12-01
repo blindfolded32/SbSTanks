@@ -46,7 +46,7 @@ namespace Controllers
                enemy.StateChanged += AddTimer;
             }
             ReInitController = new ReInitController(_unitList);
-            ReInitController.StartAgain += () => { TurnNumber = 1; };
+            ReInitController.StartAgain += () => { TurnNumber = 1;};
             CountTurnOrder();
             timerController.AddTimer(new TimerData(TurnCoolDown,Time.time));
         }
@@ -54,9 +54,9 @@ namespace Controllers
         {
             _timerController.AddTimer(new TimerData(TurnCoolDown,Time.time));//TurnState;
         }
-        private bool CheckDead()
+        private bool CheckDead(List<IUnitController> units)
         {
-            return _enemies.Contains(_enemies.Find(x => x.State != NameManager.State.Dead));
+            return units.Contains(units.Find(x => x.State != NameManager.State.Dead));
             //Если содержит кого-то не мертвого, то трушка
         }
         private void CountTurnOrder()
@@ -88,9 +88,14 @@ namespace Controllers
         private void TurnState()
         { 
             if (ReInitController.Lost) return;
-          if (!CheckDead())
+            if (!CheckDead(_players))
             {
-                Debug.Log("Battle over");
+                ReInitController.NewTry();
+                //TODO Game Restart Logic
+                return;
+            }
+          if (!CheckDead(_enemies))
+            {
                 ReInitController.NewRound();
                 TurnNumber = 1;
                 ChooseABeliever();
@@ -114,7 +119,9 @@ namespace Controllers
         }
         private void RotateEnemy(IUnitController unit)
         {
-            var playerPos = _players[Random.Range(0, _players.FindAll(x => x.State != NameManager.State.Dead).Count)].GetTransform;
+            Transform playerPos;
+            var activePlayers = _players.FindAll(x => x.State != NameManager.State.Dead);
+            playerPos = activePlayers.Count > 1 ? activePlayers[Random.Range(0, activePlayers.Count - 1)].GetTransform : activePlayers[0].GetTransform;
             UnitRotation.RotateUnit(unit,playerPos);
         }
 

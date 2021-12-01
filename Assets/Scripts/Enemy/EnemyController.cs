@@ -20,10 +20,9 @@ namespace Enemy
             switch (state)
             {
                 case NameManager.State.Idle:
-                //    EnemyLevitate.ReturnToGround(_enemy);
-               // _enemy.gameObject.SetActive(true);
-                if(State == NameManager.State.Levitate) _enemy.ReturnToGround();
+                    if(State == NameManager.State.Levitate) _enemy.ReturnToGround();
                 _enemy.StopSmoke();
+                _enemy.ChangeTargetState(true);
                     break;
                 case NameManager.State.Attack:
                     break;
@@ -31,12 +30,12 @@ namespace Enemy
                     StateChanged?.Invoke();
                     break;
                 case NameManager.State.Levitate:
-                   // EnemyLevitate.Levitate(_enemy);
-                   _enemy.FlyCanI();
+                    _enemy.FlyCanI();
                     break;
                 case NameManager.State.Dead:
                     _enemy.ConfirmDeath();
                     if(State == NameManager.State.Levitate) _enemy.ReturnToGround();
+                   _enemy.ChangeTargetState(false);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);

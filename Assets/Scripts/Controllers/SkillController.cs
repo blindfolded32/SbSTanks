@@ -34,7 +34,7 @@ namespace Controllers
             foreach (var enemy in _enemies.Where(x =>  x.Controller.State != State.Dead &&  
                                                                x.Controller.State != State.Levitate))
             {
-                enemy.TakingDamage(player.Model.Damage,ElementList.Fire);
+                enemy.TakingDamage(player.Model.Damage*3,ElementList.Fire);
             }
             player.ChangeState(State.Fired);
         }

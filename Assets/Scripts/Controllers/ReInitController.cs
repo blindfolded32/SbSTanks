@@ -30,7 +30,7 @@ namespace Controllers
             foreach (var unit in _unitControllers)
             {
                 if (unit.State == State.Dead) continue;
-                if (unit is PlayerController) unit.ChangeState(State.Idle);
+                if (unit is PlayerController || unit.State != State.Dead) unit.ChangeState(State.Idle);
                 else
                 {
                     unit.Model.Element = (ElementList) (Random.Range(0, 2));

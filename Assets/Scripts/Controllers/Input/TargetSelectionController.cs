@@ -23,25 +23,25 @@ namespace Controllers.Input
         {
             if (!UnityEngine.Input.GetMouseButtonDown(0)) return;
             var ray = _camera.ScreenPointToRay(UnityEngine.Input.mousePosition);
-
-            if (!Physics.Raycast(ray, out var hitInfo) || !hitInfo.transform.GetComponent<Enemy.Enemy>()) return;
+            if (!Physics.Raycast(ray, out var hitInfo) || !hitInfo.transform.GetComponent<Enemy.Enemy>()) return; //TODO REmove GET
             var activePlayer = _playerController.Find(x => x.State == NameManager.State.Attack);
             if (activePlayer == null) return;
             UnitRotation.RotateUnit( activePlayer,hitInfo.transform);
-            TargetSelected(hitInfo.transform);
+            TargetSelected(hitInfo.transform.GetComponent<Enemy.Enemy>());
         }
 
-        private void TargetSelected(Component transform)
+        private void TargetSelected(Enemy.Enemy transform)
         {
-            var hpBar = transform.GetComponentInChildren<UnitHealthBar>().foregroundImage.fillAmount;
+         //   var hpBar = transform.GetComponentInChildren<UnitHealthBar>().foregroundImage.fillAmount;
             foreach (var enemy in _enemyList)
             {
-                enemy.GetComponentInChildren<TargetSelectedPoint>().GetComponent<MeshRenderer>().enabled = false;
-                
+          //      enemy.GetComponentInChildren<TargetSelectedPoint>().GetComponent<MeshRenderer>().enabled = false;
+          enemy.targetSelected.enabled = false;
+
             }
-            transform.GetComponentInChildren<TargetSelectionPoint>().GetComponent<MeshRenderer>().enabled = false;
-            if(hpBar != 0)
-                transform.GetComponentInChildren<TargetSelectedPoint>().GetComponent<MeshRenderer>().enabled = true;
+           // transform.GetComponentInChildren<TargetSelectionPoint>().GetComponent<MeshRenderer>().enabled = false;
+           // if(hpBar != 0)
+                transform.targetSelected.enabled = true;
         }
         
         public void Execute(float deltaTime)

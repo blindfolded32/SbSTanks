@@ -26,20 +26,22 @@ namespace Controllers.Input
 
             if (!Physics.Raycast(ray, out var hitInfo) || !hitInfo.transform.GetComponent<Enemy.Enemy>()) return;
             var activePlayer = _playerController.Find(x => x.State == NameManager.State.Attack);
-            var deadPlayer = _playerController.Find(x => x.State == NameManager.State.Dead);
             if (activePlayer == null) return;
             UnitRotation.RotateUnit( activePlayer,hitInfo.transform);
-            TargetSelected(hitInfo.transform, deadPlayer);
+            TargetSelected(hitInfo.transform);
         }
 
-        private void TargetSelected(Component transform, IUnitController deadPlayer)
+        private void TargetSelected(Component transform)
         {
+            var hpBar = transform.GetComponentInChildren<UnitHealthBar>().foregroundImage.fillAmount;
             foreach (var enemy in _enemyList)
             {
                 enemy.GetComponentInChildren<TargetSelectedPoint>().GetComponent<MeshRenderer>().enabled = false;
+                
             }
             transform.GetComponentInChildren<TargetSelectionPoint>().GetComponent<MeshRenderer>().enabled = false;
-            transform.GetComponentInChildren<TargetSelectedPoint>().GetComponent<MeshRenderer>().enabled = true;
+            if(hpBar != 0)
+                transform.GetComponentInChildren<TargetSelectedPoint>().GetComponent<MeshRenderer>().enabled = true;
         }
         
         public void Execute(float deltaTime)

@@ -7,6 +7,7 @@ namespace Bullet
     {
         private Transform _bulletPool;
         public Transform Transform;
+        public Rigidbody Rigidbody;
         private float Damage { get; set; }
         private NameManager.ElementList Element { get; set; }
 
@@ -17,6 +18,7 @@ namespace Bullet
         private void Awake()
         {
             Transform = transform;
+            Rigidbody = GetComponent<Rigidbody>();
         }
 
         private void OnCollisionEnter(Collision other)

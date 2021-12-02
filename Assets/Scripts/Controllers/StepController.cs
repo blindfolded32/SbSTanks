@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 
 namespace Controllers
 {
-    public class StepController : IStepController
+    public class StepController
     {
         public bool IsPlayerTurn { get; private set; }
         public IUnitController AttackingPlayer;

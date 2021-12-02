@@ -10,7 +10,7 @@ namespace Unit
        
         public static void Shot(IUnitController controller, Transform shotTransform, float damage, ElementList shotElement)
         {
-            if (controller.State != State.Attack && controller.State != State.Idle)
+            if (controller.State != State.Attack)// && controller.State != State.Idle)
             {
                 return;
             }
@@ -20,7 +20,7 @@ namespace Unit
             shell.Transform.position = shotTransform.position;
             shell.transform.rotation = shotTransform.rotation;
             shell.gameObject.SetActive(true);
-            var shellRb = shell.GetComponent<Rigidbody>();
+            var shellRb = shell.Rigidbody;
             shellRb.AddForce(shell.transform.forward * SHOT_FORCE, ForceMode.Impulse);
             controller.ChangeState(State.Fired);
         }

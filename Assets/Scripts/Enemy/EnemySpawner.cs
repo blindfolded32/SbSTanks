@@ -4,6 +4,7 @@ using Interfaces;
 using Markers;
 using SaveLoad;
 using Unit;
+using UnityEngine;
 
 namespace Enemy
 {
@@ -17,7 +18,7 @@ namespace Enemy
             foreach (var point in points)
             {
                 var enemy = EnemyFabric.Create(point.transform,
-                    new UnitModel(new Health(10, 10), 1, 0));
+                    new UnitModel(new Health(10, 10), 1, (NameManager.ElementList) Random.Range(0,3)));
                 Enemies.Add(enemy);
                 UnitControllers.Add(enemy.Controller);
             }

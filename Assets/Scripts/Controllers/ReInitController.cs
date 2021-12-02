@@ -33,7 +33,7 @@ namespace Controllers
                 if (unit is PlayerController || unit.State != State.Dead) unit.ChangeState(State.Idle);
                 else
                 {
-                    unit.Model.Element = (ElementList) (Random.Range(0, 2));
+                    unit.Model.Element = (ElementList) Random.Range(0, 3);
                     unit.ChangeState(State.Idle);
                 }
             }
@@ -55,7 +55,7 @@ namespace Controllers
                    // Debug.Log($"{unit.GetTransform.name} health is {unit.Model.HP.GetCurrentHp}");
                 }
                 unit.HealthBar.ResetBar(1.0f);
-                unit.Model.Element = (ElementList) (Random.Range(0, 2));
+                unit.Model.Element = (ElementList) Random.Range(0, 3);
                 
             }
             RoundNumber++;

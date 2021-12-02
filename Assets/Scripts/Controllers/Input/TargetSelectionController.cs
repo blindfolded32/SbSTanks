@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Interfaces;
-using Markers;
 using Unit;
 using UnityEngine;
 
@@ -18,7 +17,6 @@ namespace Controllers.Input
             _playerController = playerController;
             _enemyList = enemyList;
         }
-
         private void SelectingTarget()
         {
             if (!UnityEngine.Input.GetMouseButtonDown(0)) return;
@@ -29,27 +27,18 @@ namespace Controllers.Input
             UnitRotation.RotateUnit( activePlayer,hitInfo.transform);
             TargetSelected(hitInfo.transform.GetComponent<Enemy.Enemy>());
         }
-
         private void TargetSelected(Enemy.Enemy transform)
         {
-         //   var hpBar = transform.GetComponentInChildren<UnitHealthBar>().foregroundImage.fillAmount;
             foreach (var enemy in _enemyList)
             {
-          //      enemy.GetComponentInChildren<TargetSelectedPoint>().GetComponent<MeshRenderer>().enabled = false;
-          enemy.targetSelected.enabled = false;
-
+                enemy.targetSelected.enabled = false;
             }
-           // transform.GetComponentInChildren<TargetSelectionPoint>().GetComponent<MeshRenderer>().enabled = false;
-           // if(hpBar != 0)
-                transform.targetSelected.enabled = true;
+            transform.targetSelected.enabled = true;
         }
-        
         public void Execute(float deltaTime)
         {
             SelectingTarget();
         }
-
-        public IModel Model { get; set; }
     }  
 }
 

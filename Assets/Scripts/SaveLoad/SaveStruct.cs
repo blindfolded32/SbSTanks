@@ -45,6 +45,7 @@ namespace SaveLoad
             _arbitr = turn;
             _step = step;
             step.NewTurn += (x) => AddSave();
+            AddSave();
         }
         private void CheckButton(KeyCode key)
         {

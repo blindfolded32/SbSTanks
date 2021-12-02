@@ -13,6 +13,7 @@ namespace Player
         public Transform GetShotPoint => GetView.ShotPoint; 
         public Transform GetTransform => GetView.transform;
         public NameManager.State State { get; private set; }
+        public UnitHealthBar HealthBar => GetView.HealthBar;
         public event Action StateChanged;
         public void SetParams(IModel parameters)
         {

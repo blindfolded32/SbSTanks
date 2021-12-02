@@ -12,7 +12,7 @@ namespace Unit
         public IUnitController Controller;
         internal Transform ShotPoint;
         public Action<float> TakeDamage { get; set; }
-        internal UnitHealthBar HealthBar;
+        public UnitHealthBar HealthBar;
         public void ChildCouroutine(IEnumerator enumerable) => StartCoroutine(enumerable);
         public void TakingDamage(float damage, ElementList element)
         {

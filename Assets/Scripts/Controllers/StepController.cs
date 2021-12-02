@@ -96,7 +96,7 @@ namespace Controllers
                 //TODO Game Restart Logic
                 return;
             }
-          if (!CheckDead(_enemies))
+            if (!CheckDead(_enemies))
             {
                 NewRound?.Invoke(ReInitController.RoundNumber);
                 ReInitController.NewRound();

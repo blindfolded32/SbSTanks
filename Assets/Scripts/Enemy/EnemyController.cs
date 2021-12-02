@@ -1,5 +1,6 @@
 ﻿using System;
 using Interfaces;
+using Unit;
 using UnityEngine;
 
 namespace Enemy
@@ -12,6 +13,7 @@ namespace Enemy
         public Transform GetShotPoint => _enemy.ShotPoint;
         public Transform GetTransform => _enemy.transform;
         public NameManager.State State { get; private set; }
+        public UnitHealthBar HealthBar => _enemy.HealthBar;
         public void SetParams(IModel parameters) => Model = parameters;
         public event Action StateChanged;
         public void ChangeState(NameManager.State state)

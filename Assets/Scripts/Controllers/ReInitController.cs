@@ -54,7 +54,7 @@ namespace Controllers
                     unit.Model.HP.InjectNewHp(unit.Model.HP.Max * RoundModifier);
                    // Debug.Log($"{unit.GetTransform.name} health is {unit.Model.HP.GetCurrentHp}");
                 }
-                unit.GetTransform.GetComponentInChildren<UnitHealthBar>().ResetBar(1.0f);
+                unit.HealthBar.ResetBar(1.0f);
                 unit.Model.Element = (ElementList) (Random.Range(0, 2));
                 
             }
@@ -64,7 +64,7 @@ namespace Controllers
         {
             foreach (var unitController in _unitControllers)
             {
-                unitController.GetTransform.GetComponentInChildren<UnitHealthBar>().RenewBar(unitController);
+                unitController.HealthBar.RenewBar(unitController);
             }
         }
         public void NewTry()

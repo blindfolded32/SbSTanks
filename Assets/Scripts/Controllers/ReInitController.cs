@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using Interfaces;
 using Player;
+using SaveLoad;
 using Unit;
+using UnityEngine;
 using static UnityEngine.Object;
 using Random = UnityEngine.Random;
 using static NameManager;
@@ -13,7 +15,6 @@ namespace Controllers
     public class ReInitController : IReInit, IController
     {
         public event Action StartAgain;
-        public event Action<int> GameOver;
         public bool Lost { get; private set; } = false;
         public int RoundNumber { get; private set; }
         private readonly IEnumerable<IUnitController> _unitControllers;
@@ -38,7 +39,7 @@ namespace Controllers
                 }
             }
         }
-        public void NewRound()
+        public void NewRound(float RoundModifier = default)
         {
             foreach (var unit in _unitControllers)
             {
@@ -71,15 +72,19 @@ namespace Controllers
         {
             if (_triesCount == 0)
             {
-                
                 return;
             }
-            GameOver?.Invoke(RoundNumber);
-           // StartAgain?.Invoke();
+
+            Time.timeScale = 1;
+            
             _triesCount--;
             RoundNumber = 1;
-         //   NewRoundStart?.Invoke(RoundNumber);
             Lost = true;
+            var savezero = ServiceLocator.Resolve<SaveStruct>();
+           ServiceLocator.Resolve<MainInitializator>().GameLoad(savezero.GetFirstSave());
+            savezero.CleanUp();
+            StartAgain?.Invoke();
+            NewRound(1);
         }
         private void RestartGame()
         {

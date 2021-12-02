@@ -23,6 +23,7 @@ namespace Controllers
         public int TurnNumber { get;  set; }
         public event Action<int> NewTurn;
         public event Action<int> NewRound;
+        public event Action<int> GameOver;
 
         public StepController(List<IUnitController> enemies, List<IUnitController> player, TimerController timerController)
         {
@@ -89,10 +90,11 @@ namespace Controllers
 
         private void TurnState()
         { 
-            if (ReInitController.Lost) return;
+          //  if (ReInitController.Lost) return;
             if (!CheckDead(_players))
             {
-                ReInitController.NewTry();
+                GameOver?.Invoke(ReInitController.RoundNumber);
+               // ReInitController.NewTry();
                 //TODO Game Restart Logic
                 return;
             }
@@ -109,7 +111,7 @@ namespace Controllers
                 TurnNumber++;
                 NewTurn?.Invoke(TurnNumber);
                 Debug.Log($"Turn {TurnNumber}");
-                AddTimer();
+              //  AddTimer();
                 ReInitController.StartNewTurn();
                 CountTurnOrder();
             }

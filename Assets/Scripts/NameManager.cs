@@ -2,7 +2,7 @@
 {
     public const string BULLET_POOL = "[Bullet_Pool]";
     internal const string PARTICLE_PATH = "Partcle/CompleteTankExplosion";
-    internal const float SHOT_FORCE = 250.0f;
+    internal const float SHOT_FORCE = 150.0f;
     internal const float ROTATION_TIME = 0.5f;
     public const int TriesCount = 3;
     public const float RoundModifier = 1.1f;

@@ -43,7 +43,7 @@ public class MainInitializator
         mainController.Add(timerController);
         mainController.Add(targetSelectionController);
         RoundCanvas.Init(stepController);
-        new SaveStruct(inputController,skillArbiter,stepController);
+        ServiceLocator.SetService(new SaveStruct(inputController,skillArbiter,stepController));
         stepController.AddTimer();
     }
 

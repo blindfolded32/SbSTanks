@@ -28,6 +28,9 @@ namespace SaveLoad
             SaveFile(jsonstruct);
         }
 
+        public Saver GetFirstSave() => _savelist.First.Value;
+        public void CleanUp() => _savelist.Clear();
+
         private void AddSave()
         {
             var players = FindObjectsOfType<Player.Player>().ToList();

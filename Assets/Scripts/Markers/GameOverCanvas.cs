@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using Controllers;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class GameOverCanvas : MonoBehaviour
+namespace Markers
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GameOverCanvas : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+       
     }
 }

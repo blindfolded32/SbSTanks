@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Controllers.Input;
 using SaveLoad;
 using UnityEngine;
 using static NameManager;
@@ -27,7 +28,7 @@ namespace Controllers
             _skillController = skillController;
             _controller.SkillUsed += SkillSelector;
             stepController.NewTurn += CheckAvailability;
-            stepController.ReInitController.NewRoundStart += (x) => ResetCd();
+            stepController.NewRound += (x) => ResetCd();
         }
 
         public void SetSkills(List<SkillCd> skill = default)
@@ -67,7 +68,7 @@ namespace Controllers
         }
         private void SkillSelector(KeyCode id)
         {
-            if(!_stepController.IsPlayerTurn) return;
+            if (!_stepController.IsPlayerTurn) return;
             switch (id)
             {
                 case KeyCode.E:

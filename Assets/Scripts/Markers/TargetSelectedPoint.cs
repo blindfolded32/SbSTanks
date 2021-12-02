@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Pointers
+namespace Markers
 {
     public class TargetSelectedPoint : MonoBehaviour
     {

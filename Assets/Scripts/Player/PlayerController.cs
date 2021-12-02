@@ -1,7 +1,5 @@
 using System;
-using Controllers;
 using Interfaces;
-using Markers;
 using Unit;
 using UnityEngine;
 
@@ -9,15 +7,14 @@ namespace Player
 {
     public class PlayerController : IUnitController
     {
-        private UnitModel _playerModel;
+        private readonly UnitModel _playerModel;
         private Player GetView { get; }
-        private readonly StepController _stepController;
-        public IModel Model { get => _playerModel; set => _playerModel = value as UnitModel; }
-        public bool IsFired { get; set; } = false;
-        private NameManager.State State { get; set; }
+        public IModel Model  => _playerModel;
         public Transform GetShotPoint => GetView.ShotPoint; 
         public Transform GetTransform => GetView.transform;
-        public NameManager.State GetState => State;
+        public NameManager.State State { get; private set; }
+        public UnitHealthBar HealthBar => GetView.HealthBar;
+        public event Action StateChanged;
         public void SetParams(IModel parameters)
         {
             _playerModel.Damage = parameters.Damage;
@@ -25,12 +22,26 @@ namespace Player
             _playerModel.HP = parameters.HP;
             _playerModel.UnitPosition = parameters.UnitPosition;
         }
-        public event Action StateChanged;
         public void ChangeState(NameManager.State state)
         {
-            if (GetState == state) return;
+            if (State == state) return;
+            switch (state)
+            {
+                case NameManager.State.Idle:
+                  //  GetView.StopSmoke();
+                    break;
+                case NameManager.State.Attack:
+                    break;
+                case NameManager.State.Fired:
+                    StateChanged?.Invoke();
+                    break;
+                case NameManager.State.Dead:
+                    GetView.ConfirmDeath();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            }
             State = state;
-           if (state == NameManager.State.Fired) StateChanged?.Invoke();
         }
         public PlayerController(UnitModel model, Player player)
      {
@@ -40,16 +51,7 @@ namespace Player
          State = NameManager.State.Idle;
          Model.HP.IsDead += () => ChangeState(NameManager.State.Dead);
      }
-       private void GetDamage(float damage)
-        {
-            _playerModel.HP.ChangeCurrentHealth(damage);
-          //  Debug.Log($"My hp is {_playerModel.HP.GetCurrentHp}");
-            if (_playerModel.HP.GetCurrentHp <= 0)
-            {
-                ChangeState(NameManager.State.Dead);
-                GetView.ConfirmDeath();
-            }
-        }
+       private void GetDamage(float damage) => _playerModel.HP.ChangeCurrentHealth(damage);
     }
 }
 

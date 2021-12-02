@@ -1,9 +1,8 @@
 using System;
-using Controllers.Input;
 using Interfaces;
 using UnityEngine;
 
-namespace Controllers
+namespace Controllers.Input
 {
     public class InputController : IExecute
     {

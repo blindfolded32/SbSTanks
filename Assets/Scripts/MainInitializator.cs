@@ -26,24 +26,24 @@ public class MainInitializator
     private RoundCanvas RoundCanvas;
     private SkillController SkillControl;
 
-    //private Player.Player _player;
-   
     public MainInitializator(GameController mainController)
     {
         _playerSpawner = new PlayerSpawner(Object.FindObjectsOfType<PlayerSpawnPoint>());
+        _enemySpawn = new EnemySpawner(Object.FindObjectsOfType<EnemySpawnPoint>());
         inputController = new InputController(new KeyBoardInput(), new SkillButtons(), new ControlButtons());
         timerController = new TimerController();
-        _enemySpawn = new EnemySpawner(Object.FindObjectsOfType<EnemySpawnPoint>());
+
             SkillControl = new SkillController(_enemySpawn.Enemies);
             stepController = new StepController(_enemySpawn.UnitControllers,_playerSpawner.PlayerControllers, timerController);
             skillArbiter = new SkillArbitr(stepController, inputController, SkillControl);
             InitUIControllers();
-        new SaveStruct(inputController,skillArbiter,stepController);
+        
        
         mainController.Add(inputController);
         mainController.Add(timerController);
         mainController.Add(targetSelectionController);
         RoundCanvas.Init(stepController);
+        ServiceLocator.SetService(new SaveStruct(inputController,skillArbiter,stepController));
         stepController.AddTimer();
     }
 

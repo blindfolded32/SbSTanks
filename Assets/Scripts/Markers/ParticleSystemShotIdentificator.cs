@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace IdentificationElements
+namespace Markers
 {
     public class ParticleSystemShotIdentificator : MonoBehaviour
     {

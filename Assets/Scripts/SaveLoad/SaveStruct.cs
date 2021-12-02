@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using Controllers;
+using Controllers.Input;
 using Unit;
 using UnityEngine;
 using static UnityEngine.Object;
@@ -27,6 +28,9 @@ namespace SaveLoad
             SaveFile(jsonstruct);
         }
 
+        public Saver GetFirstSave() => _savelist.First.Value;
+        public void CleanUp() => _savelist.Clear();
+
         private void AddSave()
         {
             var players = FindObjectsOfType<Player.Player>().ToList();
@@ -44,6 +48,7 @@ namespace SaveLoad
             _arbitr = turn;
             _step = step;
             step.NewTurn += (x) => AddSave();
+            AddSave();
         }
         private void CheckButton(KeyCode key)
         {

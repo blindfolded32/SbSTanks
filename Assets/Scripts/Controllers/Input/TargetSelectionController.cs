@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using Interfaces;
-using Player;
-using Pointers;
+using Unit;
 using UnityEngine;
 
-namespace Controllers
+namespace Controllers.Input
 {
     public class TargetSelectionController : IExecute
     {
@@ -18,37 +17,28 @@ namespace Controllers
             _playerController = playerController;
             _enemyList = enemyList;
         }
-
         private void SelectingTarget()
         {
             if (!UnityEngine.Input.GetMouseButtonDown(0)) return;
             var ray = _camera.ScreenPointToRay(UnityEngine.Input.mousePosition);
-
-            if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.GetComponent<Enemy.Enemy>())
-            {
-                var activePlater = _playerController.Find(x => x.GetState == NameManager.State.Attack);
-                if (activePlater == null) return;
-               PlayerRotation.RotatePlayer( activePlater,hitInfo.transform);
-                TargetSelected(hitInfo.transform);
-            }
+            if (!Physics.Raycast(ray, out var hitInfo) || !hitInfo.transform.GetComponent<Enemy.Enemy>()) return; //TODO REmove GET
+            var activePlayer = _playerController.Find(x => x.State == NameManager.State.Attack);
+            if (activePlayer == null) return;
+            UnitRotation.RotateUnit( activePlayer,hitInfo.transform);
+            TargetSelected(hitInfo.transform.GetComponent<Enemy.Enemy>());
         }
-
-        private void TargetSelected(Component transform)
+        private void TargetSelected(Enemy.Enemy transform)
         {
             foreach (var enemy in _enemyList)
             {
-                enemy.GetComponentInChildren<TargetSelectedPoint>().GetComponent<MeshRenderer>().enabled = false;
+                enemy.targetSelected.enabled = false;
             }
-            transform.GetComponentInChildren<TargetSelectionPoint>().GetComponent<MeshRenderer>().enabled = false;
-            transform.GetComponentInChildren<TargetSelectedPoint>().GetComponent<MeshRenderer>().enabled = true;
+            transform.targetSelected.enabled = true;
         }
-        
         public void Execute(float deltaTime)
         {
             SelectingTarget();
         }
-
-        public IModel Model { get; set; }
     }  
 }
 

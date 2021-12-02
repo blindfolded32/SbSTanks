@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class ElementUIMarker : MonoBehaviour
+namespace Markers
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ElementUIMarker : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+      
     }
 }

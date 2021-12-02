@@ -7,6 +7,9 @@ namespace Player
     public class Player : AbstractUnit
     {
         public event Action PlayerDead;
-        public void ConfirmDeath() => PlayerDead?.Invoke();
+        public void ConfirmDeath()
+        {
+            PlayerDead?.Invoke();
+        }
     }
 }

@@ -1,7 +1,6 @@
 using System;
 using Controllers.Model;
 using Interfaces;
-using Markers;
 using UnityEngine;
 
 namespace Unit

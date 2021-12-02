@@ -103,7 +103,6 @@ namespace Controllers
                 NewRound?.Invoke(ReInitController.RoundNumber);
                 ReInitController.NewRound();
                 TurnNumber = 1;
-                ChooseABeliever();
                 CountTurnOrder();
             }
             if (!CheckIdle())
@@ -113,6 +112,7 @@ namespace Controllers
                 Debug.Log($"Turn {TurnNumber}");
               //  AddTimer();
                 ReInitController.StartNewTurn();
+                ChooseABeliever();
                 CountTurnOrder();
             }
             if (IsPlayerTurn) return;

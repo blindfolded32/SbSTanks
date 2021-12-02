@@ -43,12 +43,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/StandaloneInputModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -94,9 +94,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Bullet/Bullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Markers/ElementUIMarker.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/NameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Markers/GameOverCanvas.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitShoot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemySpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveLoad/SaveStruct.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainInitializator.cs" />
@@ -104,6 +102,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Markers/RoundCanvas.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ReInitController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/StepController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Unit/UnitShoot.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/NameManager.cs" />
       </list>
     </option>
   </component>
@@ -145,10 +145,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3436">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="3436" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -209,6 +209,7 @@
       <workItem from="1638421804702" duration="2234000" />
       <workItem from="1638431741715" duration="4763000" />
       <workItem from="1638452272204" duration="3880000" />
+      <workItem from="1638461967066" duration="1520000" />
     </task>
     <servers />
   </component>
